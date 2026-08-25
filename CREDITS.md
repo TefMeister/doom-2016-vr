@@ -17,11 +17,12 @@ project's repositories** — only code, notes, and tools we wrote ourselves.
 
 ## Prior art, tools, and research this repo draws on
 
-Research has not started yet — this table will fill in as work progresses.
-
 | Source / Work | Creator(s) | Link |
 |---|---|---|
-| *(none yet — project just started)* | | |
+| Vk3DVision (Vulkan stereoscopic 3D driver) | Helifax (Octavian Vasilov) | [github.com/helifax/Vk3DVision-Public](https://github.com/helifax/Vk3DVision-Public) |
+| Depth3D (ReShade stereoscopic/depth shader) | BlueSkyDefender | [github.com/BlueSkyDefender/Depth3D](https://github.com/BlueSkyDefender/Depth3D) |
+| DOOM (2016) — Graphics Study | Adrian Courrèges | [adriancourreges.com](https://www.adriancourreges.com/blog/2016/09/09/doom-2016-graphics-study/) |
+| vorpX community forum discussion (G3D status for DOOM 2016) | vorpX forum community | [vorpx.com/forums/topic/doom-2016](https://www.vorpx.com/forums/topic/doom-2016/) |
 
 Development on this project is AI-assisted: much of the research, code, and
 documentation was produced with **Claude (Anthropic)** (https://claude.com)
