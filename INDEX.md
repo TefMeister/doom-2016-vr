@@ -10,7 +10,8 @@ write-up in `topics/`. Status tags:
 
 | Date | Topic | Status | Summary |
 | --- | --- | --- | --- |
-| *(none yet — project just started)* | | | |
+| 2026-08-25 | [Stereo-3D prior art: Vk3DVision](topics/2026-08-25-stereo-3d-prior-art-vk3dvision.md) | 🆕 new | vorpX G3D is dead for this game; Helifax's Vk3DVision (Vulkan-native, actively maintained, DOOM 2016 fix updated 2025-08-30) proves per-eye Vulkan override works here — but its "VR" claim needs verifying for real head tracking vs. just stereo output. |
+| 2026-08-25 | [id Tech 6 renderer, DRM, console basics](topics/2026-08-25-engine-renderer-drm-console-basics.md) | 🆕 new | OpenGL is the shipped default, Vulkan is a later selectable add-on; Denuvo was present at launch and removed later (Steam DRM remains); console opens with `~`, no special launch flag found. |
 
 ## How to add a topic
 
