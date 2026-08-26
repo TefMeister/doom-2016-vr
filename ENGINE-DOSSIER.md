@@ -64,6 +64,11 @@ already known (§6e). Next: build the `opengl32` proxy.
   readable import table with real API names**. Nothing is packed. Steam DRM (`steam_api64.dll`)
   remains, which is normal and not an obstacle.
 - Launch-time-debugger behaviour: **not yet tested live.**
+- **✅ INJECTION VECTOR THAT WORKS — `vulkan-1.dll` proxy, VERIFIED IN-GAME 2026-08-26.** Our M0
+  proxy (`-staging/proxy-vulkan/`) loaded into `DOOMx64vk.exe`, resolved **246/246 exports with none
+  missing**, observed instance/device/swapchain creation, and forwarded **4866 frames** of real
+  gameplay with no crash and no visual artefact. Uninstall is deleting one file. **We are inside
+  DOOM's Vulkan renderer.**
 
 ### 4a. Two runtime gates on the console (live-confirmed 2026-08-26) — the decisive Phase 0 result
 
@@ -243,7 +248,13 @@ hypothesis can be checked against `getviewpos` with no test code written. `com_s
   sibling command `renameRenderProg <renderProg> [newProg]` swaps shader programs live.
 
 ## 8. Pass inventory (by render target)
-- TBD (Phase 2). Public head start: the renderer is a **hybrid clustered-forward + deferred**
+- **✅ SWAPCHAIN MEASURED IN-GAME (2026-08-26, via our own proxy):**
+  `vkCreateSwapchainKHR -> VK_SUCCESS, 1280x720, format=44, minImageCount=2`, and
+  `vkGetSwapchainImagesKHR -> imageCount=2`. Format **44 = `VK_FORMAT_B8G8R8A8_UNORM`**;
+  **double-buffered**. Dimensions match `r_windowWidth`/`r_windowHeight`, so the swapchain follows
+  the window, not a fixed internal resolution. This is the surface a VR submission path will have to
+  either read from or replace.
+- Rest TBD (Phase 2). Public head start: the renderer is a **hybrid clustered-forward + deferred**
   design with only **~100 unique shaders total** (SIGGRAPH 2016, per `-external-research`), and
   Adrian Courrèges' "DOOM (2016) — Graphics Study" is a frame-by-frame reference to read when this
   phase opens.
