@@ -95,12 +95,24 @@ all registered — so a `.cfg` dropped there can be executed without touching th
 an `exec`'d config can set gated cvars that the console rejects interactively is **untested** and is
 the one remaining cheap probe before writing code.
 - **Injection foothold — excellent, several options, all confirmed present in the import table:**
-  - **`OPENGL32.dll` (GL exe only)** — imported directly. A classic `opengl32.dll` proxy is the
-    single cleanest foothold available: it puts us in the middle of *every* GL call including
-    `wglSwapBuffers`, with no MinHook, no pattern scanning, and no CFG concerns.
-  - **`vulkan-1.dll` (VK exe only)** — a `vulkan-1` proxy or a proper `VK_LAYER_*` implicit layer.
-  - **`winmm.dll`** — imported by *both* exes. This is the same proxy vector already proven in
-    `the-evil-within-vr-*`, and it works regardless of which renderer we end up targeting.
+  - **`vulkan-1.dll` (VK exe only) — ⭐ THE RECOMMENDED TARGET (revised 2026-08-26).** The Vulkan
+    build imports **~96 entry points statically and directly**, and **does *not* import
+    `vkGetInstanceProcAddr`/`vkGetDeviceProcAddr`** — so a plain `vulkan-1` proxy intercepts **100%
+    of Vulkan traffic** with no dispatch-table or proc-address funnel to chase. The imported set is
+    exactly the VR surface: `vkQueuePresentKHR` (frame boundary), `vkCreateSwapchainKHR` /
+    `vkGetSwapchainImagesKHR` (submission), `vkMapMemory` / `vkFlushMappedMemoryRanges` /
+    `vkUpdateDescriptorSets` / `vkCmdBindDescriptorSets` (**uniform delivery — the §7 question**),
+    `vkCmdSetViewport` (per-eye), `vkCmdDrawIndexed`, `vkCreateShaderModule`. Full analysis:
+    `-dev-archive/recon/2026-08-26-injection-surface/`.
+  - **`OPENGL32.dll` (GL exe only) — ⚠️ EARLIER LEAN, NOW DEMOTED.** The claim that this was "the
+    single cleanest foothold" was **wrong on two counts**, corrected here: (a) only **42** functions
+    are imported and they are all **legacy GL 1.x + WGL** — every modern GL 4.x call is resolved
+    through **`wglGetProcAddress`**, so the real surface is hundreds of functions behind a funnel we
+    would have to build; (b) **`wglSwapBuffers` is NOT imported at all** — the frame boundary is
+    **`gdi32!SwapBuffers`**, so an `opengl32` proxy never sees end-of-frame without a second hook
+    into GDI32 or an IAT patch. Still viable as a fallback; no longer the default choice.
+  - **`winmm.dll`** — imported by *both* exes; the proven `the-evil-within-vr-*` vector, and
+    renderer-agnostic.
   - Also imported and usable as fallbacks: `dinput8.dll`, `dbghelp.dll`, `wsock32.dll`,
     `msimg32.dll`.
 
@@ -344,11 +356,20 @@ a free zero-code lever is gated off by production mode. See §4a.
   good early proxy milestone.
 
 ## 13. Next steps (as of 2026-08-26, Phase 0 complete)
-1. **One cheap probe first:** drop a `.cfg` in `Saved Games\id Software\DOOM\base\` (which precedes
-   the install dir in the search path) and `exec` it, to see whether config-file cvar sets bypass the
+0. **⚠️ USER DECISION PENDING: confirm the Vulkan target** (§4, and
+   `-dev-archive/recon/2026-08-26-injection-surface/`). Requires flipping `r_renderAPI` to `1` and
+   checking the Vulkan build runs acceptably on this machine — **untested**. OpenGL stays the
+   fallback and no camera knowledge is wasted either way.
+1. **One cheap probe:** drop a `.cfg` in `Saved Games\id Software\DOOM\base\` (which precedes the
+   install dir in the search path) and `exec` it, to see whether config-file cvar sets bypass the
    interactive gate. Costs minutes; would change the plan if it works.
-2. **Build the `opengl32.dll` proxy** (§4) — load, log, survive. The M0 equivalent of every other
-   project in this portfolio.
-3. **Locate the renderparm→GL-uniform mapping table** (§7) and read `viewMatrix*` /
-   `globalViewOrigin` live, validating against `getviewpos` (§6e) as ground truth.
+2. **Build the `vulkan-1.dll` proxy** — forward all ~96 exports, log
+   `vkCreateInstance`/`vkCreateDevice`/`vkCreateSwapchainKHR`, count `vkQueuePresentKHR`. Load, log,
+   survive: the M0 equivalent of every other project in this portfolio. Fail-safe passthrough on
+   every path.
+3. **Find how `viewMatrix*` reaches the GPU** (§7) — instrument `vkMapMemory` /
+   `vkFlushMappedMemoryRanges` / `vkUpdateDescriptorSets` and look for a per-frame buffer whose
+   contents track the camera. **Validate against `getviewpos` (§6e) as ground truth** — we know the
+   basis is Z-up and the angle order, so a candidate matrix can be checked arithmetically rather
+   than by eye.
 4. Only then decide stereo strategy: drive the dormant path, or override projection ourselves (§6c).
