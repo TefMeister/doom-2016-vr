@@ -5,15 +5,23 @@
 > `-dev-archive` / `-modding-notes` repos; this file is the *distilled current
 > truth*. Update it whenever a fact changes; correct false leads in place.
 
-**Status:** Phase 0 **static pass complete** (2026-08-26, dev PC) — install finished, both binaries
-inspected offline. Nothing has been run live yet. ·
-**VR-readiness verdict:** **unusually promising** — the engine ships a real, inherited stereo-3D
-render path *and* a fully-named reflection/renderparm database. See §6 and §12.
+**Status:** ✅ **PHASE 0 COMPLETE** (2026-08-26, dev PC) — static pass *and* live console session
+both done. ·
+**VR-readiness verdict:** **good, with the route now settled.** The engine ships a real inherited
+stereo-3D render path and a fully-named renderparm database (§6) — but that path is **not reachable
+from a retail console** (§4a), so the injection route is the only door. Camera convention is
+already known (§6e). Next: build the `opengl32` proxy.
 
 ## 1. Identity
 - Game / build / version: DOOM (2016), id Software, published by Bethesda Softworks. Steam release.
-  Both shipped executables carry FileVersion `1, 0, 0, 1`, ProductName `DOOM` (the real build number
-  is not in the version resource — id versions elsewhere).
+  Both shipped executables carry FileVersion `1, 0, 0, 1`, ProductName `DOOM` — useless. The **real**
+  build identity comes from the console's own `BuildInfo` command:
+  **Version `6.1.1`, Target `shippingretail`**, binary build `20240321-104810-ginger-fuchsia`
+  (2024-03-21), disc layout `20240321-110110-rutherfordium-mousse`, candidate
+  `20240321-110145-gentle-wolf`. `BuildInfo` also reports **`Cheat Mode: OFF`** (see §4a).
+- **Internal codename: "Zion"** — confirmed twice over: leaked source paths in the binary
+  (`l:\zion\code\shared\idlib\...`) and `BuildInfo`'s map-set list ("MP Orbis Zion Build",
+  "Zion Phoenix SP MP").
 - Platform & store; unofficial port? (extra fragility/legal notes): Steam (PC), app 379720.
   No unofficial-port concerns.
 - Legitimacy: owned copy, installed at
@@ -46,8 +54,8 @@ render path *and* a fully-named reflection/renderparm database. See §6 and §12
   — completely ordinary MSVC output. `.gfids`/`.giats` = **Control Flow Guard is enabled** (relevant
   to any indirect-call hooking strategy). `.reloc` present ⇒ **ASLR on, module base will move**.
 - Preferred image base `0x140000000`; `.text` ≈ 32 MB in both.
-- Developer console / cvar system: **present**, confirmed statically — `listCvars`, `listCmds`,
-  `devmode_enable`, `com_showfps`, `g_fov` all exist as literal strings in the binary. See §9.
+- Developer console / cvar system: **present and confirmed live.** Opens with `~`. `g_fov 110` was
+  set and verified to take effect. **But it is heavily gated — see §4a.**
 
 ## 4. DRM / anti-debug & injection foothold
 - **Denuvo is confirmed GONE on this build** — and this is now first-party evidence, not just the
@@ -56,6 +64,36 @@ render path *and* a fully-named reflection/renderparm database. See §6 and §12
   readable import table with real API names**. Nothing is packed. Steam DRM (`steam_api64.dll`)
   remains, which is normal and not an obstacle.
 - Launch-time-debugger behaviour: **not yet tested live.**
+
+### 4a. Two runtime gates on the console (live-confirmed 2026-08-26) — the decisive Phase 0 result
+
+The retail build boots into **production mode** (`idLib::SetProduction( PROD_PRODUCTION )`, visible
+in the startup log) and reports **`Cheat Mode: OFF`**. These are **two independent gates**, and
+together they close the console as a route to anything interesting:
+
+| measured | result |
+|---|---|
+| `listCvars` (bare) | **171 cvars total.** id Tech 6 has thousands. |
+| `listCmds` | **40 commands.** |
+| `listCvars stereo` | **nothing** — the §6a stereo cvars are *not registered at runtime*. |
+| `com_production` | **not in the visible 171** — the master switch cannot be flipped from the console. |
+| `devMode_enable` | exists, reads `0` … |
+| `devMode_fatalErrorOnEnter` | …but reads **`1` by default** — entering dev mode would **FatalError**. Not attempted. |
+| `noclip` | **not a registered command.** `God` *is* (capital G) — presumably cheat-gated. |
+
+The binary describes `com_production` in its own words: *"Used to enable and/or inhibit specific
+behaviour during production building mode. **All demo and retail builds are built with this on.**"*
+The engine also carries a `CVAR_SHIPPINGDISABLED` flag.
+
+**Conclusion: the dormant stereo path is real but console-unreachable on retail.** The injection
+route is not one option among several — it is the only door. Evidence:
+`-dev-archive/recon/2026-08-26-phase0-live-console/`.
+
+**Still worth trying later, cheaply:** `Saved Games\id Software\DOOM\base\` sits **ahead of** the
+install directory in the file-system search path, and `exec` / `resourceExec` / `verifiedExec` are
+all registered — so a `.cfg` dropped there can be executed without touching the game folder. Whether
+an `exec`'d config can set gated cvars that the console rejects interactively is **untested** and is
+the one remaining cheap probe before writing code.
 - **Injection foothold — excellent, several options, all confirmed present in the import table:**
   - **`OPENGL32.dll` (GL exe only)** — imported directly. A classic `opengl32.dll` proxy is the
     single cleanest foothold available: it puts us in the middle of *every* GL call including
@@ -67,6 +105,8 @@ render path *and* a fully-named reflection/renderparm database. See §6 and §12
     `msimg32.dll`.
 
 ## 5. Threading & frame structure
+- **`jobs_numThreads` reads `6`** on this machine (4 physical / 8 logical cores) — the job system
+  sizes its worker pool from the CPU. `jobs_drawDebugGUI` exists but is a no-op without dev mode.
 - Not yet mapped live. Known from public developer material (SIGGRAPH 2016, see `-external-research`):
   id Tech 6 is a genuinely job-based multithreaded engine whose job system had known scheduling
   "bubbles" later rewritten for id Tech 7 — **do not assume even frame-to-frame CPU scheduling**
@@ -150,8 +190,36 @@ human-written descriptions* (e.g. `idPlayerMechanicRailRide::enum_1259`,
 same structural advantage REFramework provides on RE Engine, except it is native to the binary.
 Mining this table properly is its own high-value task (see §12).
 
-- Exact constant-buffer slot / byte offsets / handedness / row-major convention: **TBD** — needs
-  live shader reflection or a GL/VK capture (Phase 2).
+### 6e. Camera convention — MEASURED LIVE (2026-08-26)
+
+The console command **`getviewpos`** prints the live camera. Four readings were taken, shaped so
+translation and rotation could be separated (first two differ only by walking; last three share an
+identical position and differ only by looking around):
+
+```
+X     Y        Z         pitch  yaw
+1728  5440     6372.16   357.1  352.7
+2135  5721.26  6331.63   357.2  352.8    <- walked; angles ~unchanged
+2135  5721.26  6331.63   354.6  299.2    <- same spot; looked around
+2135  5721.26  6331.63   350.8  14.2     <- same spot; looked around
+```
+
+- **Format: `X Y Z pitch yaw`.**
+- **Z is up.** Walking moved X +407 and Y +281 but Z only −40.5 (a sloping floor). Classic id/Quake
+  convention — and consistent with what is recorded for id Tech 5.
+- **Yaw is column 5** — swings widely and wraps through 360→0 (299.2 → 14.2).
+- **Pitch is column 4** — stayed near 357 (≈ −3°, a slightly downward gaze).
+- **Roll is not printed**, presumably pinned at 0 for the player view.
+- Angles are **degrees, 0–360**. Units are id units (uncalibrated to metres; map coordinates run to
+  the thousands).
+
+**Why this matters:** it gives §6b's `viewMatrixX/Y/Z/W` and `globalViewOrigin/Fwd/Left/Up` a known
+basis to be validated against, and it makes the console a **ground-truth instrument** — any camera
+hypothesis can be checked against `getviewpos` with no test code written. `com_showCameraPosition 1`
+(*"Shows the camera's position and rotation"*) gives the same data continuously on screen.
+
+- Exact constant-buffer slot / byte offsets / row-major convention: **TBD** — needs live shader
+  reflection or a GL/VK capture (Phase 2). Handedness/up-axis now known (above).
 - The per-eye override maths (`K_eye = …`): **TBD**, pending 6c.
 
 ## 7. Constant-buffer fill mechanism
@@ -172,29 +240,50 @@ Mining this table properly is its own high-value task (see §12).
   decals, SSS (`sssMap`), bloom, radial blur, PBR debug modes.
 
 ## 9. cvar / console cheat sheet
-Console opens with `~`. All of the below are **confirmed present as strings in `DOOMx64.exe`**;
-none have been executed yet.
+Console opens with `~`. **Verified live 2026-08-26.** Full captured lists in
+`-dev-archive/recon/2026-08-26-phase0-live-console/`.
+
+### ✅ Actually available in retail (of 171 cvars / 40 commands)
 
 | command / cvar | effect | use |
 |---|---|---|
-| `listCvars` / `listCmds` | dump all cvars / commands | **first move once live** — resolves the stereo-mode cvar name |
-| `g_fov <n>` | field of view | quick "console actually works" confirmation |
-| `noclip` | free movement, no collision | camera decoupling / test navigation |
-| `devmode_enable` | developer mode | ⚠️ flags campaign saves — use a throwaway save |
-| `com_showfps 3` | on-screen FPS | perf sanity |
+| `getviewpos` | prints `X Y Z pitch yaw` | **the camera ground-truth instrument** — see §6e |
+| `com_showCameraPosition 1` | *"Shows the camera's position and rotation"* | same data, continuous, on screen |
+| `where` | position readout | second opinion on the above |
+| `listCvars [str]` / `listCmds [str]` | enumerate | takes an optional search string; `^`/`$` anchor |
+| `conDump <file>` | dump console buffer to file | **how every capture here was made** |
+| `g_fov <n>` | field of view | verified working (`g_fov 110` took effect) |
+| `BuildInfo` | build identity + `Cheat Mode` state | see §1, §4a |
+| `exec` / `resourceExec` / `verifiedExec` | run a `.cfg` | scripting foothold — see §4a and §10 |
+| `bind` / `unbind` / `listBinds` | key binding | makes live testing tolerable |
+| `screenshot` | capture | evidence |
+| `writeConfig <file>` | dump current config | snapshot before/after changes |
+| `vid_restart`, `vt_restart` | reinit video / virtual texturing | may be needed after render changes |
+| `demo_nextPerspective`, `spectator_localPerspective` | perspective switching | **unexplored — worth a look** |
+| `God` | god mode (capital G) | test survivability during camera work |
+| `com_skipGameRenderView` | *"skip generating the GUIs"* | possible HUD-suppression lever |
+| `menu_advanced_AllowAllSettings 1` | *"allow all settings to be picked for testing purposes"* | set; effect not yet examined |
+| `pm_photoModeFriction`, `pm_photoModeMaxDist` | photo-mode camera tuning | **a native detached camera exists** — unexplored |
+| `com_capturePath`, `com_captureTGA`, `com_captureSamples` | frame capture | harness plumbing |
 | `r_renderAPI` | 0 = OpenGL, 1 = Vulkan | selects which exe launches |
-| `stereoRender_separation` | world units center→eye | see §6a |
-| `stereoRender_screenSeparation` | screen units center→eye | see §6a |
-| `stereoRender_guiOffset` | GUI depth shift for HMDs | see §6a |
-| `stereoRender_swapEyes` | swap eye buffers | see §6a |
-| `multiView_60Hz` | AFR vs both-eyes-per-frame | see §6a |
-| `rp <name> [value]` | display/modify a renderparm | read `viewMatrixX..W` etc. live |
-| `renameRenderProg <prog> [new]` | swap a shader program live | Phase 2 |
-| `screenshot [...]`, `envshot` | captures | harness/evidence |
-| `testImage`, `r_pbrDebug*` | debug views | Phase 2 |
+| `jobs_numThreads` | reads `6` here | §5 |
 
-`god` was **not** found as an exact string (unlike `noclip`, which appears twice) — the
-`-external-research` inference that both exist natively is only half-confirmed; don't rely on `god`.
+### ❌ NOT available in retail (present in the binary, never registered)
+
+`stereoRender_separation` · `stereoRender_screenSeparation` · `stereoRender_guiOffset` ·
+`stereoRender_swapEyes` · `multiView_60Hz` · `com_production` · `noclip` ·
+`rp <name> [value]` · `renameRenderProg` · `envshot` · `testImage` · `r_pbrDebug*` ·
+`com_showfps` (the visible one is `com_showFPS`, capital FPS)
+
+**This is the single most important line in the dossier:** everything in §6a and §7 that looked like
+a free zero-code lever is gated off by production mode. See §4a.
+
+### Corrections to the earlier static-only pass
+- **`God` IS a registered command** (capital G). The earlier entry said it wasn't in the binary and
+  that `noclip` was — **exactly backwards at runtime**. Cause: `llvm-strings -n 4` has a
+  **4-character minimum** and silently dropped every 3-character string (`God`, `rp`, …). Re-run any
+  short-token question with a lower threshold. See §11.
+- **`noclip` is NOT registered**, despite appearing in the binary — presumably cheat-gated.
 
 ## 10. Autonomous harness recipe (this game)
 - Not yet established. Note the machine rule: **only the user launches the game.**
@@ -206,7 +295,20 @@ none have been executed yet.
   explicitly excluded from Steam Cloud sync and so cannot leak to the home PC.
 
 ## 11. Dead ends & false leads (save future time)
-- *(none yet)*
+- **❌ The console is not a route to the stereo path.** Fully closed 2026-08-26 (§4a). The
+  `stereoRender_*` cvars are in the binary but never registered in a retail build, and
+  `com_production` — the switch that would change that — is itself not registered. Don't re-attempt
+  this from the console; it costs a session and the answer is already known.
+- **⚠️ `devMode_enable` is a trap as shipped.** It exists and reads `0`, but
+  `devMode_fatalErrorOnEnter` reads **`1` by default** — flipping dev mode would FatalError rather
+  than enter it. If anyone retries this, **read `devMode_fatalErrorOnEnter` back after setting it to
+  `0`** before touching `devMode_enable`; if it still reads `1` it is ROM/shipping-disabled and the
+  next command crashes the game.
+- **🪤 METHOD TRAP — `strings -n 4` hides short tokens.** The static pass used
+  `llvm-strings -n 4`, whose 4-character minimum silently dropped `God`, `rp`, and every other
+  3-character name, producing a confidently-stated wrong conclusion (§9). **Any static string sweep
+  on any project should use `-n 2`/`-n 3` for command/cvar-name questions**, or cross-check against
+  a live `listCmds`. Generalisable beyond this game — worth carrying to the shared library.
 - Caution carried from `-external-research`: **vorpX Geometry-3D is reported broken for this game**
   — don't plan around it.
 
@@ -217,9 +319,11 @@ none have been executed yet.
   built-in reflection database (§6d), an unprotected binary (§4), and a direct `OPENGL32.dll`
   import to proxy. The realistic risk profile has shifted from *"can we even find the camera"* to
   the questions below.
-- **Is the inherited stereo path still wired up, or is it vestigial?** Strings prove the code was
-  compiled in; they do not prove it still functions in a 2016 shipping build. **This is the #1
-  question and it is cheap to answer live.**
+- **~~Is the inherited stereo path still wired up?~~ PARTLY ANSWERED (2026-08-26).** It is **not
+  reachable from a retail console** — the cvars are never registered (§4a). Whether the underlying
+  *render code* still functions when driven some other way (in-process cvar registration, or
+  bypassing cvars entirely and calling the stereo render path directly) is **still open**, and is now
+  a question for the proxy to answer, not the console.
 - **Two identical centered views (§6a) means separation happens downstream.** If it is a pure
   screen-space/projection-skew trick, it gives correct *stereo* but not correct *per-eye
   positional* geometry — good enough for comfort-3D, not automatically good enough for 6DOF.
@@ -232,5 +336,19 @@ none have been executed yet.
 - **Control Flow Guard is on** (§3) — plan hooking accordingly.
 - **Renderer choice is a real fork.** OpenGL is the current default here and offers the cleanest
   proxy; Vulkan has proven third-party per-eye prior art (Vk3DVision). Deciding between them is a
-  genuine design decision, not a detail — do it deliberately, with the stereo-path test result in
-  hand.
+  genuine design decision, not a detail — do it deliberately.
+- **The two gates may also bite the proxy.** Production mode and cheat mode are runtime state, not
+  console decoration. If gated cvars are never *constructed* (rather than merely hidden), then
+  in-process cvar registration won't resurrect them either and the stereo path must be driven by
+  calling the render code directly. **Unknown which of those two it is** — determining that is a
+  good early proxy milestone.
+
+## 13. Next steps (as of 2026-08-26, Phase 0 complete)
+1. **One cheap probe first:** drop a `.cfg` in `Saved Games\id Software\DOOM\base\` (which precedes
+   the install dir in the search path) and `exec` it, to see whether config-file cvar sets bypass the
+   interactive gate. Costs minutes; would change the plan if it works.
+2. **Build the `opengl32.dll` proxy** (§4) — load, log, survive. The M0 equivalent of every other
+   project in this portfolio.
+3. **Locate the renderparm→GL-uniform mapping table** (§7) and read `viewMatrix*` /
+   `globalViewOrigin` live, validating against `getviewpos` (§6e) as ground truth.
+4. Only then decide stereo strategy: drive the dormant path, or override projection ourselves (§6c).
