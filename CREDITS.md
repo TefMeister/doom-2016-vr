@@ -28,6 +28,8 @@ project's repositories** — only code, notes, and tools we wrote ourselves.
 | "The Devil is in the Details: idTech 666" (SIGGRAPH 2016 talk) | Tiago Sousa & Jean Geffroy (id Software) | [slideshare.net/TiagoAlexSousa](https://www.slideshare.net/TiagoAlexSousa/siggraph2016-the-devil-is-in-the-details-idtech-666) |
 | Official DOOM SnapMap Editing Wiki | Bethesda / id Software | [wiki.bethesda.net/wiki/snapwiki/Doom](https://wiki.bethesda.net/wiki/snapwiki/Doom/) |
 | SnapHak / Bubblebear (SnapMap unlock tool) | "Chrispy" | documented at [doomwiki.org/wiki/SnapHak](https://doomwiki.org/wiki/SnapHak) (Discord-distributed, not independently verified here) |
+| DOOM-3-BFG official GPL source release (`stereoRender_*`/Rift-warp code) | id Software (original code by John Carmack) | [github.com/id-Software/DOOM-3-BFG](https://github.com/id-Software/DOOM-3-BFG) |
+| "Exploring Virtual Reality in Doom 3 BFG" | Shacknews | [shacknews.com](https://www.shacknews.com/article/75138/exploring-virtual-reality-in-doom-3-bfg) |
 
 Development on this project is AI-assisted: much of the research, code, and
 documentation was produced with **Claude (Anthropic)** (https://claude.com)
