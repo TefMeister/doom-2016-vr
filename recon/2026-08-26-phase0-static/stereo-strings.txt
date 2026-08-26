@@ -1,0 +1,23 @@
+0 - auto detect, 1 - stereo, 2 - 5.1, 3 - 7.1
+STEREO_MODE_HEIGHT
+STEREO_MODE_WIDTH
+STEREO_RENDER_LEFT_AND_RIGHT
+STEREO_RENDER_OFF
+STEREO_RENDER_TOP_AND_BOTTOM
+The world views that will be used to call idRenderModel::UpdateInView. There is normally just one, but there will be two unique ones in split-screen multiplayer and two identical ones in stereo-3D (both centered between the eyes).
+There is typically a single screenView, but split-screen multiplayer or stereo-3D will define two views. Guis inside screenViews are potentially resolution scaled, but they will be persistant across frames. The views are processed in order, so a main menu gui that draws across both split screen views must be in a screenView (without a world) after them.
+This is to allow sprites to "pop out" of the screen This is only useful in stereoscopic rendering or in-world
+WGL_3DL_stereo_control
+__WGLEW_3DL_stereo_control
+__wglewSetStereoEmitterState3DL
+coordinates should be a subset of renderSystem->GetScanoutWidth() / GetScanoutHeight() which can be larger than GetWidth() / GetHeight() when in stereo 3D modes
+for stereo 3D, the guis can be offset differently in each screenView
+leftRightStereo
+stereoRenderMode_t
+stereoRender_guiOffset
+stereoRender_screenSeparation
+stereoRender_separation
+stereoRender_swapEyes
+stereo_control
+topBottomStereo
+wglSetStereoEmitterState3DL
