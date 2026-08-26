@@ -298,7 +298,22 @@ a free zero-code lever is gated off by production mode. See §4a.
 - **`noclip` is NOT registered**, despite appearing in the binary — presumably cheat-gated.
 
 ## 10. Autonomous harness recipe (this game)
-- Not yet established. Note the machine rule: **only the user launches the game.**
+- **✅ HOW TO LAUNCH THE VULKAN BUILD (verified working 2026-08-26).** Two things are required
+  together — either alone fails:
+  1. **`r_renderAPI "1"`** in `DOOMConfig.local` (must match the build; see §11).
+  2. **Launch `DOOMx64vk.exe` directly with `SteamAppId=379720` set in the environment.** Steam
+     normally passes the app id to the process it starts; launched by hand there is nothing to tell
+     `steam_api64.dll` which app this is, and there is **no `steam_appid.txt`** in the game folder,
+     so `SteamAPI_Init` fails and the game exits instantly — no window, no log, no crash entry.
+     Setting the env var for that one process is enough; it writes nothing to the game folder.
+
+  **Verified:** `DOOMx64vk.exe` running on Vulkan, user reports *"runs just fine, smooth fps"* on
+  the dev PC (GTX 1660 SUPER) — so the Vulkan target is confirmed viable, not merely inferred.
+  ⚠️ **Caveat on a related claim:** the same session's "GL fails when launched directly" observation
+  came from a **flawed control** — the GL attempt did not set `SteamAppId` while the Vulkan attempt
+  did, so two variables differed. **Do not conclude the GL build is broken**; the likeliest reading
+  is that `SteamAppId` is simply required for *any* direct launch. Untested either way.
+- Note the machine rule: **only the user launches the game.**
 - Local config lives at `%USERPROFILE%\Saved Games\id Software\DOOM\base\` —
   `DOOMConfig.cfg` (cloud-synced) and `DOOMConfig.local` (machine-local, not synced).
   Current dev-PC `DOOMConfig.local`: `r_renderAPI "0"` (**OpenGL**), `r_fullscreen "0"`
