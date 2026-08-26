@@ -8,12 +8,27 @@ write-up in `topics/`. Status tags:
 - ✅ **incorporated** — directly led to a real change (code, a test, a note) in one of the other five repos; linked below.
 - ❌ **dead end** — checked out, didn't pan out; kept for the record so it isn't re-investigated from scratch.
 
+> **Status update from the modding side, 2026-08-26.** All four topics below were read in full and
+> folded into `-engine-research/ENGINE-DOSSIER.md` during that day's Phase 0 static pass, so they
+> are marked ✅ incorporated. Two of their open questions are now **first-party confirmed** against
+> our own installed copy: **Denuvo is genuinely gone** (clean MSVC sections, full import table,
+> nothing packed) and **both renderer paths exist as separate executables** (`DOOMx64.exe` imports
+> `OPENGL32.dll` only, `DOOMx64vk.exe` imports `vulkan-1.dll` only). One inference needs correcting:
+> **`god` is not an exact string in the binary** (`noclip` is), so the SnapHak-derived reading that
+> both exist natively is only half-confirmed. The topic write-ups below are left as dated research
+> snapshots and were not rewritten — this index is the live view.
+>
+> Also worth a research pass if capacity allows: the dossier now records that id Tech 6 ships a
+> **dormant, inherited stereo-3D subsystem** (`stereoRenderMode_t`, `stereoRender_*` cvars). Any
+> public information on whether that path still functions in shipping builds, or on the Doom 3 BFG
+> / id Tech 5 stereo lineage it came from, would be genuinely useful.
+
 | Date | Topic | Status | Summary |
 | --- | --- | --- | --- |
-| 2026-08-26 | [SIGGRAPH renderer talk + SnapMap Camera object](topics/2026-08-26-siggraph-renderer-talk-and-snapmap-camera-object.md) | 🆕 new | A real dev-authored SIGGRAPH 2016 talk describes the renderer as hybrid clustered-forward + deferred with ~100 shaders total, and flags id Tech 6's job system as having latency gaps later fixed in id Tech 7. Official SnapMap docs confirm a real (but static, non-free) Camera object with a top-level FOV property. A Discord-hosted community tool (SnapHak/Bubblebear) already unlocks extra console commands and implies noclip/god already exist natively — access-gated, unverified further. |
-| 2026-08-26 | [FOV cvar confirmed + camera cheat-table lead](topics/2026-08-26-fov-cvar-confirmed-and-camera-cheat-table-lead.md) | 🆕 new | `g_fov` is the real, confirmed FOV cvar name. A FearlessRevolution Cheat Engine table for this game exists (403'd to direct fetch, needs a human-browser look) that may expose camera/position addresses. Re-checked the Vk3DVision head-tracking question from the prior topic — still genuinely unresolved, no new info found. |
-| 2026-08-25 | [Stereo-3D prior art: Vk3DVision](topics/2026-08-25-stereo-3d-prior-art-vk3dvision.md) | 🆕 new | vorpX G3D is dead for this game; Helifax's Vk3DVision (Vulkan-native, actively maintained, DOOM 2016 fix updated 2025-08-30) proves per-eye Vulkan override works here — but its "VR" claim needs verifying for real head tracking vs. just stereo output. |
-| 2026-08-25 | [id Tech 6 renderer, DRM, console basics](topics/2026-08-25-engine-renderer-drm-console-basics.md) | 🆕 new | OpenGL is the shipped default, Vulkan is a later selectable add-on; Denuvo was present at launch and removed later (Steam DRM remains); console opens with `~`, no special launch flag found. |
+| 2026-08-26 | [SIGGRAPH renderer talk + SnapMap Camera object](topics/2026-08-26-siggraph-renderer-talk-and-snapmap-camera-object.md) | ✅ incorporated | A real dev-authored SIGGRAPH 2016 talk describes the renderer as hybrid clustered-forward + deferred with ~100 shaders total, and flags id Tech 6's job system as having latency gaps later fixed in id Tech 7. Official SnapMap docs confirm a real (but static, non-free) Camera object with a top-level FOV property. A Discord-hosted community tool (SnapHak/Bubblebear) already unlocks extra console commands and implies noclip/god already exist natively — access-gated, unverified further. |
+| 2026-08-26 | [FOV cvar confirmed + camera cheat-table lead](topics/2026-08-26-fov-cvar-confirmed-and-camera-cheat-table-lead.md) | ✅ incorporated | `g_fov` is the real, confirmed FOV cvar name. A FearlessRevolution Cheat Engine table for this game exists (403'd to direct fetch, needs a human-browser look) that may expose camera/position addresses. Re-checked the Vk3DVision head-tracking question from the prior topic — still genuinely unresolved, no new info found. |
+| 2026-08-25 | [Stereo-3D prior art: Vk3DVision](topics/2026-08-25-stereo-3d-prior-art-vk3dvision.md) | ✅ incorporated | vorpX G3D is dead for this game; Helifax's Vk3DVision (Vulkan-native, actively maintained, DOOM 2016 fix updated 2025-08-30) proves per-eye Vulkan override works here — but its "VR" claim needs verifying for real head tracking vs. just stereo output. |
+| 2026-08-25 | [id Tech 6 renderer, DRM, console basics](topics/2026-08-25-engine-renderer-drm-console-basics.md) | ✅ incorporated | OpenGL is the shipped default, Vulkan is a later selectable add-on; Denuvo was present at launch and removed later (Steam DRM remains); console opens with `~`, no special launch flag found. |
 
 ## How to add a topic
 
