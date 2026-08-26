@@ -277,7 +277,7 @@ Console opens with `~`. **Verified live 2026-08-26.** Full captured lists in
 | `menu_advanced_AllowAllSettings 1` | *"allow all settings to be picked for testing purposes"* | set; effect not yet examined |
 | `pm_photoModeFriction`, `pm_photoModeMaxDist` | photo-mode camera tuning | **a native detached camera exists** — unexplored |
 | `com_capturePath`, `com_captureTGA`, `com_captureSamples` | frame capture | harness plumbing |
-| `r_renderAPI` | 0 = OpenGL, 1 = Vulkan | selects which exe launches |
+| `r_renderAPI` | *"Graphics API to use. 0 = OGL, 1 = Vulkan"* | ⚠️ **does NOT choose the executable** — see §11. Setting it to `1` while Steam launches the GL exe **breaks the launch.** |
 | `jobs_numThreads` | reads `6` here | §5 |
 
 ### ❌ NOT available in retail (present in the binary, never registered)
@@ -307,6 +307,26 @@ a free zero-code lever is gated off by production mode. See §4a.
   explicitly excluded from Steam Cloud sync and so cannot leak to the home PC.
 
 ## 11. Dead ends & false leads (save future time)
+- **🚨 `r_renderAPI "1"` ALONE BREAKS THE LAUNCH — the cvar does not pick the executable
+  (confirmed 2026-08-26 by a failed launch).** The two executables are **separate build
+  configurations**, proven by their own PDB paths:
+  - `DOOMx64.exe` → `L:\zion\code\build\bam-output\Zion\`**`x64_gl`**`\shippingretail\DOOMx64.pdb`
+  - `DOOMx64vk.exe` → `L:\zion\code\build\bam-output\Zion\`**`x64_vulkan`**`\shippingretail\DOOMx64vk.pdb`
+
+  `r_renderAPI` exists in **both** binaries because the cvar lives in shared code — but the GL build
+  has **no `vulkan-1` import and no Vulkan backend compiled in**, and it contains **no reference to
+  `DOOMx64vk.exe`**, so it cannot hand off either. Steam launches `DOOMx64.exe` (confirmed from a
+  working session's own `------ Command Line ------` log). Setting `r_renderAPI "1"` therefore asks a
+  GL-only binary for a renderer it does not contain: it aborts during renderer init and exits
+  **before writing any log**, leaving *no* crash entry in the Windows Application event log and *no*
+  `qconsole.log` — which is exactly the signature observed.
+
+  **To actually run Vulkan: launch `DOOMx64vk.exe` directly** (with the Steam client running — there
+  is no `steam_appid.txt`, so it relies on the live client, the same pattern as the Far Cry 2
+  launch-directly note). **To restore the working state: set `r_renderAPI` back to `0`.**
+
+  *Dossier §3 stated the exe-level fork correctly from the start; the §9 cheat-sheet row contradicted
+  it and said the cvar "selects which exe launches". That row was wrong and is now corrected.*
 - **❌ The console is not a route to the stereo path.** Fully closed 2026-08-26 (§4a). The
   `stereoRender_*` cvars are in the binary but never registered in a retail build, and
   `com_production` — the switch that would change that — is itself not registered. Don't re-attempt
