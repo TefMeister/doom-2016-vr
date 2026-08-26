@@ -1,0 +1,33 @@
+USAGE: renameRenderProg <renderProg> [newProg]
+Renderprog '%s' not found
+Renderprog '%s' was returned to normal.
+Renderprog '%s' was renamed to '%s'.
+USAGE: rp <renderParmName> [value]
+RenderParm '%s' not found
+lightMapScale
+takes a screenshot
+takes an environment shot
+envshot
+displays the given image centered on screen
+temporarily replace a renderProg with a different one
+renameRenderProg
+Displays or modifies a renderparm
+topBottomStereo
+leftRightStereo
+HDMI3D
+HDMI3DtwoPlayer
+end of list
+world units from center to eyes
+stereoRender_separation
+screen units from center to eyes
+stereoRender_screenSeparation
+shift guis so they don't appear at infinity in HMDs
+stereoRender_guiOffset
+swap target buffers for left and right eyes
+stereoRender_swapEyes
+0 = alternate frame rendering, 1 = render both each frame
+multiView_60Hz
+size of the loading icon
+0.07
+r_loadingIconSize
+rotation speed of the loading icon
