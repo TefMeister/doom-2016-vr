@@ -1,0 +1,40 @@
+Configured log listener print-redirect tags
+Added structured log listener print-redirect
+Added structured log listener mp-cloud-gobbler
+2026-08-26T16:49:24.471+03:00 LOG: Process started
+Winsock Initialized
+------ Initializing File System ------
+Current search path:
+    - <USER>/Saved Games/id Software/DOOM/base/
+    - <STEAM>/steamapps/common/DOOM/base/
+------ File System initialized.
+------ Command Line ------
+ "<STEAM>\steamapps\common\DOOM\DOOMx64.exe"
+2026-08-26T16:49:24.505+03:00 LOG: Command Line: "<STEAM>\steamapps\common\DOOM\DOOMx64.exe"
+------ CPU Information ------
+    1 CPU package, 4 physical cores, 8 logical cores
+    3094 MHz    Intel CPU with MMX & SSE & SSE2 & SSE3 & SSSE3 & SSE41 & SSE42 & AVX & HTT
+    32768 kB 1st level cache, 262144 kB 2nd level cache, 8388608 kB 3rd level cache
+    16256 MB System Memory
+initializing resource container gameresources.resources
+initializing resource container gameresources.patch
+idLib::SetProduction( PROD_PRODUCTION )
+------- Initializing renderSystem --------
+PreliminaryRenderSetup
+---registered window class
+---registered fake window class
+---registered context window class
+created OpenGL 4.3 context
+created OpenGL 4.3 context
+----- GL_Init -----
+----- GPU Details -----
+Vendor : NVIDIA Corporation
+GPU    : NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2
+Driver : 4.6.0 NVIDIA 560.94
+dedicated video memory :     6144MB
+total video memory     :     6144MB
+available video memory :     4892MB
+OpenGL version 4.6
+GLSL version 4.6
+Number of GPUs  : 1
+RENDER THREAD STACK SIZE: 4194304
