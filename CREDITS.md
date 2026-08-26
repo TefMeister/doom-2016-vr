@@ -25,6 +25,9 @@ project's repositories** — only code, notes, and tools we wrote ourselves.
 | vorpX community forum discussion (G3D status for DOOM 2016) | vorpX forum community | [vorpx.com/forums/topic/doom-2016](https://www.vorpx.com/forums/topic/doom-2016/) |
 | DOOM (2016) Cheat Engine table | "DET" (FearlessRevolution community) | [fearlessrevolution.com/viewtopic.php?t=1199](https://fearlessrevolution.com/viewtopic.php?t=1199) |
 | Viewmodel FOV Mod - 2016 Edition | Nexus Mods contributor | [nexusmods.com/doom/mods/35](https://www.nexusmods.com/doom/mods/35) |
+| "The Devil is in the Details: idTech 666" (SIGGRAPH 2016 talk) | Tiago Sousa & Jean Geffroy (id Software) | [slideshare.net/TiagoAlexSousa](https://www.slideshare.net/TiagoAlexSousa/siggraph2016-the-devil-is-in-the-details-idtech-666) |
+| Official DOOM SnapMap Editing Wiki | Bethesda / id Software | [wiki.bethesda.net/wiki/snapwiki/Doom](https://wiki.bethesda.net/wiki/snapwiki/Doom/) |
+| SnapHak / Bubblebear (SnapMap unlock tool) | "Chrispy" | documented at [doomwiki.org/wiki/SnapHak](https://doomwiki.org/wiki/SnapHak) (Discord-distributed, not independently verified here) |
 
 Development on this project is AI-assisted: much of the research, code, and
 documentation was produced with **Claude (Anthropic)** (https://claude.com)
