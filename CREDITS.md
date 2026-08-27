@@ -30,6 +30,9 @@ project's repositories** — only code, notes, and tools we wrote ourselves.
 | SnapHak / Bubblebear (SnapMap unlock tool) | "Chrispy" | documented at [doomwiki.org/wiki/SnapHak](https://doomwiki.org/wiki/SnapHak) (Discord-distributed, not independently verified here) |
 | DOOM-3-BFG official GPL source release (`stereoRender_*`/Rift-warp code) | id Software (original code by John Carmack) | [github.com/id-Software/DOOM-3-BFG](https://github.com/id-Software/DOOM-3-BFG) |
 | "Exploring Virtual Reality in Doom 3 BFG" | Shacknews | [shacknews.com](https://www.shacknews.com/article/75138/exploring-virtual-reality-in-doom-3-bfg) |
+| Doom 2016 Cheat Codes guide (`devMode_enable` sequence, UPDATED 2020) | Steam Community guide author + commenters | [steamcommunity.com/sharedfiles/filedetails/?id=686972243](https://steamcommunity.com/sharedfiles/filedetails/?id=686972243) |
+| "Doom 2016: Cheat Codes and Console Commands" | Shacknews | [shacknews.com](https://www.shacknews.com/article/94650/doom-2016-cheat-codes-and-console-commands-godmode-all-unlocks) |
+| Steam discussion threads documenting `devMode_enable`/`+devMode_enable 1` history and side effects | DOOM (2016) Steam community members | [steamcommunity.com/app/379720/discussions/0/351660338723079025](https://steamcommunity.com/app/379720/discussions/0/351660338723079025) · ["Launching in Dev Mode: FIXED"](https://steamcommunity.com/app/379720/discussions/0/357286663672706978/?ctp=61) · ["PC fix development tool / development mode" guide](https://steamcommunity.com/sharedfiles/filedetails/?id=683584994) |
 
 Development on this project is AI-assisted: much of the research, code, and
 documentation was produced with **Claude (Anthropic)** (https://claude.com)
