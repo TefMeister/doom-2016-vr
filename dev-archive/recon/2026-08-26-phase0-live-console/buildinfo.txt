@@ -1,0 +1,23 @@
+------ Build Information ------
+    Cheat Mode: OFF
+    Host Name: <HOSTNAME>
+    Binary Build:
+        Version: 6.1.1
+        Target: shippingretail
+        Name: 20240321-104810-ginger-fuchsia
+        Requestor: <redacted>
+        URL: https://build.id.software/builds/binaries/20240321-104810-ginger-fuchsia
+        Relevant CLs: 1650910
+    Package:
+        Name: 20180309-000107-lacewood-tiller
+        Map Set: MP Orbis Zion Build, MP Heatwave - IDST, mp_cross_studio_playtest, SP Campaign back up, SP Campaign, Demo, sp_min_unified, DLC Focused Playtest, MP PAX East, BCS MP Min, BCS MP DLC1 Maps Playtest, SP Playtest, mp_min_unified, MP DLC1 Full, Unified IHV SP, Unified IHV MP, First 3, E3 2016, BCS MP All DLC Playtest, QuakeCon 2016, BCS id playtest, BCS DLC2 modes playtest, BCS MP DLC2 Playtest, Arcade Mode, Zion Phoenix SP MP
+        Requestor: <redacted>
+        URL: http://www.eden.idsoftware.com/builds/packages/20180309-000107-lacewood-tiller
+        Relevant CLs: 596652
+    Disc Layout:
+        Name: 20240321-110110-rutherfordium-mousse
+    Candidate:
+        Name: 20240321-110145-gentle-wolf
+        Disc Number: 0
+2026-08-26T17:35:16.930+03:00 LOG: Retrieved build information
+]conDump doomview.txt

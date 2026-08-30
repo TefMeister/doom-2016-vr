@@ -1,0 +1,14 @@
+[18:42:02.382] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[18:42:02.384] real vulkan-1.dll loaded at 00007FFBBCDC0000; resolved 246/246 exports (0 missing)
+[18:42:03.264] vkCreateInstance -> 0 (instance=000001A570424290)
+[18:42:03.482] vkCreateDevice -> 0 (physDev=000001A570827E10 device=000001A57085D230)
+[18:42:03.794] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[18:42:03.794] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[18:42:19.351] vkQueuePresentKHR frame 1 (queue=000001A570A99ED0)
+[18:42:19.757] vkQueuePresentKHR frame 10 (queue=000001A570A99ED0)
+[18:42:21.257] vkQueuePresentKHR frame 100 (queue=000001A570A99ED0)
+[18:42:36.282] vkQueuePresentKHR frame 1000 (queue=000001A570A99ED0)
+[18:42:57.565] vkQueuePresentKHR frame 2000 (queue=000001A570A99ED0)
+[18:43:14.600] vkQueuePresentKHR frame 3000 (queue=000001A570A99ED0)
+[18:43:31.266] vkQueuePresentKHR frame 4000 (queue=000001A570A99ED0)
+[18:44:47.572] ---- detaching after 4866 frames ----
