@@ -1,0 +1,87 @@
+# PE sections + imports, DOOM (2016), captured 2026-08-26
+
+===== DOOMx64.exe =====
+Sections:
+Idx Name          Size     VMA              Type
+  0 .text         01fdb20c 0000000140001000 TEXT
+  1 .rdata        00faf73c 0000000141fdd000 DATA
+  2 .data         0118f800 0000000142f8d000 DATA
+  3 .pdata        001cf8cc 00000001521ae000 DATA
+  4 .mydata       0000000c 000000015237e000 DATA
+  5 .gfids        00019cf0 000000015237f000 DATA
+  6 .giats        00000010 0000000152399000 DATA
+  7 .tls          00000009 000000015239a000 DATA
+  8 _RDATA        00002c30 000000015239b000 DATA
+  9 .rsrc         00531bb8 000000015239e000 DATA
+ 10 .reloc        0019f078 00000001528d0000 DATA
+--- imports ---
+    DLL Name: ADVAPI32.dll
+    DLL Name: DINPUT8.dll
+    DLL Name: GDI32.dll
+    DLL Name: IMM32.dll
+    DLL Name: IPHLPAPI.DLL
+    DLL Name: KERNEL32.dll
+    DLL Name: MSIMG32.dll
+    DLL Name: OLEACC.dll
+    DLL Name: OLEAUT32.dll
+    DLL Name: OPENGL32.dll
+    DLL Name: SETUPAPI.dll
+    DLL Name: SHELL32.dll
+    DLL Name: SHLWAPI.dll
+    DLL Name: USER32.dll
+    DLL Name: UxTheme.dll
+    DLL Name: WINHTTP.dll
+    DLL Name: WINMM.dll
+    DLL Name: WINSPOOL.DRV
+    DLL Name: WSOCK32.dll
+    DLL Name: XINPUT1_4.dll
+    DLL Name: bcrypt.dll
+    DLL Name: bink2w64.dll
+    DLL Name: dbghelp.dll
+    DLL Name: gdiplus.dll
+    DLL Name: ole32.dll
+    DLL Name: steam_api64.dll
+ DLL name: DOOMx64_premanifest.exe
+
+===== DOOMx64vk.exe =====
+Sections:
+Idx Name          Size     VMA              Type
+  0 .text         01fc1bfc 0000000140001000 TEXT
+  1 .rdata        00f8170e 0000000141fc3000 DATA
+  2 .data         028d2000 0000000142f45000 DATA
+  3 .pdata        001cf878 000000015389f000 DATA
+  4 .mydata       0000000c 0000000153a6f000 DATA
+  5 .gfids        00019cf0 0000000153a70000 DATA
+  6 .giats        00000010 0000000153a8a000 DATA
+  7 .tls          00000009 0000000153a8b000 DATA
+  8 _RDATA        00002c30 0000000153a8c000 DATA
+  9 .rsrc         00531bb8 0000000153a8f000 DATA
+ 10 .reloc        0019f3e8 0000000153fc1000 DATA
+--- imports ---
+    DLL Name: ADVAPI32.dll
+    DLL Name: DINPUT8.dll
+    DLL Name: GDI32.dll
+    DLL Name: IMM32.dll
+    DLL Name: IPHLPAPI.DLL
+    DLL Name: KERNEL32.dll
+    DLL Name: MSIMG32.dll
+    DLL Name: OLEACC.dll
+    DLL Name: OLEAUT32.dll
+    DLL Name: SETUPAPI.dll
+    DLL Name: SHELL32.dll
+    DLL Name: SHLWAPI.dll
+    DLL Name: USER32.dll
+    DLL Name: UxTheme.dll
+    DLL Name: WINHTTP.dll
+    DLL Name: WINMM.dll
+    DLL Name: WINSPOOL.DRV
+    DLL Name: WSOCK32.dll
+    DLL Name: XINPUT1_4.dll
+    DLL Name: bcrypt.dll
+    DLL Name: bink2w64.dll
+    DLL Name: dbghelp.dll
+    DLL Name: gdiplus.dll
+    DLL Name: ole32.dll
+    DLL Name: steam_api64.dll
+    DLL Name: vulkan-1.dll
+
