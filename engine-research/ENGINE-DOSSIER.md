@@ -446,6 +446,23 @@ a free zero-code lever is gated off by production mode. See §4a.
 - **DI8 mouse uses BUFFERED `GetDeviceData`** `[measured 2026-08-31]`, so immediate-mode `lX`/`lY`
   injection is ignored -- now moot, since `sendinput` reaches the device anyway.
 
+- **🚨 WITHDRAWN `[disproved 2026-08-31, later the same day]`: the entry below claiming the
+  address-based differential cannot discriminate movement **was itself produced by a broken test**,
+  and is not supported.
+  **The "walk" condition never walked.** The log is unambiguous: `backend inproc` at 14:11:51,
+  `move keys=0x1 ... via inproc-keystate` at 14:11:59 " + DASH + " and at **14:14:05, after the conclusion
+  had already been drawn**, an isolated test proved `inproc-keystate` moves the player **zero**
+  units. So the walk run and the stand-still control were **the same condition**, which is exactly
+  why they scored 319 vs 331.
+  **The differential is therefore UNTESTED here, not disproved.** Re-running it with `sendinput`
+  (the backend since verified to work) is cheap now that scans take ~4 s and no longer freeze the
+  game " + DASH + " though its practical value is low, since the GPU-side copy was independently shown to
+  be downstream of rendering (S6f/S6g), and that finding does **not** rest on this one.
+  **The method rule this earns: a test whose independent variable is applied through an unverified
+  mechanism proves nothing.** I varied "movement" using a backend I had not yet confirmed could
+  move anything. Verify the knob turns before trusting what the dial says " + DASH + " sibling to the
+  attribution trap recorded in the cross-engine library the same day.
+
 - **🚨 camhunt's ADDRESS-BASED DIFFERENTIAL IS INVALID HERE `[disproved 2026-08-31, run 2,
   paired control]`.** Proven directly:
   | Run | changed | still orthonormal |
