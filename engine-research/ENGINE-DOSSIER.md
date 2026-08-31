@@ -239,6 +239,42 @@ hypothesis can be checked against `getviewpos` with no test code written. `com_s
   reflection or a GL/VK capture (Phase 2). Handedness/up-axis now known (above).
 - The per-eye override maths (`K_eye = …`): **TBD**, pending 6c.
 
+> ⚠️ **6e ORDER CORRECTED 2026-08-31 `[verified-live, derived from the matrix]`: `getviewpos`
+> prints **yaw then pitch**, not pitch then yaw. A reading of `... 34.3 3.4` corresponds to a
+> rotation about **Z of 34.3 deg** (`cos=0.826`, `sin=0.563`, exactly the row-0/row-1 values) and a
+> tilt of `asin(0.060)=3.44 deg`. **Column 4 = yaw, column 5 = pitch.** A swapped pitch/yaw produces
+> a plausible-looking but wrong camera, so this matters before any head-tracking work.
+
+## 6f. 🎯 THE CAMERA TRANSFORM — FOUND AND CONFIRMED (2026-08-31)
+
+`[verified-live 2026-08-31, n=2 independent positions]` Located by **value search**, not by
+address, and confirmed against the game's own `getviewpos` twice.
+
+```
+ 0.825  -0.563   0.049   2731.799
+ 0.562   0.826   0.034   6212.317
+-0.060   0.000   0.998   6355.658
+```
+
+- **Column 3 = world position**, matching `getviewpos` exactly.
+- 3x3 is a true orthonormal basis (row 0: `0.825^2+0.563^2+0.049^2 = 1.0000`).
+- Row 2 ~ `(0,0,1)` — **Z-up confirmed independently** of the static reading.
+- **Region 2**, the high-flush per-frame uniform buffer (24806 -> 29331 flushes across one session).
+- **Replicated per draw** — a search caps at 64 hits, all in region 2; every draw's uniform block
+  carries a copy. That is an *advantage* for stereo, since each eye needs its own view.
+- Also present: the position as a packed **`vec4` with `w=1.0`** — that is **`globalViewOrigin`**,
+  one of the renderparms the binary names.
+
+**Method that worked, after the address-based hunt failed:** drive the console -> `getviewpos` ->
+screenshot the numbers -> search memory for those floats -> **move, re-read, search again**. Two
+matching positions is what makes it a finding rather than a coincidence.
+
+**Controlling it is a different problem.** The transform is rewritten every frame across 64+ blocks,
+so poking an address does nothing. Control belongs at the **write path**: the buffer is
+`HOST_VISIBLE` and CPU-written (no `vkCmdPushConstants`/`vkCmdUpdateBuffer` imported), so hook
+**`vkFlushMappedMemoryRanges`** — already hooked for the flush counter — and rewrite the transform in
+the flushed range before it reaches the GPU.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
