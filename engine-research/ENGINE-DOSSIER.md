@@ -367,26 +367,49 @@ a free zero-code lever is gated off by production mode. See §4a.
 
 ## 11. Dead ends & false leads (save future time)
 
-- **✅ MEASURED INPUT RESULTS `[verified-live 2026-08-31, n=1 per backend]`** (first live run,
-  43,028 frames, clean detach). Verified by **screenshot + DOOM's own waypoint-distance HUD**, not
-  by a derived metric:
-  | Backend | Movement | Evidence |
-  |---|---|---|
-  | `inproc-keystate` (hook `GetAsyncKeyState`/`GetKeyState`/`GetKeyboardState`) | **WORKS** | waypoint 271.9 m → 257.0 m, ~15 m walked |
-  | `sendinput` | **WORKS** | 257.0 → 255.8. Expected: the key-state calls reflect OS key state, which SendInput updates |
-  | `postmessage` | no effect | view and distance unchanged |
-  | `vigem` | untested | driver still not installed |
-  **Mouse look does NOT work via `GetCursorPos` fabrication** — zero yaw change. Cursor calls are
-  not the look path here; **DirectInput is**. That is the remaining half, and the half VR needs.
+- **✅ INPUT: `sendinput` DRIVES DOOM COMPLETELY `[verified-live 2026-08-31, run 2 --
+  movement n=2, look n=3 including a reversal]`.** Movement: waypoint **271.9 m -> 232.7 m** (~40 m).
+  Look: a large injection swung the view right round, and an **equal-and-opposite injection returned
+  it to the same compass position** -- so yaw is controllable and reversible, not a one-off.
+  **Caveat: `sendinput` needs the game to be the FOREGROUND window.**
 
-- **🚨 DO NOT TRUST `probe`'s numbers `[disproved 2026-08-31]`.** The camhunt-based input probe
-  reported *"no clear reaction"* for `inproc-keystate` — the backend that had just walked the player
-  fifteen metres. Control 274/4096; inproc 235; sendinput 134. **Both scored BELOW the control**,
-  which is the tell: a dead backend should score the *same* as the control, not less.
-  **Why:** camhunt's candidate addresses live in per-frame dynamic/ring buffers, so the bytes there
-  are reused for unrelated data every frame. "Changed" measures buffer recycling, not the camera.
-  **Use screenshots instead** — DOOM's waypoint-distance readout is unambiguous ground truth and
-  costs two seconds. This is exactly the failure `capture-window.ps1`'s own header warns about.
+- **🚨 CORRECTION `[disproved 2026-08-31, run 2]`: `inproc-keystate` does NOT work.** An earlier
+  note credited it with a 15 m walk; that was a **misattribution** -- the probe ran control -> inproc
+  -> sendinput and was screenshotted only after the whole sequence. Two isolated tests of `inproc`
+  alone produced **zero** movement, while `sendinput` moved 40 m under identical conditions.
+  **Why it cannot work:** the early hook logs `DirectInput8 CreateDevice(SysKeyboard)` --
+  **gameplay keyboard goes through DirectInput 8**, not the Win32 key-state calls. Our hooks install
+  correctly and patch functions the game never consults. `sendinput` works because it feeds the real
+  OS input stack, which DI8 reads in non-exclusive mode -- the same reason it reaches the mouse.
+  `postmessage`: no effect. `vigem`: still untested (driver).
+  **Method lesson: an experiment that changes two things and is measured once cannot attribute the
+  result.** One isolated test per backend, screenshotted immediately, beat the elaborate instrument.
+
+- **A too-small injection reads exactly like failure.** ~5,400 px of mouse motion gave a few degrees
+  and nearly had mouse-look written off; ~36,000 px swung the view fully round. **Saturate first,
+  then tune down.**
+
+- **DI8 mouse uses BUFFERED `GetDeviceData`** `[measured 2026-08-31]`, so immediate-mode `lX`/`lY`
+  injection is ignored -- now moot, since `sendinput` reaches the device anyway.
+
+- **🚨 camhunt's ADDRESS-BASED DIFFERENTIAL IS INVALID HERE `[disproved 2026-08-31, run 2,
+  paired control]`.** Proven directly:
+  | Run | changed | still orthonormal |
+  |---|---|---|
+  | `snapa` -> **walk** -> `snapb` | 2780/4096 | **319** |
+  | `snapa` -> **stand still** -> `snapb` | 2820/4096 | **331** |
+  **Standing still scores the same as walking.** DOOM writes uniforms into **per-frame dynamic/ring
+  buffers**, so a given address holds a different object's matrix every frame and "the bytes changed"
+  measures buffer recycling. The premise behind camhunt -- a matrix at a stable address -- does not
+  hold. Same root cause as the earlier `probe` failure, now demonstrated rather than inferred.
+  Orthonormality is also weak here: the list fills at **4096 even at `tol 1e-5`**, because a 64 MB
+  uniform buffer legitimately holds thousands of orthonormal transforms.
+  **Translation sits in COLUMN 3** (row 3 read 0,0,0 throughout); survivor values are plausible world
+  positions in the thousands, matching the Phase 0 `getviewpos` scale.
+  **Replacement plan -- search by VALUE, not by address:** add a `key`/`type` command to drive the
+  console, `com_showCameraPosition 1` to put live position+rotation on screen, screenshot it for
+  ground truth, then search the buffer for those floats. A known value is a far stronger filter than
+  a numeric property and needs no stable address.
 
 - **🐌 Scanning mapped Vulkan memory directly is pathological `[measured 2026-08-31]`.** One
   `snapshotA` took **3 min 45 s** and froze the game for its duration. `HOST_VISIBLE` memory is
