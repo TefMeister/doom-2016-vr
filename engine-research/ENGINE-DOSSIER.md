@@ -421,6 +421,20 @@ a free zero-code lever is gated off by production mode. See §4a.
 
 ## 11. Dead ends & false leads (save future time)
 
+- **🚨 `postmessage` IS UNTESTED, NOT DISPROVED `[disproved 2026-08-31, audit]`.** The earlier
+  "no effect" result was taken **while the player was jammed against a cave wall**: the `sendinput`
+  move four seconds earlier managed only **1.2 m** (257.0 -> 255.8) for exactly that reason. A
+  working backend and a dead one look identical when the player cannot move. **Re-test from open
+  ground.**
+
+- **🚨 STANDING RULE, earned three times today: before recording a NEGATIVE result as fact,
+  confirm the test could have produced a positive one.** Check that (a) the mechanism applying the
+  variable actually works, (b) only one thing changed before the observation, and (c) the game was
+  in a state where the expected effect was possible. All three of today's withdrawn claims were
+  setup failures, not analysis failures " + DASH + " the measurement and the reasoning were fine; the state
+  of the world when the measurement was taken was not. Cheapest guard: a screenshot **before** the
+  test, not only after.
+
 - **✅ INPUT: `sendinput` DRIVES DOOM COMPLETELY `[verified-live 2026-08-31, run 2 --
   movement n=2, look n=3 including a reversal]`.** Movement: waypoint **271.9 m -> 232.7 m** (~40 m).
   Look: a large injection swung the view right round, and an **equal-and-opposite injection returned
