@@ -1,21 +1,21 @@
-# doom-2016-vr-modding-notes
+# doom-2016-vr — `modding-notes/`
 
 Project notes for the DOOM (2016) VR conversion — design docs, progress,
 decisions.
 
-## The six repositories for DOOM (2016) VR
+## The folders for DOOM (2016) VR
 
-Everything for this game lives in six repositories, each with one job — so you
-always know where to look. You are in **doom-2016-vr-modding-notes**.
+Everything for this game lives in one repository, one folder per job — so you
+always know where to look. You are in **`modding-notes/`**.
 
-| Repository | What lives here |
+| Folder | What lives here |
 | --- | --- |
-| [doom-2016-vr-mod](https://github.com/TefMeister/doom-2016-vr-mod) | The mod itself — once code exists, it lands here. |
-| [doom-2016-vr-dev-archive](https://github.com/TefMeister/doom-2016-vr-dev-archive) | Full development history — snapshots, probes, dead ends, raw recon. |
-| **doom-2016-vr-modding-notes** ← you are here | Readable field notes / progress ledger. |
-| [doom-2016-vr-staging](https://github.com/TefMeister/doom-2016-vr-staging) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
-| [doom-2016-vr-engine-research](https://github.com/TefMeister/doom-2016-vr-engine-research) | Distilled engine reference (dossier) + reusable VR RE playbook. |
-| [doom-2016-vr-external-research](https://github.com/TefMeister/doom-2016-vr-external-research) | Ongoing public-research leads, gathered separately from hands-on modding work. |
+| [`mod/`](../mod/) | The mod itself — once code exists, it lands here. |
+| [`dev-archive/`](../dev-archive/) | Full development history — snapshots, probes, dead ends, raw recon. |
+| **`modding-notes/`** ← you are here | Readable field notes / progress ledger. |
+| [staging/doom-2016-vr](https://github.com/TefMeister/staging/tree/main/doom-2016-vr) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
+| [`engine-research/`](../engine-research/) | Distilled engine reference (dossier) + reusable VR RE playbook. |
+| [`external-research/`](../external-research/) | Ongoing public-research leads, gathered separately from hands-on modding work. |
 
 ## Contributing & policy
 

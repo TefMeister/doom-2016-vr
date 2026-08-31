@@ -4,7 +4,7 @@ A VR conversion mod for **DOOM** (2016) — the goal is stereo rendering and
 6DOF head tracking, built on the game's **id Tech 6** engine foundation.
 
 > **Status: work in progress — nothing playable released yet, no code written
-> yet.** This repository will hold releases only; watch it if you want to know
+> yet.** This folder holds releases only; watch it if you want to know
 > the moment there is something to try.
 
 ## What this will be
@@ -17,7 +17,7 @@ reverse-engineered yet — this repository was created to get the project
 structure in place before that work begins. The real goal, as with all of
 our projects, is the knowledge gained on the way there, written down and
 shared so anyone can do the same for any game — see the
-[engine dossier](https://github.com/TefMeister/doom-2016-vr-engine-research)
+[engine dossier](../engine-research/)
 and the cross-engine
 [flat-to-VR library](https://github.com/TefMeister/flat-to-vr-cross-engine-research).
 
@@ -28,19 +28,19 @@ and the cross-engine
 - A PC VR headset (target runtime to be decided — SteamVR/OpenXR, in line with
   our other projects).
 
-## The six repositories for DOOM (2016) VR
+## The folders for DOOM (2016) VR
 
-Everything for this game lives in six repositories, each with one job — so you
-always know where to look. You are in **doom-2016-vr-mod**.
+Everything for this game lives in one repository, one folder per job — so you
+always know where to look. You are in **`mod/`**.
 
-| Repository | What lives here |
+| Folder | What lives here |
 | --- | --- |
-| **doom-2016-vr-mod** ← you are here | The mod itself — once code exists, it lands here. |
-| [doom-2016-vr-dev-archive](https://github.com/TefMeister/doom-2016-vr-dev-archive) | Full development history — snapshots, probes, dead ends, raw recon. |
-| [doom-2016-vr-modding-notes](https://github.com/TefMeister/doom-2016-vr-modding-notes) | Readable field notes / progress ledger. |
-| [doom-2016-vr-staging](https://github.com/TefMeister/doom-2016-vr-staging) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
-| [doom-2016-vr-engine-research](https://github.com/TefMeister/doom-2016-vr-engine-research) | Distilled engine reference (dossier) + reusable VR RE playbook. |
-| [doom-2016-vr-external-research](https://github.com/TefMeister/doom-2016-vr-external-research) | Ongoing public-research leads, gathered separately from hands-on modding work. |
+| **`mod/`** ← you are here | The mod itself — once code exists, it lands here. |
+| [`dev-archive/`](../dev-archive/) | Full development history — snapshots, probes, dead ends, raw recon. |
+| [`modding-notes/`](../modding-notes/) | Readable field notes / progress ledger. |
+| [staging/doom-2016-vr](https://github.com/TefMeister/staging/tree/main/doom-2016-vr) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
+| [`engine-research/`](../engine-research/) | Distilled engine reference (dossier) + reusable VR RE playbook. |
+| [`external-research/`](../external-research/) | Ongoing public-research leads, gathered separately from hands-on modding work. |
 
 ## Credits, scope, and legality
 
