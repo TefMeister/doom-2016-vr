@@ -367,6 +367,48 @@ a free zero-code lever is gated off by production mode. See §4a.
 
 ## 11. Dead ends & false leads (save future time)
 
+- **✅ MEASURED INPUT RESULTS `[verified-live 2026-08-31, n=1 per backend]`** (first live run,
+  43,028 frames, clean detach). Verified by **screenshot + DOOM's own waypoint-distance HUD**, not
+  by a derived metric:
+  | Backend | Movement | Evidence |
+  |---|---|---|
+  | `inproc-keystate` (hook `GetAsyncKeyState`/`GetKeyState`/`GetKeyboardState`) | **WORKS** | waypoint 271.9 m → 257.0 m, ~15 m walked |
+  | `sendinput` | **WORKS** | 257.0 → 255.8. Expected: the key-state calls reflect OS key state, which SendInput updates |
+  | `postmessage` | no effect | view and distance unchanged |
+  | `vigem` | untested | driver still not installed |
+  **Mouse look does NOT work via `GetCursorPos` fabrication** — zero yaw change. Cursor calls are
+  not the look path here; **DirectInput is**. That is the remaining half, and the half VR needs.
+
+- **🚨 DO NOT TRUST `probe`'s numbers `[disproved 2026-08-31]`.** The camhunt-based input probe
+  reported *"no clear reaction"* for `inproc-keystate` — the backend that had just walked the player
+  fifteen metres. Control 274/4096; inproc 235; sendinput 134. **Both scored BELOW the control**,
+  which is the tell: a dead backend should score the *same* as the control, not less.
+  **Why:** camhunt's candidate addresses live in per-frame dynamic/ring buffers, so the bytes there
+  are reused for unrelated data every frame. "Changed" measures buffer recycling, not the camera.
+  **Use screenshots instead** — DOOM's waypoint-distance readout is unambiguous ground truth and
+  costs two seconds. This is exactly the failure `capture-window.ps1`'s own header warns about.
+
+- **🐌 Scanning mapped Vulkan memory directly is pathological `[measured 2026-08-31]`.** One
+  `snapshotA` took **3 min 45 s** and froze the game for its duration. `HOST_VISIBLE` memory is
+  typically **write-combined** — built for streaming CPU writes, brutally slow to read — and the
+  scan did ~24 million small strided reads out of it, for an effective **~430 KB/s**.
+  **Fix:** bulk `memcpy` into ordinary cached RAM, then scan the copy; 16-byte stride (uniform
+  matrices are at least 16-byte aligned); a six-multiply early reject before the expensive checks;
+  and regions scanned in **flush-count order**. Live `budget <MB>` / `stride <n>` commands added so
+  tuning never costs a relaunch.
+
+- **⏰ Hook timing matters more than it looks `[measured 2026-08-31]`.** `autoinput_init` at frame
+  120 logged **no** `DirectInput8Create` at all: DOOM builds its input devices during startup,
+  `vkCreateInstance` at 13:24:51 versus first presented frame at 13:25:51 — **a full minute apart**.
+  Anything that must observe engine initialisation has to hook from the earliest API call, not from
+  the first frame.
+
+- **🗺️ Where the camera almost certainly is `[measured 2026-08-31]`:** 7 live `vkMapMemory` regions
+  (2 are `VK_WHOLE_SIZE`, skipped as unknown-extent). **`map 2`, 64 MB, 27,907 flushes** dwarfs
+  everything else (`map 6`: 2,983; the three 75 KB regions: 0). That is the per-frame uniform
+  buffer. Scan it first.
+
+
 - **🚨 DISPROVED `[disproved 2026-08-31]`: "DOOM 2016 uses Raw Input."** I wrote that into this
   dossier, STATUS, and the cross-engine library on 2026-08-31, reasoning that a 2016 engine would
   not use the exclusive-mode DirectInput that beat XIII (2003) and Psychonauts. **It is wrong.**
