@@ -337,10 +337,16 @@ a free zero-code lever is gated off by production mode. See §4a.
   - **Four input backends, because "the API succeeded" is not "the game reacted"** -- the
     distinction that cost XIII a session (600 px of `SendInput` = **0.0deg** yaw, exclusive-mode
     DirectInput) and RE Village another (`SendInput` ignored outright, `PostMessage` honoured).
-    `inproc` posts a `WM_INPUT` with a sentinel handle and answers the game's own
-    `GetRawInputData` with fabricated data -- being in-process means the game asks *us*, not the
-    OS, so focus and exclusive-mode capture stop mattering. Then `sendinput` (DOOM 2016 is Raw
-    Input, not 2003-era DirectInput, so this has a real chance here), `postmessage`, and `vigem`.
+    **`inproc` REBUILT 2026-08-31** after the import table disproved its premise (S11): it now
+    answers the calls DOOM actually makes -- `GetAsyncKeyState` / `GetKeyState` /
+    `GetKeyboardState` for keys, and the `Get`/`SetCursorPos` pair for look, feeding back
+    centre+delta in the shape the game expects. Being in-process means the game asks *us*, not the
+    OS, so focus and DirectInput's exclusive mode stop mattering. `DirectInput8Create`'s
+    `CreateDevice` is instrumented to **log** whether DI8 carries keyboard/mouse here or only
+    controllers -- measure before building the harder path. Then `sendinput` (a real chance for
+    keys, since the key-state calls do reflect it; the mouse is likely lost to DI8 exclusive mode),
+    `postmessage` (DOOM does pump messages, so menus may answer), and `vigem` (**the best bet** --
+    XInput is imported directly).
   - **`probe` runs a no-input CONTROL first** and scores each backend against it. The control is
     the whole point: idle sway and TAA jitter move the camera on their own, so "something changed"
     is not evidence. A backend counts only on a clear margin over the control.
@@ -360,6 +366,27 @@ a free zero-code lever is gated off by production mode. See §4a.
   explicitly excluded from Steam Cloud sync and so cannot leak to the home PC.
 
 ## 11. Dead ends & false leads (save future time)
+
+- **🚨 DISPROVED `[disproved 2026-08-31]`: "DOOM 2016 uses Raw Input."** I wrote that into this
+  dossier, STATUS, and the cross-engine library on 2026-08-31, reasoning that a 2016 engine would
+  not use the exclusive-mode DirectInput that beat XIII (2003) and Psychonauts. **It is wrong.**
+  `llvm-objdump -p` on both shipped executables shows **zero** raw-input imports — no
+  `GetRawInputData`, no `GetRawInputBuffer`, no `RegisterRawInputDevices`.
+  - **What DOOM actually imports for input** `[measured 2026-08-31]`: **`DINPUT8.dll` →
+    `DirectInput8Create`**; **`XINPUT1_4.dll`** (ordinals 2/3) linked directly; Win32 key state
+    **`GetAsyncKeyState` / `GetKeyState` / `GetKeyboardState`** (+ `MapVirtualKeyA`, `ToUnicode`,
+    `ToAsciiEx`); and **`GetCursorPos` + `SetCursorPos`**, the classic centre-the-cursor-and-read-
+    the-drift mouse-look pattern. Plus a real message pump and its own `SetWindowsHookExA`.
+  - **Cost:** a whole in-process input backend was designed and built around posting `WM_INPUT`
+    and answering `GetRawInputData` — for a function this game never calls. Rebuilt the same day,
+    before any live run, because the import table was checked before asking for one.
+  - **The rule this earns: read the import table before designing an input layer.** One
+    `llvm-objdump -p` decides the entire approach. And *"the game is from year N, therefore it
+    uses API X"* is not evidence — DOOM 2016 is on the same input path as XIII (2003).
+  - **Consequence:** the ViGEm backend went from weakest to **most likely to work**, because
+    XInput is imported directly, so a virtual pad is seen as a genuine controller and DirectInput's
+    exclusive mode never enters into it. The ViGEmBus install is now the highest-value unblock.
+
 - **🚨 `r_renderAPI "1"` ALONE BREAKS THE LAUNCH — the cvar does not pick the executable
   (confirmed 2026-08-26 by a failed launch).** The two executables are **separate build
   configurations**, proven by their own PDB paths:
