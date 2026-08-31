@@ -275,6 +275,24 @@ so poking an address does nothing. Control belongs at the **write path**: the bu
 **`vkFlushMappedMemoryRanges`** — already hooked for the flush counter — and rewrite the transform in
 the flushed range before it reaches the GPU.
 
+## 6g. 🚨 The camera buffer is HOST_COHERENT — the flush path is NOT its update route
+
+`[measured 2026-08-31]` With the tracker locked on a verified position, the flush-path intercept
+reported the camera present in **ZERO flushed ranges**, and only **7 flushes in ~10 s of gameplay**
+against 24,155 accumulated mostly during level load. **Under one flush per second at 60 fps** means
+no flush is needed for the GPU to see writes: the memory is **`HOST_COHERENT`**, and
+`vkFlushMappedMemoryRanges` never carries the camera. The flushes we do see belong to other,
+non-coherent buffers.
+
+**Consequence:** `vkFlushMappedMemoryRanges` is the wrong interception point for anything
+per-frame here, despite being the obvious one. **`vkQueueSubmit` is the real gate** — by then the
+game has written the frame's camera and the GPU has not read it yet.
+
+**Cost constraint that shapes any solution:** reading this memory measures **~42 ms per MB**
+(write-combined), so scanning per frame is impossible. Learn the copies' **offsets once**, then
+revisit only those each submit — a few hundred 64-byte reads. Always re-verify the translation
+still matches before writing, since a ring slot may have been reused.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
