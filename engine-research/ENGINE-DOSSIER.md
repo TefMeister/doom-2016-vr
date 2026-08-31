@@ -324,6 +324,33 @@ a free zero-code lever is gated off by production mode. See §4a.
   came from a **flawed control** — the GL attempt did not set `SteamAppId` while the Vulkan attempt
   did, so two variables differed. **Do not conclude the GL build is broken**; the likeliest reading
   is that `SteamAppId` is simply required for *any* direct launch. Untested either way.
+- **✅ EXTERNAL COMMAND CHANNEL + FOUR-BACKEND INPUT BUILT (2026-08-31, dev PC).**
+  `[built-not-proven 2026-08-31 -- clean build, off-game smoke test passes, NEVER RUN AGAINST DOOM]`
+  Commands are appended to **`doom_automation_cmds.txt`** beside the exe and answered in
+  `doom_vk_proxy_log.txt`; helper `scripts/doom-auto.ps1`. Opt-in (`DOOM_AUTOMATION=1` or a
+  `doom_automation_enable.txt` marker), off by default. Commands: `status help mappings snapa
+  snapb dump tol <f> backend <name> move <keys> [frames] look <dx> <dy> [frames] probe stop`.
+  This replaces the NUMPAD-only trigger that left M1 built-but-never-run for five days.
+  - **`tol` is runtime for a reason:** the expected first result is an unusable or empty candidate
+    count, and retuning a `#define` would need a rebuild, which needs a relaunch, which is the
+    user's to give.
+  - **Four input backends, because "the API succeeded" is not "the game reacted"** -- the
+    distinction that cost XIII a session (600 px of `SendInput` = **0.0deg** yaw, exclusive-mode
+    DirectInput) and RE Village another (`SendInput` ignored outright, `PostMessage` honoured).
+    `inproc` posts a `WM_INPUT` with a sentinel handle and answers the game's own
+    `GetRawInputData` with fabricated data -- being in-process means the game asks *us*, not the
+    OS, so focus and exclusive-mode capture stop mattering. Then `sendinput` (DOOM 2016 is Raw
+    Input, not 2003-era DirectInput, so this has a real chance here), `postmessage`, and `vigem`.
+  - **`probe` runs a no-input CONTROL first** and scores each backend against it. The control is
+    the whole point: idle sway and TAA jitter move the camera on their own, so "something changed"
+    is not evidence. A backend counts only on a clear margin over the control.
+  - **Hooking is IAT patching, not an inline trampoline** -- it writes a data page rather than
+    code, so it needs no disassembler and does not argue with **Control Flow Guard** (S3, on).
+  - **Known open risk:** if DOOM reads input through `GetRawInputBuffer` rather than
+    `GetRawInputData`, the hook installs and still produces nothing. `autoinput_init` logs whether
+    that import is present, so the log says which case we are in.
+  - **ViGEm reports unavailable rather than pretending.** The driver needs an elevated install
+    (still an open user action) and writing its report path blind would be unverifiable code.
 - Note the machine rule: **only the user launches the game.**
 - Local config lives at `%USERPROFILE%\Saved Games\id Software\DOOM\base\` —
   `DOOMConfig.cfg` (cloud-synced) and `DOOMConfig.local` (machine-local, not synced).
@@ -362,6 +389,20 @@ a free zero-code lever is gated off by production mode. See §4a.
   than enter it. If anyone retries this, **read `devMode_fatalErrorOnEnter` back after setting it to
   `0`** before touching `devMode_enable`; if it still reads `1` it is ROM/shipping-disabled and the
   next command crashes the game.
+  - **Public precedent points the other way, and the tension is unresolved.** `[reported, /gr
+    2026-08-27]` Multiple independent sources (2016-2020: a Steam guide updated 2020 with dated
+    comments, Shacknews' launch-week guide, several Steam threads) describe `devMode_enable 1` --
+    including a **`+devMode_enable 1` command-line launch option** -- as a routinely used,
+    **non-fatal** unlock, with one well-documented but non-fatal side effect: the save is
+    cheat-flagged and Steam Cloud sync can then make it look corrupted. No source reports a crash.
+    **Neither reading disproves the other:** those sources predate our build (`20240321-...`) by
+    years, so either a tripwire was added later or `devMode_fatalErrorOnEnter` gates something
+    narrower than its name suggests. Our own reading of `1` is `[verified-live 2026-08-26, n=1]`.
+    If tested: use the **launch-option route on a throwaway save**, back the save folder up first,
+    and if it works check `listCvars stereo` and `com_production` visibility immediately -- no
+    public source covers that part, and it is the question standing between this project and
+    knowing whether the gated cvars are merely hidden or never constructed. Launching is the
+    user's call. Full write-up: `external-research/topics/2026-08-27-devmode-enable-public-precedent-and-the-fatal-error-tension.md`.
 - **🪤 METHOD TRAP — `strings -n 4` hides short tokens.** The static pass used
   `llvm-strings -n 4`, whose 4-character minimum silently dropped `God`, `rp`, and every other
   3-character name, producing a confidently-stated wrong conclusion (§9). **Any static string sweep
@@ -401,7 +442,31 @@ a free zero-code lever is gated off by production mode. See §4a.
   calling the render code directly. **Unknown which of those two it is** — determining that is a
   good early proxy milestone.
 
-## 13. Next steps (as of 2026-08-26, Phase 0 complete)
+## 13. Next steps
+
+### Current order (as of 2026-08-31)
+
+The blocker is no longer "what do we build" -- it is one live run. Everything below needs the
+game started by the user; nothing here starts it.
+
+1. **Reinstall the current build.** The game folder still holds an OLD proxy
+   (94 KB, 2026-08-26 18:03). `scripts/install-and-launch.bat` installs the current one, sets both
+   halves of the launch recipe, enables automation and launches.
+2. **Get into a level, then hand off** ("all yours"). From there the whole hunt is drivable from
+   outside: `probe` to learn which input backend this game obeys, then `snapa` / `look` / `snapb`.
+3. **If `probe` says every backend is dead:** read the `[autoinput]` line for whether
+   `GetRawInputBuffer` is imported. If it is, that is the likely cause and the hook needs to move
+   there. If no backend works at all, the fallback is unchanged -- the user moves, NUMPAD still works.
+4. **Tune `tol` live** if the candidate count is unusable, then confirm a survivor
+   **arithmetically** against `getviewpos` (S6e: `X Y Z pitch yaw`, Z-up).
+5. **Then** decide stereo strategy: drive the dormant path, or override projection (S6c).
+
+**Also still open, unchanged:** the cheap `.cfg` + `exec` gate-bypass probe; the
+`+devMode_enable 1` launch-option test with its public-precedent tension (S11); a baseline
+proxy-free quit timing (is the ~60 s shutdown ours or DOOM's?); and the question the proxy must
+eventually answer -- **are gated cvars merely HIDDEN or never CONSTRUCTED?**
+
+### Original list (as of 2026-08-26, Phase 0 complete)
 0. **⚠️ USER DECISION PENDING: confirm the Vulkan target** (§4, and
    `-dev-archive/recon/2026-08-26-injection-surface/`). Requires flipping `r_renderAPI` to `1` and
    checking the Vulkan build runs acceptably on this machine — **untested**. OpenGL stays the
