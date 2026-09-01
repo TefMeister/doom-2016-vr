@@ -903,7 +903,7 @@ a free zero-code lever is gated off by production mode. See §4a.
   console on **retail without dev mode**, via a `dinput8.dll` proxy that patches before the engine
   initialises, and reports **39/170 → 290/6592** commands/cvars. Our own live measurement was
   **40/171** `[verified-live 2026-08-26]` — the same gate, to within one each. 6,592 cvars *with
-  help text* is an enumeration of structures that exist, not an invention. Not `[verified]`:
+  help text* is an enumeration of structures that exist, not an invention. Not verified here:
   untested on our build. Caveats: closed source, no licence stated, targets "the April 2024 Update"
   while we run `20240321-104810-ginger-fuchsia`, and it hooks early — as does our `vulkan-1` proxy,
   so run either alone first. **Whether to install it is the user's call, not a session's.**
