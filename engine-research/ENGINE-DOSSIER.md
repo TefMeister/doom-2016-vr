@@ -553,6 +553,57 @@ works in-game**: the console opens and types cleanly with no virtual key anywher
 
 Evidence: `dev-archive/recon/2026-09-01-rotation-completes-the-transform/`.
 
+### 6h-4. The frame's draw stream, measured — and why the per-draw copies resist patching (2026-09-01, evening)
+
+**One frame, measured with `framespy`** `[measured 2026-09-01, n=2 frames]`: **43 render passes,
+328–501 draws** (varies with view), **8 command buffers**. The world pass is unmistakable — one pass
+carrying **364 draws + 3 indirect**; the rest are shadow atlas tiles (512×512 at various offsets), a
+4096×2048 pass, small 128/64/32/4-px passes, and 1280×720 passes at either end.
+
+**✅ Dynamic offsets are used almost universally** — the world pass does 365 descriptor binds of
+which **360 carry dynamic offsets**. So draws reach their uniform slice by offset, which is what
+would let a replay redirect them at a second copy.
+
+**✅ `ONE_TIME_SUBMIT` is NOT set on any of the 8 command buffers** `[measured 2026-09-01]`, and DOOM
+imports neither `vkResetCommandBuffer` nor `vkResetCommandPool`. **The game's own command buffers may
+legally be resubmitted**, which means both eyes can come from ONE recorded frame — submit with the
+left view, copy the result out, rewrite the uniform, submit the same buffers again — with no command
+mirroring and no temporal mismatch. (Resubmission must be serialised: without `SIMULTANEOUS_USE`,
+the first submission has to complete first.)
+
+**🚨 BUT the uniform buffer is a LINEAR ALLOCATOR, and that breaks the cached-offset approach.**
+`framespy` shows dynamic offsets climbing **monotonically** through the frame (656,640 → 794,112 in
+one capture; 2.34 MB later in the session) at roughly **137 KB per frame**. So a camera copy's
+address is **different every frame**. Measured consequence: `camrescan` located **180 copies**, and
+on the next submits the verify-before-write guard passed **5 of 180, then 0 of 180**
+`[verified-live 2026-09-01]`.
+
+**This retro-explains the old "1–2% image change when patching camera-to-world across 72 blocks"
+result** — that experiment almost certainly patched stale slots the GPU no longer reads. The
+conclusion drawn from it ("the GPU-side camera is downstream") **is not supported by that evidence**
+and should be treated as `[hypothesis]` again, not as settled.
+
+**⚠️ So "submit-path patching does not move the view" is UNTESTED, not disproved.** `camyaw 20` at
+the submit path produced no visible rotation — but with 5 and then 0 copies actually written, the
+test could not have produced a positive. Same family as the withdrawn input claims of 2026-08-31.
+
+**🚨 LIVE HAZARD, user-reported: `camrescan` NEARLY FREEZES THE GAME** `[verified-live
+2026-09-01, n=2, user-observed both times]`. It scans **64 MB of write-combined memory**, which §6g
+measured at **~42 ms/MB** — about **2.7 seconds** of stalled reads contending with the renderer for
+the memory it is actively writing. The game recovered on its own both times. **Note the writes were
+NOT the cause: `patched last submit` was 0 at the time**, so nothing of ours was being written — it
+is the *scan*, not the patch. **Do not run `camrescan` against a live game until it is bounded.**
+
+**⚠️ The tracker also drifts.** After a rescan, `camstat` reported the tracked position as
+`(-0.13 -11.50 9.31)` — not the camera, which `getviewpos` put at `(-8092.47 -2937.10 8347.39)`. The
+follow-the-camera logic locked onto something else, which is why every subsequent guard check failed.
+
+**→ The fix solves both problems at once, and it comes straight from the measurement.** Stop scanning
+64 MB and stop caching addresses. The per-frame uniform window is only **~137 KB** and its bounds are
+known live from the dynamic offsets passing through `vkCmdBindDescriptorSets`. Scan **only the range
+written this frame**, every frame, and never trust an address across frames. That is ~500× less
+memory touched, removes the freeze risk, and removes staleness by construction.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
