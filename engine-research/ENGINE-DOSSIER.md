@@ -293,6 +293,57 @@ game has written the frame's camera and the GPU has not read it yet.
 revisit only those each submit — a few hundred 64-byte reads. Always re-verify the translation
 still matches before writing, since a ring slot may have been reused.
 
+## 6h. 🎯 THE UPSTREAM SOURCE — one static global holds origin + basis (2026-09-01)
+
+`[verified-live 2026-09-01, n=1 process instance]` The per-draw GPU copies in §6f are downstream
+replicas. The **authoritative** value sits in the executable's own static data:
+
+**`DOOMx64vk.exe + 0x360F6B0`** — absolute `0x00007FF75092F6B0` at module base `0x7FF74D320000`,
+region type **image**, not heap.
+
+Twelve contiguous floats, dumped with the player standing at `getviewpos` = `799.93 4673.61 6407.39
+219.3 7.4`:
+
+```
++0    799.926  4673.610  6407.388      <- origin      (globalViewOrigin)
++3     -0.767    -0.629    -0.129      <- forward     (globalViewFwd)
++6      0.634    -0.773     0.000      <- left        (globalViewLeft)
++9     -0.099    -0.082     0.992      <- up          (globalViewUp)
++12     0.000     0.000     0.000
+```
+
+Every row is unit length and mutually perpendicular to within 5e-4, and the basis reproduces the
+console's own yaw/pitch arithmetically: `cos(7.4°)·cos(219.3°) = -0.767` = forward.x,
+`cos(7.4°)·sin(219.3°) = -0.628` = forward.y, `sin(7.4°) = 0.129` = forward.z; left =
+`(sin, -cos)(219.3°)` exactly, roll zero. The layout is the renderparm quartet the binary names
+`[measured 2026-09-01]`; the naming itself is `[inferred-static]`.
+
+**It is the view, not the player body.** The stored basis carries **pitch** (7.4° of it). The player
+body does not pitch in this game; the view does. That settles run 12's open question, which the
+HUD-and-weapon-vanishing-together symptom had left ambiguous.
+
+**Writing it works, and the control proves the write itself is inert.** Holding the address at the
+value it **already holds** changes nothing — HUD, crosshair and weapon all stay. Holding it displaced
+moves the view and drops the HUD, crosshair and weapon. So the HUD loss is caused by *displacement*,
+not by writing into engine memory.
+
+**⭐ The elevated-camera test passes.** Lifting the origin **+60 units on Z** renders the world
+correctly from a position the player is not at — geometry, lighting and the cave ceiling all resolve,
+**no culling collapse and no black void**. Culling follows the camera here for free, which is exactly
+what Psychonauts spent weeks failing to get (§1 of that project's board).
+
+**What is NOT established:**
+- **RVA stability across restarts is `[inferred-static]`, not verified** — it follows from the image
+  region but has been seen in one process instance. **Re-measure on the next launch.** If it holds,
+  this project never needs the value hunt again.
+- Whether writing the **basis** (a rotation) behaves as well as writing the origin. `phold` writes
+  three floats; a yaw needs `forward` and `left` rotated together — a small code change.
+- Why the HUD and weapon drop out under displacement at all. A VR camera that costs the HUD is not
+  finished.
+
+**Practical limit:** `HOLD_MAX_DELTA` clamps a single jump to **64 units**; a 150-unit jump is
+refused. Larger displacements must be walked up in steps.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
@@ -363,6 +414,32 @@ a free zero-code lever is gated off by production mode. See §4a.
 - **`noclip` is NOT registered**, despite appearing in the binary — presumably cheat-gated.
 
 ## 10. Autonomous harness recipe (this game)
+
+- **⚠️ DRIVING THE CONSOLE: the toggle key is layout-dependent AND it is a dead key
+  `[measured 2026-09-01]`.** Two separate traps, either of which makes a working input backend look
+  broken.
+
+  **(a) Which key.** On this machine (layout `0x0425`):
+
+  | VK | scancode | |
+  |---|---|---|
+  | `VK_OEM_3` (0xC0) | 0x1A | what the proxy's `console` command sends — **the wrong key** |
+  | `VK_OEM_8` (0xDF) | **unmapped** | what the 2026-08-31 note recorded — sends nothing at all |
+  | `VK_OEM_7` (0xDE) | **0x29** | the key DOOM's console is actually on, here |
+
+  This **supersedes** the 2026-08-31 reading (`VK_OEM_3 → 0x28`, console on `VK_OEM_8`); neither
+  number reproduces today. **Do not carry a VK constant between machines or sessions.** Ask the
+  running system: `MapVirtualKeyA(vk, 0)` forward, `MapVirtualKeyA(scan, 1)` backward. DirectInput
+  binds the physical **scancode 0x29** — that is the stable fact; the VK that reaches it is not.
+
+  **(b) It is a DEAD KEY.** Opening the console leaves an accent pending, and the **first character
+  typed afterwards composes with it**: `getviewpos` arrives as `Çgetviewpos`, `com_...` as `*om_...`.
+  **Fix: after opening the console send space, then backspace** — the space absorbs the composition,
+  the backspace removes it, and the command types clean.
+
+  **(c) Console toggling has state.** A helper that toggles open/closed must be entered with the
+  console **closed**, or it closes it and types the command into the game as movement keys. Make the
+  helper open-read-capture-close as one unit so its pre- and post-state match.
 - **✅ HOW TO LAUNCH THE VULKAN BUILD (verified working 2026-08-26).** Two things are required
   together — either alone fails:
   1. **`r_renderAPI "1"`** in `DOOMConfig.local` (must match the build; see §11).
@@ -621,7 +698,29 @@ a free zero-code lever is gated off by production mode. See §4a.
 
 ## 13. Next steps
 
-### Current order (as of 2026-08-31)
+### Current order (as of 2026-09-01)
+
+The camera is found, isolated to a single static global, and provably steerable in translation
+(§6h). What is open is no longer *where* it is but *how much control it gives*.
+
+1. **Re-measure the RVA on the very next launch** (`DOOMx64vk.exe + 0x360F6B0`). One command's worth
+   of work, and it decides whether this project ever needs the value hunt again. Stability is
+   `[inferred-static]` until then.
+2. **Extend the hold to write the basis, not just the origin.** A yaw needs `forward` and `left`
+   rotated together; `phold` writes three floats. This is the real test of whether the address is a
+   control point or only a read-back. Needs a rebuild — therefore a relaunch — therefore the user.
+3. **Fix the `console` command's key** while that rebuild is happening: send scancode `0x29`
+   directly instead of a VK constant (§10), and flush the dead key automatically.
+4. **Then** decide the stereo strategy: drive the dormant path, or override projection (§6c) — and
+   find out why the HUD and weapon drop out under displacement, since a VR camera that costs the HUD
+   is not finished.
+
+**Also still open, unchanged:** the cheap `.cfg` + `exec` gate-bypass probe; the
+`+devMode_enable 1` launch-option test with its public-precedent tension (§11); a baseline
+proxy-free quit timing (is the ~60 s shutdown ours or DOOM's?); and the question the proxy must
+eventually answer — **are gated cvars merely HIDDEN or never CONSTRUCTED?**
+
+### Superseded order (as of 2026-08-31)
 
 The blocker is no longer "what do we build" -- it is one live run. Everything below needs the
 game started by the user; nothing here starts it.
@@ -638,10 +737,7 @@ game started by the user; nothing here starts it.
    **arithmetically** against `getviewpos` (S6e: `X Y Z pitch yaw`, Z-up).
 5. **Then** decide stereo strategy: drive the dormant path, or override projection (S6c).
 
-**Also still open, unchanged:** the cheap `.cfg` + `exec` gate-bypass probe; the
-`+devMode_enable 1` launch-option test with its public-precedent tension (S11); a baseline
-proxy-free quit timing (is the ~60 s shutdown ours or DOOM's?); and the question the proxy must
-eventually answer -- **are gated cvars merely HIDDEN or never CONSTRUCTED?**
+*(Superseded list retained above for the record; its items 1-3 are done.)*
 
 ### Original list (as of 2026-08-26, Phase 0 complete)
 0. **⚠️ USER DECISION PENDING: confirm the Vulkan target** (§4, and
