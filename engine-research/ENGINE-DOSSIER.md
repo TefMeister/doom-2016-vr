@@ -432,11 +432,22 @@ getviewpos  1731.42 5441.92 6371.72  yaw 30.0  pitch -0.0
 +9      0.000     0.000     1.000      <- up       (exactly Z-up at pitch 0)
 ```
 
-**⚠️ Caveat that keeps this short of "RVA is stable":** the module loaded at the **same base**
-(`0x7FF74D320000`) both times, so this confirms reproducibility across a restart but **does not test
-ASLR rebasing**. Windows randomises image base per boot, so the rebase test needs a **reboot**, not a
-relaunch. Until then, resolve the address as `GetModuleHandle(NULL) + 0x360F6B0` rather than
-hardcoding the absolute value — correct either way, and free.
+**⚠️ Caveat, and the reasoning behind it was WRONG — corrected 2026-09-01 (evening).** The
+module loaded at the **same base** (`0x7FF74D320000`) on three consecutive launches, and I recorded
+that ASLR randomises image base **per boot**, so only a **reboot** could test rebasing. **That is
+false** `[disproved 2026-09-01]`: a fourth launch, with **no reboot** (last boot 2026-08-25), loaded
+at **`0x7FF71A5E0000`**. The base moved on a plain relaunch.
+
+The likely mechanism `[hypothesis]` is that Windows keeps the relocated image while its section
+object stays alive in the standby cache and picks a new base once it is evicted — which is why three
+launches in quick succession looked pinned and a launch hours later did not. **The operational rule
+is unchanged and was right all along:** never hardcode the absolute address; resolve
+`GetModuleHandle(NULL) + 0x360F6B0` (or the running process's module base) every session, and verify
+against `getviewpos` before writing. That procedure is immune to the question either way — which is
+why nothing was ever actually blocked on it.
+
+**Still to confirm: that the RVA `0x360F6B0` itself holds across the rebase.** The check needs a
+level loaded (`getviewpos` returns nothing at the main menu). It is one `pdump` when a save is up.
 
 **⭐ STEREO WORKS FROM THIS ADDRESS** `[verified-live 2026-09-01, n=1 pair]`. Holding the origin at
 `origin ± 32·left` produced a correct **stereo pair**: same scene from two laterally-offset
