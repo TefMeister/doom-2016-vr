@@ -195,9 +195,12 @@ scope than it looks.* Where an engine family has a **published** ancestor, check
 source before building a plan on the descendant's comment.
 
 **The engine explicitly names HMDs in its own cvar help.** But **there is no stereo *mode* cvar to
-find** `[measured 2026-09-01]`. The full retail cvar list was read: all four `stereoRender_*`
-parameters are present, `multiView_60Hz` and `com_production` are present, and **nothing selects
-`stereoRenderMode_t`**. An earlier version of this section said the name "was not resolvable
+find**. The **published cvar dump was read in full** — 6,572 cvars, §12
+`[reported 2026-09-01]`: all four `stereoRender_*` parameters are in it, so are `multiView_60Hz`
+and `com_production`, and **nothing in it selects `stereoRenderMode_t`**. Retail separately
+registers only **171** of those cvars at runtime and `listCvars stereo` returns nothing
+`[verified-live 2026-08-26]` (§4a, §9) — two different reads, both negative for a mode
+selector. An earlier version of this section said the name "was not resolvable
 statically — find it live via `listCvars`"; that advice pointed at nothing and is **withdrawn**
 `[disproved 2026-09-01]`. It is recorded rather than deleted because it would otherwise have cost a
 future live session.
@@ -310,7 +313,7 @@ hypothesis can be checked against `getviewpos` with no test code written. `com_s
   reflection or a GL/VK capture (Phase 2). Handedness/up-axis now known (above).
 - The per-eye override maths (`K_eye = …`): **TBD**, pending 6c.
 
-> ⚠️ **6e ORDER CORRECTED 2026-08-31 `[verified-live, derived from the matrix]`: `getviewpos`
+> ⚠️ **6e ORDER CORRECTED 2026-08-31 `[verified-live 2026-08-31, n=1, derived from the live matrix]`: `getviewpos`
 > prints **yaw then pitch**, not pitch then yaw. A reading of `... 34.3 3.4` corresponds to a
 > rotation about **Z of 34.3 deg** (`cos=0.826`, `sin=0.563`, exactly the row-0/row-1 values) and a
 > tilt of `asin(0.060)=3.44 deg`. **Column 4 = yaw, column 5 = pitch.** A swapped pitch/yaw produces
@@ -912,7 +915,7 @@ a free zero-code lever is gated off by production mode. See §4a.
   registered on retail** `[verified-live 2026-09-01]`, so none of this is reachable until the gate
   is opened.
 - **✅ RESOLVED 2026-09-01 (afternoon) — the full cvar list WAS read, and the dormant stereo cvars
-  ARE in it** `[verified from published source, 2026-09-01, whole file]`. The "needs a human with a
+  ARE in it** `[reported 2026-09-01, the published cvar dump read in full via curl]`. The "needs a human with a
   browser" note is withdrawn. The obstacle was never the file — it was using a *page fetch* (which
   truncates) instead of a *download*. `curl -L` retrieved all **711,227 bytes / 11,103 lines /
   6,572 cvars** in one call.
