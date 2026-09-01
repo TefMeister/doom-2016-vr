@@ -161,8 +161,8 @@ centered between the eyes", so eye separation is applied downstream of view setu
 skew), not by building two different view matrices — our per-eye override probably belongs at the
 projection stage.*
 
-**id's own published source says the view ORIGIN is moved per eye** `[verified from published
-first-party source, 2026-09-01, via /gr]`. `neo/renderer/RenderWorld.h` in id Software's GPL
+**id's own published source says the view ORIGIN is moved per eye** `[reported 2026-09-01, from id's own
+published GPL source, via /gr]`. `neo/renderer/RenderWorld.h` in id Software's GPL
 release of Doom 3 BFG declares `renderView_t` with the comment
 `idVec3 vieworg;  // has already been adjusted for stereo world seperation`, alongside a
 *separate* `float stereoScreenSeparation;  // projection matrix horizontal offset`. Two distinct
@@ -183,8 +183,8 @@ basis's `left` vector is the operation the engine performs on itself. **Confirme
 day** — see §6h's stereo-pair result.
 
 **Both readings kept, both tagged:** DOOM 2016's own compiled-in comment is `[inferred-static,
-2026-08-26]` (id Tech 6 text about id Tech 6); BFG's `renderView_t` is `[verified from published
-first-party source, 2026-09-01]` (one generation earlier). Possible reconciliations, none
+2026-08-26]` (id Tech 6 text about id Tech 6); BFG's `renderView_t` is `[reported 2026-09-01,
+from id's own published GPL source]` (one generation earlier). Possible reconciliations, none
 established: the id Tech 6 comment may describe the view list *as constructed*, before per-eye
 adjustment; it may be stale commentary carried forward; id Tech 6 may have simplified; or
 "identical" may mean "of the same scene" rather than "of the same camera".
@@ -194,9 +194,41 @@ engine documentation and is cheap to read — *and it can be stale, generation-s
 scope than it looks.* Where an engine family has a **published** ancestor, check the ancestor's
 source before building a plan on the descendant's comment.
 
-**The engine explicitly names HMDs in its own cvar help.** The name of the mode cvar that selects
-`stereoRenderMode_t` was not resolvable statically (linker string dedup separates it from its value
-list) — **find it live via `listCvars`**.
+**The engine explicitly names HMDs in its own cvar help.** But **there is no stereo *mode* cvar to
+find** `[measured 2026-09-01]`. The full retail cvar list was read: all four `stereoRender_*`
+parameters are present, `multiView_60Hz` and `com_production` are present, and **nothing selects
+`stereoRenderMode_t`**. An earlier version of this section said the name "was not resolvable
+statically — find it live via `listCvars`"; that advice pointed at nothing and is **withdrawn**
+`[disproved 2026-09-01]`. It is recorded rather than deleted because it would otherwise have cost a
+future live session.
+
+**What the switch is instead — a call argument, not a mode.** id's published GPL source for the
+previous generation threads the eye through the render call rather than reading a mode global at
+draw time:
+
+```c
+void RB_DrawView( const void *data, const int stereoEye );   // 0 = mono, -1 / +1 = eyes
+```
+
+Downstream it does what our cvar names imply: the per-eye GUI shift is
+`guiScreenOffset = stereoEye * viewDef->renderView.stereoScreenSeparation`, and `renderView_t`
+carries **`viewEyeBuffer`** as first-class state (`-1` left, `+1` right, `0` for a mono view *or* a
+GUI). `stereoRender_swapEyes` is consulted only when comparing a shader's eye to the current one
+— a late cosmetic flip, not the switch.
+
+`[reported 2026-09-01, from id's own published GPL source]` for **id Tech 4/5**; **`[hypothesis]` for
+id Tech 6** — one generation and several years separate them. What lifts it above a guess is
+that it *explains our own cvar inventory*: every stereo parameter live as a cvar while no mode cvar
+exists is exactly what a call-site argument looks like. Nothing was stripped; the switch was never a
+cvar in this generation.
+
+**So the shape to hunt is a function taking a small signed eye argument, called twice per frame,
+plus an eye field on the view object — not a global to flip.** See §6d for the static search.
+
+**⚠️ Consequence for the console gate:** opening it would hand us the stereo *parameters*,
+**not the on-switch**. §11 and §13 should not be read as "open the gate and stereo
+unblocks". Source:
+`external-research/topics/2026-09-01-there-is-no-stereo-mode-cvar-so-what-turns-it-on.md`.
 
 ### 6b. The full renderparm table is named in the binary
 id Tech 6 exposes shader constants as named "renderparms", and the complete name table is a plain
@@ -239,6 +271,12 @@ human-written descriptions* (e.g. `idPlayerMechanicRailRide::enum_1259`,
 `idList < idMapEntity *, TAG_IDLIST, false >`). This is effectively a built-in symbol source — the
 same structural advantage REFramework provides on RE Engine, except it is native to the binary.
 Mining this table properly is its own high-value task (see §12).
+
+**Concrete first query, handed over by §6a:** search the table for an **eye-buffer field on the
+view object**. BFG's is `viewEyeBuffer` on `renderView_t`, and id names things consistently across
+generations. A named field on the view struct would be a far better switch than any cvar — and
+unlike the cvar hunt this is a **static** search needing no launch. `[hypothesis]`, but cheap and
+available right now.
 
 ### 6e. Camera convention — MEASURED LIVE (2026-08-26)
 
@@ -833,6 +871,19 @@ a free zero-code lever is gated off by production mode. See §4a.
     public source covers that part, and it is the question standing between this project and
     knowing whether the gated cvars are merely hidden or never constructed. Launching is the
     user's call. Full write-up: `external-research/topics/2026-08-27-devmode-enable-public-precedent-and-the-fatal-error-tension.md`.
+- **❓ UNTESTED GATE CANDIDATE — `+com_allowconsole 1`, a name from this engine's own
+  family.** `[reported]` for **id Tech 5** (The Evil Within, one generation earlier): the console is
+  opened by that launch option, after which `noclip`, `God`, `g_stoptime` and `devmapjump` work,
+  with no mod and no developer mode. **Untested on id Tech 6.** Better shaped than the community
+  guesses above on two counts: the name comes from this lineage rather than a forum, and it applies
+  at **launch time**, before the process can guard itself — the pattern this estate already
+  records as beating in-process attempts at gates. Costs one line in the launch script.
+  **Run it so the result means something:** read `listCvars` / `listCmds` counts before and after
+  (retail baseline **171 / 40** `[verified-live 2026-08-26]`) — a changed count is the only
+  unambiguous positive; **change one thing at a time**, never combined with `+devMode_enable 1`, or
+  a positive cannot be attributed to either. If the count moves, check `listCvars stereo` and
+  `com_production` immediately. Note §6a: even a won gate yields parameters, not the stereo
+  on-switch. Via `/sr`, 2026-09-01.
 - **🪤 METHOD TRAP — `strings -n 4` hides short tokens.** The static pass used
   `llvm-strings -n 4`, whose 4-character minimum silently dropped `God`, `rp`, and every other
   3-character name, producing a confidently-stated wrong conclusion (§9). **Any static string sweep
@@ -925,26 +976,33 @@ a free zero-code lever is gated off by production mode. See §4a.
 
 ## 13. Next steps
 
-### Current order (as of 2026-09-01, afternoon)
+### Current order (as of 2026-09-01, evening — rewritten when the inbox was drained)
 
-The camera is found, confirmed across a restart, provably steerable in translation, and **stereo has
-been produced from it live**. The cheapest remaining wins are mostly *reading* rather than building.
+The camera is found, confirmed across a restart, steerable in translation **and rotation**, and
+**stereo has been produced from it live**. Three items from the afternoon list are now closed, and
+one was withdrawn; what remains is below.
 
-1. **Enter Photo Mode and watch the HUD** (§6h-2). No code, no console, no risk: Options → Game →
-   "DOOM Photo Mode [BETA]", from Mission Select, then `` ` ``. If the HUD and weapon vanish the same
-   way they do under our displacement, we are riding a designed engine path rather than breaking one,
-   and the HUD question changes from "bug to fix" to "state to control".
-2. **Install the new proxy build at the next launch and run `pholdyaw <addr> 20`** — the coherent
-   basis rotation. Translation is proven; rotation is the last untested half of the transform.
-3. **Ask the user for two minutes with a browser** on `doom_cvars.txt` (§12) — Ctrl-F for
-   `stereoRender`, `multiView`, `com_production`, `explicitProjection`. Confirms or kills the
-   dormant stereo path from a public source before anything is installed.
-4. **Test the rebase after a reboot**, not a relaunch — the only thing still standing between
+**Closed since the afternoon list:** Photo Mode was entered and answered the HUD question
+(§6h-2, `[verified-live 2026-09-01, n=1, user-observed]`); `pholdyaw` ran and **rotation works**,
+completing the transform (§6h-3); and the cvar list was read in full, which **withdrew** the
+"ask the user for two minutes with a browser" item — the obstacle was the fetch tool, not the
+file, and one `curl` did it `[measured 2026-09-01]`.
+
+1. **Two eyes in ONE frame.** The stereo pair so far is two **sequential** frames, so per-frame
+   delivery is now the real question, and §6f's per-draw GPU copies are the likely layer.
+   **Start with `multiView_60Hz`** — its own help text is *"0 = alternate frame rendering,
+   1 = render both each frame"*, which is the engine's own name for exactly this question. It is a
+   **registered, ungated** cvar, so it needs no gate work at all.
+2. **Mine the reflection database for the eye field — static, no launch needed** (§6d,
+   §6a). Look for an eye-buffer field on the view object (BFG's is `viewEyeBuffer`). Since
+   §6a established the stereo switch is a **call argument, not a cvar**, this is now the most
+   promising route to the on-switch, and it costs no in-game time.
+3. **Test the rebase after a reboot**, not a relaunch — still the only thing between
    `[verified-live n=2]` and "the RVA is stable". Use `GetModuleHandle(NULL) + 0x360F6B0` meanwhile.
-5. **Two eyes in ONE frame.** The stereo pair so far is two sequential frames. The per-frame delivery
-   question is now the real one, and §6f's per-draw GPU copies are the likely place for it —
-   especially if the HUD loss turns out to be game state (§6h-2), which would make §6f the right
-   layer for "only the picture moves".
+4. **One cheap launch probe: `+com_allowconsole 1`** (§11). A gate name from this engine's own
+   family, applied at launch. Read `listCvars`/`listCmds` counts before and after against the
+   **171 / 40** baseline; change one thing only. Ranked last deliberately — §6a means even
+   a won gate yields stereo *parameters*, not the on-switch, so it no longer blocks the North Star.
 
 ### Superseded order (as of 2026-09-01, morning)
 
