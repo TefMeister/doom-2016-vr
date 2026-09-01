@@ -1,7 +1,11 @@
 # Research index
 
-**Last `/gr` pass: 2026-09-01 — FULL.** Inbox drained (the cvar-list verdict); four of the day's
-topics resolved by the modding side and re-tagged; one new topic on how the stereo path is actually
+**Last `/gr` pass: 2026-09-01 (second pass, estate sweep) — CHECK-IN.** Inbox drained: `/gs`'s
+report of off-vocabulary confidence tags. Four tags across three topics normalised to the eight-name
+vocabulary, with the precision moved into the prose beside each. No new research — the FULL pass
+earlier the same day is still current.
+_Earlier the same day — FULL:_ inbox drained (the cvar-list verdict); four of the day's topics
+resolved by the modding side and re-tagged; one new topic on how the stereo path is actually
 switched on, now that the cvar list has shown there is no mode cvar to set.
 
 Every research topic gathered for this project, newest first. Each row links to a self-contained

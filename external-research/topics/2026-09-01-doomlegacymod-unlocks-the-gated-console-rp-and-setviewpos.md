@@ -31,7 +31,7 @@ after a game patch broke it — is a public, actively-hosted mod whose entire pu
 all the hidden console commands & cvars in the game"* on **retail DOOM (2016)**, and, per its own
 public description, **without needing to be in any kind of "developer mode."**
 
-The numbers it reports are the decisive detail `[reported, /gr 2026-09-01]`:
+The numbers it reports are the decisive detail `[reported 2026-09-01]`:
 
 | | commands | cvars |
 |---|---|---|
@@ -104,7 +104,7 @@ Combined with the mod's own claim that it works **without dev mode**, the most e
 that the objects exist and that production mode suppresses their registration or their visibility,
 not their construction.
 
-`[reported, /gr 2026-09-01]` — and deliberately **not** upgraded past that tag. Nobody has tested
+`[reported 2026-09-01]` — and deliberately **not** upgraded past that tag. Nobody has tested
 this on our build, and "a tool exists which says it does X" is not "X happened here."
 
 ## Honest caveats, stated plainly

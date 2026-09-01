@@ -11,7 +11,7 @@ player-facing feature**, added in a post-launch update and labelled **"DOOM Phot
 the game's own options menu. Critically for this project, **it is behind no console gate, no dev
 mode and no cheat mode** — it is a checkbox.
 
-**How it is reached** `[reported, multiple independent sources, 2016–2017]`:
+**How it is reached** `[reported]`, from multiple independent sources, 2016–2017:
 
 1. From **Mission Select** (not from a normal in-progress campaign load) → **Options** → **Game** →
    enable **DOOM Photo Mode [BETA]**.
@@ -55,7 +55,8 @@ removing our clamp — it is a well-founded reason to believe a much larger safe
 wants.
 
 **3. It is a free, zero-code cross-check for the `+0x360F6B0` finding.** The RVA is currently
-`[verified-live 2026-09-01, n=1 process instance]` with stability only `[inferred-static]`. Entering
+`[verified-live 2026-09-01, n=1]` — one process instance — with stability only
+`[inferred-static]`. Entering
 Photo Mode, flying the camera, and watching whether those twelve floats track the *photo* camera
 rather than the player would confirm — with no memory writes at all — that the address is **the
 view**, exactly as §6h concluded from the stored pitch. A second, independent line of evidence for
