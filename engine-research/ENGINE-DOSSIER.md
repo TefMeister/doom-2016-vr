@@ -456,6 +456,51 @@ engine *should* know the camera moved; write §6f's per-draw GPU copies when **o
 should move — and "only the picture moves, and differently per eye" is exactly the stereo
 requirement.
 
+### 6h-3. ROTATION WORKS — the camera transform is complete (2026-09-01, late)
+
+`[verified-live 2026-09-01, n=1 at 20° and 90°]` `pholdyaw <addr> <deg>` writes the basis
+coherently — `forward` and `left` rotated together about Z, origin untouched — and produces a
+**proper camera turn**: correct geometry, lighting and perspective, **no shear, no culling collapse,
+no void**, at both 20° and 90°. Release restores the engine's own basis exactly.
+
+The contrast with §6h-2's forward-only write is the whole point: **same address, same kind of write,
+and the only difference is whether the basis stays orthonormal.** Partial writes shear; coherent
+writes turn the camera.
+
+**⭐ With this, every component of the view transform is known writable and renders correctly:**
+
+| component | status |
+|---|---|
+| position — translate the camera anywhere | ✅ §6h |
+| per-eye offset along `left` — i.e. **stereo** | ✅ §6h-2 |
+| orientation — turn the camera | ✅ **§6h-3** |
+| fully reversible, engine's values restored | ✅ every test |
+
+That is the entire camera side of a VR mod, from **one static address**, with no engine cooperation
+and the dormant stereo path (§6a) untouched.
+
+**🔎 The HUD responds DIFFERENTLY to rotation than to translation** — a distinct result from
+§6h-2's, and a useful one:
+
+- **Translating** the origin removes HUD, crosshair and weapon **entirely** (Photo Mode confirms this
+  is designed behaviour when the view stops being the player's).
+- **Rotating** the basis **keeps them drawn but displaces them** — at 20° the crosshair and health
+  bar slide across the frame; by 90° they have left it.
+
+So the two operations trip different engine responses, and under rotation the first-person layer is
+still being drawn, merely anchored to a view that no longer matches. `[hypothesis]` The HUD's
+placement derives from this same basis, which suggests a VR build might keep its HUD by rotating
+what the **renderer** reads while leaving what the **HUD** reads alone — the §6f / §6h division of
+labour again, now with a concrete lever.
+
+**Also this session:** the address held a **third** time `[verified-live 2026-09-01, n=3 process
+instances]`, basis again predicted from `getviewpos` before dumping. Load base was **the same
+again**, so ASLR rebasing remains untested — it needs a **reboot**, not a relaunch. And **`scan 0x29`
+works in-game**: the console opens and types cleanly with no virtual key anywhere in the path, so
+§10's layout-dependence is now routed around rather than worked around.
+
+Evidence: `dev-archive/recon/2026-09-01-rotation-completes-the-transform/`.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
