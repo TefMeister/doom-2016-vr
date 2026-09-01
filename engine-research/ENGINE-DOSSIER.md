@@ -673,7 +673,7 @@ a free zero-code lever is gated off by production mode. See §4a.
   did, so two variables differed. **Do not conclude the GL build is broken**; the likeliest reading
   is that `SteamAppId` is simply required for *any* direct launch. Untested either way.
 - **✅ EXTERNAL COMMAND CHANNEL + FOUR-BACKEND INPUT BUILT (2026-08-31, dev PC).**
-  `[built-not-proven 2026-08-31 -- clean build, off-game smoke test passes, NEVER RUN AGAINST DOOM]`
+  `[compile-verified 2026-08-31 -- clean build, off-game smoke test passes, NEVER RUN AGAINST DOOM]`
   Commands are appended to **`doom_automation_cmds.txt`** beside the exe and answered in
   `doom_vk_proxy_log.txt`; helper `scripts/doom-auto.ps1`. Opt-in (`DOOM_AUTOMATION=1` or a
   `doom_automation_enable.txt` marker), off by default. Commands: `status help mappings snapa

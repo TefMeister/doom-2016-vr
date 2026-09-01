@@ -1,7 +1,7 @@
 # 2026-08-31 — DOOM gets an external command channel and four input backends
 
 **Machine:** dev PC. **Game never launched this session** (standing rule: only the user launches).
-**Status of everything below:** `[built-not-proven 2026-08-31]` — clean build, off-game smoke test
+**Status of everything below:** `[compile-verified 2026-08-31]` — clean build, off-game smoke test
 passes, **never run against DOOM**.
 
 ## Why this, today
