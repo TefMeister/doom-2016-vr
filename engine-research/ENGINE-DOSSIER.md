@@ -155,11 +155,44 @@ Present in **both** executables (so it is engine-level, not renderer-specific):
   each screenView"*, and a note that scanout width/height *"can be larger than GetWidth() /
   GetHeight() when in stereo 3D modes"*.
 
-**Read carefully — the doc-comment says the two stereo world views are *identical and centered
-between the eyes*.** So the eye separation is applied downstream of the view setup (a projection
-skew / screen-separation step), not by building two different view matrices. That is the id Tech 5
-/ BFG-era approach and it matters: our per-eye override probably belongs at the projection stage,
-not the view stage.
+**⚠️ SUPERSEDED 2026-09-01 — this passage was wrong, and the correction matters more than the
+original claim.** It read: *the doc-comment says the two stereo world views are "identical and
+centered between the eyes", so eye separation is applied downstream of view setup (a projection
+skew), not by building two different view matrices — our per-eye override probably belongs at the
+projection stage.*
+
+**id's own published source says the view ORIGIN is moved per eye** `[verified from published
+first-party source, 2026-09-01, via /gr]`. `neo/renderer/RenderWorld.h` in id Software's GPL
+release of Doom 3 BFG declares `renderView_t` with the comment
+`idVec3 vieworg;  // has already been adjusted for stereo world seperation`, alongside a
+*separate* `float stereoScreenSeparation;  // projection matrix horizontal offset`. Two distinct
+steps — which is exactly why the engine ships **two** separately-named cvars:
+
+| cvar | engine's own help text | what BFG's source shows it doing |
+|---|---|---|
+| `stereoRender_separation` | "world units from center to eyes" | **moves `vieworg`** — a real per-eye world-space camera translation |
+| `stereoRender_screenSeparation` | "screen units from center to eyes" | shifts the projection matrix horizontally (convergence) |
+
+Also worth knowing: `int viewEyeBuffer;  // -1 = left eye, 1 = right eye, 0 = monoscopic view or GUI`
+— a one-integer eye selector with the GUI as a first-class member of the same enum.
+
+**Why this changes the plan:** §6h's control point writes exactly `globalViewOrigin` + basis. Under
+this reading that is **not a workaround for a missing stereo path — it is the same lever the
+engine's own stereo code pulls**, reached from another direction. A per-eye IPD offset along the
+basis's `left` vector is the operation the engine performs on itself. **Confirmed live the same
+day** — see §6h's stereo-pair result.
+
+**Both readings kept, both tagged:** DOOM 2016's own compiled-in comment is `[inferred-static,
+2026-08-26]` (id Tech 6 text about id Tech 6); BFG's `renderView_t` is `[verified from published
+first-party source, 2026-09-01]` (one generation earlier). Possible reconciliations, none
+established: the id Tech 6 comment may describe the view list *as constructed*, before per-eye
+adjustment; it may be stale commentary carried forward; id Tech 6 may have simplified; or
+"identical" may mean "of the same scene" rather than "of the same camera".
+
+**The method lesson, sharpened rather than discarded:** a compiled-in doc-comment is primary-source
+engine documentation and is cheap to read — *and it can be stale, generation-shifted, or narrower in
+scope than it looks.* Where an engine family has a **published** ancestor, check the ancestor's
+source before building a plan on the descendant's comment.
 
 **The engine explicitly names HMDs in its own cvar help.** The name of the mode cvar that selects
 `stereoRenderMode_t` was not resolvable statically (linker string dedup separates it from its value
@@ -344,6 +377,71 @@ what Psychonauts spent weeks failing to get (§1 of that project's board).
 **Practical limit:** `HOLD_MAX_DELTA` clamps a single jump to **64 units**; a 150-unit jump is
 refused. Larger displacements must be walked up in steps.
 
+### 6h-2. Second session, same day: confirmed at n=2, and STEREO CONFIRMED LIVE (2026-09-01, afternoon)
+
+**The address survived a restart** `[verified-live 2026-09-01, n=2 process instances]`. On a fresh
+launch, fresh level load, the basis was **predicted arithmetically from `getviewpos` before the dump
+was read**, and matched exactly:
+
+```
+getviewpos  1731.42 5441.92 6371.72  yaw 30.0  pitch -0.0
++0   1731.418  5441.916  6371.721      <- origin   (matches)
++3      0.866     0.500     0.000      <- forward  (predicted 0.866 0.500 0.000)
++6     -0.500     0.866     0.000      <- left     (predicted -0.500 0.866 0.000)
++9      0.000     0.000     1.000      <- up       (exactly Z-up at pitch 0)
+```
+
+**⚠️ Caveat that keeps this short of "RVA is stable":** the module loaded at the **same base**
+(`0x7FF74D320000`) both times, so this confirms reproducibility across a restart but **does not test
+ASLR rebasing**. Windows randomises image base per boot, so the rebase test needs a **reboot**, not a
+relaunch. Until then, resolve the address as `GetModuleHandle(NULL) + 0x360F6B0` rather than
+hardcoding the absolute value — correct either way, and free.
+
+**⭐ STEREO WORKS FROM THIS ADDRESS** `[verified-live 2026-09-01, n=1 pair]`. Holding the origin at
+`origin ± 32·left` produced a correct **stereo pair**: same scene from two laterally-offset
+viewpoints, **depth-correct parallax** (a nearby crate swings hugely between frames while distant
+towers barely move), both frames rendering cleanly. This is the operation §6a says
+`stereoRender_separation` performs on `vieworg`. **Per-eye rendering does not require reviving the
+dormant stereo path.** Caveat: these were two *sequential* frames, not two eyes within one frame —
+the geometric primitive is proven, the per-frame delivery is not.
+
+**Rotation needs the whole basis, and partial writes shear** `[verified-live 2026-09-01, n=1]`.
+Holding **only** `forward` rotated 20° about Z (leaving `left`/`up` alone) produced a badly sheared,
+washed-out image with the HUD displaced rather than a clean turn. Proof the vector is consumed by the
+renderer, but a coherent rotation must write `forward` and `left` together — which is why
+`pholdyaw <addr> <deg>` was added the same day (rotates the engine's live basis each frame about Z,
+origin untouched, with a runaway guard).
+
+**❌ `setviewpos` is NOT registered on retail** `[verified-live 2026-09-01, n=1]` — `Unknown command
+'setviewpos'`. It exists in the engine (it is in `DOOMLegacyMod`'s published 377-command list, §9),
+but the proposed "free cross-check of §6h via `setviewpos`" is **not free on retail**; it needs the
+console gate opened first.
+
+**Why the elevated-camera test worked at all — it is a designed path, not luck** `[reported,
+2026-09-01, via /gr]`. DOOM 2016 ships **Photo Mode**: a player-facing, ungated, detached free camera
+(Options → Game → "DOOM Photo Mode [BETA]", from Mission Select, then `` ` ``). The camera flies free
+with WASD while the game keeps running, and **the player is invisible with no third-person model**.
+So the engine was built to render correctly from a camera that is not the player's. Note
+`pm_photoModeMaxDist "5000"` — very likely the engine's own leash `[inferred-static]`, roughly
+**eighty times** our 64-unit `HOLD_MAX_DELTA`. Not an argument for removing the clamp; an argument
+that a far larger safe envelope exists.
+
+**The HUD loss is NOT a culling effect** `[reported, 2026-09-01, via /gr]` — ruled out by a
+frame-by-frame graphics study: the UI is drawn to **its own render target** and composited **last**,
+so a screen-space overlay cannot be culled by moving the world camera. (The *weapon* is the ordinary
+case — it is in the world depth pre-pass, so a displaced camera plausibly puts it out of frame.)
+Leading hypothesis `[hypothesis]`: the HUD loss is a **game-state response** — either the engine has
+a first-class "the view is not the player's" state that suppresses first-person elements (which is
+precisely what Photo Mode does), or the address is read by **game code as well as the renderer**,
+which the image-region location makes plausible and which would make it more powerful *and more
+dangerous* than §6h claims. **Cheapest test, no code: enter Photo Mode and see whether the HUD and
+weapon disappear the same way.**
+
+**If it is state, §6f and §6h are a division of labour, not rivals:** write §6h's global when the
+engine *should* know the camera moved; write §6f's per-draw GPU copies when **only the picture**
+should move — and "only the picture moves, and differently per eye" is exactly the stereo
+requirement.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
@@ -427,10 +525,29 @@ a free zero-code lever is gated off by production mode. See §4a.
   | `VK_OEM_8` (0xDF) | **unmapped** | what the 2026-08-31 note recorded — sends nothing at all |
   | `VK_OEM_7` (0xDE) | **0x29** | the key DOOM's console is actually on, here |
 
-  This **supersedes** the 2026-08-31 reading (`VK_OEM_3 → 0x28`, console on `VK_OEM_8`); neither
-  number reproduces today. **Do not carry a VK constant between machines or sessions.** Ask the
-  running system: `MapVirtualKeyA(vk, 0)` forward, `MapVirtualKeyA(scan, 1)` backward. DirectInput
-  binds the physical **scancode 0x29** — that is the stable fact; the VK that reaches it is not.
+  **⚠️ CORRECTED LATER THE SAME DAY — both readings are right, and the LAYOUT is what moved.** A
+  relaunch a few hours later reported layout **`0x08090809`**, under which scancode `0x29` is reached
+  by **`VK_OEM_8` (0xDF)** — exactly what the 2026-08-31 note recorded — while `VK_OEM_3` (0xC0)
+  maps to `0x28`, also as recorded. Nobody mis-measured; **the active layout differed between two
+  launches of the same game on the same machine, hours apart.** So:
+
+  | | morning launch | afternoon launch |
+  |---|---|---|
+  | layout | `0x04250425` | `0x08090809` |
+  | VK reaching scancode `0x29` | `0xDE` | `0xDF` |
+  | `VK_OEM_3` (0xC0) → | `0x1A` | `0x28` |
+
+  **The rule this earns is stronger than "layouts differ between machines":** anything cached — a
+  constant in code, a value in this dossier, a helper script written earlier in the same session —
+  can be stale by the next launch. DirectInput binds the physical **scancode 0x29**; that is the
+  stable fact, and the VK that reaches it is not. **Send the scancode** (`scan 0x29`, added to the
+  proxy 2026-09-01) or resolve the VK at the moment of use from the layout of the **game's own UI
+  thread**: `GetKeyboardLayout(GetWindowThreadProcessId(hwnd, NULL))` then
+  `MapVirtualKeyExA(0x29, MAPVK_VSC_TO_VK, hkl)`.
+
+  **The dead-key behaviour is layout-dependent too:** on the morning layout the console key composed
+  with the next character; on the afternoon layout it did not. Keep the space-then-backspace flush
+  anyway — two keystrokes, harmless when unnecessary, and you cannot know in advance.
 
   **(b) It is a DEAD KEY.** Opening the console leaves an accent pending, and the **first character
   typed afterwards composes with it**: `getviewpos` arrives as `Çgetviewpos`, `com_...` as `*om_...`.
@@ -666,6 +783,30 @@ a free zero-code lever is gated off by production mode. See §4a.
   — don't plan around it.
 
 ## 12. Open risks toward the North Star
+
+- **✅ LARGELY ANSWERED (2026-09-01) — gated cvars are HIDDEN, not absent** `[reported, via /gr]`.
+  The long-open question ("are the gated cvars merely hidden or never constructed?") now has a
+  strong public answer: **`DOOMLegacyMod`** (emoose, updated 2024 by brunoanc) re-adds the hidden
+  console on **retail without dev mode**, via a `dinput8.dll` proxy that patches before the engine
+  initialises, and reports **39/170 → 290/6592** commands/cvars. Our own live measurement was
+  **40/171** `[verified-live 2026-08-26]` — the same gate, to within one each. 6,592 cvars *with
+  help text* is an enumeration of structures that exist, not an invention. Not `[verified]`:
+  untested on our build. Caveats: closed source, no licence stated, targets "the April 2024 Update"
+  while we run `20240321-104810-ginger-fuchsia`, and it hooks early — as does our `vulkan-1` proxy,
+  so run either alone first. **Whether to install it is the user's call, not a session's.**
+- **The gated command set includes the camera tools** `[reported]`: `rp` ("Displays or modifies a
+  renderparm"), `renameRenderProg`, `setviewpos`, `setplayerviewpos`, `envshot`, `testImage`. `rp`
+  would be a **typed, named** read/write window onto `globalViewOrigin`, `viewMatrix*`,
+  `projectionMatrix*` and the `explicitProjectionMatrix` / `explicitFov_*` family — the sanctioned
+  equivalent of what §6h does by writing twelve raw floats. **⚠️ But `setviewpos` is confirmed NOT
+  registered on retail** `[verified-live 2026-09-01]`, so none of this is reachable until the gate
+  is opened.
+- **⚠️ One open item needs a human with a browser, not a session.** `doom_cvars.txt` in that repo is
+  **695 KB / 11,103 lines**; automated fetch reads only the head of the alphabet, and a first pass
+  wrongly reported "no `stereoRender_*`" — an invalid negative, proven so because the same pass also
+  missed `g_fov`, which we have verified live. **Two minutes with Ctrl-F for `stereoRender`,
+  `multiView`, `com_production`, `explicitProjection` would confirm or kill the dormant stereo
+  path's reachability from a public source**, before anything is installed or launched.
 - **REVISED (2026-08-26).** The original entry assumed "id Tech 6 has no known prior turnkey VR
   injector, expect a fully manual camera-matrix hunt." That is now too pessimistic. The engine has
   a native stereo-3D path (§6a), named override fields (§6c), a named renderparm table (§6b), a
@@ -698,7 +839,28 @@ a free zero-code lever is gated off by production mode. See §4a.
 
 ## 13. Next steps
 
-### Current order (as of 2026-09-01)
+### Current order (as of 2026-09-01, afternoon)
+
+The camera is found, confirmed across a restart, provably steerable in translation, and **stereo has
+been produced from it live**. The cheapest remaining wins are mostly *reading* rather than building.
+
+1. **Enter Photo Mode and watch the HUD** (§6h-2). No code, no console, no risk: Options → Game →
+   "DOOM Photo Mode [BETA]", from Mission Select, then `` ` ``. If the HUD and weapon vanish the same
+   way they do under our displacement, we are riding a designed engine path rather than breaking one,
+   and the HUD question changes from "bug to fix" to "state to control".
+2. **Install the new proxy build at the next launch and run `pholdyaw <addr> 20`** — the coherent
+   basis rotation. Translation is proven; rotation is the last untested half of the transform.
+3. **Ask the user for two minutes with a browser** on `doom_cvars.txt` (§12) — Ctrl-F for
+   `stereoRender`, `multiView`, `com_production`, `explicitProjection`. Confirms or kills the
+   dormant stereo path from a public source before anything is installed.
+4. **Test the rebase after a reboot**, not a relaunch — the only thing still standing between
+   `[verified-live n=2]` and "the RVA is stable". Use `GetModuleHandle(NULL) + 0x360F6B0` meanwhile.
+5. **Two eyes in ONE frame.** The stereo pair so far is two sequential frames. The per-frame delivery
+   question is now the real one, and §6f's per-draw GPU copies are the likely place for it —
+   especially if the HUD loss turns out to be game state (§6h-2), which would make §6f the right
+   layer for "only the picture moves".
+
+### Superseded order (as of 2026-09-01, morning)
 
 The camera is found, isolated to a single static global, and provably steerable in translation
 (§6h). What is open is no longer *where* it is but *how much control it gives*.
