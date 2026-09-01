@@ -88,7 +88,7 @@ positional geometry appears to be what this lineage was built to produce.
 - Our binary's own doc-comment really does say *"two identical ones in stereo-3D (both centered
   between the eyes)"* `[inferred-static, 2026-08-26]`. That is DOOM 2016's text, about DOOM 2016.
 - BFG's source really does say `vieworg` *"has already been adjusted for stereo world seperation"*
-  `[verified from published first-party source, 2026-09-01]`. That is id Tech 4/5-era text, four
+  `[reported 2026-09-01]`, from id's own published GPL source. That is id Tech 4/5-era text, four
   years and one engine generation earlier.
 
 Plausible reconciliations, none of them established: the DOOM 2016 comment may describe the

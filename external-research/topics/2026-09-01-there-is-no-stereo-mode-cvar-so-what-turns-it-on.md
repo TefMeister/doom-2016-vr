@@ -60,8 +60,8 @@ the second one is the better one to have:
 
 ## What is NOT established
 
-- **The BFG shape is `[verified from published first-party source, 2026-09-01]` for id Tech 4/5, and
-  `[hypothesis]` for id Tech 6.** One engine generation and several years separate them. The cvar
+- **The BFG shape is `[reported 2026-09-01]` — from id's own published GPL source — for id Tech 4/5,
+  and `[hypothesis]` for id Tech 6.** One engine generation and several years separate them. The cvar
   inventory is consistent with the shape carrying forward; consistency is not proof.
 - **The dispatch loop has not been located in either engine.** For BFG it is upstream of
   `tr_backend_draw.cpp`; for DOOM 2016 nobody has looked.
