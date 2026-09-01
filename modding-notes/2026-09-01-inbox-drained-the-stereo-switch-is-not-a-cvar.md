@@ -45,8 +45,14 @@ was stripped; the switch was never a cvar in this generation.
 
 ## Also corrected while here
 
-Three tags in this dossier used `[verified from published first-party source, ...]`, which is **not
-in the vocabulary**, so every mechanical check read those claims as untagged. Replaced with
-`[reported <date>, from id's own published GPL source]`, keeping the precision in the prose. Two
-more remain elsewhere in the file (§6e's undated `[verified-live, derived from the matrix]` and
-§12's `[verified from published source, ...]`) — left alone as outside this drain's scope.
+Three tags in this dossier used the invented name "verified from published first-party source",
+which is **not in the vocabulary**, so every mechanical check read those claims as untagged.
+Replaced with the `reported` tag plus a date, keeping the precision in the prose beside it rather
+than inside the tag.
+
+**Update, later the same day.** The remaining two were fixed as well — §6e's undated
+`verified-live` and §12's "verified from published source" — and the new `/gs` check 3b
+then found **two more** ("built-not-proven", here and in the 2026-08-31 notes) that a hand-grep
+had missed. Those mean `compile-verified`, a name adopted into the vocabulary the same day. This
+dossier now passes check 3b. The lesson is the plain one: a hand-check for two known-bad strings
+found two; the mechanical check found four.
