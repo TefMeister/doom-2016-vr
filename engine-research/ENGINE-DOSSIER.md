@@ -65,7 +65,7 @@ already known (§6e). Next: build the `opengl32` proxy.
   remains, which is normal and not an obstacle.
 - Launch-time-debugger behaviour: **not yet tested live.**
 - **✅ INJECTION VECTOR THAT WORKS — `vulkan-1.dll` proxy, VERIFIED IN-GAME 2026-08-26.** Our M0
-  proxy (`-staging/proxy-vulkan/`) loaded into `DOOMx64vk.exe`, resolved **246/246 exports with none
+  proxy (`staging/doom-2016-vr/proxy-vulkan/`) loaded into `DOOMx64vk.exe`, resolved **246/246 exports with none
   missing**, observed instance/device/swapchain creation, and forwarded **4866 frames** of real
   gameplay with no crash and no visual artefact. Uninstall is deleting one file. **We are inside
   DOOM's Vulkan renderer.**
@@ -1055,15 +1055,23 @@ file, and one `curl` did it `[measured 2026-09-01]`.
 
 1. **Two eyes in ONE frame.** The stereo pair so far is two **sequential** frames, so per-frame
    delivery is now the real question, and §6f's per-draw GPU copies are the likely layer.
-   **Start with `multiView_60Hz`** — its own help text is *"0 = alternate frame rendering,
-   1 = render both each frame"*, which is the engine's own name for exactly this question. It is a
-   **registered, ungated** cvar, so it needs no gate work at all.
+   **⚠️ `multiView_60Hz` is NOT a shortcut — corrected 2026-09-01 (evening), per an `/sr` drop.**
+   Its help text (*"0 = alternate frame rendering, 1 = render both each frame"*) is the engine's own
+   name for exactly this question, but the claim that it is a "registered, ungated cvar needing no
+   gate work" was **wrong and contradicted two other sections of this file**: §9 lists it under
+   *never registered on retail* `[verified-live 2026-08-26]`, and §12 found it in the **published
+   6,572-cvar dump**, which enumerates the **unlocked** set, not retail's 171. It sits behind the
+   console gate exactly like `stereoRender_*`. **Treat it as a description of the goal, not a route
+   to it.**
 2. **Mine the reflection database for the eye field — static, no launch needed** (§6d,
    §6a). Look for an eye-buffer field on the view object (BFG's is `viewEyeBuffer`). Since
    §6a established the stereo switch is a **call argument, not a cvar**, this is now the most
    promising route to the on-switch, and it costs no in-game time.
-3. **Test the rebase after a reboot**, not a relaunch — still the only thing between
-   `[verified-live n=2]` and "the RVA is stable". Use `GetModuleHandle(NULL) + 0x360F6B0` meanwhile.
+3. **✅ DONE — the rebase test is closed** `[verified-live 2026-09-01, n=4 process instances across
+   two load bases]`. It did not need a reboot after all: the module rebased on its own
+   (`0x7FF74D320000` → `0x7FF71A5E0000`, last boot 2026-08-25) and `base + 0x360F6B0` still held the
+   camera, matching `getviewpos` with the basis predicted before the dump. **The offset is the
+   invariant.** Keep resolving it as module base + `0x360F6B0`, never absolute.
 4. **One cheap launch probe: `+com_allowconsole 1`** (§11). A gate name from this engine's own
    family, applied at launch. Read `listCvars`/`listCmds` counts before and after against the
    **171 / 40** baseline; change one thing only. Ranked last deliberately — §6a means even
