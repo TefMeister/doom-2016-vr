@@ -801,12 +801,39 @@ a free zero-code lever is gated off by production mode. See §4a.
   equivalent of what §6h does by writing twelve raw floats. **⚠️ But `setviewpos` is confirmed NOT
   registered on retail** `[verified-live 2026-09-01]`, so none of this is reachable until the gate
   is opened.
-- **⚠️ One open item needs a human with a browser, not a session.** `doom_cvars.txt` in that repo is
-  **695 KB / 11,103 lines**; automated fetch reads only the head of the alphabet, and a first pass
-  wrongly reported "no `stereoRender_*`" — an invalid negative, proven so because the same pass also
-  missed `g_fov`, which we have verified live. **Two minutes with Ctrl-F for `stereoRender`,
-  `multiView`, `com_production`, `explicitProjection` would confirm or kill the dormant stereo
-  path's reachability from a public source**, before anything is installed or launched.
+- **✅ RESOLVED 2026-09-01 (afternoon) — the full cvar list WAS read, and the dormant stereo cvars
+  ARE in it** `[verified from published source, 2026-09-01, whole file]`. The "needs a human with a
+  browser" note is withdrawn. The obstacle was never the file — it was using a *page fetch* (which
+  truncates) instead of a *download*. `curl -L` retrieved all **711,227 bytes / 11,103 lines /
+  6,572 cvars** in one call.
+  - **Control first, since the earlier negative died on exactly this:** `g_fov` — verified live on
+    our own build — is present at line 3791 ("camera field of view"). The read is sound, so a
+    negative from it now means something.
+  - **`stereoRender_*` — PRESENT, all four**, help text matching our static pass word for word:
+    `stereoRender_separation` "world units from center to eyes" · `stereoRender_screenSeparation`
+    "screen units from center to eyes" · `stereoRender_guiOffset` "shift guis so they don't appear
+    at infinity" · `stereoRender_swapEyes` "swap target buffers for left and right eyes".
+    **The morning claim that they are absent is `[disproved 2026-09-01]`** — truncated read.
+  - **`multiView_60Hz` — PRESENT**: "0 = alternate frame rendering, 1 = render [both each frame]" —
+    precisely the **two-eyes-in-one-frame** switch §13 names as the real remaining stereo question.
+  - **`com_production` — PRESENT**, and so is **`com_forceProductionCvars`** ("Set to force
+    production cvars to specific values during build"), a second lever adjacent to the master gate
+    that we did not know existed.
+  - **⚠️ `explicitProjectionMatrix` / `explicitFov_x|y` / `forceIdentityViewMatrix` — ABSENT.** Not
+    cvars at all; every `explicit*` hit belongs to `ai_`, `pm_`, `fs_` or `prowler_`. §6c's named
+    override fields are **renderparms or code-level fields**, so the route to them is **`rp`** (which
+    IS in the command list), not a cvar set. A valid negative this time — the control passed.
+  - **🚨 The nuance that matters most: there is NO stereo MODE cvar.** Searching the whole file for
+    `stereo` returns those four plus one unrelated sound cvar — nothing selecting
+    `stereoRenderMode_t`, and no `hdmi3d` / `topBottom` / `leftAndRight`. §6a noted the mode cvar's
+    name was unresolvable statically and said "find it live via `listCvars`"; this indicates it is
+    **not a cvar at all**. **Opening the console gate would therefore hand us the stereo path's
+    PARAMETERS but not its ON-SWITCH** — enabling stereo may still require calling engine code. That
+    is a materially different problem from "set a cvar", and it should be settled before anyone
+    treats the gated console as the route to stereo.
+  - **No HMD/Oculus/Rift VR cvars exist** (the `rift` hits are AI demon-spawn resource cvars).
+  - **Method note worth carrying:** `curl -L` the raw file and grep locally. A page fetch that read
+    only the head of the alphabet produced a confident, wrong negative here.
 - **REVISED (2026-08-26).** The original entry assumed "id Tech 6 has no known prior turnkey VR
   injector, expect a fully manual camera-matrix hunt." That is now too pessimistic. The engine has
   a native stereo-3D path (§6a), named override fields (§6c), a named renderparm table (§6b), a
