@@ -437,6 +437,20 @@ which the image-region location makes plausible and which would make it more pow
 dangerous* than §6h claims. **Cheapest test, no code: enter Photo Mode and see whether the HUD and
 weapon disappear the same way.**
 
+**✅ CONFIRMED BY THE USER IN-GAME (2026-09-01) — Photo Mode removes the weapon and HUD altogether**
+`[verified-live 2026-09-01, n=1, user-observed]`. That closes the question. The HUD/weapon loss under
+our displacement is **not damage we cause** — it is **the engine's own designed behaviour whenever
+the view stops being the player's**. Hypothesis (1) above is upheld; hypothesis (2) (game code reads
+the address) is neither needed nor excluded.
+
+**What that changes:**
+- **Nothing is broken, so there is nothing to repair.** "Fix the HUD" was the wrong framing — the
+  right one is "choose which of the engine's two behaviours we want".
+- **But it is a real constraint for VR, not a curiosity.** A VR build wants a (VR-adapted) HUD *and*
+  a displaced camera, and §6h's global gives you the second only by triggering the first. The global
+  is therefore the right lever for a **photo-mode-like detached camera** and the wrong one for
+  **stereo**, where only the picture should move.
+
 **If it is state, §6f and §6h are a division of labour, not rivals:** write §6h's global when the
 engine *should* know the camera moved; write §6f's per-draw GPU copies when **only the picture**
 should move — and "only the picture moves, and differently per eye" is exactly the stereo
