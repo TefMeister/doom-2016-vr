@@ -1,5 +1,24 @@
 # A public tool already defeats the production-mode console gate — and the unlocked command list contains `rp` and `setviewpos`
 
+> ### ⚠️ Outcome, same day — read this before acting on §"Concrete next steps" below
+>
+> **Step 1 of this write-up is wrong and should not be followed.** It asks for a human with a
+> browser to Ctrl-F the cvar list. **A single `curl` downloads the whole 711 KB file** (11,103 lines
+> / 6,572 cvars); the obstacle was the *fetch tool*, never the file size. The modding session did
+> exactly that on 2026-09-01, with a `g_fov` control confirming the read was sound.
+>
+> **Results:** all four `stereoRender_*` present · `multiView_60Hz` present · `com_production`
+> present (plus `com_forceProductionCvars`) · `explicitProjectionMatrix` / `explicitFov_*` /
+> `forceIdentityViewMatrix` **absent as cvars** — they are renderparms, so `rp` is their route ·
+> **no stereo MODE cvar at all** · no HMD/VR cvars. Also `setviewpos` is **not registered on
+> retail** `[verified-live 2026-09-01]`, so the free cross-check suggested below needs the gate
+> opened first.
+>
+> The consequence is followed up in
+> [There is no stereo MODE cvar — so what turns it on?](2026-09-01-there-is-no-stereo-mode-cvar-so-what-turns-it-on.md).
+> Everything else in this file stands. Kept unedited below as the dated snapshot it was, per this
+> lane's convention that `INDEX.md` is the live view.
+
 **Status:** 🆕 new · **Priority:** highest this project has had. This targets
 `ENGINE-DOSSIER.md` §12's biggest open question verbatim — *"are gated cvars merely HIDDEN or never
 CONSTRUCTED?"* — and §9's "❌ NOT available in retail" list, which the dossier itself calls
