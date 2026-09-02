@@ -1,12 +1,7 @@
 # Research index
 
-**Last `/gr` pass: 2026-09-01 (second pass, estate sweep) — CHECK-IN.** Inbox drained: `/gs`'s
-report of off-vocabulary confidence tags. Four tags across three topics normalised to the eight-name
-vocabulary, with the precision moved into the prose beside each. No new research — the FULL pass
-earlier the same day is still current.
-_Earlier the same day — FULL:_ inbox drained (the cvar-list verdict); four of the day's topics
-resolved by the modding side and re-tagged; one new topic on how the stereo path is actually
-switched on, now that the cvar list has shown there is no mode cvar to set.
+**Last `/gr` pass: 2026-09-02 (estate sweep) — CHECK-IN** (board OPEN block + INDEX + the dossier's eye-field lines; no topic re-read)**.** Inbox empty. **Nothing new.** The board's one static item — an eye field on the view object, BFG's `viewEyeBuffer` — is a reflection-database read against files on disk, not a web question, and the FULL pass of 2026-09-01 already carries the BFG source facts it needs. Not searched again.
+_Previous: Last `/gr` pass: 2026-09-01 (second pass, estate sweep) — CHECK-IN. Inbox drained: `/gs`'s report of off-vocabulary confidence tags. Four tags across three topics normalised to the eight-name vocabulary, with the pre…_
 
 Every research topic gathered for this project, newest first. Each row links to a self-contained
 write-up in `topics/`. Status tags:
