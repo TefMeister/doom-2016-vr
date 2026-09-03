@@ -1,0 +1,764 @@
+[14:48:03.790] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[14:48:03.792] real vulkan-1.dll loaded at 00007FFBB8C80000; resolved 246/246 exports (0 missing)
+[14:48:04.584] vkCreateInstance -> 0 (instance=000002A97B3F1890)
+[14:48:04.736] vkCreateDevice -> 0 (physDev=000002A905449360 device=000002A90549B290)
+[14:48:05.016] vkMapMemory #1 mem=0x2a9058c0490 offset=0 size=18446744073709551615 -> 000002A90B2E0000
+[14:48:05.028] vkMapMemory #2 mem=0x2a9058c0f70 offset=0 size=18446744073709551615 -> 000002A9102E0000
+[14:48:05.038] vkMapMemory #3 mem=0x2a9058c1c20 offset=0 size=67108864 -> 000002A9160E0000
+[14:48:05.295] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[14:48:05.295] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[14:48:05.714] vkMapMemory #4 mem=0x2a938800470 offset=0 size=76800 -> 000002A9089BF000
+[14:48:05.715] vkMapMemory #5 mem=0x2a938800bb0 offset=0 size=76800 -> 000002A9089D2000
+[14:48:05.715] vkMapMemory #6 mem=0x2a9388012f0 offset=0 size=76800 -> 000002A9089E5000
+[14:48:18.432] [autoinput] DirectInput8 object seen; CreateDevice instrumented
+[14:48:18.432] [autoinput] DirectInput8 CreateDevice(SysMouse) -> 0x00000000
+[14:48:18.432] [autoinput] SysMouse device hooked (GetDeviceState + GetDeviceData) -- this is the look path
+[14:48:18.443] [autoinput] NOTE: the mouse device uses BUFFERED GetDeviceData. Immediate-mode lX/lY injection will NOT be seen -- event fabrication is needed here.
+[14:48:18.444] [autoinput] DirectInput8 CreateDevice(SysKeyboard) -> 0x00000000
+[14:48:20.260] vkQueuePresentKHR frame 1 (queue=000002A9056C64C0)
+[14:48:20.643] vkQueuePresentKHR frame 10 (queue=000002A9056C64C0)
+[14:48:22.251] vkQueuePresentKHR frame 100 (queue=000002A9056C64C0)
+[14:48:22.584] [camhunt] ready. Commands: snapa/snapb/dump/tol. NUMPAD 1/2/3 still work as a manual fallback.
+[14:48:22.585] [autoinput] window=000000000033098E  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[14:48:22.585] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[14:48:22.585] [autoinput]   sendinput          available  
+[14:48:22.585] [autoinput]   postmessage        available  
+[14:48:22.586] [autoinput]   vigem-pad          unavailable  -- ViGEmBus not installed (one-time admin install; DOOM imports XInput, so this is the best bet)
+[14:48:22.586] [auto] automation ON (env). Append commands to: D:\Program Files (x86)\Steam\steamapps\common\DOOM\doom_automation_cmds.txt
+[14:48:22.586] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[14:48:37.251] vkQueuePresentKHR frame 1000 (queue=000002A9056C64C0)
+[14:48:56.741] vkQueuePresentKHR frame 2000 (queue=000002A9056C64C0)
+[14:49:18.020] vkQueuePresentKHR frame 3000 (queue=000002A9056C64C0)
+[14:49:22.790] vkMapMemory #7 mem=0x2a99e216be0 offset=0 size=67108864 -> 000002A9B0EB0000
+[14:49:47.987] vkQueuePresentKHR frame 4000 (queue=000002A9056C64C0)
+[14:50:30.349] vkQueuePresentKHR frame 5000 (queue=000002A9056C64C0)
+[14:51:00.917] vkQueuePresentKHR frame 6000 (queue=000002A9056C64C0)
+[14:51:21.511] vkQueuePresentKHR frame 7000 (queue=000002A9056C64C0)
+[14:51:38.179] vkQueuePresentKHR frame 8000 (queue=000002A9056C64C0)
+[14:51:41.145] [auto] BEGIN "key tilde"
+[14:51:41.145] [auto] key 0xC0 queued
+[14:51:41.145] [auto] END   "key tilde"
+[14:51:54.846] vkQueuePresentKHR frame 9000 (queue=000002A9056C64C0)
+[14:52:11.515] vkQueuePresentKHR frame 10000 (queue=000002A9056C64C0)
+[14:52:19.651] [auto] BEGIN "status"
+[14:52:19.651] [auto] status: tol=0.00100  budget=96 MB  stride=16  snapshotA=-1 candidates  live mappings=7
+[14:52:19.651] [auto]   inproc-keystate    available    [default]  -- 3 key-state hook(s) + cursor
+[14:52:19.651] [auto]   sendinput          available  
+[14:52:19.651] [auto]   postmessage        available  
+[14:52:19.651] [auto]   vigem-pad          unavailable  -- ViGEmBus not installed (one-time admin install; DOOM imports XInput, so this is the best bet)
+[14:52:19.652] [auto] END   "status"
+[14:52:28.183] vkQueuePresentKHR frame 11000 (queue=000002A9056C64C0)
+[14:52:43.650] [auto] BEGIN "type wwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+[14:52:43.651] [auto] typing "wwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+[14:52:43.651] [auto] END   "type wwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+[14:52:44.852] vkQueuePresentKHR frame 12000 (queue=000002A9056C64C0)
+[14:53:01.520] vkQueuePresentKHR frame 13000 (queue=000002A9056C64C0)
+[14:53:18.242] vkQueuePresentKHR frame 14000 (queue=000002A9056C64C0)
+[14:53:34.909] vkQueuePresentKHR frame 15000 (queue=000002A9056C64C0)
+[14:53:51.576] vkQueuePresentKHR frame 16000 (queue=000002A9056C64C0)
+[14:54:08.242] vkQueuePresentKHR frame 17000 (queue=000002A9056C64C0)
+[14:54:09.910] [auto] BEGIN "key 0xDF"
+[14:54:09.910] [auto] key 0xDF queued
+[14:54:09.910] [auto] END   "key 0xDF"
+[14:54:24.960] vkQueuePresentKHR frame 18000 (queue=000002A9056C64C0)
+[14:54:40.165] [auto] BEGIN "type com_showCameraPosition 1"
+[14:54:40.165] [auto] typing "com_showCameraPosition 1"
+[14:54:40.165] [auto] END   "type com_showCameraPosition 1"
+[14:54:41.627] vkQueuePresentKHR frame 19000 (queue=000002A9056C64C0)
+[14:54:58.294] vkQueuePresentKHR frame 20000 (queue=000002A9056C64C0)
+[14:55:13.161] [auto] BEGIN "key enter"
+[14:55:13.161] [auto] key 0x0D queued
+[14:55:13.161] [auto] END   "key enter"
+[14:55:14.960] vkQueuePresentKHR frame 21000 (queue=000002A9056C64C0)
+[14:55:15.161] [auto] BEGIN "key 0xDF"
+[14:55:15.161] [auto] key 0xDF queued
+[14:55:15.161] [auto] END   "key 0xDF"
+[14:55:31.671] vkQueuePresentKHR frame 22000 (queue=000002A9056C64C0)
+[14:55:45.173] [auto] BEGIN "key 0xDF"
+[14:55:45.173] [auto] key 0xDF queued
+[14:55:45.173] [auto] END   "key 0xDF"
+[14:55:47.422] [auto] BEGIN "type getviewpos"
+[14:55:47.422] [auto] typing "getviewpos"
+[14:55:47.422] [auto] END   "type getviewpos"
+[14:55:48.339] vkQueuePresentKHR frame 23000 (queue=000002A9056C64C0)
+[14:55:51.423] [auto] BEGIN "key enter"
+[14:55:51.423] [auto] key 0x0D queued
+[14:55:51.423] [auto] END   "key enter"
+[14:56:05.006] vkQueuePresentKHR frame 24000 (queue=000002A9056C64C0)
+[14:56:18.450] [auto] BEGIN "findvec 2516.2 5977.12 6328.12 2.0"
+[14:56:21.385] [camhunt] HIT 1 at 000002A919CE0320  (packed xyz)  region 2 flushes=24806
+[14:56:21.385] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.385] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.386] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.386] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.386] [camhunt] HIT 2 at 000002A919CE0B20  (packed xyz)  region 2 flushes=24806
+[14:56:21.386] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.386] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.386] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.386] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.387] [camhunt] HIT 3 at 000002A919CE1A20  (packed xyz)  region 2 flushes=24806
+[14:56:21.387] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.387] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.387] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.387] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.387] [camhunt] HIT 4 at 000002A919CE2520  (packed xyz)  region 2 flushes=24806
+[14:56:21.387] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.387] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.387] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.388] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.388] [camhunt] HIT 5 at 000002A919CE2A20  (packed xyz)  region 2 flushes=24806
+[14:56:21.388] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.388] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.388] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.388] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.388] [camhunt] HIT 6 at 000002A919CE3520  (packed xyz)  region 2 flushes=24806
+[14:56:21.389] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.389] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.389] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.389] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.389] [camhunt] HIT 7 at 000002A919CE4850  (packed xyz)  region 2 flushes=24806
+[14:56:21.389] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.389] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.390] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.390] [camhunt]     7556.845  5504.073  7521.490  1.000
+[14:56:21.390] [camhunt] HIT 8 at 000002A919CE4A50  (packed xyz)  region 2 flushes=24806
+[14:56:21.390] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.390] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.390] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.390] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.390] [camhunt] HIT 9 at 000002A919CE5020  (packed xyz)  region 2 flushes=24806
+[14:56:21.391] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.391] [camhunt]     1.000  1.000  0.000  0.000
+[14:56:21.391] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.391] [camhunt]     0.000  0.000 -1.000 -3.000
+[14:56:21.391] [camhunt] HIT 10 at 000002A919CE5300  (packed xyz)  region 2 flushes=24806
+[14:56:21.391] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.391] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:56:21.391] [camhunt]     0.000  1.000  0.000  12.000
+[14:56:21.391] [camhunt]     2.000  2.000  2.000  2.000
+[14:56:21.391] [camhunt] HIT 11 at 000002A919CE5820  (packed xyz)  region 2 flushes=24806
+[14:56:21.392] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.392] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.392] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.392] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.392] [camhunt] HIT 12 at 000002A919CE5E20  (packed xyz)  region 2 flushes=24806
+[14:56:21.392] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.392] [camhunt]     1.000  1.000  0.000  0.000
+[14:56:21.392] [camhunt]     0.594 -1.285  0.415  3549.773
+[14:56:21.392] [camhunt]     0.047 -1.620  0.050  5830.420
+[14:56:21.392] [camhunt] HIT 13 at 000002A919CE6200  (packed xyz)  region 2 flushes=24806
+[14:56:21.393] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.393] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:56:21.393] [camhunt]     0.000  1.000  0.000  12.000
+[14:56:21.393] [camhunt]     2.000  2.000  2.000  2.000
+[14:56:21.393] [camhunt] HIT 14 at 000002A919CE7050  (packed xyz)  region 2 flushes=24806
+[14:56:21.393] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.393] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.393] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.393] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.393] [camhunt] HIT 15 at 000002A919CE7D50  (packed xyz)  region 2 flushes=24806
+[14:56:21.393] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.394] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.394] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.394] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.394] [camhunt] HIT 16 at 000002A919CE8550  (packed xyz)  region 2 flushes=24806
+[14:56:21.394] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.394] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.394] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.394] [camhunt]     0.147  0.235  0.223  0.258
+[14:56:21.394] [camhunt] HIT 17 at 000002A919CE8750  (packed xyz)  region 2 flushes=24806
+[14:56:21.395] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.395] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.395] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.395] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.395] [camhunt] HIT 18 at 000002A919CE8C20  (packed xyz)  region 2 flushes=24806
+[14:56:21.395] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.395] [camhunt]     1.000  1.000  0.000  0.000
+[14:56:21.395] [camhunt]    -1.800 -0.014 -0.105 -185.145
+[14:56:21.395] [camhunt]     1.000  0.000  0.000  0.000
+[14:56:21.396] [camhunt] HIT 19 at 000002A919CE8E00  (packed xyz)  region 2 flushes=24806
+[14:56:21.396] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.396] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:56:21.396] [camhunt]     0.000  1.000  0.000  12.000
+[14:56:21.396] [camhunt]     2.000  2.000  2.000  2.000
+[14:56:21.396] [camhunt] HIT 20 at 000002A919CE9840  (packed xyz)  region 2 flushes=24806
+[14:56:21.396] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.396] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.397] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.397] [camhunt]     1.000  0.168  0.000  1.000
+[14:56:21.397] [camhunt] HIT 21 at 000002A919CE9E20  (packed xyz)  region 2 flushes=24806
+[14:56:21.397] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.397] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.397] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.397] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.397] [camhunt] HIT 22 at 000002A919CEA240  (packed xyz)  region 2 flushes=24806
+[14:56:21.397] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.398] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.398] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.398] [camhunt]    -0.741  0.012  0.940  7519.946
+[14:56:21.398] [camhunt] HIT 23 at 000002A919CEA860  (packed xyz)  region 2 flushes=24806
+[14:56:21.398] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.398] [camhunt]     1.000  0.000  0.400  1.000
+[14:56:21.398] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.398] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.398] [camhunt] HIT 24 at 000002A919CEAB00  (packed xyz)  region 2 flushes=24806
+[14:56:21.399] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.399] [camhunt]     0.000  0.000  0.000  3.000
+[14:56:21.399] [camhunt]     100.000  100.000  100.000  3.000
+[14:56:21.399] [camhunt]     0.000  0.000  0.000  1.000
+[14:56:21.399] [camhunt] HIT 25 at 000002A919CEAC30  (packed xyz)  region 2 flushes=24806
+[14:56:21.399] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.399] [camhunt]     287.719  287.719  287.719  287.719
+[14:56:21.399] [camhunt]     0.563 -0.826 -0.000  3521.201
+[14:56:21.400] [camhunt]     0.049  0.034  0.998 -6642.410
+[14:56:21.400] [camhunt] HIT 26 at 000002A919CEAF30  (packed xyz)  region 2 flushes=24806
+[14:56:21.400] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.400] [camhunt]     289.190  289.190  289.190  289.190
+[14:56:21.400] [camhunt]     0.563 -0.826 -0.000  3521.201
+[14:56:21.400] [camhunt]     0.049  0.034  0.998 -6642.410
+[14:56:21.401] [camhunt] HIT 27 at 000002A919CEB260  (packed xyz)  region 2 flushes=24806
+[14:56:21.401] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.401] [camhunt]     1.000  0.658  0.165  1.000
+[14:56:21.401] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.401] [camhunt]     1.000  0.552  0.254  1.000
+[14:56:21.401] [camhunt] HIT 28 at 000002A919CEB860  (packed xyz)  region 2 flushes=24806
+[14:56:21.401] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.401] [camhunt]     0.000  0.000  128.000  4.023
+[14:56:21.401] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.402] [camhunt]     1.000  2.000  0.000  0.000
+[14:56:21.402] [camhunt] HIT 29 at 000002A919CEB950  (packed xyz)  region 2 flushes=24806
+[14:56:21.402] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.402] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.402] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.402] [camhunt]     1.000  0.216  0.006  0.000
+[14:56:21.402] [camhunt] HIT 30 at 000002A919CEBB50  (packed xyz)  region 2 flushes=24806
+[14:56:21.402] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.402] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.403] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.403] [camhunt]     1.000  0.216  0.006  0.000
+[14:56:21.403] [camhunt] HIT 31 at 000002A919CEBD60  (packed xyz)  region 2 flushes=24806
+[14:56:21.403] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.403] [camhunt]     0.000  0.000  128.000  4.023
+[14:56:21.403] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.403] [camhunt]     14.286 -0.000  2.410 -0.222
+[14:56:21.403] [camhunt] HIT 32 at 000002A919CEC350  (packed xyz)  region 2 flushes=24806
+[14:56:21.404] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.404] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.404] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.404] [camhunt]     1.000  0.216  0.006  0.000
+[14:56:21.404] [camhunt] HIT 33 at 000002A919CECE50  (packed xyz)  region 2 flushes=24806
+[14:56:21.404] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.404] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.404] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.404] [camhunt]     1.000  0.216  0.006  0.000
+[14:56:21.405] [camhunt] HIT 34 at 000002A919CED100  (packed xyz)  region 2 flushes=24806
+[14:56:21.405] [camhunt]     2516.203  5977.121  6328.120  1.000
+[14:56:21.405] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.405] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.405] [camhunt]     512.000  512.000  0.000  0.000
+[14:56:21.405] [camhunt] HIT 35 at 000002A919CED700  (packed xyz)  region 2 flushes=24806
+[14:56:21.406] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.406] [camhunt]     0.000  0.000 -1.000 -3.000
+[14:56:21.406] [camhunt]     0.000  0.000  128.000  4.023
+[14:56:21.406] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.406] [camhunt] HIT 36 at 000002A919CEE960  (packed xyz)  region 2 flushes=24806
+[14:56:21.406] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.406] [camhunt]     0.100 -0.003 -0.002  1.796
+[14:56:21.406] [camhunt]     0.999 -0.030 -0.021  20.960
+[14:56:21.407] [camhunt]    -0.061 -1.959 -0.098  11.907
+[14:56:21.407] [camhunt] HIT 37 at 000002A919CEED60  (packed xyz)  region 2 flushes=24806
+[14:56:21.407] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.407] [camhunt]    -0.039 -0.040  0.998  6319.167
+[14:56:21.407] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.407] [camhunt]     1.000  2.000  0.000  0.000
+[14:56:21.407] [camhunt] HIT 38 at 000002A919CEEF60  (packed xyz)  region 2 flushes=24806
+[14:56:21.407] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.408] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.408] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.408] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.408] [camhunt] HIT 39 at 000002A919CEF660  (packed xyz)  region 2 flushes=24806
+[14:56:21.408] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.408] [camhunt]     1.000  0.000  0.400  1.000
+[14:56:21.408] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.409] [camhunt]     1.000  2.000  0.000  0.000
+[14:56:21.409] [camhunt] HIT 40 at 000002A919CEFC20  (packed xyz)  region 2 flushes=24806
+[14:56:21.409] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.409] [camhunt]     1.000  1.000  0.000  0.000
+[14:56:21.409] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.409] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.409] [camhunt] HIT 41 at 000002A919CF0350  (packed xyz)  region 2 flushes=24806
+[14:56:21.409] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.409] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.410] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.410] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.410] [camhunt] HIT 42 at 000002A919CF0620  (packed xyz)  region 2 flushes=24806
+[14:56:21.410] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.410] [camhunt]     1.000  1.000  0.000  0.000
+[14:56:21.410] [camhunt]     0.999 -0.035 -0.021  20.958
+[14:56:21.410] [camhunt]     0.805 -0.594  0.000  2536.521
+[14:56:21.411] [camhunt] HIT 43 at 000002A919CF0900  (packed xyz)  region 2 flushes=24806
+[14:56:21.411] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.411] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:56:21.411] [camhunt]     0.000  1.000  0.000  12.000
+[14:56:21.411] [camhunt]     2.000  2.000  2.000  2.000
+[14:56:21.411] [camhunt] HIT 44 at 000002A919CF0C50  (matrix column 3)  region 2 flushes=24806
+[14:56:21.411] [camhunt]     0.825 -0.563  0.049  2516.204
+[14:56:21.412] [camhunt]     0.562  0.826  0.034  5977.121
+[14:56:21.412] [camhunt]    -0.060  0.000  0.998  6328.120
+[14:56:21.412] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.412] [camhunt] HIT 45 at 000002A919CF1450  (packed xyz)  region 2 flushes=24806
+[14:56:21.412] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.412] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.412] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.412] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.412] [camhunt] HIT 46 at 000002A919CF1650  (matrix column 3)  region 2 flushes=24806
+[14:56:21.412] [camhunt]     0.825 -0.563  0.049  2516.204
+[14:56:21.413] [camhunt]     0.562  0.826  0.034  5977.121
+[14:56:21.413] [camhunt]    -0.060  0.000  0.998  6328.120
+[14:56:21.413] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.413] [camhunt] HIT 47 at 000002A919CF1F20  (packed xyz)  region 2 flushes=24806
+[14:56:21.413] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.413] [camhunt]     1.000  1.000  0.000  0.000
+[14:56:21.413] [camhunt]     0.463  10.000  0.582  1.000
+[14:56:21.413] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.413] [camhunt] HIT 48 at 000002A919CF1F50  (packed xyz)  region 2 flushes=24806
+[14:56:21.413] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.414] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.414] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.414] [camhunt]     8.000  8.000  8.000  8.000
+[14:56:21.414] [camhunt] HIT 49 at 000002A919CF2400  (packed xyz)  region 2 flushes=24806
+[14:56:21.414] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.414] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:56:21.414] [camhunt]     0.000  1.000  0.000  12.000
+[14:56:21.414] [camhunt]     2.000  2.000  2.000  2.000
+[14:56:21.414] [camhunt] HIT 50 at 000002A919CF2850  (matrix column 3)  region 2 flushes=24806
+[14:56:21.414] [camhunt]     0.825 -0.563  0.049  2516.204
+[14:56:21.414] [camhunt]     0.562  0.826  0.034  5977.121
+[14:56:21.415] [camhunt]    -0.060  0.000  0.998  6328.120
+[14:56:21.415] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.415] [camhunt] HIT 51 at 000002A919CF2950  (matrix column 3)  region 2 flushes=24806
+[14:56:21.415] [camhunt]     0.825 -0.563  0.049  2516.204
+[14:56:21.415] [camhunt]     0.562  0.826  0.034  5977.121
+[14:56:21.415] [camhunt]    -0.060  0.000  0.998  6328.120
+[14:56:21.415] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.415] [camhunt] HIT 52 at 000002A919CF2D00  (packed xyz)  region 2 flushes=24806
+[14:56:21.415] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.415] [camhunt]     5000.000  5000.000  5000.000  5000.000
+[14:56:21.416] [camhunt]     1.000  1.000 -0.015  0.000
+[14:56:21.416] [camhunt]     1.000  0.552  0.254  1.000
+[14:56:21.416] [camhunt] HIT 53 at 000002A919CF3820  (packed xyz)  region 2 flushes=24806
+[14:56:21.416] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.416] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.416] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.416] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.416] [camhunt] HIT 54 at 000002A919CF3B50  (matrix column 3)  region 2 flushes=24806
+[14:56:21.416] [camhunt]     0.825 -0.563  0.049  2516.204
+[14:56:21.417] [camhunt]     0.562  0.826  0.034  5977.121
+[14:56:21.417] [camhunt]    -0.060  0.000  0.998  6328.120
+[14:56:21.417] [camhunt]     0.000  0.000  0.000  0.000
+[14:56:21.417] [camhunt] HIT 55 at 000002A919CF3D20  (packed xyz)  region 2 flushes=24806
+[14:56:21.417] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.417] [camhunt]     1.000  1.000  0.000  0.000
+[14:56:21.417] [camhunt]     0.973  0.191  0.040  0.000
+[14:56:21.417] [camhunt]     0.212  0.212  0.212  0.212
+[14:56:21.417] [camhunt] HIT 56 at 000002A919CF4020  (packed xyz)  region 2 flushes=24806
+[14:56:21.418] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.418] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.418] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.418] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.418] [camhunt] HIT 57 at 000002A919CF4100  (packed xyz)  region 2 flushes=24806
+[14:56:21.418] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.418] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:56:21.418] [camhunt]     0.000  1.000  0.000  12.000
+[14:56:21.418] [camhunt]     2.000  2.000  2.000  2.000
+[14:56:21.418] [camhunt] HIT 58 at 000002A919CF4350  (packed xyz)  region 2 flushes=24806
+[14:56:21.418] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.419] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.419] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.419] [camhunt]     1.000  0.216  0.006  0.000
+[14:56:21.419] [camhunt] HIT 59 at 000002A919CF4E00  (packed xyz)  region 2 flushes=24806
+[14:56:21.419] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.419] [camhunt]     0.000 -0.014  0.000 -3.826
+[14:56:21.419] [camhunt]    -0.002  0.000  0.959  4.835
+[14:56:21.419] [camhunt]    -0.002  0.000  0.959  7.835
+[14:56:21.419] [camhunt] HIT 60 at 000002A919CF5320  (packed xyz)  region 2 flushes=24806
+[14:56:21.420] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.420] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.420] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.420] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.420] [camhunt] HIT 61 at 000002A919CF5830  (packed xyz)  region 2 flushes=24806
+[14:56:21.420] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.420] [camhunt]     5.000  0.000  0.000  15656.000
+[14:56:21.420] [camhunt]     0.000  5.000  0.000  13008.000
+[14:56:21.420] [camhunt]     0.000  0.000  5.000  6575.163
+[14:56:21.420] [camhunt] HIT 62 at 000002A919CF5920  (packed xyz)  region 2 flushes=24806
+[14:56:21.420] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.421] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.421] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.421] [camhunt]     0.500  0.500  0.000  0.000
+[14:56:21.421] [camhunt] HIT 63 at 000002A919CF5B00  (packed xyz)  region 2 flushes=24806
+[14:56:21.421] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.421] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:56:21.421] [camhunt]     0.000  1.000  0.000  12.000
+[14:56:21.421] [camhunt]     2.000  2.000  2.000  2.000
+[14:56:21.421] [camhunt] HIT 64 at 000002A919CF5D50  (packed xyz)  region 2 flushes=24806
+[14:56:21.421] [camhunt]     2516.204  5977.121  6328.120  1.000
+[14:56:21.421] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:56:21.421] [camhunt]     0.576  0.817  0.000  1.000
+[14:56:21.422] [camhunt]     1.000  1.000  1.000  1.000
+[14:56:21.422] [camhunt] FINDVEC (2516.20 5977.12 6328.12) tol 2.00 -> 64 hit(s) across 1 region(s) [capped at 64]
+[14:56:21.422] [auto] END   "findvec 2516.2 5977.12 6328.12 2.0"
+[14:56:24.674] vkQueuePresentKHR frame 25000 (queue=000002A9056C64C0)
+[14:56:41.384] vkQueuePresentKHR frame 26000 (queue=000002A9056C64C0)
+[14:56:57.934] [auto] BEGIN "key 0xDF"
+[14:56:57.935] [auto] key 0xDF queued
+[14:56:57.935] [auto] END   "key 0xDF"
+[14:56:58.050] vkQueuePresentKHR frame 27000 (queue=000002A9056C64C0)
+[14:57:00.184] [auto] BEGIN "backend sendinput"
+[14:57:00.184] [auto] default backend = sendinput
+[14:57:00.185] [auto] END   "backend sendinput"
+[14:57:00.185] [auto] BEGIN "move fwd 200"
+[14:57:00.185] [auto] move keys=0x1 for 200 frames via sendinput
+[14:57:00.185] [auto] END   "move fwd 200"
+[14:57:03.517] [auto] input released
+[14:57:06.184] [auto] BEGIN "key 0xDF"
+[14:57:06.184] [auto] key 0xDF queued
+[14:57:06.185] [auto] END   "key 0xDF"
+[14:57:08.184] [auto] BEGIN "type getviewpos"
+[14:57:08.184] [auto] typing "getviewpos"
+[14:57:08.184] [auto] END   "type getviewpos"
+[14:57:12.184] [auto] BEGIN "key enter"
+[14:57:12.184] [auto] key 0x0D queued
+[14:57:12.184] [auto] END   "key enter"
+[14:57:14.717] vkQueuePresentKHR frame 28000 (queue=000002A9056C64C0)
+[14:57:31.394] vkQueuePresentKHR frame 29000 (queue=000002A9056C64C0)
+[14:57:36.949] [auto] BEGIN "findvec 2731.8 6212.32 6355.66 2.0"
+[14:57:39.878] [camhunt] HIT 1 at 000002A919CE0250  (matrix column 3)  region 2 flushes=29331
+[14:57:39.878] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.879] [camhunt]     0.562  0.826  0.034  6212.317
+[14:57:39.879] [camhunt]    -0.060  0.000  0.998  6355.658
+[14:57:39.879] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.879] [camhunt] HIT 2 at 000002A919CE0820  (packed xyz)  region 2 flushes=29331
+[14:57:39.879] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.879] [camhunt]     1.000  1.000  0.000  0.000
+[14:57:39.879] [camhunt]    -0.453 -2.651 -0.161  14453.310
+[14:57:39.879] [camhunt]     1.000  0.000  0.000  0.000
+[14:57:39.880] [camhunt] HIT 3 at 000002A919CE0A50  (packed xyz)  region 2 flushes=29331
+[14:57:39.880] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.880] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.880] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.880] [camhunt]     1.000  0.000 -0.000  0.000
+[14:57:39.880] [camhunt] HIT 4 at 000002A919CE0D00  (packed xyz)  region 2 flushes=29331
+[14:57:39.880] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.881] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:57:39.881] [camhunt]     0.000  1.000  0.000  12.000
+[14:57:39.881] [camhunt]     2.000  2.000  2.000  2.000
+[14:57:39.881] [camhunt] HIT 5 at 000002A919CE1650  (packed xyz)  region 2 flushes=29331
+[14:57:39.881] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.881] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.881] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.881] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.882] [camhunt] HIT 6 at 000002A919CE2220  (packed xyz)  region 2 flushes=29331
+[14:57:39.882] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.882] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.882] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.882] [camhunt]     0.500  0.500  0.000  0.000
+[14:57:39.882] [camhunt] HIT 7 at 000002A919CE2A20  (packed xyz)  region 2 flushes=29331
+[14:57:39.882] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.882] [camhunt]     1.000  1.000  0.000  0.000
+[14:57:39.882] [camhunt]    -0.615 -0.507 -0.048  34973.027
+[14:57:39.882] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.882] [camhunt] HIT 8 at 000002A919CE2C00  (packed xyz)  region 2 flushes=29331
+[14:57:39.883] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.883] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:57:39.883] [camhunt]     0.000  1.000  0.000  12.000
+[14:57:39.883] [camhunt]     2.000  2.000  2.000  2.000
+[14:57:39.883] [camhunt] HIT 9 at 000002A919CE3F50  (packed xyz)  region 2 flushes=29331
+[14:57:39.883] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.883] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.883] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.883] [camhunt]     0.000  0.000 -1.000 -3.000
+[14:57:39.883] [camhunt] HIT 10 at 000002A919CE4D50  (packed xyz)  region 2 flushes=29331
+[14:57:39.884] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.884] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.884] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.884] [camhunt]     0.037  0.045  0.009  0.194
+[14:57:39.884] [camhunt] HIT 11 at 000002A919CE5350  (packed xyz)  region 2 flushes=29331
+[14:57:39.884] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.884] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.884] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.884] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.884] [camhunt] HIT 12 at 000002A919CE5B20  (packed xyz)  region 2 flushes=29331
+[14:57:39.884] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.885] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.885] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.885] [camhunt]     0.500  0.500  0.000  0.000
+[14:57:39.885] [camhunt] HIT 13 at 000002A919CE5F40  (packed xyz)  region 2 flushes=29331
+[14:57:39.885] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.885] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.886] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.886] [camhunt]     0.000  1.000  0.000  0.000
+[14:57:39.886] [camhunt] HIT 14 at 000002A919CE6560  (packed xyz)  region 2 flushes=29331
+[14:57:39.886] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.886] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.886] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.887] [camhunt]     1.000  2.000  0.000  0.000
+[14:57:39.887] [camhunt] HIT 15 at 000002A919CE6600  (packed xyz)  region 2 flushes=29331
+[14:57:39.887] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.887] [camhunt]     0.000  0.000  0.000  1.000
+[14:57:39.887] [camhunt]     1.000  0.000  0.000  0.000
+[14:57:39.887] [camhunt]     0.100  0.250  1.000  0.000
+[14:57:39.887] [camhunt] HIT 16 at 000002A919CE6C30  (packed xyz)  region 2 flushes=29331
+[14:57:39.887] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.888] [camhunt]     361.860  361.860  361.860  361.860
+[14:57:39.888] [camhunt]     0.563 -0.826 -0.000  3594.084
+[14:57:39.888] [camhunt]     0.049  0.034  0.998 -6688.471
+[14:57:39.888] [camhunt] HIT 17 at 000002A919CE7360  (packed xyz)  region 2 flushes=29331
+[14:57:39.888] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.888] [camhunt]     1.000  0.658  0.165  1.000
+[14:57:39.888] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.888] [camhunt]     1.000  0.552  0.254  1.000
+[14:57:39.888] [camhunt] HIT 18 at 000002A919CE7450  (packed xyz)  region 2 flushes=29331
+[14:57:39.888] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.888] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.888] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.889] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.889] [camhunt] HIT 19 at 000002A919CE7560  (packed xyz)  region 2 flushes=29331
+[14:57:39.889] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.889] [camhunt]     0.000  0.000  128.000  4.023
+[14:57:39.889] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.889] [camhunt]     0.008  1.585  0.631  10.000
+[14:57:39.889] [camhunt] HIT 20 at 000002A919CE7C50  (packed xyz)  region 2 flushes=29331
+[14:57:39.889] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.889] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.890] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.890] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.890] [camhunt] HIT 21 at 000002A919CE7F50  (packed xyz)  region 2 flushes=29331
+[14:57:39.890] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.890] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.890] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.890] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.890] [camhunt] HIT 22 at 000002A919CE8250  (packed xyz)  region 2 flushes=29331
+[14:57:39.890] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.890] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.891] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.891] [camhunt]     1.000  0.216  0.006  0.000
+[14:57:39.891] [camhunt] HIT 23 at 000002A919CE8A00  (packed xyz)  region 2 flushes=29331
+[14:57:39.891] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.891] [camhunt]     0.000  0.000 -1.000 -3.000
+[14:57:39.891] [camhunt]     0.000  0.000  128.000  4.023
+[14:57:39.891] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.891] [camhunt] HIT 24 at 000002A919CE8B40  (packed xyz)  region 2 flushes=29331
+[14:57:39.891] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.891] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.891] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.892] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.892] [camhunt] HIT 25 at 000002A919CE8F60  (packed xyz)  region 2 flushes=29331
+[14:57:39.892] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.892] [camhunt]     1.000  0.617  0.065  1.000
+[14:57:39.892] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.892] [camhunt]     1.000  0.552  0.254  1.000
+[14:57:39.892] [camhunt] HIT 26 at 000002A919CE9E50  (packed xyz)  region 2 flushes=29331
+[14:57:39.892] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.892] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.892] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.893] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.893] [camhunt] HIT 27 at 000002A919CEA000  (packed xyz)  region 2 flushes=29331
+[14:57:39.893] [camhunt]     2731.799  6212.315  6355.658  1.000
+[14:57:39.893] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.893] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.893] [camhunt]     512.000  512.000  0.000  0.000
+[14:57:39.893] [camhunt] HIT 28 at 000002A919CEB260  (packed xyz)  region 2 flushes=29331
+[14:57:39.893] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.893] [camhunt]     0.000  0.000  0.400  1.000
+[14:57:39.893] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.893] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.894] [camhunt] HIT 29 at 000002A919CEB350  (packed xyz)  region 2 flushes=29331
+[14:57:39.894] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.894] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.894] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.894] [camhunt]     1.000  0.216  0.006  0.000
+[14:57:39.894] [camhunt] HIT 30 at 000002A919CEC320  (packed xyz)  region 2 flushes=29331
+[14:57:39.894] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.895] [camhunt]     1.000  1.000  0.000  0.000
+[14:57:39.895] [camhunt]     0.825  0.562 -0.060 -5366.274
+[14:57:39.895] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.895] [camhunt] HIT 31 at 000002A919CEC600  (packed xyz)  region 2 flushes=29331
+[14:57:39.895] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.895] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:57:39.896] [camhunt]     0.000  1.000  0.000  12.000
+[14:57:39.896] [camhunt]     2.000  2.000  2.000  2.000
+[14:57:39.896] [camhunt] HIT 32 at 000002A919CEC950  (packed xyz)  region 2 flushes=29331
+[14:57:39.896] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.896] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.896] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.896] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.896] [camhunt] HIT 33 at 000002A919CECA50  (matrix column 3)  region 2 flushes=29331
+[14:57:39.896] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.897] [camhunt]     0.562  0.826  0.034  6212.317
+[14:57:39.897] [camhunt]    -0.060  0.000  0.998  6355.658
+[14:57:39.897] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.897] [camhunt] HIT 34 at 000002A919CECD60  (packed xyz)  region 2 flushes=29331
+[14:57:39.897] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.897] [camhunt]     0.000  0.000  128.000  4.023
+[14:57:39.897] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.897] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.897] [camhunt] HIT 35 at 000002A919CED150  (packed xyz)  region 2 flushes=29331
+[14:57:39.898] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.898] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.898] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.898] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.898] [camhunt] HIT 36 at 000002A919CED350  (matrix column 3)  region 2 flushes=29331
+[14:57:39.898] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.899] [camhunt]     0.562  0.826  0.034  6212.317
+[14:57:39.899] [camhunt]    -0.060  0.000  0.998  6355.658
+[14:57:39.899] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.899] [camhunt] HIT 37 at 000002A919CEDA50  (packed xyz)  region 2 flushes=29331
+[14:57:39.899] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.899] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.899] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.900] [camhunt]     1.000  0.216  0.006  0.000
+[14:57:39.900] [camhunt] HIT 38 at 000002A919CEDE20  (packed xyz)  region 2 flushes=29331
+[14:57:39.900] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.900] [camhunt]     1.000  1.000  0.000  0.000
+[14:57:39.900] [camhunt]     2.000  2.000  2.000  2.000
+[14:57:39.900] [camhunt]     1.000  0.000  360.000  180.000
+[14:57:39.901] [camhunt] HIT 39 at 000002A919CEE100  (packed xyz)  region 2 flushes=29331
+[14:57:39.901] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.901] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:57:39.901] [camhunt]     0.000  1.000  0.000  12.000
+[14:57:39.901] [camhunt]     2.000  2.000  2.000  2.000
+[14:57:39.901] [camhunt] HIT 40 at 000002A919CEF550  (matrix column 3)  region 2 flushes=29331
+[14:57:39.902] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.902] [camhunt]     0.562  0.826  0.034  6212.317
+[14:57:39.902] [camhunt]    -0.060  0.000  0.998  6355.658
+[14:57:39.902] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.902] [camhunt] HIT 41 at 000002A919CEF720  (packed xyz)  region 2 flushes=29331
+[14:57:39.902] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.903] [camhunt]     1.000  1.000  0.000  0.000
+[14:57:39.903] [camhunt]     0.825  0.562 -0.060 -5366.274
+[14:57:39.903] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.903] [camhunt] HIT 42 at 000002A919CEFB00  (packed xyz)  region 2 flushes=29331
+[14:57:39.903] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.903] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:57:39.903] [camhunt]     0.000  1.000  0.000  12.000
+[14:57:39.904] [camhunt]     2.000  2.000  2.000  2.000
+[14:57:39.904] [camhunt] HIT 43 at 000002A919CEFC60  (packed xyz)  region 2 flushes=29331
+[14:57:39.904] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.904] [camhunt]    -0.866  0.000  0.500  1.000
+[14:57:39.904] [camhunt]     6480.595  7724.681  7233.401  1.000
+[14:57:39.904] [camhunt]     0.000  0.000 -500.000  1.000
+[14:57:39.904] [camhunt] HIT 44 at 000002A919CEFD20  (packed xyz)  region 2 flushes=29331
+[14:57:39.905] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.905] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.905] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.905] [camhunt]     0.500  0.500  0.000  0.000
+[14:57:39.905] [camhunt] HIT 45 at 000002A919CEFF00  (packed xyz)  region 2 flushes=29331
+[14:57:39.905] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.906] [camhunt]    -1.341 -1.379 -0.388  0.840
+[14:57:39.906] [camhunt]    -0.020 -0.834  3.038 -24.747
+[14:57:39.906] [camhunt]     0.073 -0.066 -0.018  1.953
+[14:57:39.906] [camhunt] HIT 46 at 000002A919CF0550  (packed xyz)  region 2 flushes=29331
+[14:57:39.906] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.906] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.906] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.907] [camhunt]     1.000  0.000 -0.000  0.000
+[14:57:39.907] [camhunt] HIT 47 at 000002A919CF0960  (packed xyz)  region 2 flushes=29331
+[14:57:39.907] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.907] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.907] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.907] [camhunt]     0.008  1.585  0.631  10.000
+[14:57:39.907] [camhunt] HIT 48 at 000002A919CF0F50  (packed xyz)  region 2 flushes=29331
+[14:57:39.907] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.907] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.907] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.908] [camhunt]     1.000  0.216  0.006  0.000
+[14:57:39.908] [camhunt] HIT 49 at 000002A919CF1320  (packed xyz)  region 2 flushes=29331
+[14:57:39.908] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.908] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.908] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.908] [camhunt]     0.500  0.500  0.000  0.000
+[14:57:39.908] [camhunt] HIT 50 at 000002A919CF1700  (packed xyz)  region 2 flushes=29331
+[14:57:39.908] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.908] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.908] [camhunt]     1.000  1.000  0.000  0.000
+[14:57:39.909] [camhunt]    -2152.159 -1072.301 -52.119  1400.518
+[14:57:39.909] [camhunt] HIT 51 at 000002A919CF1A30  (packed xyz)  region 2 flushes=29331
+[14:57:39.909] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.909] [camhunt]    -0.051 -0.093  1.775  704.966
+[14:57:39.909] [camhunt]    -0.477 -0.877 -0.060  2735.893
+[14:57:39.909] [camhunt]    -0.477 -0.877 -0.060  2738.834
+[14:57:39.910] [camhunt] HIT 52 at 000002A919CF1B50  (matrix column 3)  region 2 flushes=29331
+[14:57:39.910] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.910] [camhunt]     0.562  0.826  0.034  6212.317
+[14:57:39.910] [camhunt]    -0.060  0.000  0.998  6355.658
+[14:57:39.910] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.910] [camhunt] HIT 53 at 000002A919CF1C00  (packed xyz)  region 2 flushes=29331
+[14:57:39.910] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.911] [camhunt]     1.000  2048.000  245760.000  16.000
+[14:57:39.911] [camhunt]     0.000  1.000  0.000  12.000
+[14:57:39.911] [camhunt]     2.000  2.000  2.000  2.000
+[14:57:39.911] [camhunt] HIT 54 at 000002A919CF1E50  (packed xyz)  region 2 flushes=29331
+[14:57:39.911] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.911] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.912] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.912] [camhunt]     1.500  1.500  1.500  1.500
+[14:57:39.912] [camhunt] HIT 55 at 000002A919CF2150  (packed xyz)  region 2 flushes=29331
+[14:57:39.912] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.912] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.912] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.912] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.912] [camhunt] HIT 56 at 000002A919CF2820  (packed xyz)  region 2 flushes=29331
+[14:57:39.913] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.913] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.913] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.913] [camhunt]     0.500  0.500  0.000  0.000
+[14:57:39.913] [camhunt] HIT 57 at 000002A919CF3E20  (packed xyz)  region 2 flushes=29331
+[14:57:39.913] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.913] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.913] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.914] [camhunt]     0.500  0.500  0.000  0.000
+[14:57:39.914] [camhunt] HIT 58 at 000002A919CF4250  (matrix column 3)  region 2 flushes=29331
+[14:57:39.914] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.914] [camhunt]     0.562  0.826  0.034  6212.317
+[14:57:39.914] [camhunt]    -0.060  0.000  0.998  6355.658
+[14:57:39.914] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.914] [camhunt] HIT 59 at 000002A919CF5620  (packed xyz)  region 2 flushes=29331
+[14:57:39.914] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.914] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.914] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.914] [camhunt]     0.500  0.500  0.000  0.000
+[14:57:39.915] [camhunt] HIT 60 at 000002A919CF6150  (matrix column 3)  region 2 flushes=29331
+[14:57:39.915] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.915] [camhunt]     0.562  0.826  0.034  6212.317
+[14:57:39.915] [camhunt]    -0.060  0.000  0.998  6355.658
+[14:57:39.915] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.915] [camhunt] HIT 61 at 000002A919CF6260  (packed xyz)  region 2 flushes=29331
+[14:57:39.915] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.915] [camhunt]     0.000  0.000 -1.000  0.000
+[14:57:39.915] [camhunt]     8.000  8.000  8.000  8.000
+[14:57:39.915] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.916] [camhunt] HIT 62 at 000002A919CF6C50  (packed xyz)  region 2 flushes=29331
+[14:57:39.916] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.916] [camhunt]    -9600.000  0.507  2.028  0.001
+[14:57:39.916] [camhunt]     0.576  0.817  0.000  1.000
+[14:57:39.916] [camhunt]     0.000  0.000  0.000  0.000
+[14:57:39.916] [camhunt] HIT 63 at 000002A919CF7360  (packed xyz)  region 2 flushes=29331
+[14:57:39.916] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.916] [camhunt]     0.000  0.000  128.000  4.023
+[14:57:39.916] [camhunt]     1.000  1.000  1.000  1.000
+[14:57:39.916] [camhunt]     1.000  2.000  0.000  0.000
+[14:57:39.917] [camhunt] HIT 64 at 000002A919CF7A20  (packed xyz)  region 2 flushes=29331
+[14:57:39.917] [camhunt]     2731.799  6212.317  6355.658  1.000
+[14:57:39.917] [camhunt]     1.000  1.000  0.000  0.000
+[14:57:39.917] [camhunt]     1.000  0.000 -0.000  0.000
+[14:57:39.917] [camhunt]     0.825 -0.563  0.049  2731.799
+[14:57:39.917] [camhunt] FINDVEC (2731.80 6212.32 6355.66) tol 2.00 -> 64 hit(s) across 1 region(s) [capped at 64]
+[14:57:39.917] [auto] END   "findvec 2731.8 6212.32 6355.66 2.0"
+[14:57:51.061] vkQueuePresentKHR frame 30000 (queue=000002A9056C64C0)
+[14:58:07.728] vkQueuePresentKHR frame 31000 (queue=000002A9056C64C0)
+[14:58:23.727] [auto] BEGIN "key 0xDF"
+[14:58:23.727] [auto] key 0xDF queued
+[14:58:23.727] [auto] END   "key 0xDF"
+[14:58:24.460] vkQueuePresentKHR frame 32000 (queue=000002A9056C64C0)
+---- detaching after 32145 frames ----
