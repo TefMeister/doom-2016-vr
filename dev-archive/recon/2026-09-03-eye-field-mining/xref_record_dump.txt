@@ -1,0 +1,44 @@
+# Reproduction: flat-to-vr-RE-toolkit/tools/static-disasm.py xrefs on the VA of
+# the "leftFrameOffset"/"rightFrameOffset" string literals in DOOMx64vk.exe,
+# then a raw pefile dump of the 72-byte record each pointer sits inside.
+# Game is DOOM (2016), file DOOMx64vk.exe, not launched -- static PE reads only.
+
+$ python static-disasm.py DOOMx64vk.exe xrefs 0x1425ab750   # "leftFrameOffset"
+0x142FFD720  [.data]  absolute pointer/immediate
+
+$ python static-disasm.py DOOMx64vk.exe xrefs 0x1425abb28   # "rightFrameOffset"
+0x142FFD768  [.data]  absolute pointer/immediate
+
+# 0x142FFD768 - 0x142FFD720 = 0x48 = 72 bytes: the two hits are exactly ONE
+# record-stride apart in .data -- i.e. adjacent entries in the same table.
+
+--- record leftFrameOffset, start 0x142ffd710 ---
+ slot0 off+0   = 0x0000000142011d00  "unsigned char"
+ slot1 off+8   = 0x00000001425ab438  "[256]"
+ slot2 off+16  = 0x00000001425ab750  "leftFrameOffset"
+ slot3 off+24  = 0x0000010000000000    (u32 lo=0, u32 hi=256)
+ slot4 off+32  = 0x0000000000000000
+ slot5 off+40  = 0x0000000141fe5308  ""   (empty-string constant)
+ slot6 off+48  = 0x0000000000000000
+ slot7 off+56  = 0x0000000000000000
+ slot8 off+64  = 0x0000000000000000
+
+--- record rightFrameOffset, start 0x142ffd758 ---
+ slot0 off+0   = 0x0000000142011d00  "unsigned char"
+ slot1 off+8   = 0x00000001425ab438  "[256]"
+ slot2 off+16  = 0x00000001425abb28  "rightFrameOffset"
+ slot3 off+24  = 0x0000010000000100    (u32 lo=256, u32 hi=256)
+ slot4 off+32  = 0x0000000000000000
+ slot5 off+40  = 0x0000000141fe5308  ""
+ slot6 off+48  = 0x0000000000000000
+ slot7 off+56  = 0x0000000000000000
+ slot8 off+64  = 0x0000000000000000
+
+# Reading: {typeName="unsigned char", arraySuffix="[256]", fieldName, (byteOffset,
+# size)=(0,256) then (256,256), emptyStringConst, padding}. Consistent with a
+# C++ reflection/serialization table entry for
+#   unsigned char leftFrameOffset[256];
+#   unsigned char rightFrameOffset[256];
+# declared back-to-back in some class -- a fixed-size BYTE BUFFER pair, not a
+# scalar float. This is inconsistent with "per-eye camera offset" as a runtime
+# numeric value, however good the name match looked.

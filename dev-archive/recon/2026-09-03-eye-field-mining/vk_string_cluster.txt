@@ -1,0 +1,33 @@
+# Curated extract, not a full dump. Source: llvm-strings -n 4 on DOOMx64vk.exe,
+# 2026-09-03. Full dump (748,762 lines) was NOT committed -- game content, and
+# far too large. This is the ~30-line camera-reflection neighbourhood around
+# vk_strings.txt lines ~606000-606400 that the write-up references, plus the
+# separate stereo-cvar hits near line 680345.
+
+# --- camera-reflection cluster (approx original line numbers) ---
+viewOrg
+fov_x
+the projection matrix is derived from these
+fov_y
+viewFwd
+cramZNear
+viewLeft
+leftFrameOffset
+viewUp
+rightFrameOffset
+explicitProjectionMatrix
+useExplicitProjectionMatrix
+vieworg
+the view matrix is derived from these
+viewaxis
+transformation matrix, view looks down the positive X axis
+forceIdentityViewMatrix
+For steroescopic 3D rendering, we don't want to allow the hands/weapons to use a custom (inconsistant) FOV
+
+# --- stereo cvar cluster (line ~680345 onward) ---
+topBottomStereo
+leftRightStereo
+stereoRender_separation
+stereoRender_screenSeparation
+stereoRender_guiOffset
+stereoRender_swapEyes
