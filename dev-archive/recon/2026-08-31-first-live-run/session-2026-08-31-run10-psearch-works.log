@@ -1,0 +1,178 @@
+[18:11:38.448] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[18:11:38.449] real vulkan-1.dll loaded at 00007FFBB4110000; resolved 246/246 exports (0 missing)
+[18:11:39.195] vkCreateInstance -> 0 (instance=000002078A235660)
+[18:11:39.331] vkCreateDevice -> 0 (physDev=000002078A62D430 device=000002078A66CD10)
+[18:11:39.455] vkMapMemory #1 mem=0x2078aa7bb60 offset=0 size=18446744073709551615 -> 000002078FEF0000
+[18:11:39.743] vkMapMemory #2 mem=0x2078aa7bd30 offset=0 size=18446744073709551615 -> 0000020794EF0000
+[18:11:39.755] vkMapMemory #3 mem=0x2078aa7c640 offset=0 size=67108864 -> 000002079ACF0000
+[18:11:39.993] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[18:11:39.993] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[18:11:40.357] vkMapMemory #4 mem=0x207bd23e800 offset=0 size=76800 -> 000002078D52F000
+[18:11:40.358] vkMapMemory #5 mem=0x207bd23fa20 offset=0 size=76800 -> 000002078D542000
+[18:11:40.358] vkMapMemory #6 mem=0x207bd23f110 offset=0 size=76800 -> 000002078D555000
+[18:11:52.487] [autoinput] DirectInput8 object seen; CreateDevice instrumented
+[18:11:52.487] [autoinput] DirectInput8 CreateDevice(SysMouse) -> 0x00000000
+[18:11:52.487] [autoinput] SysMouse device hooked (GetDeviceState + GetDeviceData) -- this is the look path
+[18:11:52.497] [autoinput] NOTE: the mouse device uses BUFFERED GetDeviceData. Immediate-mode lX/lY injection will NOT be seen -- event fabrication is needed here.
+[18:11:52.503] [autoinput] DirectInput8 CreateDevice(SysKeyboard) -> 0x00000000
+[18:11:55.381] vkQueuePresentKHR frame 1 (queue=000002078A89F960)
+[18:11:55.759] vkQueuePresentKHR frame 10 (queue=000002078A89F960)
+[18:11:57.260] vkQueuePresentKHR frame 100 (queue=000002078A89F960)
+[18:11:57.673] [camhunt] ready. Commands: snapa/snapb/dump/tol. NUMPAD 1/2/3 still work as a manual fallback.
+[18:11:57.674] [autoinput] window=0000000000290B22  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[18:11:57.674] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[18:11:57.675] [autoinput]   sendinput          available  
+[18:11:57.675] [autoinput]   postmessage        available  
+[18:11:57.675] [autoinput]   vigem-pad          unavailable  -- ViGEmBus not installed (one-time admin install; DOOM imports XInput, so this is the best bet)
+[18:11:57.675] [auto] automation ON (env). Append commands to: D:\Program Files (x86)\Steam\steamapps\common\DOOM\doom_automation_cmds.txt
+[18:11:57.675] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[18:12:15.121] vkQueuePresentKHR frame 1000 (queue=000002078A89F960)
+[18:12:32.237] vkQueuePresentKHR frame 2000 (queue=000002078A89F960)
+[18:12:49.233] vkQueuePresentKHR frame 3000 (queue=000002078A89F960)
+[18:13:05.954] vkQueuePresentKHR frame 4000 (queue=000002078A89F960)
+[18:13:27.324] vkQueuePresentKHR frame 5000 (queue=000002078A89F960)
+[18:13:40.199] vkMapMemory #7 mem=0x207e4073820 offset=0 size=67108864 -> 0000020835C60000
+[18:13:55.595] vkQueuePresentKHR frame 6000 (queue=000002078A89F960)
+[18:14:23.838] vkQueuePresentKHR frame 7000 (queue=000002078A89F960)
+[18:14:45.280] vkQueuePresentKHR frame 8000 (queue=000002078A89F960)
+[18:14:56.696] [auto] BEGIN "key 0xDF"
+[18:14:56.696] [auto] key 0xDF queued
+[18:14:56.696] [auto] END   "key 0xDF"
+[18:14:58.696] [auto] BEGIN "type getviewpos"
+[18:14:58.696] [auto] typing "getviewpos"
+[18:14:58.696] [auto] END   "type getviewpos"
+[18:15:01.946] vkQueuePresentKHR frame 9000 (queue=000002078A89F960)
+[18:15:02.946] [auto] BEGIN "key enter"
+[18:15:02.946] [auto] key 0x0D queued
+[18:15:02.946] [auto] END   "key enter"
+[18:15:18.618] vkQueuePresentKHR frame 10000 (queue=000002078A89F960)
+[18:15:28.218] [auto] BEGIN "key 0xDF"
+[18:15:28.218] [auto] key 0xDF queued
+[18:15:28.218] [auto] END   "key 0xDF"
+[18:15:28.218] [auto] BEGIN "psearch 1728 5440 6372.16 0.05"
+[18:15:28.219] [camhunt] scan started in the background -- the game keeps running; results follow in this log
+[18:15:28.219] [auto] END   "psearch 1728 5440 6372.16 0.05"
+[18:15:28.226] [psearch]   hit 1 at 000000DCB4BE3FB0  [private RW]
+[18:15:28.227] [psearch]   hit 2 at 000000DCB4BE4488  [private RW]
+[18:15:28.227] [psearch]   hit 3 at 000000DCB4BE6810  [private RW]
+[18:15:28.227] [psearch]   hit 4 at 000000DCB4BE6DE8  [private RW]
+[18:15:28.227] [psearch]   hit 5 at 000000DCB4BEA7D0  [private RW]
+[18:15:28.227] [psearch]   hit 6 at 000000DCB4BEB970  [private RW]
+[18:15:28.230] [psearch]   hit 7 at 000000DCB4FE6B20  [private RW]
+[18:15:28.231] [psearch]   hit 8 at 000000DCB4FE7D2C  [private RW]
+[18:15:28.231] [psearch]   hit 9 at 000000DCB4FE7E30  [private RW]
+[18:15:28.231] [psearch]   hit 10 at 000000DCB4FE90B0  [private RW]
+[18:15:28.231] [psearch]   hit 11 at 000000DCB4FE95B0  [private RW]
+[18:15:28.231] [psearch]   hit 12 at 000000DCB4FEF970  [private RW]
+[18:15:35.284] vkQueuePresentKHR frame 11000 (queue=000002078A89F960)
+[18:15:52.008] vkQueuePresentKHR frame 12000 (queue=000002078A89F960)
+[18:16:08.373] [psearch] PASS 1 (1728.00 5440.00 6372.16) tol 0.05 -> 2218 candidate(s) across 4724 regions, 4414 MB scanned
+[18:16:08.373] [psearch]   by region: image=9  private(heap)=2209  mapped=0
+[18:16:08.373] [psearch]   now MOVE the player, read getviewpos again, and run `pnarrow <x> <y> <z>` -- one position finds coincidences, two find the camera
+[18:16:08.675] vkQueuePresentKHR frame 13000 (queue=000002078A89F960)
+[18:16:25.341] vkQueuePresentKHR frame 14000 (queue=000002078A89F960)
+[18:16:29.990] [auto] BEGIN "backend sendinput"
+[18:16:29.990] [auto] default backend = sendinput
+[18:16:29.990] [auto] END   "backend sendinput"
+[18:16:30.491] [auto] BEGIN "move fwd 250"
+[18:16:30.492] [auto] move keys=0x1 for 250 frames via sendinput
+[18:16:30.492] [auto] END   "move fwd 250"
+[18:16:34.658] [auto] input released
+[18:16:37.491] [auto] BEGIN "key 0xDF"
+[18:16:37.491] [auto] key 0xDF queued
+[18:16:37.492] [auto] END   "key 0xDF"
+[18:16:39.490] [auto] BEGIN "type getviewpos"
+[18:16:39.490] [auto] typing "getviewpos"
+[18:16:39.491] [auto] END   "type getviewpos"
+[18:16:42.007] vkQueuePresentKHR frame 15000 (queue=000002078A89F960)
+[18:16:43.490] [auto] BEGIN "key enter"
+[18:16:43.490] [auto] key 0x0D queued
+[18:16:43.491] [auto] END   "key enter"
+[18:16:58.720] vkQueuePresentKHR frame 16000 (queue=000002078A89F960)
+[18:17:08.495] [auto] BEGIN "key 0xDF"
+[18:17:08.496] [auto] key 0xDF queued
+[18:17:08.496] [auto] END   "key 0xDF"
+[18:17:08.496] [auto] BEGIN "pnarrow 3240.88 6336.96 6512.97 1.0"
+[18:17:08.496] [psearch]   SURVIVOR 1 at 000000DCB4BE3FB0  [private RW]   3240.878  6336.960  6512.969
+[18:17:08.496] [psearch]   SURVIVOR 2 at 000000DCB4BE4488  [private RW]   3240.878  6336.960  6512.969
+[18:17:08.496] [psearch]   SURVIVOR 3 at 000000DCB4BE6810  [private RW]   3240.878  6336.960  6512.969
+[18:17:08.496] [psearch]   SURVIVOR 4 at 000000DCB4BE6DE8  [private RW]   3240.878  6336.960  6512.969
+[18:17:08.496] [psearch]   SURVIVOR 5 at 000000DCB4BEA7D0  [private RW]   3240.878  6336.960  6512.969
+[18:17:08.497] [psearch]   SURVIVOR 6 at 000000DCB4BEB970  [private RW]   3240.878  6336.960  6512.969
+[18:17:08.497] [psearch]   SURVIVOR 7 at 000000DCB4FE6B20  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.497] [psearch]   SURVIVOR 8 at 000000DCB4FE7D2C  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.497] [psearch]   SURVIVOR 9 at 000000DCB4FE7E30  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.497] [psearch]   SURVIVOR 10 at 000000DCB4FE90B0  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.497] [psearch]   SURVIVOR 11 at 000000DCB51E6A28  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.498] [psearch]   SURVIVOR 12 at 000000DCB51E6A40  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.498] [psearch]   SURVIVOR 13 at 000000DCB51E7C4C  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.498] [psearch]   SURVIVOR 14 at 000000DCB51E7D50  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.498] [psearch]   SURVIVOR 15 at 000000DCB51E8FD0  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.498] [psearch]   SURVIVOR 16 at 000000DCB53E6C48  [private RW]   3240.878  6336.959  6512.969
+[18:17:08.664] [psearch] PASS 2 (3240.88 6336.96 6512.97) -> 673 survivor(s) of the previous set
+[18:17:08.664] [auto] END   "pnarrow 3240.88 6336.96 6512.97 1.0"
+[18:17:15.672] vkQueuePresentKHR frame 17000 (queue=000002078A89F960)
+[18:17:32.415] vkQueuePresentKHR frame 18000 (queue=000002078A89F960)
+[18:17:49.082] vkQueuePresentKHR frame 19000 (queue=000002078A89F960)
+[18:17:50.548] [auto] BEGIN "key 0xDF"
+[18:17:50.548] [auto] key 0xDF queued
+[18:17:50.548] [auto] END   "key 0xDF"
+[18:17:52.548] [auto] BEGIN "look 120 0 200"
+[18:17:52.548] [auto] look 120.00,0.00 per frame for 200 frames via sendinput
+[18:17:52.548] [auto] END   "look 120 0 200"
+[18:17:55.881] [auto] input released
+[18:17:58.554] [auto] BEGIN "move fwd 200"
+[18:17:58.554] [auto] move keys=0x1 for 200 frames via sendinput
+[18:17:58.554] [auto] END   "move fwd 200"
+[18:18:01.931] [auto] input released
+[18:18:04.548] [auto] BEGIN "key 0xDF"
+[18:18:04.548] [auto] key 0xDF queued
+[18:18:04.548] [auto] END   "key 0xDF"
+[18:18:05.831] vkQueuePresentKHR frame 20000 (queue=000002078A89F960)
+[18:18:06.547] [auto] BEGIN "type getviewpos"
+[18:18:06.548] [auto] typing "getviewpos"
+[18:18:06.548] [auto] END   "type getviewpos"
+[18:18:10.548] [auto] BEGIN "key enter"
+[18:18:10.548] [auto] key 0x0D queued
+[18:18:10.548] [auto] END   "key enter"
+[18:18:22.498] vkQueuePresentKHR frame 21000 (queue=000002078A89F960)
+[18:18:39.164] vkQueuePresentKHR frame 22000 (queue=000002078A89F960)
+[18:18:43.564] [auto] BEGIN "key 0xDF"
+[18:18:43.564] [auto] key 0xDF queued
+[18:18:43.564] [auto] END   "key 0xDF"
+[18:18:45.564] [auto] BEGIN "type getviewpos"
+[18:18:45.564] [auto] typing "getviewpos"
+[18:18:45.564] [auto] END   "type getviewpos"
+[18:18:49.581] [auto] BEGIN "key enter"
+[18:18:49.581] [auto] key 0x0D queued
+[18:18:49.581] [auto] END   "key enter"
+[18:18:55.830] vkQueuePresentKHR frame 23000 (queue=000002078A89F960)
+[18:19:12.519] vkQueuePresentKHR frame 24000 (queue=000002078A89F960)
+[18:19:17.860] [auto] BEGIN "key 0xDF"
+[18:19:17.860] [auto] key 0xDF queued
+[18:19:17.860] [auto] END   "key 0xDF"
+[18:19:17.860] [auto] BEGIN "pnarrow 3245.5 6338.05 6514.94 0.5"
+[18:19:17.860] [psearch]   SURVIVOR 1 at 000000DCB4BE3FB0  [private RW]   3245.497  6338.046  6514.944
+[18:19:17.860] [psearch]   SURVIVOR 2 at 000000DCB4BE4488  [private RW]   3245.497  6338.046  6514.944
+[18:19:17.860] [psearch]   SURVIVOR 3 at 000000DCB4BE6810  [private RW]   3245.497  6338.046  6514.944
+[18:19:17.861] [psearch]   SURVIVOR 4 at 000000DCB4BE6DE8  [private RW]   3245.497  6338.046  6514.944
+[18:19:17.861] [psearch]   SURVIVOR 5 at 000000DCB4BEA7D0  [private RW]   3245.497  6338.046  6514.944
+[18:19:17.861] [psearch]   SURVIVOR 6 at 000000DCB4BEB970  [private RW]   3245.497  6338.046  6514.944
+[18:19:17.861] [psearch]   SURVIVOR 7 at 000000DCB4FE6B20  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.861] [psearch]   SURVIVOR 8 at 000000DCB4FE7D2C  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.861] [psearch]   SURVIVOR 9 at 000000DCB4FE7E30  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.861] [psearch]   SURVIVOR 10 at 000000DCB4FE90B0  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.862] [psearch]   SURVIVOR 11 at 000000DCB51E6A28  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.862] [psearch]   SURVIVOR 12 at 000000DCB51E6A40  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.862] [psearch]   SURVIVOR 13 at 000000DCB51E7C4C  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.862] [psearch]   SURVIVOR 14 at 000000DCB51E7D50  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.862] [psearch]   SURVIVOR 15 at 000000DCB51E8FD0  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.862] [psearch]   SURVIVOR 16 at 000000DCB53E6C48  [private RW]   3245.496  6338.045  6514.944
+[18:19:17.924] [psearch] PASS 2 (3245.50 6338.05 6514.94) -> 353 survivor(s) of the previous set
+[18:19:17.925] [auto] END   "pnarrow 3245.5 6338.05 6514.94 0.5"
+[18:19:29.246] vkQueuePresentKHR frame 25000 (queue=000002078A89F960)
+[18:19:45.913] vkQueuePresentKHR frame 26000 (queue=000002078A89F960)
+[18:20:02.579] vkQueuePresentKHR frame 27000 (queue=000002078A89F960)
+[18:20:19.349] vkQueuePresentKHR frame 28000 (queue=000002078A89F960)
+[18:20:36.024] vkQueuePresentKHR frame 29000 (queue=000002078A89F960)
+---- detaching after 29658 frames ----

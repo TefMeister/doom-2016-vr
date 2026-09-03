@@ -1,0 +1,139 @@
+[13:24:32.254] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[13:24:32.255] real vulkan-1.dll loaded at 00007FFBB8C80000; resolved 246/246 exports (0 missing)
+[13:24:51.022] vkCreateInstance -> 0 (instance=000002BBD3031340)
+[13:24:51.808] vkCreateDevice -> 0 (physDev=000002BBD34465E0 device=000002BBD348B780)
+[13:24:51.813] vkMapMemory #1 mem=0x2bbd3869170 offset=0 size=18446744073709551615 -> 000002BBDAAF0000
+[13:24:51.826] vkMapMemory #2 mem=0x2bbd386a390 offset=0 size=18446744073709551615 -> 000002BBDFAF0000
+[13:24:51.841] vkMapMemory #3 mem=0x2bbd38c3e10 offset=0 size=67108864 -> 000002BBE58F0000
+[13:24:52.971] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[13:24:52.971] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[13:24:53.300] vkMapMemory #4 mem=0x2bbc503eb90 offset=0 size=76800 -> 000002BBD83BF000
+[13:24:53.300] vkMapMemory #5 mem=0x2bbc503e620 offset=0 size=76800 -> 000002BBD83D2000
+[13:24:53.300] vkMapMemory #6 mem=0x2bbc503f670 offset=0 size=76800 -> 000002BBD83E5000
+[13:25:51.562] vkQueuePresentKHR frame 1 (queue=000002BBD36AD470)
+[13:25:55.985] vkQueuePresentKHR frame 10 (queue=000002BBD36AD470)
+[13:25:57.479] vkQueuePresentKHR frame 100 (queue=000002BBD36AD470)
+[13:25:57.813] [camhunt] ready. Commands: snapa/snapb/dump/tol. NUMPAD 1/2/3 still work as a manual fallback.
+[13:25:58.104] [autoinput] window=00000000005E0980  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[13:25:58.104] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[13:25:58.104] [autoinput]   sendinput          available  
+[13:25:58.104] [autoinput]   postmessage        available  
+[13:25:58.104] [autoinput]   vigem-pad          unavailable  -- ViGEmBus not installed (one-time admin install; DOOM imports XInput, so this is the best bet)
+[13:25:58.104] [auto] automation ON (env). Append commands to: D:\Program Files (x86)\Steam\steamapps\common\DOOM\doom_automation_cmds.txt
+[13:25:58.105] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[13:26:12.768] vkQueuePresentKHR frame 1000 (queue=000002BBD36AD470)
+[13:26:38.460] vkQueuePresentKHR frame 2000 (queue=000002BBD36AD470)
+[13:26:55.432] vkQueuePresentKHR frame 3000 (queue=000002BBD36AD470)
+[13:27:12.842] vkQueuePresentKHR frame 4000 (queue=000002BBD36AD470)
+[13:27:29.523] vkQueuePresentKHR frame 5000 (queue=000002BBD36AD470)
+[13:27:46.295] vkQueuePresentKHR frame 6000 (queue=000002BBD36AD470)
+[13:28:02.965] vkQueuePresentKHR frame 7000 (queue=000002BBD36AD470)
+[13:28:19.633] vkQueuePresentKHR frame 8000 (queue=000002BBD36AD470)
+[13:28:36.350] vkQueuePresentKHR frame 9000 (queue=000002BBD36AD470)
+[13:28:53.018] vkQueuePresentKHR frame 10000 (queue=000002BBD36AD470)
+[13:29:09.685] vkQueuePresentKHR frame 11000 (queue=000002BBD36AD470)
+[13:29:26.398] vkQueuePresentKHR frame 12000 (queue=000002BBD36AD470)
+[13:29:43.066] vkQueuePresentKHR frame 13000 (queue=000002BBD36AD470)
+[13:29:59.735] vkQueuePresentKHR frame 14000 (queue=000002BBD36AD470)
+[13:30:16.403] vkQueuePresentKHR frame 15000 (queue=000002BBD36AD470)
+[13:30:33.125] vkQueuePresentKHR frame 16000 (queue=000002BBD36AD470)
+[13:30:49.792] vkQueuePresentKHR frame 17000 (queue=000002BBD36AD470)
+[13:31:06.485] vkQueuePresentKHR frame 18000 (queue=000002BBD36AD470)
+[13:31:23.153] vkQueuePresentKHR frame 19000 (queue=000002BBD36AD470)
+[13:31:39.827] vkQueuePresentKHR frame 20000 (queue=000002BBD36AD470)
+[13:31:56.618] vkQueuePresentKHR frame 21000 (queue=000002BBD36AD470)
+[13:32:13.286] vkQueuePresentKHR frame 22000 (queue=000002BBD36AD470)
+[13:32:29.953] vkQueuePresentKHR frame 23000 (queue=000002BBD36AD470)
+[13:32:46.661] vkQueuePresentKHR frame 24000 (queue=000002BBD36AD470)
+[13:33:05.326] vkMapMemory #7 mem=0x2bca49ea160 offset=0 size=67108864 -> 000002BCC79B0000
+[13:33:07.453] vkQueuePresentKHR frame 25000 (queue=000002BBD36AD470)
+[13:33:32.215] vkQueuePresentKHR frame 26000 (queue=000002BBD36AD470)
+[13:33:48.921] vkQueuePresentKHR frame 27000 (queue=000002BBD36AD470)
+[13:34:04.051] [auto] BEGIN "status"
+[13:34:04.051] [auto] status: tol=0.00100  snapshotA=-1 candidates  live mappings=7
+[13:34:04.052] [auto]   inproc-keystate    available    [default]  -- 3 key-state hook(s) + cursor
+[13:34:04.053] [auto]   sendinput          available  
+[13:34:04.053] [auto]   postmessage        available  
+[13:34:04.053] [auto]   vigem-pad          unavailable  -- ViGEmBus not installed (one-time admin install; DOOM imports XInput, so this is the best bet)
+[13:34:04.053] [auto] END   "status"
+[13:34:04.053] [auto] BEGIN "mappings"
+[13:34:04.053] [camhunt]   map  2  000002BBE58F0000     65536 KB  flushes=27907
+[13:34:04.053] [camhunt]   map  3  000002BBD83BF000        75 KB  flushes=0
+[13:34:04.054] [camhunt]   map  4  000002BBD83D2000        75 KB  flushes=0
+[13:34:04.054] [camhunt]   map  5  000002BBD83E5000        75 KB  flushes=0
+[13:34:04.054] [camhunt]   map  6  000002BCC79B0000     65536 KB  flushes=2983
+[13:34:04.054] [camhunt] 7 live mappings, 128 MB scannable, some skipped as unknown-size (budget 96 MB per scan)
+[13:34:04.054] [auto] END   "mappings"
+[13:34:05.592] vkQueuePresentKHR frame 28000 (queue=000002BBD36AD470)
+[13:34:22.269] vkQueuePresentKHR frame 29000 (queue=000002BBD36AD470)
+[13:34:38.937] vkQueuePresentKHR frame 30000 (queue=000002BBD36AD470)
+[13:34:55.662] vkQueuePresentKHR frame 31000 (queue=000002BBD36AD470)
+[13:34:57.572] [auto] BEGIN "probe"
+[13:34:57.572] [auto] PROBE start -- control run first (no input), then each backend.
+[13:34:57.572] [auto]   Reading: how many camera-driven matrices changed. The control is the
+[13:34:57.572] [auto]   baseline for a camera that drifts on its own (idle sway, TAA jitter),
+[13:34:57.572] [auto]   so a backend only counts if it beats the control clearly.
+[13:34:57.573] [auto] END   "probe"
+[13:38:42.454] [camhunt] SNAPSHOT A: 4096 orthonormal candidates across 5 live mappings (96 MB scanned, TRUNCATED)
+[13:38:42.454] [camhunt]   (candidate list full -- tighten ORTHO_TOL if this is noisy)
+[13:38:42.454] [camhunt] now MOVE and LOOK AROUND, then `snapb` (or NUMPAD 2)
+[13:38:42.454] [auto] PROBE control: holding still, no input
+[13:38:44.180] [auto] PROBE control -> 274 of 4096 matrices drifted with NO input. That is the floor every backend must beat.
+[13:42:29.554] [camhunt] SNAPSHOT A: 4096 orthonormal candidates across 5 live mappings (96 MB scanned, TRUNCATED)
+[13:42:29.554] [camhunt]   (candidate list full -- tighten ORTHO_TOL if this is noisy)
+[13:42:29.554] [camhunt] now MOVE and LOOK AROUND, then `snapb` (or NUMPAD 2)
+[13:42:29.555] [auto] PROBE inproc-keystate: injecting fwd + look for 90 frames
+[13:42:31.282] [auto] PROBE inproc-keystate    -> 235 of 4096 changed (control 274, margin -39)  no clear reaction
+[13:46:16.942] [camhunt] SNAPSHOT A: 4096 orthonormal candidates across 5 live mappings (96 MB scanned, TRUNCATED)
+[13:46:16.942] [camhunt]   (candidate list full -- tighten ORTHO_TOL if this is noisy)
+[13:46:16.942] [camhunt] now MOVE and LOOK AROUND, then `snapb` (or NUMPAD 2)
+[13:46:16.943] [auto] PROBE sendinput: injecting fwd + look for 90 frames
+[13:46:18.664] [auto] PROBE sendinput          -> 134 of 4096 changed (control 274, margin -140)  no clear reaction
+[13:50:01.479] [camhunt] SNAPSHOT A: 4096 orthonormal candidates across 5 live mappings (96 MB scanned, TRUNCATED)
+[13:50:01.479] [camhunt]   (candidate list full -- tighten ORTHO_TOL if this is noisy)
+[13:50:01.479] [camhunt] now MOVE and LOOK AROUND, then `snapb` (or NUMPAD 2)
+[13:50:01.479] [auto] PROBE postmessage: injecting fwd + look for 90 frames
+[13:50:01.480] [auto] BEGIN "stop"
+[13:50:01.480] [auto] input released, probe cancelled
+[13:50:01.480] [auto] END   "stop"
+[13:50:11.119] vkQueuePresentKHR frame 32000 (queue=000002BBD36AD470)
+[13:50:26.987] [auto] BEGIN "backend inproc"
+[13:50:26.987] [auto] default backend = inproc-keystate
+[13:50:26.987] [auto] END   "backend inproc"
+[13:50:26.987] [auto] BEGIN "move fwd 150"
+[13:50:26.987] [auto] move keys=0x1 for 150 frames via inproc-keystate
+[13:50:26.987] [auto] END   "move fwd 150"
+[13:50:27.787] vkQueuePresentKHR frame 33000 (queue=000002BBD36AD470)
+[13:50:29.487] [auto] input released
+[13:50:44.481] vkQueuePresentKHR frame 34000 (queue=000002BBD36AD470)
+[13:51:01.148] vkQueuePresentKHR frame 35000 (queue=000002BBD36AD470)
+[13:51:01.732] [auto] BEGIN "backend sendinput"
+[13:51:01.732] [auto] default backend = sendinput
+[13:51:01.732] [auto] END   "backend sendinput"
+[13:51:02.982] [auto] BEGIN "move fwd 150"
+[13:51:02.983] [auto] move keys=0x1 for 150 frames via sendinput
+[13:51:02.983] [auto] END   "move fwd 150"
+[13:51:05.483] [auto] input released
+[13:51:06.983] [auto] BEGIN "backend postmessage"
+[13:51:06.983] [auto] default backend = postmessage
+[13:51:06.983] [auto] END   "backend postmessage"
+[13:51:07.733] [auto] BEGIN "move fwd 150"
+[13:51:07.733] [auto] move keys=0x1 for 150 frames via postmessage
+[13:51:07.733] [auto] END   "move fwd 150"
+[13:51:10.233] [auto] input released
+[13:51:11.733] [auto] BEGIN "backend inproc"
+[13:51:11.733] [auto] default backend = inproc-keystate
+[13:51:11.733] [auto] END   "backend inproc"
+[13:51:12.482] [auto] BEGIN "look 25 0 120"
+[13:51:12.483] [auto] look 25.00,0.00 per frame for 120 frames via inproc-keystate
+[13:51:12.483] [auto] END   "look 25 0 120"
+[13:51:14.483] [auto] input released
+[13:51:17.816] vkQueuePresentKHR frame 36000 (queue=000002BBD36AD470)
+[13:51:34.483] vkQueuePresentKHR frame 37000 (queue=000002BBD36AD470)
+[13:51:51.333] vkQueuePresentKHR frame 38000 (queue=000002BBD36AD470)
+[13:52:08.000] vkQueuePresentKHR frame 39000 (queue=000002BBD36AD470)
+[13:52:24.668] vkQueuePresentKHR frame 40000 (queue=000002BBD36AD470)
+[13:52:41.335] vkQueuePresentKHR frame 41000 (queue=000002BBD36AD470)
+[13:52:58.044] vkQueuePresentKHR frame 42000 (queue=000002BBD36AD470)
+[13:53:14.712] vkQueuePresentKHR frame 43000 (queue=000002BBD36AD470)
+---- detaching after 43028 frames ----

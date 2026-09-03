@@ -14,3 +14,13 @@
 # Local scratch
 /tmp/
 *.log
+
+# ...but recon evidence logs are DERIVED DATA, not scratch run logs. The blanket
+# `*.log` above silently swallowed all nine logs under
+# recon/2026-08-31-first-live-run/ - including run3-camera-found.log and
+# run12-bisect.log, the evidence behind the camera isolation. A session copied
+# them in believing they were saved; `git add` skipped them without complaint and
+# they stayed single-disk files. The same defect was found the same day in
+# the-evil-within-vr and enslaved-vr. Negate the rule for recon/.
+!dev-archive/recon/**/*.log
+!recon/**/*.log
