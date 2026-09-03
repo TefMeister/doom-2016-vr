@@ -281,6 +281,21 @@ generations. A named field on the view struct would be a far better switch than 
 unlike the cvar hunt this is a **static** search needing no launch. `[hypothesis]`, but cheap and
 available right now.
 
+> #### ⭐ SEARCH FOR THE PAIR, NOT THE FIELD (2026-09-02, via `/gr`, from id's published Doom 3 BFG source)
+> `[reported 2026-09-02]` — BFG is id Tech 4's descendant, not id Tech 6, so names transfer across
+> id generations but layouts do not. **Treat as a prediction, not a map.**
+>
+> - **`viewEyeBuffer` and `stereoScreenSeparation` are ADJACENT**, and are the last two members of
+>   `renderView_t`: an `int` eye selector (−1/+1/0) immediately followed by a `float` that id's own
+>   comment calls *"projection matrix horizontal offset, positive or negative based on camera eye"*.
+>   **An int-then-float pair is far more distinctive than an integer named "eye"**, and either one
+>   locates the other.
+> - **Anchor sequence for matching field order**, in declaration order: `viewID`, `fov_x`, `fov_y`,
+>   `vieworg`, `vieworg_weapon`, `viewaxis`, `cramZNear`, `flipProjection`, `forceUpdate`,
+>   `time[2]`, `shaderParms[]`, `globalMaterial`, `viewEyeBuffer`, `stereoScreenSeparation`. The
+>   `fov_x`/`fov_y` pair and `time[2]` are the recognisable landmarks.
+> - `viewaxis` looks down the **positive X axis** — the basis convention to expect.
+
 ### 6e. Camera convention — MEASURED LIVE (2026-08-26)
 
 The console command **`getviewpos`** prints the live camera. Four readings were taken, shaped so
@@ -417,6 +432,18 @@ what Psychonauts spent weeks failing to get (§1 of that project's board).
 
 **Practical limit:** `HOLD_MAX_DELTA` clamps a single jump to **64 units**; a 150-unit jump is
 refused. Larger displacements must be walked up in steps.
+
+> #### ⭐ THE EYE OFFSET IS APPLIED IN TWO PLACES, AND ONE IS UPSTREAM OF THE RENDERER (2026-09-02, via `/gr`)
+> `[reported 2026-09-02, from id's published Doom 3 BFG source; [hypothesis] for id Tech 6]`
+> id's own comment on **both** `vieworg` and `vieworg_weapon` is *"has already been adjusted for
+> stereo world seperation"*. So in BFG the world separation is baked into the **view origin before
+> the render view exists**, and `stereoScreenSeparation` handles only the projection-side shift.
+>
+> **If id Tech 6 kept that pattern, the static origin+basis global this section is about is a
+> candidate injection point for the per-eye translation** — a different route from driving the
+> camera buffer, and worth weighing before more effort goes into the buffer.
+> ⚠️ Note this is the same reasoning that produced the 2026-09-01 stereo success: `/gr` pointing at
+> `vieworg` being pre-adjusted is what prompted the stereo test that then worked first try.
 
 ### 6h-2. Second session, same day: confirmed at n=2, and STEREO CONFIRMED LIVE (2026-09-01, afternoon)
 
