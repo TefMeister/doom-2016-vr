@@ -296,6 +296,29 @@ available right now.
 >   `fov_x`/`fov_y` pair and `time[2]` are the recognisable landmarks.
 > - `viewaxis` looks down the **positive X axis** — the basis convention to expect.
 
+> #### ⭐ BOTH LEADS TESTED AND DISPROVED (2026-09-03, `/pd`, static only)
+> `viewEyeBuffer`/`stereoScreenSeparation`: **zero hits**, exact or loose substring, in either exe
+> `[disproved 2026-09-03, n=2 exes, exhaustive substring search]`.
+>
+> A genuine camera-reflection cluster does exist (`viewOrg`, `fov_x`, `fov_y`, `viewFwd`,
+> `cramZNear`, `viewLeft`, `leftFrameOffset`, `viewUp`, `rightFrameOffset`,
+> `explicitProjectionMatrix`, `vieworg`, `viewaxis`, …), with the same relative field order
+> independently corroborated in both exes `[inferred-static, n=2 independent exes]` — curated
+> extract: `dev-archive/recon/2026-09-03-eye-field-mining/vk_string_cluster.txt`.
+>
+> **`leftFrameOffset`/`rightFrameOffset` looked like the pair, but their reflection-table records
+> (found via `static-disasm.py xrefs`, 72 bytes apart = one record-stride, i.e. adjacent entries)
+> both type as `unsigned char [256]` at byte offsets 0 and 256 of some class — a pair of 256-byte
+> BUFFERS, not scalar floats.** `[verified-numerically 2026-09-03, n=2 adjacent table records]`
+> Inconsistent with a per-eye camera offset; more likely a pair of fixed-size path/string buffers.
+> `[disproved 2026-09-03]` as the eye-offset field despite the name match. Reproduction:
+> `dev-archive/recon/2026-09-03-eye-field-mining/xref_record_dump.txt`.
+>
+> **No positive candidate for the eye field exists yet.** Next static angle, if resumed: the
+> reflection table clearly extends well past this neighbourhood (records are 72-byte, walkable by
+> pointer arithmetic) — walking outward from a known-good anchor (e.g. `viewaxis`'s record) to
+> enumerate neighbouring field names is untried.
+
 ### 6e. Camera convention — MEASURED LIVE (2026-08-26)
 
 The console command **`getviewpos`** prints the live camera. Four readings were taken, shaped so
@@ -630,6 +653,17 @@ follow-the-camera logic locked onto something else, which is why every subsequen
 known live from the dynamic offsets passing through `vkCmdBindDescriptorSets`. Scan **only the range
 written this frame**, every frame, and never trust an address across frames. That is ~500× less
 memory touched, removes the freeze risk, and removes staleness by construction.
+
+> **✅ BUILT (2026-09-01), status re-confirmed static-only 2026-09-03.** `staging/doom-2016-vr/
+> proxy-vulkan/src/ringcam.c` implements exactly this: hooks `vkCmdBindDescriptorSets`, bounds its
+> one-off learn scan to the frame's own offset window (`LEARN_CAP` 512 KB), and probes
+> `offset + delta` per frame with a verify-before-write guard, never a cached absolute address.
+> `[compile-verified 2026-09-01]`, never run against the game. **This closes the static half of
+> this section — the only remaining step is the live test already recorded as the resume point**
+> (`ringlearn` → `ringstat` → `ringyaw 20` → screenshot). `camhunt.c`'s `SCAN_BUDGET_BYTES` (96 MB,
+> not 64) is the *old* blanket-scan tool (`camrescan`/`snapa`/`snapb`), superseded by `ringcam` for
+> the write path but not deleted — the two figures describe two different tools, not a
+> contradiction.
 
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
