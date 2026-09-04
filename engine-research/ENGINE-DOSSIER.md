@@ -665,6 +665,26 @@ memory touched, removes the freeze risk, and removes staleness by construction.
 > the write path but not deleted — the two figures describe two different tools, not a
 > contradiction.
 
+> ### LIVE, 2026-09-04 (dev PC, `/lm`) — ringcam LEARN found nothing, and the cause is a scan cap, not the camera
+>
+> First live run of `ringcam`. The global camera read correctly and tracked every move
+> (`global cam OK` before/after a walk), but `ringlearn` reported **0 camera hits, 0 deltas**.
+> Cause, measured: the frame's dynamic-offset window was **3.4 MB** (`window=[0..3583232]`, 1702
+> offsets) while `learn()` capped the scan at `LEARN_CAP = 512 KB` — it searched the first 15% only.
+> The 512 KB ceiling was set 2026-09-01 when a frame spanned ~137 KB; this scene is 25x that.
+> `[verified-live 2026-09-04, n=1 launch]`
+>
+> **Not the column-3 assumption:** `ringcam`'s `matches()` (`m[3]/m[7]/m[11] == origin`) is the same
+> predicate `camhunt.c` used to find 180 copies in 96 MB, so widening the scan is the fix, not
+> changing the match key.
+>
+> **Fixed and deployed same session:** `LEARN_CAP` → **8 MB** (covers this span 2.3x; one-off
+> memcpy ~340 ms worst case, vs 2.7 s for a 64 MB scan; LEARN runs once then OFF), and the LEARN log
+> now prints scanned-window-vs-full-span and warns when the span still exceeds the ceiling.
+> `[compile-verified 2026-09-04]`, deployed to `DOOMulkan-1.dll`. **The resume test is unchanged
+> and now has a real chance:** `ringlearn` → `ringstat` (expect `learned=1`) → `ringyaw 20` →
+> screenshot. Notes: `modding-notes/2026-09-04-ringcam-scan-cap-too-small-and-virtual-pad-drives-doom.md`.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
@@ -952,7 +972,16 @@ a free zero-code lever is gated off by production mode. See §4a.
     uses API X"* is not evidence — DOOM 2016 is on the same input path as XIII (2003).
   - **Consequence:** the ViGEm backend went from weakest to **most likely to work**, because
     XInput is imported directly, so a virtual pad is seen as a genuine controller and DirectInput's
-    exclusive mode never enters into it. The ViGEmBus install is now the highest-value unblock.
+    exclusive mode never enters into it. The ViGEmBus install was the highest-value unblock.
+  - **✅ PROVEN LIVE 2026-09-04** `[verified-live 2026-09-04, n=2 per axis with reversal]`: an
+    *external* ViGEm pad (`flat-to-vr-RE-toolkit/tools/virtual-pad.py`) drives DOOM's **movement**
+    (left stick, ~820-unit pure translation, basis fixed) and **look** (right stick, ~98 deg pure
+    yaw, position fixed), and pushing each the other way reverses it. DOOM raised a
+    "Controller Disconnected — Xbox 360 controller" toast when the pad was destroyed, confirming it
+    bound the virtual device as a real controller. ⚠️ This is the *external* route; the proxy's
+    *internal* `vigem` `probe` backend is still unbuilt and still reports `unavailable`. Building it
+    is now optional — the external route already gives autonomous camera/movement control.
+    Notes: `modding-notes/2026-09-04-ringcam-scan-cap-too-small-and-virtual-pad-drives-doom.md`.
 
 - **🚨 `r_renderAPI "1"` ALONE BREAKS THE LAUNCH — the cvar does not pick the executable
   (confirmed 2026-08-26 by a failed launch).** The two executables are **separate build
