@@ -19,6 +19,7 @@ project's repositories** — only code, notes, and tools we wrote ourselves.
 
 | Source / Work | Creator(s) | Link |
 |---|---|---|
+| Vulkan specification (Memory Allocation chapter; `VkMemoryPropertyFlagBits` reference) — the host-coherent flush semantics behind the 2026-09-04 topic | The Khronos Group | https://docs.vulkan.org/spec/latest/chapters/memory.html |
 | Vk3DVision (Vulkan stereoscopic 3D driver) | Helifax (Octavian Vasilov) | [github.com/helifax/Vk3DVision-Public](https://github.com/helifax/Vk3DVision-Public) |
 | Depth3D (ReShade stereoscopic/depth shader) | BlueSkyDefender | [github.com/BlueSkyDefender/Depth3D](https://github.com/BlueSkyDefender/Depth3D) |
 | DOOM (2016) — Graphics Study | Adrian Courrèges | [adriancourreges.com](https://www.adriancourreges.com/blog/2016/09/09/doom-2016-graphics-study/) |
