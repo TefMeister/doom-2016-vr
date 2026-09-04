@@ -405,6 +405,36 @@ game has written the frame's camera and the GPU has not read it yet.
 revisit only those each submit — a few hundred 64-byte reads. Always re-verify the translation
 still matches before writing, since a ring slot may have been reused.
 
+## 6g-2. ✅ The flush-count "contradiction" of §6g is settled, and on this GPU it needed no launch (2026-09-04c, `/pd`)
+
+§10 of the 2026-09-04 notes flagged that region 2 — the region `findvec` put every camera copy in —
+reported **27,462 flushes**, which read as a contradiction of §6g and blocked the `ringcam` redesign.
+
+- **The general half, from the Vulkan spec** (`/gr`, 2026-09-04): `HOST_COHERENT` means host cache
+  management commands *"are not needed"*, **not** that they are forbidden `[reported 2026-09-04,
+  first-party source]`. An engine may flush a coherent mapping unconditionally, so a flush **count
+  carries no information about the update route**. §6g and the flush count were never in conflict.
+- **The specific half, measured here** `[verified-numerically 2026-09-04, against the installed
+  driver]`: the proxy now hooks `vkAllocateMemory` and `vkGetPhysicalDeviceMemoryProperties`, and on
+  this machine's GTX 1660 SUPER the table is 6 types / 3 heaps, of which types 3, 4 and 5 are
+  `HOST_VISIBLE` — **and all three are also `HOST_COHERENT`. There is no host-visible,
+  non-coherent type at all.** `vkMapMemory` requires `HOST_VISIBLE`, so *every* mapped region on this
+  machine is necessarily coherent, region 2 included.
+
+⇒ **§6g stands, the flush count is uninformative, and "reuse camhunt's per-mapping flush path" has no
+evidence behind it.** The value-located scan is the option the evidence backs.
+
+⚠️ **That is a property of this ADAPTER, not of the game.** Another GPU may expose a host-visible
+non-coherent type, and there the question is live again — which is why the coherence is now reported
+per region rather than assumed. `findvec` hits print `memory=HOST_COHERENT` / `NOT host-coherent` /
+`type unknown`, and a `NOT host-coherent` on the camera's region would mean §6g measured a different
+buffer and needs a `Supersedes:` correction.
+
+⚠️ **The struct offsets are parsed by hand** (no Vulkan headers on this machine), so they are checked
+against a real driver in the off-game smoke test — count and heap ranges, every type naming a heap
+that exists, at least one host-visible type, at least one host-visible-and-coherent type — and the
+code logs loudly, once, if it ever reads an impossible type index or count.
+
 ## 6h. 🎯 THE UPSTREAM SOURCE — one static global holds origin + basis (2026-09-01)
 
 `[verified-live 2026-09-01, n=1 process instance]` The per-draw GPU copies in §6f are downstream
@@ -698,6 +728,27 @@ memory touched, removes the freeze risk, and removes staleness by construction.
 > per-mapping flush/scan path camhunt already uses. ⚠️ region 2 showed `flushes=27462` — it IS flushed,
 > which sits oddly against §6g's "camera buffer is HOST_COHERENT, not on the flush path"; resolve which
 > buffer §6g meant. Notes: `modding-notes/2026-09-04-ringcam-scan-cap-too-small-and-virtual-pad-drives-doom.md`.
+
+### 6h-5. ⚠️ `ringcam` was scanning the WRONG REGION, and "biggest mapping" is not the camera's (2026-09-04c, `/pd`)
+
+`ringcam` chose its scan target with `camhunt_biggestMapping()`, on the reasoning that the per-draw
+uniform ring is by far the largest host-visible mapping. **That is true of the ring and false of the
+camera.** Two launches settled it: a LEARN scan over the **full 3.0 MB offset span** of the biggest
+mapping matched nothing, and `findvec 1728 5440 6372` returned 64 camera hits — including a clean
+column-3 view matrix — **all in region index 2**, at ~100 KB `[verified-live 2026-09-04]`. No
+increase of `LEARN_CAP` could have fixed it, which is why widening 512 KB → 8 MB changed nothing.
+
+**Fixed by using the value-located region, which the code already knew.** `runDiscovery()` records
+the region index of every camera copy it finds; `camhunt_cameraMapping()` now reports the region
+holding the **most** of them, and `ringcam` scans that. "Most" rather than "first" because copies
+appear in several mappings and the busiest is the per-draw one a per-frame patch needs; ties break to
+the lower index so runs agree.
+
+**There is deliberately NO fallback to the biggest mapping.** With no discovery run there is no
+honest answer, so `ringcam` logs that and does nothing — a silent fallback to the buffer already
+proven not to contain the camera is exactly what made two launches look like a scan-size problem.
+⇒ **`camseed` + `camrescan` are now a prerequisite for `ringlearn`.**
+`[compile-verified 2026-09-04]`, deployed, **not run**. Write-up: `modding-notes/2026-09-04c-ringcam-scans-the-value-located-region-and-the-flush-contradiction-is-settled.md`.
 
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
