@@ -678,12 +678,26 @@ memory touched, removes the freeze risk, and removes staleness by construction.
 > predicate `camhunt.c` used to find 180 copies in 96 MB, so widening the scan is the fix, not
 > changing the match key.
 >
-> **Fixed and deployed same session:** `LEARN_CAP` → **8 MB** (covers this span 2.3x; one-off
-> memcpy ~340 ms worst case, vs 2.7 s for a 64 MB scan; LEARN runs once then OFF), and the LEARN log
-> now prints scanned-window-vs-full-span and warns when the span still exceeds the ceiling.
-> `[compile-verified 2026-09-04]`, deployed to `DOOMulkan-1.dll`. **The resume test is unchanged
-> and now has a real chance:** `ringlearn` → `ringstat` (expect `learned=1`) → `ringyaw 20` →
-> screenshot. Notes: `modding-notes/2026-09-04-ringcam-scan-cap-too-small-and-virtual-pad-drives-doom.md`.
+> **Cap widened same session** (`LEARN_CAP` 512 KB → 8 MB, log now prints scanned-window-vs-span),
+> `[compile-verified 2026-09-04]`, deployed. **⚠️ CORRECTION, second launch same day: the widened
+> scan was RUN and STILL found 0 — the cap was necessary to SEE the problem, not the cure.**
+> `[verified-live 2026-09-04, n=1]` LEARN scanned the full 3.0 MB span (no cap hit) of
+> `camhunt_biggestMapping` and matched nothing.
+>
+> **Root cause, from `findvec` + the code:** the camera copies DO exist — `findvec 1728 5440 6372`
+> returned 64 matches (packed-xyz and a clean column-3 view matrix: basis + origin in m[3]/m[7]/m[11]),
+> **all in ONE region (index 2), clustered at low offset (~100 KB)** `[verified-live 2026-09-04]`. But
+> `ringcam` scans `camhunt_biggestMapping`, which returns whichever mapping is *largest* — a
+> DIFFERENT region than the one holding the copies (there are two 64 MB ring mappings plus whole-size
+> ones). So LEARN reads the wrong buffer's bytes at the recorded offsets. Widening the cap could not
+> fix a wrong-base scan.
+>
+> **So the column-3 predicate is RIGHT and the copies are FINDABLE by value; the ring approach needs a
+> redesign, not a bigger scan** — re-gated `[PD]`. Direction: locate the camera region by value
+> (findvec-style, once) and scan/patch THAT region, rather than trusting `biggestMapping`; or reuse the
+> per-mapping flush/scan path camhunt already uses. ⚠️ region 2 showed `flushes=27462` — it IS flushed,
+> which sits oddly against §6g's "camera buffer is HOST_COHERENT, not on the flush path"; resolve which
+> buffer §6g meant. Notes: `modding-notes/2026-09-04-ringcam-scan-cap-too-small-and-virtual-pad-drives-doom.md`.
 
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
