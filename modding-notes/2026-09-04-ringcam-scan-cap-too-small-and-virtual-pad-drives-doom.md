@@ -1,4 +1,10 @@
-# 2026-09-04 (`/lm`, dev PC, FULLY AUTONOMOUS) — the ring-camera LEARN found nothing because its scan cap is 6.6x too small for this scene; and a virtual XInput pad drives DOOM's movement AND look, reversibly
+# 2026-09-04 (`/lm`, dev PC, FULLY AUTONOMOUS) — the ring-camera LEARN found nothing; a virtual XInput pad drives DOOM's movement AND look, reversibly
+
+> **⚠️ READ §10 FIRST — this note's own diagnosis was corrected the same day.** Sections 1, 2 and 4
+> conclude the 512 KB scan cap was the cause and widening it would fix the ring test. A second launch
+> on the widened 8 MB build **still found 0**, and `findvec` localised the camera copies to a region
+> `ringcam` never scans. The cap was real but not the cure; the true root cause and the redesign are
+> in §10. The virtual-pad result (§3) is unaffected and stands.
 
 **One launch. The critical-path ring test returned a clean diagnostic negative with a concrete
 cause and a static fix; and a second live item — does DOOM obey a ViGEm virtual pad — came back a
@@ -136,3 +142,75 @@ No control profile existed for DOOM; one is created this session at
 Live (`[FLAT]`): relaunch and run `ringlearn`→`ringstat`→`ringyaw 20`→screenshot on the widened
 build. Static (`[PD]`): the eye-field reflection-table mining continues (unchanged). The virtual-pad
 route is now the recommended way to drive DOOM's camera in any future live session.
+
+---
+
+## 10. CORRECTION, same day, second launch — the widened scan was run and STILL finds 0; the cap was not the cure
+
+**Supersedes sections 2 and 4 above** (which concluded, in good faith, that the 512 KB cap was *the*
+cause and that widening it gave the resume test "a real chance"). It did not. Recording the correction
+next to the claim, per claim hygiene.
+
+The user relaunched on the 8 MB build. `ringlearn` then `ringstat`:
+
+```
+[ringcam] LEARN scanned [0..3088384) = 3016 KB of a 3016 KB offset span (not 64 MB): 0 camera hit(s), 0 distinct delta(s)
+[ringcam] mode=0 learned=0 deltas=0  offsets this frame=1708 window=[0..3084288]
+[ringcam]   global cam OK (1728.00 5440.00 6372.16) left=(-0.500 0.866 0.000)
+```
+
+This time the scan covered the **entire** 3.0 MB offset span — no cap hit — and still matched nothing.
+So the cap was real (and worth fixing: the new log is exactly how we can now tell the span was fully
+covered), but it was **necessary to see the problem, not the cure.** `[verified-live 2026-09-04, n=1]`
+
+### The copies exist, and they are in a different region than ringcam scans
+
+`findvec 1728 5440 6372.16 2.0` (camhunt's value search across all mappings, background-threaded and
+chunked — it does not freeze) returned **64 matches, capped, all in region index 2**, at addresses
+clustered around `0x…2861xxxx` (a ~10 KB cluster at low offset). Both layouts appeared, including a
+clean **column-3 view matrix**:
+
+```
+0.866 -0.500  0.000  1728.000
+0.500  0.866  0.000  5440.000
+0.000  0.000  1.000  6372.160
+0.000  0.000  0.000  0.000
+```
+
+basis in the upper-left 3x3, camera origin in column 3 (m[3]/m[7]/m[11]) — exactly the shape
+`ringcam`'s `matches()` looks for. So the predicate is right and the data is there.
+
+### Root cause, from the code
+
+`ringcam_onSubmit` scans `camhunt_biggestMapping()`, which returns whichever single mapping is
+*largest* (`sz > bestSize`, first-wins on ties). There are two 64 MB ring mappings (one at instance
+creation, one at level load) plus whole-size ones. The camera copies live in region 2, which is **not**
+the one `biggestMapping` returns — so LEARN reads the wrong buffer's bytes at the recorded dynamic
+offsets. The dynamic offsets `ringcam` records (from `vkCmdBindDescriptorSets`) index some buffer's
+memory; applying them to `biggestMapping`'s base is a base/offset mismatch. **Widening the cap cannot
+fix a wrong-base scan.**
+
+### The redesign (now `[PD]`, needs no more launches to design)
+
+- **Locate the camera region by value, then scan/patch THAT region.** `findvec` already proves the
+  copies are a tight low-offset cluster in one region; a bounded per-frame scan of that region's first
+  few hundred KB, verify-column-3-before-write, is cheap and hits them. This drops the fragile
+  "dynamic offset + delta against biggestMapping" correlation entirely.
+- **Or reuse camhunt's per-mapping flush path.** ⚠️ Region 2 reported `flushes=27462`, i.e. it IS
+  flushed — which sits oddly against §6g's "the camera buffer is HOST_COHERENT, so the flush path is
+  NOT its update route." Resolve which buffer §6g measured before relying on either path.
+- Either way the write guard (only touch a slot whose column 3 still equals the expected origin) and
+  the yaw/eye math in `applyOne` are unaffected and already correct.
+
+### What this does NOT change
+
+The virtual-pad result (§3) stands: movement and look, isolated and reversible, `n=2` per axis. The
+`LEARN_CAP` → 8 MB change and the improved log stay in — they are how the full-span coverage was
+confirmed. Only the *diagnosis* changed: from "scan too small" to "scan of the wrong region."
+
+## 11. Gate
+
+Static (`[PD]`): redesign `ringcam`'s region selection (value-locate the camera region, or per-mapping
+flush path), then it needs a launch to test. The eye-field reflection mining is still `[PD]` too.
+Live (`[FLAT]`): the `+com_allowconsole 1` gate probe remains a standalone launch item. Nothing needs
+the headset.

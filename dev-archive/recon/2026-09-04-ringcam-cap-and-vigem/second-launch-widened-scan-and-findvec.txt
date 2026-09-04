@@ -1,0 +1,74 @@
+=== SECOND LAUNCH 2026-09-04 ~15:04 — widened 8 MB build ===
+[15:08:47.032] [ringcam] mode=LEARN param=0.00  (learned=0, deltas=0)
+[15:08:47.175] [ringcam] LEARN scanned [0..3088384) = 3016 KB of a 3016 KB offset span (not 64 MB): 0 camera hit(s), 0 distinct delta(s)
+[15:08:47.175] [ringcam]   nothing matched -- the camera may not be in this window, or column 3 is not where the ring copies keep the translation.
+[15:08:52.029] [ringcam] mode=0 learned=0 deltas=0  offsets this frame=1708 window=[0..3084288]
+[15:08:52.030] [ringcam]   global cam OK (1728.00 5440.00 6372.16) left=(-0.500 0.866 0.000)
+[15:08:52.030] [ringcam]   frames=0 probed=0 patched=0 (last frame 0)
+[15:12:48.631] [auto] BEGIN "findvec 1728 5440 6372.16 2.0"
+[15:12:48.633] [auto] END   "findvec 1728 5440 6372.16 2.0"
+[15:12:51.593] [camhunt] HIT 1 at 0000024F28213950  (packed xyz)  region 2 flushes=27462
+[15:12:51.594] [camhunt] HIT 2 at 0000024F2828F950  (packed xyz)  region 2 flushes=27462
+[15:12:51.599] [camhunt] HIT 3 at 0000024F28600230  (packed xyz)  region 2 flushes=27462
+[15:12:51.599] [camhunt] HIT 4 at 0000024F28600400  (packed xyz)  region 2 flushes=27462
+[15:12:51.600] [camhunt] HIT 5 at 0000024F28600C50  (packed xyz)  region 2 flushes=27462
+[15:12:51.600] [camhunt] HIT 6 at 0000024F28601000  (packed xyz)  region 2 flushes=27462
+[15:12:51.601] [camhunt] HIT 7 at 0000024F28602020  (packed xyz)  region 2 flushes=27462
+[15:12:51.601] [camhunt] HIT 8 at 0000024F28602500  (packed xyz)  region 2 flushes=27462
+[15:12:51.602] [camhunt] HIT 9 at 0000024F28602850  (packed xyz)  region 2 flushes=27462
+[15:12:51.603] [camhunt] HIT 10 at 0000024F28602E20  (packed xyz)  region 2 flushes=27462
+[15:12:51.603] [camhunt] HIT 11 at 0000024F28603450  (packed xyz)  region 2 flushes=27462
+[15:12:51.604] [camhunt] HIT 12 at 0000024F28604220  (packed xyz)  region 2 flushes=27462
+[15:12:51.604] [camhunt] HIT 13 at 0000024F28604E20  (packed xyz)  region 2 flushes=27462
+[15:12:51.605] [camhunt] HIT 14 at 0000024F28605020  (packed xyz)  region 2 flushes=27462
+[15:12:51.606] [camhunt] HIT 15 at 0000024F28605620  (packed xyz)  region 2 flushes=27462
+[15:12:51.606] [camhunt] HIT 16 at 0000024F28605E50  (packed xyz)  region 2 flushes=27462
+[15:12:51.608] [camhunt] HIT 17 at 0000024F28606320  (packed xyz)  region 2 flushes=27462
+[15:12:51.608] [camhunt] HIT 18 at 0000024F28607150  (packed xyz)  region 2 flushes=27462
+[15:12:51.610] [camhunt] HIT 19 at 0000024F28607650  (packed xyz)  region 2 flushes=27462
+[15:12:51.610] [camhunt] HIT 20 at 0000024F28607760  (packed xyz)  region 2 flushes=27462
+[15:12:51.611] [camhunt] HIT 21 at 0000024F28607920  (packed xyz)  region 2 flushes=27462
+[15:12:51.612] [camhunt] HIT 22 at 0000024F28607C20  (packed xyz)  region 2 flushes=27462
+[15:12:51.612] [camhunt] HIT 23 at 0000024F28608A20  (packed xyz)  region 2 flushes=27462
+[15:12:51.613] [camhunt] HIT 24 at 0000024F28608D00  (packed xyz)  region 2 flushes=27462
+[15:12:51.613] [camhunt] HIT 25 at 0000024F28609000  (packed xyz)  region 2 flushes=27462
+[15:12:51.614] [camhunt] HIT 26 at 0000024F28609320  (packed xyz)  region 2 flushes=27462
+[15:12:51.614] [camhunt] HIT 27 at 0000024F28609860  (packed xyz)  region 2 flushes=27462
+[15:12:51.615] [camhunt] HIT 28 at 0000024F28609D20  (packed xyz)  region 2 flushes=27462
+[15:12:51.615] [camhunt] HIT 29 at 0000024F2860A000  (packed xyz)  region 2 flushes=27462
+[15:12:51.616] [camhunt] HIT 30 at 0000024F2860AA50  (packed xyz)  region 2 flushes=27462
+[15:12:51.616] [camhunt] HIT 31 at 0000024F2860B220  (packed xyz)  region 2 flushes=27462
+[15:12:51.617] [camhunt] HIT 32 at 0000024F2860B750  (packed xyz)  region 2 flushes=27462
+[15:12:51.617] [camhunt] HIT 33 at 0000024F2860CA20  (packed xyz)  region 2 flushes=27462
+[15:12:51.618] [camhunt] HIT 34 at 0000024F2860CF40  (packed xyz)  region 2 flushes=27462
+[15:12:51.618] [camhunt] HIT 35 at 0000024F2860D220  (packed xyz)  region 2 flushes=27462
+[15:12:51.619] [camhunt] HIT 36 at 0000024F2860D420  (packed xyz)  region 2 flushes=27462
+[15:12:51.619] [camhunt] HIT 37 at 0000024F2860D640  (packed xyz)  region 2 flushes=27462
+[15:12:51.620] [camhunt] HIT 38 at 0000024F2860DD20  (packed xyz)  region 2 flushes=27462
+[15:12:51.620] [camhunt] HIT 39 at 0000024F2860E000  (packed xyz)  region 2 flushes=27462
+[15:12:51.621] [camhunt] HIT 40 at 0000024F2860EA20  (packed xyz)  region 2 flushes=27462
+[15:12:51.621] [camhunt] HIT 41 at 0000024F2860ED00  (packed xyz)  region 2 flushes=27462
+[15:12:51.622] [camhunt] HIT 42 at 0000024F2860F330  (packed xyz)  region 2 flushes=27462
+[15:12:51.623] [camhunt] HIT 43 at 0000024F2860F820  (packed xyz)  region 2 flushes=27462
+[15:12:51.623] [camhunt] HIT 44 at 0000024F28610220  (packed xyz)  region 2 flushes=27462
+[15:12:51.624] [camhunt] HIT 45 at 0000024F28610520  (packed xyz)  region 2 flushes=27462
+[15:12:51.625] [camhunt] HIT 46 at 0000024F28610600  (packed xyz)  region 2 flushes=27462
+[15:12:51.625] [camhunt] HIT 47 at 0000024F28611360  (packed xyz)  region 2 flushes=27462
+[15:12:51.626] [camhunt] HIT 48 at 0000024F28612420  (packed xyz)  region 2 flushes=27462
+[15:12:51.627] [camhunt] HIT 49 at 0000024F28612700  (packed xyz)  region 2 flushes=27462
+[15:12:51.628] [camhunt] HIT 50 at 0000024F28613C60  (packed xyz)  region 2 flushes=27462
+[15:12:51.628] [camhunt] HIT 51 at 0000024F28613E50  (packed xyz)  region 2 flushes=27462
+[15:12:51.628] [camhunt] HIT 52 at 0000024F28614120  (packed xyz)  region 2 flushes=27462
+[15:12:51.629] [camhunt] HIT 53 at 0000024F28614600  (packed xyz)  region 2 flushes=27462
+[15:12:51.630] [camhunt] HIT 54 at 0000024F28614A50  (packed xyz)  region 2 flushes=27462
+[15:12:51.631] [camhunt] HIT 55 at 0000024F28616050  (matrix column 3)  region 2 flushes=27462
+[15:12:51.631] [camhunt] HIT 56 at 0000024F28616E60  (packed xyz)  region 2 flushes=27462
+[15:12:51.632] [camhunt] HIT 57 at 0000024F28617660  (packed xyz)  region 2 flushes=27462
+[15:12:51.632] [camhunt] HIT 58 at 0000024F28617850  (matrix column 3)  region 2 flushes=27462
+[15:12:51.633] [camhunt] HIT 59 at 0000024F28618360  (packed xyz)  region 2 flushes=27462
+[15:12:51.633] [camhunt] HIT 60 at 0000024F28618B50  (packed xyz)  region 2 flushes=27462
+[15:12:51.634] [camhunt] HIT 61 at 0000024F28619F00  (packed xyz)  region 2 flushes=27462
+[15:12:51.635] [camhunt] HIT 62 at 0000024F2861A050  (packed xyz)  region 2 flushes=27462
+[15:12:51.635] [camhunt] HIT 63 at 0000024F2861A500  (packed xyz)  region 2 flushes=27462
+[15:12:51.636] [camhunt] HIT 64 at 0000024F2861A850  (matrix column 3)  region 2 flushes=27462
+[15:12:51.636] [camhunt] FINDVEC (1728.00 5440.00 6372.16) tol 2.00 -> 64 hit(s) across 1 region(s) [capped at 64]
