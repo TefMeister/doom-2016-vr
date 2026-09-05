@@ -319,6 +319,70 @@ available right now.
 > pointer arithmetic) — walking outward from a known-good anchor (e.g. `viewaxis`'s record) to
 > enumerate neighbouring field names is untried.
 
+> #### ⭐ THE TABLE IS FULLY WALKABLE, AND THE ANSWER IS "NO EYE FIELD, BECAUSE STEREO IS A SECOND VIEW" (2026-09-05, `/pd`, static only)
+> The reflection DB has a **class-descriptor layer** on top of the 72-byte field records: 56-byte
+> descriptors (`+8` `char* className`, `+24` `u64 sizeof`, `+40` → field table), field tables
+> terminated by an all-zero record. **4,774 classes enumerate by name.** The layout self-checks
+> (`renderView_t` 2124→2128, `idScreenView` 2324→2336, `idStaticList<idScreenView,N>` = N×2336+32).
+> `[verified-numerically 2026-09-05]` Full dump + tooling:
+> `dev-archive/recon/2026-09-05-reflection-eye-field-hunt/`.
+>
+> **NEGATIVE, near-exhaustive.** Of **57,214** field records (99.98% of the population — a looser
+> validator returns 57,228 both with string pointers restricted to `.rdata` and widened to
+> `.rdata|.data`, i.e. **+0**), **zero** names contain `stereo`, and all 59 `eye` hits are
+> gameplay/AI/animation with no renderer-ish type or comment. `renderView_t` (61 fields, sizeof
+> 2128), `idView` (110), `idRenderView` (35), `idScreenView` (8), `idViewBypass` (6) and
+> `idRenderFrameInfo` (4) are enumerated in full and **none has a per-eye field.**
+> `[verified-numerically 2026-09-05, n=57,214 records]` Positive control: the same scan re-finds
+> `leftFrameOffset`/`rightFrameOffset`, `explicitProjectionMatrix`, `useExplicitProjectionMatrix`,
+> `forceIdentityViewMatrix`, `fov_x`, `fov_y`, `cramZNear`, `vieworg`, `viewaxis` unprompted.
+>
+> **POSITIVE — the eye selector is `idScreenView::viewIndex`, not a field on the view.** The DB
+> carries id's doc comments; searching *those* for stereo returns exactly six hits, five renderer:
+> - `idScreenView::viewIndex`, `int` **+16** — *"determines which viewColor image will be rendered
+>   to, and which idRenderView from world will be used."*
+> - `idRenderFrameInfo::worldViews`, `idStaticList<idScreenView, 2>` **+2368** — *"two identical
+>   ones in stereo-3D (both centered between the eyes)"*. **Capacity 2 is compiled into retail**
+>   (4704 = 2×2336 + 32).
+> - `idRenderFrameInfo::screenViews`, `idStaticList<idScreenView, 1>` **+0** — *"stereo-3D will
+>   define two views."*
+> - `idScreenView::guiOriginOffset`, `float` **+2320** — *"for stereo 3D, the guis can be offset
+>   differently in each screenView."* **The only surviving per-view stereo scalar, and it is for
+>   GUIs** — there is no world-camera counterpart. That is the structural reason BFG's
+>   `viewEyeBuffer`/`stereoScreenSeparation` was never going to be found.
+> - `renderView_t::inhibitModelFovScale`, `bool` **+15** (id's typo *"steroescopic"* intact).
+>
+> `[verified-numerically 2026-09-05]` for every name/type/offset. That stereo should therefore be
+> driven **by populating the second `worldViews` entry** is `[inferred-static 2026-09-05]` — no code
+> path was traced. ⚠️ The *"centered between the eyes"* sentence is **not new** (Phase 0,
+> 2026-08-26, §6a); what is new is that it is now attached to a typed container at a known offset.
+>
+> **`idRenderView` layout (sizeof 5616)** `[verified-numerically 2026-09-05]`: `g` (renderView_t)
+> +0 *"set by the game"*; `viewIndex` +2128; **`r` (renderView_t) +2272 — *"latched from 'g' at
+> EndFrame time for renderer use"***; `projectionMatrix` +4400, `projectionMatrixNoJitter` +4464,
+> `inverseProjectionMatrix` +4528, `viewMatrix` +4592, `inverseViewMatrix` +4656,
+> `worldSpaceMVPMatrix` +4720, `worldSpaceInverseMVPMatrix` +4784, and the relative-to-camera
+> variants +4848/+4912/+4976/+5040. **The `g`→`r` latch means a write landing after EndFrame is
+> discarded for that frame** — keep on file for write-timing surprises, but it is `[hypothesis]` as
+> an explanation of anything we have observed, and must not be treated as a diagnosis of the ring
+> test until something is measured against it.
+>
+> **`renderView_t` anchors the value scan.** From a `findvec` hit `A` on `vieworg`:
+> `A-96` = struct base, `A-80` = `fov_x`, `A-76` = `fov_y`, `A-68` = `explicitProjectionMatrix`
+> (64 B), `A-4` = `useExplicitProjectionMatrix` (bool), `A+12` = `viewaxis`, `A+48` = `viewBypass`,
+> `A+120` = `forceIdentityViewMatrix`. A hit can now be **verified** as a `renderView_t` (plausible
+> floats at `A-80`/`A-76`, 0/1 bools at `A-4`/`A+120`) instead of assumed — and §6c's
+> `explicitProjectionMatrix`, *"the single highest-value thing to test live"* since 2026-08-26, is
+> for the first time directly addressable. `[inferred-static 2026-09-05]` — offsets verified, the
+> identification of a hit as a `renderView_t` is not.
+>
+> **⚠️ Limits.** These tables list *reflected* members only (`idRenderView`: 35 fields in 5,616
+> bytes), so the negative is exact for *"is there a reflected eye field"* and only strongly
+> suggestive for *"is there an eye field"*. The tables also have **no code references at all** —
+> no absolute immediates, no RIP-relative sites, checked across five addresses — so they give no
+> static anchor into renderer code. Note `static-disasm.py xrefs` catches only E8/E9 and absolute
+> immediates and **cannot see a RIP-relative reference**; `riprefs.py` in the recon folder does.
+
 ### 6e. Camera convention — MEASURED LIVE (2026-08-26)
 
 The console command **`getviewpos`** prints the live camera. Four readings were taken, shaped so
