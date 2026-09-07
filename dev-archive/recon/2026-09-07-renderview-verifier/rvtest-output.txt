@@ -1,0 +1,11 @@
+== 1. a well-formed renderView_t is accepted ==
+== 2. the bools must be 0 or 1 - this is the cheapest discriminator ==
+== 3. implausible fovs are rejected ==
+== 4. two individually plausible fovs that cannot be one frustum ==
+== 5. NaN and infinity are rejected wherever they appear ==
+== 6. an all-zero buffer must NOT pass ==
+== 7. THE REAL TEST: how often does random memory slip through? ==
+     0 of 20000 random windows passed the shape test (0.000%)
+== 8. a NULL address is handled, not crashed on ==
+
+22 checks, 0 failure(s)

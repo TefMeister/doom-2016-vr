@@ -383,6 +383,42 @@ available right now.
 > static anchor into renderer code. Note `static-disasm.py xrefs` catches only E8/E9 and absolute
 > immediates and **cannot see a RIP-relative reference**; `riprefs.py` in the recon folder does.
 
+### ✅ 6d-bis. A hit can now be VERIFIED as a `renderView_t`, and §6c is one command away (2026-09-07, `/pd`, no launch)
+
+The 2026-09-05 layout gave the offsets but no way to tell whether a given `findvec` hit *is* a
+`renderView_t` — and `findvec` returns dozens of camera-shaped hits, so writing 64 bytes of
+projection matrix into the wrong one is a real risk. Identification was an assumption; it is now a
+test.
+
+`proxy-vulkan/src/renderview.{c,h}` + `renderview_cmd.c`, four commands:
+
+| command | does |
+| --- | --- |
+| `rvcheck <hexaddr>` | shape-test a hit; prints every field read and, on rejection, **which test failed** |
+| `rvmat <hexaddr>` | read `explicitProjectionMatrix` as a 4×4 |
+| `rvexplicit <hexaddr> on\|off` | **the §6c experiment**: flip `useExplicitProjectionMatrix` |
+| `rvsetmat <hexaddr> f1..f16` | write the 4×4, row-major |
+
+Both writers refuse unless the shape test passes. The test: finite `vieworg`; `fov_x`/`fov_y` each
+finite and in (1°, 179°) — deliberately wide, since rejecting the real struct costs more than
+admitting a decoy; the two fovs consistent as one frustum; and `useExplicitProjectionMatrix` /
+`forceIdentityViewMatrix` each exactly 0 or 1, which is the cheapest strong discriminator at ~1/128
+per byte on random data.
+
+`[compile-verified 2026-09-07]` (246 exports, all 96 imports covered) and
+`[verified-numerically 2026-09-07]` — **22 checks, 0 failures against the shipped code**, with
+**0 of 20,000 random-memory windows** passing.
+
+⚠️ **A shape match is NOT proof.** A buffer of plausible floats with two 0/1 bytes in the right
+places passes too; the command output says "LOOKS LIKE" in those words. The 0/20000 bounds the
+false-positive rate rather than eliminating it — the expected count was already under one. The
+positive control is a struct built from §6e's real `getviewpos` reading, without which a
+filter that rejected everything would score identically.
+
+Still open and unchanged: whether the engine honours `explicitProjectionMatrix` at all (that is
+§6c), and the per-eye maths. Write-up:
+`modding-notes/2026-09-07-the-renderview-verifier-makes-6c-addressable.md`.
+
 ### 6e. Camera convention — MEASURED LIVE (2026-08-26)
 
 The console command **`getviewpos`** prints the live camera. Four readings were taken, shaped so
