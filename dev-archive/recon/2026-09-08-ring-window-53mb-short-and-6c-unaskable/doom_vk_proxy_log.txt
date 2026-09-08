@@ -1,0 +1,901 @@
+[10:25:27.007] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[10:25:27.024] real vulkan-1.dll loaded at 00007FFB85380000; resolved 246/246 exports (0 missing)
+[10:25:41.853] vkCreateInstance -> 0 (instance=0000028249F024E0)
+[10:25:43.678] vkCreateDevice -> 0 (physDev=0000028251437E20 device=00000282514745F0)
+[10:25:43.678] [camhunt] memory types recorded: 6
+[10:25:43.696] vkMapMemory #1 mem=0x28251877be0 offset=0 size=18446744073709551615 -> 00000282589D0000
+[10:25:44.294] vkMapMemory #2 mem=0x28251875ee0 offset=0 size=18446744073709551615 -> 000002825D9D0000
+[10:25:44.310] vkMapMemory #3 mem=0x282518760b0 offset=0 size=67108864 -> 00000282637E0000
+[10:25:45.719] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[10:25:45.721] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[10:25:46.415] vkMapMemory #4 mem=0x2827ed89b40 offset=0 size=76800 -> 00000282563BF000
+[10:25:46.416] vkMapMemory #5 mem=0x2827ee92840 offset=0 size=76800 -> 00000282563D2000
+[10:25:46.416] vkMapMemory #6 mem=0x2827ee936c0 offset=0 size=76800 -> 00000282563E5000
+[10:26:19.662] [autoinput] DirectInput8 object seen; CreateDevice instrumented
+[10:26:19.662] [autoinput] DirectInput8 CreateDevice(SysMouse) -> 0x00000000
+[10:26:19.662] [autoinput] SysMouse device hooked (GetDeviceState + GetDeviceData) -- this is the look path
+[10:26:19.676] [autoinput] NOTE: the mouse device uses BUFFERED GetDeviceData. Immediate-mode lX/lY injection will NOT be seen -- event fabrication is needed here.
+[10:26:19.689] [autoinput] DirectInput8 CreateDevice(SysKeyboard) -> 0x00000000
+[10:26:40.890] vkQueuePresentKHR frame 1 (queue=00000282516AA350)
+[10:26:44.806] vkQueuePresentKHR frame 10 (queue=00000282516AA350)
+[10:26:46.454] vkQueuePresentKHR frame 100 (queue=00000282516AA350)
+[10:26:46.788] [camhunt] ready. Commands: snapa/snapb/dump/tol. NUMPAD 1/2/3 still work as a manual fallback.
+[10:26:46.788] [autoinput] window=00000000032E065E  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[10:26:46.788] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[10:26:46.789] [autoinput]   sendinput          available  
+[10:26:46.789] [autoinput]   postmessage        available  
+[10:26:46.789] [autoinput]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[10:26:46.789] [auto] automation ON (env). Append commands to: D:\Program Files (x86)\Steam\steamapps\common\DOOM\doom_automation_cmds.txt
+[10:26:46.789] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[10:26:52.537] [auto] BEGIN "status"
+[10:26:52.537] [auto] status: tol=0.00100  budget=96 MB  stride=16  snapshotA=-1 candidates  live mappings=6
+[10:26:52.537] [auto]   inproc-keystate    available    [default]  -- 3 key-state hook(s) + cursor
+[10:26:52.537] [auto]   sendinput          available  
+[10:26:52.538] [auto]   postmessage        available  
+[10:26:52.538] [auto]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[10:26:52.538] [auto] END   "status"
+[10:27:01.684] vkQueuePresentKHR frame 1000 (queue=00000282516AA350)
+[10:27:20.474] vkQueuePresentKHR frame 2000 (queue=00000282516AA350)
+[10:27:37.152] vkQueuePresentKHR frame 3000 (queue=00000282516AA350)
+[10:27:53.981] vkQueuePresentKHR frame 4000 (queue=00000282516AA350)
+[10:28:12.948] vkQueuePresentKHR frame 5000 (queue=00000282516AA350)
+[10:28:32.442] vkQueuePresentKHR frame 6000 (queue=00000282516AA350)
+[10:28:49.151] vkQueuePresentKHR frame 7000 (queue=00000282516AA350)
+[10:29:05.878] vkQueuePresentKHR frame 8000 (queue=00000282516AA350)
+[10:29:22.587] vkQueuePresentKHR frame 9000 (queue=00000282516AA350)
+[10:29:39.274] vkQueuePresentKHR frame 10000 (queue=00000282516AA350)
+[10:29:57.346] vkQueuePresentKHR frame 11000 (queue=00000282516AA350)
+[10:30:01.007] vkMapMemory #7 mem=0x2822e2d3b20 offset=0 size=67108864 -> 00000282C4160000
+[10:30:25.371] vkQueuePresentKHR frame 12000 (queue=00000282516AA350)
+[10:30:50.508] vkQueuePresentKHR frame 13000 (queue=00000282516AA350)
+[10:31:07.173] vkQueuePresentKHR frame 14000 (queue=00000282516AA350)
+[10:31:11.876] [auto] BEGIN "getviewpos"
+[10:31:11.876] [auto] END   "getviewpos" -> UNKNOWN command (try `help`)
+[10:31:23.842] vkQueuePresentKHR frame 15000 (queue=00000282516AA350)
+[10:31:26.875] [auto] BEGIN "help"
+[10:31:26.876] [auto] commands:
+[10:31:26.876] [auto]   status | help | mappings
+[10:31:26.876] [auto]   snapa | snapb | dump          camhunt: snapshot A, compare, show current
+[10:31:26.876] [auto]   tol <float>                   retune orthonormality tolerance, no rebuild
+[10:31:26.876] [auto]   budget <MB> | stride <bytes>  narrow or coarsen the scan, live
+[10:31:26.876] [auto]   backend <inproc|sendinput|postmessage|vigem>
+[10:31:26.876] [auto]   move <fwd,back,left,right,jump> [frames]
+[10:31:26.876] [auto]   look <dx> <dy> [frames]       mouse delta per frame
+[10:31:26.876] [auto]   findvec <x> <y> <z> [tol]     find a value in the GPU buffers
+[10:31:26.876] [auto]   psearch <x> <y> <z> [tol]     find it in PROCESS memory (pass 1)
+[10:31:26.876] [auto]   pnarrow <x> <y> <z> [tol]     keep only what matches now (pass 2)
+[10:31:26.877] [auto]   pdump 0xADDR                  show floats around an address
+[10:31:26.877] [auto]   rvcheck <hexaddr>             is this hit a renderView_t? (shape test)
+[10:31:26.877] [auto]   rvmat <hexaddr>               read explicitProjectionMatrix
+[10:31:26.877] [auto]   rvexplicit <hexaddr> on|off   THE 6c EXPERIMENT: honour the explicit matrix?
+[10:31:26.877] [auto]   rvsetmat <hexaddr> f1..f16    write the 4x4, row-major
+[10:31:26.877] [auto]   pwrite <hexaddr> <x> <y> <z>  write three floats once
+[10:31:26.877] [auto]   phold <hexaddr> <x> <y> <z>   hold them every frame | pholdoff
+[10:31:26.877] [auto]   pholdall <dx> <dy> <dz>       hold the WHOLE candidate set | pholdalloff
+[10:31:26.877] [auto]   phalve1 | phalve2 | pother    bisect the set; pother = the half just dropped
+[10:31:26.877] [auto]   pholdyaw <hexaddr> <deg>      ROTATE the basis about Z | pholdyawoff
+[10:31:26.877] [auto]   scan <hex>                    tap a PHYSICAL scancode (console = 0x29)
+[10:31:26.877] [auto]   framespy                      capture ONE frame's pass/draw/uniform structure
+[10:31:26.878] [auto]   ringlearn | ringstat | ringoff  per-frame ring camera locator
+[10:31:26.878] [auto]   ringyaw <deg> | ringeye <units> drive the ring copies (stereo eye offset)
+[10:31:26.878] [auto]   camwatch | camstat | camoff    track the camera at the flush path
+[10:31:26.878] [auto]   camseed <x> <y> <z>           lock on using getviewpos output
+[10:31:26.878] [auto]   camrescan                     re-learn where the copies live
+[10:31:26.878] [auto]   camyaw <deg>                  ROTATE the live camera (0 = watch only)
+[10:31:26.878] [auto]   key <tilde|enter|esc|0xNN>    tap one key
+[10:31:26.879] [auto]   type <text>                   type a string
+[10:31:26.879] [auto]   console <text>                open console, run text, close
+[10:31:26.879] [auto]   probe                         measure which backends the game obeys
+[10:31:26.879] [auto]   stop                          release any held input
+[10:31:26.879] [auto] END   "help"
+[10:31:40.508] vkQueuePresentKHR frame 16000 (queue=00000282516AA350)
+[10:31:56.661] [auto] BEGIN "findvec 1728 5440 6372"
+[10:31:56.662] [camhunt] scan started in the background -- the game keeps running; results follow in this log
+[10:31:56.662] [auto] END   "findvec 1728 5440 6372"
+[10:31:59.594] [camhunt] HIT 1 at 0000028266FF3950  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.594] [camhunt]     1728.000  5440.000  6372.160  0.000
+[10:31:59.594] [camhunt]     0.000  0.000  0.000  0.119
+[10:31:59.595] [camhunt]     0.000  136910462976.000  0.000  136910462976.000
+[10:31:59.595] [camhunt]     1404.821  5296.416  6736.000  0.000
+[10:31:59.595] [camhunt] HIT 2 at 000002826706F950  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.595] [camhunt]     1728.000  5440.000  6372.160  0.000
+[10:31:59.595] [camhunt]     0.000  0.000  0.000  0.119
+[10:31:59.596] [camhunt]     0.000  136910462976.000  0.000  136910462976.000
+[10:31:59.596] [camhunt]     1404.821  5296.416  6736.000  0.000
+[10:31:59.598] [camhunt] HIT 3 at 00000282673E0020  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.598] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.598] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.599] [camhunt]     0.992 -0.056  0.115  7556.845
+[10:31:59.599] [camhunt]     0.055  0.998  0.006  5504.073
+[10:31:59.599] [camhunt] HIT 4 at 00000282673E0300  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.599] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.599] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.599] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.599] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.599] [camhunt] HIT 5 at 00000282673E0830  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.599] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.600] [camhunt]     67.459  67.459  67.459  67.459
+[10:31:59.600] [camhunt]     0.500 -0.866 -0.000  3847.178
+[10:31:59.600] [camhunt]     0.000  0.000  1.000 -6372.160
+[10:31:59.600] [camhunt] HIT 6 at 00000282673E2020  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.600] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.600] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.600] [camhunt]     0.700 -0.024  0.000  6232.900
+[10:31:59.600] [camhunt]     0.024  0.700  0.000  5503.982
+[10:31:59.600] [camhunt] HIT 7 at 00000282673E2300  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.600] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.601] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.601] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.601] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.601] [camhunt] HIT 8 at 00000282673E2E50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.601] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.601] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.601] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.602] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.602] [camhunt] HIT 9 at 00000282673E3520  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.602] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.602] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.602] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.603] [camhunt]    -0.119 -0.440 -0.890  115.444
+[10:31:59.603] [camhunt] HIT 10 at 00000282673E3900  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.603] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.603] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.603] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.603] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.603] [camhunt] HIT 11 at 00000282673E4B20  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.604] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.604] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.604] [camhunt]    -0.653 -0.460  0.000  35545.324
+[10:31:59.604] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.604] [camhunt] HIT 12 at 00000282673E4E00  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.605] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.605] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.605] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.605] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.605] [camhunt] HIT 13 at 00000282673E5060  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.605] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.606] [camhunt]    -0.876 -14.325  5.062  0.050
+[10:31:59.606] [camhunt]     0.000 -999.000  0.000  1.000
+[10:31:59.606] [camhunt]     0.000 -999.000  0.000  1.000
+[10:31:59.606] [camhunt] HIT 14 at 00000282673E5A50  (matrix column 3)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.606] [camhunt]     0.866 -0.500  0.000  1728.000
+[10:31:59.606] [camhunt]     0.500  0.866  0.000  5440.000
+[10:31:59.606] [camhunt]     0.000  0.000  1.000  6372.160
+[10:31:59.606] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.607] [camhunt] HIT 15 at 00000282673E5C50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.607] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.607] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.607] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.607] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.607] [camhunt] HIT 16 at 00000282673E5F60  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.607] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.607] [camhunt]     0.000  0.000  128.000  4.023
+[10:31:59.607] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.607] [camhunt]     0.000 -999.000  0.000  1.000
+[10:31:59.607] [camhunt] HIT 17 at 00000282673E7350  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.608] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.608] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.608] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.608] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.608] [camhunt] HIT 18 at 00000282673E7450  (matrix column 3)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.608] [camhunt]     0.866 -0.500  0.000  1728.000
+[10:31:59.608] [camhunt]     0.500  0.866  0.000  5440.000
+[10:31:59.608] [camhunt]     0.000  0.000  1.000  6372.160
+[10:31:59.609] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.609] [camhunt] HIT 19 at 00000282673E8200  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.609] [camhunt]     1728.000  5439.999  6372.160  1.000
+[10:31:59.609] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.609] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.609] [camhunt]     512.000  512.000  0.000  0.000
+[10:31:59.609] [camhunt] HIT 20 at 00000282673E8620  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.609] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.609] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.609] [camhunt]     0.973  0.191  0.040  0.000
+[10:31:59.610] [camhunt]     0.212  0.212  0.212  0.212
+[10:31:59.610] [camhunt] HIT 21 at 00000282673E8960  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.610] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.610] [camhunt]     0.000  0.000  128.000  4.023
+[10:31:59.610] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.610] [camhunt]     0.000  0.000  128.000  4.023
+[10:31:59.610] [camhunt] HIT 22 at 00000282673E8D50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.610] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.610] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.610] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.610] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.611] [camhunt] HIT 23 at 00000282673E9850  (matrix column 3)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.611] [camhunt]     0.866 -0.500  0.000  1728.000
+[10:31:59.611] [camhunt]     0.500  0.866  0.000  5440.000
+[10:31:59.611] [camhunt]     0.000  0.000  1.000  6372.160
+[10:31:59.611] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.611] [camhunt] HIT 24 at 00000282673E9F50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.611] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.611] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.611] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.611] [camhunt]     1.000  0.216  0.006  0.000
+[10:31:59.612] [camhunt] HIT 25 at 00000282673EA450  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.612] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.612] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.612] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.612] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.612] [camhunt] HIT 26 at 00000282673EAF00  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.612] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.613] [camhunt]     0.000  0.000 -1.000 -3.000
+[10:31:59.613] [camhunt]     0.000  0.000  128.000  4.023
+[10:31:59.613] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.613] [camhunt] HIT 27 at 00000282673EBA50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.613] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.613] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.613] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.614] [camhunt]     0.147  0.235  0.223  0.258
+[10:31:59.614] [camhunt] HIT 28 at 00000282673EC160  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.614] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.614] [camhunt]     0.000  0.000  0.408  10610.969
+[10:31:59.614] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.614] [camhunt]     1.000  2.000  0.000  0.000
+[10:31:59.614] [camhunt] HIT 29 at 00000282673EC650  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.614] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.614] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.614] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.614] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.615] [camhunt] HIT 30 at 00000282673ECE20  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.615] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.615] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.615] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.615] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.615] [camhunt] HIT 31 at 00000282673ED220  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.615] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.615] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.615] [camhunt]     0.000  0.050  5.000  0.000
+[10:31:59.616] [camhunt]     1.000  0.010  0.000  1.000
+[10:31:59.616] [camhunt] HIT 32 at 00000282673ED500  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.616] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.616] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.616] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.616] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.616] [camhunt] HIT 33 at 00000282673EE950  (matrix column 3)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.616] [camhunt]     0.866 -0.500  0.000  1728.000
+[10:31:59.616] [camhunt]     0.500  0.866  0.000  5440.000
+[10:31:59.616] [camhunt]     0.000  0.000  1.000  6372.160
+[10:31:59.616] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.617] [camhunt] HIT 34 at 00000282673EEE20  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.617] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.617] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.617] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.617] [camhunt]     0.000  0.000 -1.000 -3.000
+[10:31:59.617] [camhunt] HIT 35 at 00000282673EF100  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.617] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.617] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.617] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.618] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.618] [camhunt] HIT 36 at 00000282673EF220  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.618] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.618] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.618] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.618] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.618] [camhunt] HIT 37 at 00000282673EFD50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.618] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.619] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.619] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.619] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.619] [camhunt] HIT 38 at 00000282673EFF50  (matrix column 3)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.619] [camhunt]     0.866 -0.500  0.000  1728.000
+[10:31:59.619] [camhunt]     0.500  0.866  0.000  5440.000
+[10:31:59.620] [camhunt]     0.000  0.000  1.000  6372.160
+[10:31:59.620] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.620] [camhunt] HIT 39 at 00000282673F0120  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.620] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.620] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.621] [camhunt]     0.999 -0.034  0.000  4552.900
+[10:31:59.621] [camhunt]     0.034  0.999  0.000  8503.982
+[10:31:59.621] [camhunt] HIT 40 at 00000282673F0500  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.621] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.621] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.621] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.622] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.622] [camhunt] HIT 41 at 00000282673F0600  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.622] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.622] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.622] [camhunt]     1.000  1.000  1.000  2.000
+[10:31:59.622] [camhunt]     0.000  0.000  0.001  0.001
+[10:31:59.622] [camhunt] HIT 42 at 00000282673F1030  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.623] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.623] [camhunt]     8.000  8.000  8.000  8.000
+[10:31:59.623] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.623] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.623] [camhunt] HIT 43 at 00000282673F1200  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.623] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.623] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.623] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.623] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.623] [camhunt] HIT 44 at 00000282673F1500  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.623] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.624] [camhunt]     0.000 -0.004  0.000  6.102
+[10:31:59.624] [camhunt]    -0.000  0.000  1.000  3.000
+[10:31:59.624] [camhunt]    -0.000  0.000  1.000  6.000
+[10:31:59.624] [camhunt] HIT 45 at 00000282673F1550  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.624] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.624] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.624] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.624] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.625] [camhunt] HIT 46 at 00000282673F1A20  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.625] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.625] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.625] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.625] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.625] [camhunt] HIT 47 at 00000282673F1A60  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.625] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.625] [camhunt]     1.000  0.539  0.371  1.000
+[10:31:59.625] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.625] [camhunt]     1.000  0.552  0.254  1.000
+[10:31:59.625] [camhunt] HIT 48 at 00000282673F2A50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.625] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.626] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.626] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.626] [camhunt]     0.000  0.000  128.000  4.023
+[10:31:59.626] [camhunt] HIT 49 at 00000282673F2E20  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.626] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.626] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.626] [camhunt]     0.000  31000.000  0.000  0.000
+[10:31:59.626] [camhunt]     0.463  10.000  0.582  1.000
+[10:31:59.626] [camhunt] HIT 50 at 00000282673F3F20  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.626] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.626] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.627] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.627] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.627] [camhunt] HIT 51 at 00000282673F4450  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.627] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.627] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.627] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.627] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.627] [camhunt] HIT 52 at 00000282673F4920  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.627] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.627] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.628] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.628] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.628] [camhunt] HIT 53 at 00000282673F4F50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.628] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.628] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.628] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.628] [camhunt]     0.000 -999.000  0.000  1.000
+[10:31:59.628] [camhunt] HIT 54 at 00000282673F5B20  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.628] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.629] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.629] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.629] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.629] [camhunt] HIT 55 at 00000282673F6100  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.629] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.629] [camhunt]     0.000 -999.000  0.000  1.000
+[10:31:59.629] [camhunt]     0.000 -999.000  0.000  1.000
+[10:31:59.629] [camhunt]     0.000 -999.000  0.000  1.000
+[10:31:59.629] [camhunt] HIT 56 at 00000282673F6920  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.629] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.630] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.630] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.630] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.630] [camhunt] HIT 57 at 00000282673F7250  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.630] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.630] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.630] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.630] [camhunt]     0.000  0.000  0.000  0.000
+[10:31:59.630] [camhunt] HIT 58 at 00000282673F7620  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.630] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.631] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.631] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.631] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.631] [camhunt] HIT 59 at 00000282673F7B60  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.631] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.631] [camhunt]     1.000  2.000  0.000  0.000
+[10:31:59.632] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.632] [camhunt]     1.000  0.552  0.254  1.000
+[10:31:59.632] [camhunt] HIT 60 at 00000282673F8E50  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.632] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.632] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.632] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.632] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.632] [camhunt] HIT 61 at 00000282673F9620  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.632] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.632] [camhunt]     1.000  1.000  0.000  0.000
+[10:31:59.633] [camhunt]     0.177 -0.337  0.925  997.481
+[10:31:59.633] [camhunt]    -0.041 -0.735  0.676  2754.222
+[10:31:59.633] [camhunt] HIT 62 at 00000282673F9720  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.633] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.633] [camhunt]    -9600.000  0.507  2.028  0.001
+[10:31:59.633] [camhunt]     0.576  0.817  0.000  1.000
+[10:31:59.633] [camhunt]     0.500  0.500  0.000  0.000
+[10:31:59.634] [camhunt] HIT 63 at 00000282673F9C00  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.634] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.634] [camhunt]     1.000  2048.000  245760.000  16.000
+[10:31:59.634] [camhunt]     0.000  1.000  0.000  12.000
+[10:31:59.634] [camhunt]     2.000  2.000  2.000  2.000
+[10:31:59.634] [camhunt] HIT 64 at 00000282673F9F40  (packed xyz)  region 2 flushes=16966  memory=HOST_COHERENT (a flush count here means nothing about the update route)
+[10:31:59.634] [camhunt]     1728.000  5440.000  6372.160  1.000
+[10:31:59.634] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.634] [camhunt]     1.000  1.000  1.000  1.000
+[10:31:59.634] [camhunt]     0.000  0.000 -1.000 -3.000
+[10:31:59.634] [camhunt] FINDVEC (1728.00 5440.00 6372.00) tol 1.00 -> 64 hit(s) across 1 region(s) [capped at 64]
+[10:32:00.101] vkQueuePresentKHR frame 17000 (queue=00000282516AA350)
+[10:32:16.767] vkQueuePresentKHR frame 18000 (queue=00000282516AA350)
+[10:32:33.434] vkQueuePresentKHR frame 19000 (queue=00000282516AA350)
+[10:32:49.807] [auto] BEGIN "rvcheck 0x0000028266FF3950"
+[10:32:49.808] [rv] 0000028266FF3950: REJECTED - fov_x not a plausible angle
+[10:32:49.808] [rv]   fov=(2298.51, 6437.93) useExplicit=6 forceIdentity=162
+[10:32:49.808] [auto] END   "rvcheck 0x0000028266FF3950"
+[10:32:49.808] [auto] BEGIN "rvcheck 0x000002826706F950"
+[10:32:49.808] [rv] 000002826706F950: REJECTED - fov_x not a plausible angle
+[10:32:49.808] [rv]   fov=(2298.51, 6437.93) useExplicit=6 forceIdentity=162
+[10:32:49.808] [auto] END   "rvcheck 0x000002826706F950"
+[10:32:49.808] [auto] BEGIN "rvcheck 0x00000282673E0020"
+[10:32:49.809] [rv] 00000282673E0020: REJECTED - fov_x not a plausible angle
+[10:32:49.809] [rv]   fov=(0.00, 0.00) useExplicit=128 forceIdentity=42
+[10:32:49.809] [auto] END   "rvcheck 0x00000282673E0020"
+[10:32:49.809] [auto] BEGIN "rvcheck 0x00000282673E0300"
+[10:32:49.809] [rv] 00000282673E0300: REJECTED - fov_x not a plausible angle
+[10:32:49.809] [rv]   fov=(-0.65, -20.48) useExplicit=0 forceIdentity=0
+[10:32:49.809] [auto] END   "rvcheck 0x00000282673E0300"
+[10:32:49.809] [auto] BEGIN "rvcheck 0x00000282673E0830"
+[10:32:49.809] [rv] 00000282673E0830: REJECTED - useExplicitProjectionMatrix is not 0 or 1
+[10:32:49.809] [rv]   fov=(8.00, 30.00) useExplicit=65 forceIdentity=57
+[10:32:49.809] [auto] END   "rvcheck 0x00000282673E0830"
+[10:32:49.810] [auto] BEGIN "rvcheck 0x00000282673E2020"
+[10:32:49.810] [rv] 00000282673E2020: REJECTED - fov_x not a plausible angle
+[10:32:49.810] [rv]   fov=(-0.29, 0.01) useExplicit=0 forceIdentity=0
+[10:32:49.810] [auto] END   "rvcheck 0x00000282673E2020"
+[10:32:49.810] [auto] BEGIN "rvcheck 0x00000282673E2300"
+[10:32:49.810] [rv] 00000282673E2300: REJECTED - fov_x not a plausible angle
+[10:32:49.810] [rv]   fov=(-0.65, -20.48) useExplicit=0 forceIdentity=225
+[10:32:49.810] [auto] END   "rvcheck 0x00000282673E2300"
+[10:32:49.810] [auto] BEGIN "rvcheck 0x00000282673E2E50"
+[10:32:49.811] [rv] 00000282673E2E50: REJECTED - fov_x not a plausible angle
+[10:32:49.811] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=0
+[10:32:49.811] [auto] END   "rvcheck 0x00000282673E2E50"
+[10:32:49.811] [auto] BEGIN "rvcheck 0x00000282673E3520"
+[10:32:49.811] [rv] 00000282673E3520: REJECTED - fov_x not a plausible angle
+[10:32:49.811] [rv]   fov=(0.67, 0.67) useExplicit=0 forceIdentity=42
+[10:32:49.811] [auto] END   "rvcheck 0x00000282673E3520"
+[10:32:49.812] [auto] BEGIN "rvcheck 0x00000282673E3900"
+[10:32:49.812] [rv] 00000282673E3900: REJECTED - fov_x/fov_y not a sane pair
+[10:32:49.812] [rv]   fov=(1.96, 14.19) useExplicit=0 forceIdentity=0
+[10:32:49.812] [auto] END   "rvcheck 0x00000282673E3900"
+[10:32:49.812] [auto] BEGIN "rvcheck 0x00000282673E4B20"
+[10:32:49.812] [rv] 00000282673E4B20: REJECTED - fov_x not a plausible angle
+[10:32:49.812] [rv]   fov=(0.00, -999.00) useExplicit=0 forceIdentity=0
+[10:32:49.812] [auto] END   "rvcheck 0x00000282673E4B20"
+[10:32:49.812] [auto] BEGIN "rvcheck 0x00000282673E4E00"
+[10:32:49.813] [rv] 00000282673E4E00: REJECTED - fov_x not a plausible angle
+[10:32:49.813] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=0
+[10:32:49.813] [auto] END   "rvcheck 0x00000282673E4E00"
+[10:32:49.813] [auto] BEGIN "rvcheck 0x00000282673E5060"
+[10:32:49.813] [rv] 00000282673E5060: REJECTED - fov_x not a plausible angle
+[10:32:49.813] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=207
+[10:32:49.813] [auto] END   "rvcheck 0x00000282673E5060"
+[10:32:49.813] [auto] BEGIN "rvcheck 0x00000282673E5A50"
+[10:32:49.813] [rv] 00000282673E5A50: REJECTED - fov_x not a plausible angle
+[10:32:49.813] [rv]   fov=(1.00, 1.00) useExplicit=4 forceIdentity=0
+[10:32:49.813] [auto] END   "rvcheck 0x00000282673E5A50"
+[10:32:49.813] [auto] BEGIN "rvcheck 0x00000282673E5C50"
+[10:32:49.814] [rv] 00000282673E5C50: REJECTED - fov_x not a plausible angle
+[10:32:49.814] [rv]   fov=(0.00, 0.00) useExplicit=64 forceIdentity=0
+[10:32:49.814] [auto] END   "rvcheck 0x00000282673E5C50"
+[10:32:49.814] [auto] BEGIN "rvcheck 0x00000282673E5F60"
+[10:32:49.814] [rv] 00000282673E5F60: REJECTED - fov_x not a plausible angle
+[10:32:49.814] [rv]   fov=(-0.96, 1.87) useExplicit=0 forceIdentity=0
+[10:32:49.814] [auto] END   "rvcheck 0x00000282673E5F60"
+[10:32:49.814] [auto] BEGIN "rvcheck 0x00000282673E7350"
+[10:32:49.814] [rv] 00000282673E7350: REJECTED - fov_x not a plausible angle
+[10:32:49.814] [rv]   fov=(1.00, 0.01) useExplicit=0 forceIdentity=0
+[10:32:49.815] [auto] END   "rvcheck 0x00000282673E7350"
+[10:32:49.815] [auto] BEGIN "rvcheck 0x00000282673E7450"
+[10:32:49.815] [rv] 00000282673E7450: REJECTED - fov_x not a plausible angle
+[10:32:49.815] [rv]   fov=(267.98, -348.32) useExplicit=107 forceIdentity=0
+[10:32:49.815] [auto] END   "rvcheck 0x00000282673E7450"
+[10:32:49.815] [auto] BEGIN "rvcheck 0x00000282673E8200"
+[10:32:49.816] [rv] 00000282673E8200: REJECTED - fov_x not a plausible angle
+[10:32:49.816] [rv]   fov=(0.00, -999.00) useExplicit=0 forceIdentity=119
+[10:32:49.816] [auto] END   "rvcheck 0x00000282673E8200"
+[10:32:49.816] [auto] BEGIN "rvcheck 0x00000282673E8620"
+[10:32:49.816] [rv] 00000282673E8620: REJECTED - fov_x not a plausible angle
+[10:32:49.816] [rv]   fov=(0.00, -999.00) useExplicit=116 forceIdentity=0
+[10:32:49.816] [auto] END   "rvcheck 0x00000282673E8620"
+[10:32:49.816] [auto] BEGIN "rvcheck 0x00000282673E8960"
+[10:32:49.816] [rv] 00000282673E8960: REJECTED - fov_x not a plausible angle
+[10:32:49.817] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:32:49.817] [auto] END   "rvcheck 0x00000282673E8960"
+[10:32:49.817] [auto] BEGIN "rvcheck 0x00000282673E8D50"
+[10:32:49.817] [rv] 00000282673E8D50: REJECTED - fov_x not a plausible angle
+[10:32:49.817] [rv]   fov=(1.00, 1.00) useExplicit=154 forceIdentity=20
+[10:32:49.817] [auto] END   "rvcheck 0x00000282673E8D50"
+[10:32:49.817] [auto] BEGIN "rvcheck 0x00000282673E9850"
+[10:32:49.818] [rv] 00000282673E9850: REJECTED - fov_x not a plausible angle
+[10:32:49.818] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=0
+[10:32:49.818] [auto] END   "rvcheck 0x00000282673E9850"
+[10:32:49.818] [auto] BEGIN "rvcheck 0x00000282673E9F50"
+[10:32:49.818] [rv] 00000282673E9F50: REJECTED - fov_x not a plausible angle
+[10:32:49.818] [rv]   fov=(1.00, 1.00) useExplicit=144 forceIdentity=157
+[10:32:49.818] [auto] END   "rvcheck 0x00000282673E9F50"
+[10:32:49.818] [auto] BEGIN "rvcheck 0x00000282673EA450"
+[10:32:49.818] [rv] 00000282673EA450: REJECTED - fov_x not a plausible angle
+[10:32:49.818] [rv]   fov=(1.00, 1.00) useExplicit=194 forceIdentity=0
+[10:32:49.819] [auto] END   "rvcheck 0x00000282673EA450"
+[10:32:49.819] [auto] BEGIN "rvcheck 0x00000282673EAF00"
+[10:32:49.819] [rv] 00000282673EAF00: REJECTED - fov_x not a plausible angle
+[10:32:49.819] [rv]   fov=(0.00, -999.00) useExplicit=0 forceIdentity=224
+[10:32:49.819] [auto] END   "rvcheck 0x00000282673EAF00"
+[10:32:49.819] [auto] BEGIN "rvcheck 0x00000282673EBA50"
+[10:32:49.819] [rv] 00000282673EBA50: REJECTED - fov_x not a plausible angle
+[10:32:49.819] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=0
+[10:32:49.819] [auto] END   "rvcheck 0x00000282673EBA50"
+[10:32:49.820] [auto] BEGIN "rvcheck 0x00000282673EC160"
+[10:32:49.820] [rv] 00000282673EC160: REJECTED - fov_x not a plausible angle
+[10:32:49.820] [rv]   fov=(-0.00, -0.00) useExplicit=238 forceIdentity=0
+[10:32:49.820] [auto] END   "rvcheck 0x00000282673EC160"
+[10:32:49.820] [auto] BEGIN "rvcheck 0x00000282673EC650"
+[10:32:49.820] [rv] 00000282673EC650: REJECTED - fov_x not a plausible angle
+[10:32:49.820] [rv]   fov=(0.83, 0.25) useExplicit=0 forceIdentity=0
+[10:32:49.820] [auto] END   "rvcheck 0x00000282673EC650"
+[10:32:49.820] [auto] BEGIN "rvcheck 0x00000282673ECE20"
+[10:32:49.821] [rv] 00000282673ECE20: REJECTED - fov_x not a plausible angle
+[10:32:49.821] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:32:49.821] [auto] END   "rvcheck 0x00000282673ECE20"
+[10:32:49.821] [auto] BEGIN "rvcheck 0x00000282673ED220"
+[10:32:49.821] [rv] 00000282673ED220: REJECTED - fov_x not a plausible angle
+[10:32:49.821] [rv]   fov=(-0.46, 0.00) useExplicit=0 forceIdentity=0
+[10:32:49.821] [auto] END   "rvcheck 0x00000282673ED220"
+[10:32:49.821] [auto] BEGIN "rvcheck 0x00000282673ED500"
+[10:32:49.821] [rv] 00000282673ED500: REJECTED - fov_x not a plausible angle
+[10:32:49.821] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=0
+[10:32:49.822] [auto] END   "rvcheck 0x00000282673ED500"
+[10:32:49.822] [auto] BEGIN "rvcheck 0x00000282673EE950"
+[10:32:49.822] [rv] 00000282673EE950: REJECTED - fov_x not a plausible angle
+[10:32:49.822] [rv]   fov=(0.00, 0.00) useExplicit=154 forceIdentity=0
+[10:32:49.822] [auto] END   "rvcheck 0x00000282673EE950"
+[10:32:49.822] [auto] BEGIN "rvcheck 0x00000282673EEE20"
+[10:32:49.822] [rv] 00000282673EEE20: REJECTED - fov_x not a plausible angle
+[10:32:49.822] [rv]   fov=(0.00, 0.00) useExplicit=32 forceIdentity=0
+[10:32:49.822] [auto] END   "rvcheck 0x00000282673EEE20"
+[10:32:49.822] [auto] BEGIN "rvcheck 0x00000282673EF100"
+[10:32:49.823] [rv] 00000282673EF100: REJECTED - fov_x not a plausible angle
+[10:32:49.823] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=0
+[10:32:49.823] [auto] END   "rvcheck 0x00000282673EF100"
+[10:32:50.111] vkQueuePresentKHR frame 20000 (queue=00000282516AA350)
+[10:33:06.777] vkQueuePresentKHR frame 21000 (queue=00000282516AA350)
+[10:33:15.797] [auto] BEGIN "rvcheck 0x00000282673EF220"
+[10:33:15.797] [rv] 00000282673EF220: REJECTED - fov_x not a plausible angle
+[10:33:15.797] [rv]   fov=(0.00, 0.00) useExplicit=15 forceIdentity=119
+[10:33:15.797] [auto] END   "rvcheck 0x00000282673EF220"
+[10:33:15.797] [auto] BEGIN "rvcheck 0x00000282673EFD50"
+[10:33:15.798] [rv] 00000282673EFD50: REJECTED - fov_x not a plausible angle
+[10:33:15.798] [rv]   fov=(-0.03, 0.94) useExplicit=208 forceIdentity=16
+[10:33:15.798] [auto] END   "rvcheck 0x00000282673EFD50"
+[10:33:15.798] [auto] BEGIN "rvcheck 0x00000282673EFF50"
+[10:33:15.798] [rv] 00000282673EFF50: REJECTED - fov_x not a plausible angle
+[10:33:15.799] [rv]   fov=(0.00, 0.00) useExplicit=76 forceIdentity=0
+[10:33:15.799] [auto] END   "rvcheck 0x00000282673EFF50"
+[10:33:15.799] [auto] BEGIN "rvcheck 0x00000282673F0120"
+[10:33:15.799] [rv] 00000282673F0120: REJECTED - fov_x not a plausible angle
+[10:33:15.799] [rv]   fov=(0.19, 0.01) useExplicit=18 forceIdentity=0
+[10:33:15.799] [auto] END   "rvcheck 0x00000282673F0120"
+[10:33:15.799] [auto] BEGIN "rvcheck 0x00000282673F0500"
+[10:33:15.799] [rv] 00000282673F0500: REJECTED - fov_x not a plausible angle
+[10:33:15.799] [rv]   fov=(0.00, -999.00) useExplicit=171 forceIdentity=0
+[10:33:15.800] [auto] END   "rvcheck 0x00000282673F0500"
+[10:33:15.800] [auto] BEGIN "rvcheck 0x00000282673F0600"
+[10:33:15.800] [rv] 00000282673F0600: REJECTED - fov_x not a plausible angle
+[10:33:15.800] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=205
+[10:33:15.800] [auto] END   "rvcheck 0x00000282673F0600"
+[10:33:15.800] [auto] BEGIN "rvcheck 0x00000282673F1030"
+[10:33:15.800] [rv] 00000282673F1030: REJECTED - fov_x not a plausible angle
+[10:33:15.800] [rv]   fov=(0.00, -999.00) useExplicit=0 forceIdentity=240
+[10:33:15.800] [auto] END   "rvcheck 0x00000282673F1030"
+[10:33:15.800] [auto] BEGIN "rvcheck 0x00000282673F1200"
+[10:33:15.801] [rv] 00000282673F1200: REJECTED - forceIdentityViewMatrix is not 0 or 1
+[10:33:15.801] [rv]   fov=(3.00, 3.00) useExplicit=0 forceIdentity=21
+[10:33:15.801] [auto] END   "rvcheck 0x00000282673F1200"
+[10:33:23.446] vkQueuePresentKHR frame 22000 (queue=00000282516AA350)
+[10:33:23.796] [auto] BEGIN "rvcheck 0x00000282673F1500"
+[10:33:23.796] [rv] 00000282673F1500: REJECTED - fov_x not a plausible angle
+[10:33:23.796] [rv]   fov=(0.00, -999.00) useExplicit=0 forceIdentity=84
+[10:33:23.797] [auto] END   "rvcheck 0x00000282673F1500"
+[10:33:23.797] [auto] BEGIN "rvcheck 0x00000282673F1550"
+[10:33:23.797] [rv] 00000282673F1550: REJECTED - fov_x not a plausible angle
+[10:33:23.797] [rv]   fov=(1.00, 0.00) useExplicit=0 forceIdentity=46
+[10:33:23.797] [auto] END   "rvcheck 0x00000282673F1550"
+[10:33:23.797] [auto] BEGIN "rvcheck 0x00000282673F1A20"
+[10:33:23.797] [rv] 00000282673F1A20: REJECTED - fov_x not a plausible angle
+[10:33:23.797] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=157
+[10:33:23.797] [auto] END   "rvcheck 0x00000282673F1A20"
+[10:33:23.798] [auto] BEGIN "rvcheck 0x00000282673F1A60"
+[10:33:23.798] [rv] 00000282673F1A60: REJECTED - fov_x not a plausible angle
+[10:33:23.798] [rv]   fov=(1.00, 1.00) useExplicit=14 forceIdentity=0
+[10:33:23.798] [auto] END   "rvcheck 0x00000282673F1A60"
+[10:33:23.798] [auto] BEGIN "rvcheck 0x00000282673F2A50"
+[10:33:23.799] [rv] 00000282673F2A50: REJECTED - fov_x not a plausible angle
+[10:33:23.799] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:33:23.799] [auto] END   "rvcheck 0x00000282673F2A50"
+[10:33:23.799] [auto] BEGIN "rvcheck 0x00000282673F2E20"
+[10:33:23.799] [rv] 00000282673F2E20: REJECTED - fov_x not a plausible angle
+[10:33:23.799] [rv]   fov=(0.00, 0.00) useExplicit=216 forceIdentity=0
+[10:33:23.799] [auto] END   "rvcheck 0x00000282673F2E20"
+[10:33:23.799] [auto] BEGIN "rvcheck 0x00000282673F3F20"
+[10:33:23.800] [rv] 00000282673F3F20: REJECTED - fov_x not a plausible angle
+[10:33:23.800] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:33:23.800] [auto] END   "rvcheck 0x00000282673F3F20"
+[10:33:23.800] [auto] BEGIN "rvcheck 0x00000282673F4450"
+[10:33:23.800] [rv] 00000282673F4450: REJECTED - fov_x not a plausible angle
+[10:33:23.801] [rv]   fov=(-512.00, -512.00) useExplicit=128 forceIdentity=0
+[10:33:23.801] [auto] END   "rvcheck 0x00000282673F4450"
+[10:33:31.794] [auto] BEGIN "rvcheck 0x00000282673F4920"
+[10:33:31.794] [rv] 00000282673F4920: REJECTED - fov_x not a plausible angle
+[10:33:31.794] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:33:31.794] [auto] END   "rvcheck 0x00000282673F4920"
+[10:33:31.795] [auto] BEGIN "rvcheck 0x00000282673F4F50"
+[10:33:31.795] [rv] 00000282673F4F50: REJECTED - fov_x not a plausible angle
+[10:33:31.795] [rv]   fov=(0.07, 0.96) useExplicit=177 forceIdentity=0
+[10:33:31.795] [auto] END   "rvcheck 0x00000282673F4F50"
+[10:33:31.795] [auto] BEGIN "rvcheck 0x00000282673F5B20"
+[10:33:31.795] [rv] 00000282673F5B20: REJECTED - fov_x not a plausible angle
+[10:33:31.795] [rv]   fov=(0.00, -999.00) useExplicit=0 forceIdentity=0
+[10:33:31.795] [auto] END   "rvcheck 0x00000282673F5B20"
+[10:33:31.796] [auto] BEGIN "rvcheck 0x00000282673F6100"
+[10:33:31.796] [rv] 00000282673F6100: REJECTED - fov_x not a plausible angle
+[10:33:31.796] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=180
+[10:33:31.796] [auto] END   "rvcheck 0x00000282673F6100"
+[10:33:31.796] [auto] BEGIN "rvcheck 0x00000282673F6920"
+[10:33:31.796] [rv] 00000282673F6920: REJECTED - fov_x not a plausible angle
+[10:33:31.796] [rv]   fov=(0.00, -999.00) useExplicit=115 forceIdentity=0
+[10:33:31.796] [auto] END   "rvcheck 0x00000282673F6920"
+[10:33:31.796] [auto] BEGIN "rvcheck 0x00000282673F7250"
+[10:33:31.797] [rv] 00000282673F7250: REJECTED - fov_x not a plausible angle
+[10:33:31.797] [rv]   fov=(0.00, 0.00) useExplicit=212 forceIdentity=0
+[10:33:31.797] [auto] END   "rvcheck 0x00000282673F7250"
+[10:33:31.797] [auto] BEGIN "rvcheck 0x00000282673F7620"
+[10:33:31.797] [rv] 00000282673F7620: REJECTED - fov_x not a plausible angle
+[10:33:31.797] [rv]   fov=(0.00, 0.00) useExplicit=58 forceIdentity=0
+[10:33:31.797] [auto] END   "rvcheck 0x00000282673F7620"
+[10:33:31.797] [auto] BEGIN "rvcheck 0x00000282673F7B60"
+[10:33:31.797] [rv] 00000282673F7B60: REJECTED - fov_x not a plausible angle
+[10:33:31.797] [rv]   fov=(-0.00, -0.01) useExplicit=0 forceIdentity=0
+[10:33:31.798] [auto] END   "rvcheck 0x00000282673F7B60"
+[10:33:40.052] [auto] BEGIN "rvcheck 0x00000282673F8E50"
+[10:33:40.052] [rv] 00000282673F8E50: REJECTED - fov_x not a plausible angle
+[10:33:40.052] [rv]   fov=(1.00, 1.00) useExplicit=0 forceIdentity=0
+[10:33:40.052] [auto] END   "rvcheck 0x00000282673F8E50"
+[10:33:40.052] [auto] BEGIN "rvcheck 0x00000282673F9620"
+[10:33:40.052] [rv] 00000282673F9620: REJECTED - fov_x not a plausible angle
+[10:33:40.052] [rv]   fov=(0.00, -999.00) useExplicit=180 forceIdentity=233
+[10:33:40.053] [auto] END   "rvcheck 0x00000282673F9620"
+[10:33:40.053] [auto] BEGIN "rvcheck 0x00000282673F9720"
+[10:33:40.053] [rv] 00000282673F9720: REJECTED - fov_x not a plausible angle
+[10:33:40.053] [rv]   fov=(0.00, -999.00) useExplicit=0 forceIdentity=42
+[10:33:40.053] [auto] END   "rvcheck 0x00000282673F9720"
+[10:33:40.053] [auto] BEGIN "rvcheck 0x00000282673F9C00"
+[10:33:40.054] [rv] 00000282673F9C00: REJECTED - fov_x not a plausible angle
+[10:33:40.054] [rv]   fov=(-0.65, -20.48) useExplicit=0 forceIdentity=0
+[10:33:40.054] [auto] END   "rvcheck 0x00000282673F9C00"
+[10:33:40.054] [auto] BEGIN "rvcheck 0x00000282673F9F40"
+[10:33:40.054] [rv] 00000282673F9F40: REJECTED - fov_x not a plausible angle
+[10:33:40.054] [rv]   fov=(-1.76, 0.01) useExplicit=0 forceIdentity=0
+[10:33:40.054] [auto] END   "rvcheck 0x00000282673F9F40"
+[10:33:40.234] vkQueuePresentKHR frame 23000 (queue=00000282516AA350)
+[10:33:56.901] vkQueuePresentKHR frame 24000 (queue=00000282516AA350)
+[10:34:13.567] vkQueuePresentKHR frame 25000 (queue=00000282516AA350)
+[10:34:26.050] [auto] BEGIN "psearch 1728 5440 6372"
+[10:34:26.050] [camhunt] scan started in the background -- the game keeps running; results follow in this log
+[10:34:26.050] [auto] END   "psearch 1728 5440 6372"
+[10:34:26.080] [psearch]   hit 1 at 000000BF3F5DC4B8  [private RW]
+[10:34:26.080] [psearch]   hit 2 at 000000BF3F5E3D10  [private RW]
+[10:34:26.080] [psearch]   hit 3 at 000000BF3F5E41E8  [private RW]
+[10:34:26.080] [psearch]   hit 4 at 000000BF3F5E6570  [private RW]
+[10:34:26.081] [psearch]   hit 5 at 000000BF3F5E6B48  [private RW]
+[10:34:26.081] [psearch]   hit 6 at 000000BF3F5E89C0  [private RW]
+[10:34:26.081] [psearch]   hit 7 at 000000BF3F5E89D8  [private RW]
+[10:34:26.081] [psearch]   hit 8 at 000000BF3F5E8C30  [private RW]
+[10:34:26.082] [psearch]   hit 9 at 000000BF3F5E8D50  [private RW]
+[10:34:26.082] [psearch]   hit 10 at 000000BF3F5EA530  [private RW]
+[10:34:26.085] [psearch]   hit 11 at 000000BF3F9E6778  [private RW]
+[10:34:26.085] [psearch]   hit 12 at 000000BF3F9E6790  [private RW]
+[10:34:30.235] vkQueuePresentKHR frame 26000 (queue=00000282516AA350)
+[10:34:46.900] vkQueuePresentKHR frame 27000 (queue=00000282516AA350)
+[10:35:03.658] vkQueuePresentKHR frame 28000 (queue=00000282516AA350)
+[10:35:08.386] [psearch] PASS 1 (1728.00 5440.00 6372.00) tol 0.50 -> 4465 candidate(s) across 4977 regions, 4510 MB scanned
+[10:35:08.386] [psearch]   by region: image=8  private(heap)=4457  mapped=0
+[10:35:08.386] [psearch]   now MOVE the player, read getviewpos again, and run `pnarrow <x> <y> <z>` -- one position finds coincidences, two find the camera
+[10:35:20.324] vkQueuePresentKHR frame 29000 (queue=00000282516AA350)
+[10:35:35.323] [auto] BEGIN "rvcheck 0x000000BF3F5DC4B8"
+[10:35:35.323] [rv] 000000BF3F5DC4B8: REJECTED - fov_x not a plausible angle
+[10:35:35.324] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=234
+[10:35:35.324] [auto] END   "rvcheck 0x000000BF3F5DC4B8"
+[10:35:35.324] [auto] BEGIN "rvcheck 0x000000BF3F5E3D10"
+[10:35:35.324] [rv] 000000BF3F5E3D10: REJECTED - fov_x not a plausible angle
+[10:35:35.324] [rv]   fov=(0.00, 0.00) useExplicit=130 forceIdentity=94
+[10:35:35.324] [auto] END   "rvcheck 0x000000BF3F5E3D10"
+[10:35:35.324] [auto] BEGIN "rvcheck 0x000000BF3F5E41E8"
+[10:35:35.324] [rv] 000000BF3F5E41E8: REJECTED - fov_x not a plausible angle
+[10:35:35.324] [rv]   fov=(0.00, 0.00) useExplicit=1 forceIdentity=0
+[10:35:35.324] [auto] END   "rvcheck 0x000000BF3F5E41E8"
+[10:35:35.324] [auto] BEGIN "rvcheck 0x000000BF3F5E6570"
+[10:35:35.325] [rv] 000000BF3F5E6570: REJECTED - fov_x not a plausible angle
+[10:35:35.325] [rv]   fov=(0.00, 0.00) useExplicit=130 forceIdentity=0
+[10:35:35.325] [auto] END   "rvcheck 0x000000BF3F5E6570"
+[10:35:35.325] [auto] BEGIN "rvcheck 0x000000BF3F5E6B48"
+[10:35:35.325] [rv] 000000BF3F5E6B48: REJECTED - fov_x not a plausible angle
+[10:35:35.325] [rv]   fov=(-0.00, 0.00) useExplicit=0 forceIdentity=222
+[10:35:35.325] [auto] END   "rvcheck 0x000000BF3F5E6B48"
+[10:35:35.325] [auto] BEGIN "rvcheck 0x000000BF3F5E89C0"
+[10:35:35.325] [rv] 000000BF3F5E89C0: REJECTED - fov_x not a plausible angle
+[10:35:35.325] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:35:35.326] [auto] END   "rvcheck 0x000000BF3F5E89C0"
+[10:35:36.990] vkQueuePresentKHR frame 30000 (queue=00000282516AA350)
+[10:35:41.324] [auto] BEGIN "rvcheck 0x000000BF3F5E89D8"
+[10:35:41.324] [rv] 000000BF3F5E89D8: REJECTED - fov_x not a plausible angle
+[10:35:41.324] [rv]   fov=(-0.00, 0.00) useExplicit=222 forceIdentity=0
+[10:35:41.325] [auto] END   "rvcheck 0x000000BF3F5E89D8"
+[10:35:41.325] [auto] BEGIN "rvcheck 0x000000BF3F5E8C30"
+[10:35:41.325] [rv] 000000BF3F5E8C30: REJECTED - fov_x not a plausible angle
+[10:35:41.325] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:35:41.325] [auto] END   "rvcheck 0x000000BF3F5E8C30"
+[10:35:41.325] [auto] BEGIN "rvcheck 0x000000BF3F5E8D50"
+[10:35:41.325] [rv] 000000BF3F5E8D50: REJECTED - fov_x not a plausible angle
+[10:35:41.326] [rv]   fov=(0.00, 0.00) useExplicit=222 forceIdentity=126
+[10:35:41.326] [auto] END   "rvcheck 0x000000BF3F5E8D50"
+[10:35:41.326] [auto] BEGIN "rvcheck 0x000000BF3F5EA530"
+[10:35:41.326] [rv] 000000BF3F5EA530: REJECTED - fov_x not a plausible angle
+[10:35:41.326] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:35:41.326] [auto] END   "rvcheck 0x000000BF3F5EA530"
+[10:35:41.326] [auto] BEGIN "rvcheck 0x000000BF3F9E6778"
+[10:35:41.327] [rv] 000000BF3F9E6778: REJECTED - fov_y not a plausible angle
+[10:35:41.327] [rv]   fov=(1.24, 0.00) useExplicit=116 forceIdentity=0
+[10:35:41.327] [auto] END   "rvcheck 0x000000BF3F9E6778"
+[10:35:41.327] [auto] BEGIN "rvcheck 0x000000BF3F9E6790"
+[10:35:41.327] [rv] 000000BF3F9E6790: REJECTED - fov_x not a plausible angle
+[10:35:41.327] [rv]   fov=(0.00, 0.00) useExplicit=1 forceIdentity=25
+[10:35:41.327] [auto] END   "rvcheck 0x000000BF3F9E6790"
+[10:35:47.323] [auto] BEGIN "camseed 1728 5440 6372.16"
+[10:35:47.323] [camhunt] camera seeded at (1728.00 5440.00 6372.16) -- tracking will follow from here
+[10:35:47.323] [auto] END   "camseed 1728 5440 6372.16"
+[10:35:53.656] vkQueuePresentKHR frame 31000 (queue=00000282516AA350)
+[10:36:10.322] vkQueuePresentKHR frame 32000 (queue=00000282516AA350)
+[10:36:15.072] [auto] BEGIN "camrescan"
+[10:36:15.072] [camhunt] scan started in the background -- the game keeps running; results follow in this log
+[10:36:15.072] [auto] camera offset discovery queued (one-off hitch expected)
+[10:36:15.072] [auto] END   "camrescan"
+[10:36:19.645] [camhunt] discovery done: 122 camera copies located
+[10:36:31.551] vkQueuePresentKHR frame 33000 (queue=00000282516AA350)
+[10:36:48.221] vkQueuePresentKHR frame 34000 (queue=00000282516AA350)
+[10:36:49.672] [auto] BEGIN "camwatch"
+[10:36:49.672] [auto] camera intercept: WATCH (tracks the repeated transform, writes nothing)
+[10:36:49.672] [auto] END   "camwatch"
+[10:36:49.672] [auto] BEGIN "camstat"
+[10:36:49.672] [camhunt] cam intercept: mode=watch yaw=+0.00 deg  tracked=yes (1728.00 5440.00 6372.16)
+[10:36:49.672] [camhunt]   copies in last hit=0  written=0  |  flushes seen=88064  WITH camera=0  without=0
+[10:36:49.673] [camhunt]   submits=0  cached offsets=122  patched last submit=0
+[10:36:49.673] [camhunt]   *** the camera is in NO flushed range -- the flush path is the wrong interception point, or the flushed sub-range excludes it ***
+[10:36:49.673] [auto] END   "camstat"
+[10:37:25.106] [auto] BEGIN "camstat"
+[10:37:25.106] [camhunt] cam intercept: mode=watch yaw=+0.00 deg  tracked=yes (1728.00 5440.00 6372.16)
+[10:37:25.106] [camhunt]   copies in last hit=0  written=0  |  flushes seen=88136  WITH camera=0  without=24
+[10:37:25.106] [camhunt]   submits=48  cached offsets=122  patched last submit=0
+[10:37:25.106] [camhunt]   *** the camera is in NO flushed range -- the flush path is the wrong interception point, or the flushed sub-range excludes it ***
+[10:37:25.106] [auto] END   "camstat"
+[10:38:43.392] [auto] BEGIN "dump"
+[10:38:43.392] [camhunt] no snapshot A yet
+[10:38:43.392] [auto] END   "dump"
+[10:39:02.622] [auto] BEGIN "ringlearn"
+[10:39:02.622] [ringcam] mode=LEARN param=0.00  (learned=0, deltas=0)
+[10:39:02.622] [auto] END   "ringlearn"
+[10:39:04.111] [ringcam] scanning region 2 (65536 KB) - value-located, not the biggest mapping
+[10:39:04.273] [ringcam] LEARN scanned [0..2832128) = 2765 KB of a 2765 KB offset span (not 64 MB): 0 camera hit(s), 0 distinct delta(s)
+[10:39:04.273] [ringcam]   nothing matched -- the camera may not be in this window, or column 3 is not where the ring copies keep the translation.
+[10:40:28.780] [auto] BEGIN "mappings"
+[10:40:28.780] [camhunt]   map  2  00000282637E0000     65536 KB  flushes=34235
+[10:40:28.781] [camhunt]   map  3  00000282563BF000        75 KB  flushes=0
+[10:40:28.781] [camhunt]   map  4  00000282563D2000        75 KB  flushes=0
+[10:40:28.781] [camhunt]   map  5  00000282563E5000        75 KB  flushes=0
+[10:40:28.781] [camhunt]   map  6  00000282C4160000     65536 KB  flushes=23105
+[10:40:28.781] [camhunt] 7 live mappings, 128 MB scannable, some skipped as unknown-size (budget 96 MB per scan)
+[10:40:28.781] [auto] END   "mappings"
+[10:41:36.817] [auto] BEGIN "pdump 0x7FF792DEF6B0"
+[10:41:36.820] [psearch] 00007FF792DEF6B0 [image RW] -- 16 floats from here, and 8 before:
+[10:41:36.820] [psearch]   -8:  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+[10:41:36.820] [psearch]   +0:  1762.941  5461.524  6367.585  0.853
+[10:41:36.820] [psearch]   +4:  0.522 -0.006 -0.522  0.853
+[10:41:36.820] [psearch]   +8:  0.000  0.005  0.003  1.000
+[10:41:36.820] [psearch]   +12:  0.000  0.000  0.000  0.000
+[10:41:36.820] [auto] END   "pdump 0x7FF792DEF6B0"
+[10:41:56.095] [auto] BEGIN "pnarrow 1762.941 5461.524 6367.585"
+[10:41:56.095] [psearch]   SURVIVOR 1 at 000000BF3F5E3D10  [private RW]   1762.941  5461.524  6367.585
+[10:41:56.095] [psearch]   SURVIVOR 2 at 000000BF3F5E41E8  [private RW]   1762.941  5461.524  6367.585
+[10:41:56.095] [psearch]   SURVIVOR 3 at 000000BF3F5E6570  [private RW]   1762.941  5461.524  6367.585
+[10:41:56.095] [psearch]   SURVIVOR 4 at 000000BF3F5E6B48  [private RW]   1762.941  5461.524  6367.585
+[10:41:56.096] [psearch]   SURVIVOR 5 at 000000BF3F5EA530  [private RW]   1762.941  5461.524  6367.585
+[10:41:56.096] [psearch]   SURVIVOR 6 at 000000BF3F9E6778  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.096] [psearch]   SURVIVOR 7 at 000000BF3F9E6790  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.096] [psearch]   SURVIVOR 8 at 000000BF3F9E799C  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.096] [psearch]   SURVIVOR 9 at 000000BF3F9E7AA0  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.096] [psearch]   SURVIVOR 10 at 000000BF3F9E8D20  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.096] [psearch]   SURVIVOR 11 at 000000BF3F9E9220  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.097] [psearch]   SURVIVOR 12 at 000000BF3F9EF5E0  [private RW]   1762.941  5461.524  6367.585
+[10:41:56.097] [psearch]   SURVIVOR 13 at 000000BF3FBE68C8  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.097] [psearch]   SURVIVOR 14 at 000000BF3FBE68E0  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.097] [psearch]   SURVIVOR 15 at 000000BF3FBE7AEC  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.097] [psearch]   SURVIVOR 16 at 000000BF3FBE7BF0  [private RW]   1762.941  5461.523  6367.585
+[10:41:56.281] [psearch] PASS 2 (1762.94 5461.52 6367.58) -> 654 survivor(s) of the previous set
+[10:41:56.281] [auto] END   "pnarrow 1762.941 5461.524 6367.585"
+[10:42:39.302] [auto] BEGIN "rvcheck 0x000000BF3F5E3D10"
+[10:42:39.303] [rv] 000000BF3F5E3D10: REJECTED - fov_x not a plausible angle
+[10:42:39.303] [rv]   fov=(0.00, 0.00) useExplicit=130 forceIdentity=94
+[10:42:39.303] [auto] END   "rvcheck 0x000000BF3F5E3D10"
+[10:42:39.303] [auto] BEGIN "rvcheck 0x000000BF3F5E41E8"
+[10:42:39.303] [rv] 000000BF3F5E41E8: REJECTED - fov_x not a plausible angle
+[10:42:39.303] [rv]   fov=(0.00, 0.00) useExplicit=1 forceIdentity=0
+[10:42:39.304] [auto] END   "rvcheck 0x000000BF3F5E41E8"
+[10:42:39.304] [auto] BEGIN "rvcheck 0x000000BF3F5E6570"
+[10:42:39.304] [rv] 000000BF3F5E6570: REJECTED - fov_x not a plausible angle
+[10:42:39.304] [rv]   fov=(0.00, 0.00) useExplicit=130 forceIdentity=0
+[10:42:39.304] [auto] END   "rvcheck 0x000000BF3F5E6570"
+[10:42:39.304] [auto] BEGIN "rvcheck 0x000000BF3F5E6B48"
+[10:42:39.304] [rv] 000000BF3F5E6B48: REJECTED - fov_x not a plausible angle
+[10:42:39.305] [rv]   fov=(-0.00, 0.00) useExplicit=0 forceIdentity=222
+[10:42:39.305] [auto] END   "rvcheck 0x000000BF3F5E6B48"
+[10:42:39.305] [auto] BEGIN "rvcheck 0x000000BF3F5EA530"
+[10:42:39.305] [rv] 000000BF3F5EA530: REJECTED - fov_x not a plausible angle
+[10:42:39.305] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:42:39.305] [auto] END   "rvcheck 0x000000BF3F5EA530"
+[10:42:39.305] [auto] BEGIN "rvcheck 0x000000BF3F9E6778"
+[10:42:39.305] [rv] 000000BF3F9E6778: REJECTED - fov_y not a plausible angle
+[10:42:39.305] [rv]   fov=(1.24, 0.00) useExplicit=116 forceIdentity=0
+[10:42:39.305] [auto] END   "rvcheck 0x000000BF3F9E6778"
+[10:42:39.306] [auto] BEGIN "rvcheck 0x000000BF3F9E6790"
+[10:42:39.306] [rv] 000000BF3F9E6790: REJECTED - fov_x not a plausible angle
+[10:42:39.306] [rv]   fov=(0.00, 0.00) useExplicit=1 forceIdentity=25
+[10:42:39.306] [auto] END   "rvcheck 0x000000BF3F9E6790"
+[10:42:39.306] [auto] BEGIN "rvcheck 0x000000BF3F9E799C"
+[10:42:39.306] [rv] 000000BF3F9E799C: REJECTED - fov_x not a plausible angle
+[10:42:39.306] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:42:39.306] [auto] END   "rvcheck 0x000000BF3F9E799C"
+[10:42:46.750] [auto] BEGIN "rvcheck 0x000000BF3F9E7AA0"
+[10:42:46.750] [rv] 000000BF3F9E7AA0: REJECTED - fov_x not a plausible angle
+[10:42:46.750] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:42:46.750] [auto] END   "rvcheck 0x000000BF3F9E7AA0"
+[10:42:46.750] [auto] BEGIN "rvcheck 0x000000BF3F9E8D20"
+[10:42:46.751] [rv] 000000BF3F9E8D20: REJECTED - fov_x not a plausible angle
+[10:42:46.751] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:42:46.751] [auto] END   "rvcheck 0x000000BF3F9E8D20"
+[10:42:46.751] [auto] BEGIN "rvcheck 0x000000BF3F9E9220"
+[10:42:46.751] [rv] 000000BF3F9E9220: REJECTED - fov_x not a plausible angle
+[10:42:46.751] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=255
+[10:42:46.751] [auto] END   "rvcheck 0x000000BF3F9E9220"
+[10:42:46.752] [auto] BEGIN "rvcheck 0x000000BF3F9EF5E0"
+[10:42:46.752] [rv] 000000BF3F9EF5E0: REJECTED - fov_x not a plausible angle
+[10:42:46.752] [rv]   fov=(-13621.00, 0.00) useExplicit=10 forceIdentity=128
+[10:42:46.752] [auto] END   "rvcheck 0x000000BF3F9EF5E0"
+[10:42:46.752] [auto] BEGIN "rvcheck 0x000000BF3FBE68C8"
+[10:42:46.752] [rv] 000000BF3FBE68C8: REJECTED - fov_y not a plausible angle
+[10:42:46.752] [rv]   fov=(1.49, 0.00) useExplicit=116 forceIdentity=0
+[10:42:46.752] [auto] END   "rvcheck 0x000000BF3FBE68C8"
+[10:42:46.752] [auto] BEGIN "rvcheck 0x000000BF3FBE68E0"
+[10:42:46.752] [rv] 000000BF3FBE68E0: REJECTED - fov_x not a plausible angle
+[10:42:46.753] [rv]   fov=(0.00, 0.00) useExplicit=1 forceIdentity=25
+[10:42:46.753] [auto] END   "rvcheck 0x000000BF3FBE68E0"
+[10:42:46.753] [auto] BEGIN "rvcheck 0x000000BF3FBE7AEC"
+[10:42:46.753] [rv] 000000BF3FBE7AEC: REJECTED - fov_x not a plausible angle
+[10:42:46.753] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:42:46.753] [auto] END   "rvcheck 0x000000BF3FBE7AEC"
+[10:42:46.753] [auto] BEGIN "rvcheck 0x000000BF3FBE7BF0"
+[10:42:46.753] [rv] 000000BF3FBE7BF0: REJECTED - fov_x not a plausible angle
+[10:42:46.753] [rv]   fov=(0.00, 0.00) useExplicit=0 forceIdentity=0
+[10:42:46.753] [auto] END   "rvcheck 0x000000BF3FBE7BF0"
+[10:43:50.446] [auto] BEGIN "backend sendinput"
+[10:43:50.446] [auto] default backend = sendinput
+[10:43:50.446] [auto] END   "backend sendinput"
+[10:43:50.446] [auto] BEGIN "scan 0x29"
+[10:43:50.446] [auto] scancode 0x29 queued
+[10:43:50.446] [auto] END   "scan 0x29"
+[10:44:32.004] [auto] BEGIN "type getviewpos"
+[10:44:32.004] [auto] typing "getviewpos"
+[10:44:32.004] [auto] END   "type getviewpos"
+[10:44:32.004] [auto] BEGIN "key enter"
+[10:44:32.004] [auto] key 0x0D queued
+[10:44:32.004] [auto] END   "key enter"
+[10:48:33.766] [auto] BEGIN "scan 0x29"
+[10:48:33.766] [auto] scancode 0x29 queued
+[10:48:33.767] [auto] END   "scan 0x29"
