@@ -1,0 +1,112 @@
+[19:47:12.709] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[19:47:12.711] real vulkan-1.dll loaded at 00007FFBA4270000; resolved 246/265 exports (19 missing)
+[19:47:13.590] vkCreateInstance -> 0 (instance=000002395C849350)
+[19:47:13.736] vkCreateDevice -> 0 (physDev=000002396492D490 device=0000023964955F10)
+[19:47:13.737] [camhunt] memory types recorded: 6
+[19:47:13.739] vkMapMemory #1 mem=0x23964d73490 offset=0 size=18446744073709551615 -> 000002396A110000
+[19:47:13.750] vkMapMemory #2 mem=0x23964d74140 offset=0 size=18446744073709551615 -> 000002396F110000
+[19:47:13.762] vkMapMemory #3 mem=0x23964d73830 offset=0 size=67108864 -> 0000023974F20000
+[19:47:14.004] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[19:47:14.217] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[19:47:14.337] vkMapMemory #4 mem=0x23910bb8670 offset=0 size=76800 -> 000002396773F000
+[19:47:14.338] vkMapMemory #5 mem=0x23910cc1710 offset=0 size=76800 -> 0000023967752000
+[19:47:14.338] vkMapMemory #6 mem=0x23910cc18e0 offset=0 size=76800 -> 0000023967765000
+[19:47:30.142] [autoinput] DirectInput8 object seen; CreateDevice instrumented
+[19:47:30.142] [autoinput] DirectInput8 CreateDevice(SysMouse) -> 0x00000000
+[19:47:30.142] [autoinput] SysMouse device hooked (GetDeviceState + GetDeviceData) -- this is the look path
+[19:47:30.155] [autoinput] NOTE: the mouse device uses BUFFERED GetDeviceData. Immediate-mode lX/lY injection will NOT be seen -- event fabrication is needed here.
+[19:47:30.156] [autoinput] DirectInput8 CreateDevice(SysKeyboard) -> 0x00000000
+[19:47:44.239] vkQueuePresentKHR frame 1 (queue=0000023964B8A230)
+[19:47:44.615] vkQueuePresentKHR frame 10 (queue=0000023964B8A230)
+[19:47:46.114] vkQueuePresentKHR frame 100 (queue=0000023964B8A230)
+[19:47:46.448] [camhunt] ready. Commands: snapa/snapb/dump/tol. NUMPAD 1/2/3 still work as a manual fallback.
+[19:47:46.449] [autoinput] window=0000000000FC0CD8  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[19:47:46.449] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[19:47:46.449] [autoinput]   sendinput          available  
+[19:47:46.449] [autoinput]   postmessage        available  
+[19:47:46.449] [autoinput]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[19:47:46.450] [auto] automation ON (marker file). Append commands to: D:\Program Files (x86)\Steam\steamapps\common\DOOM\doom_automation_cmds.txt
+[19:47:46.450] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[19:48:01.408] vkQueuePresentKHR frame 1000 (queue=0000023964B8A230)
+[19:48:04.291] [auto] BEGIN "camoff"
+[19:48:04.291] [auto] camera intercept OFF
+[19:48:04.291] [auto] END   "camoff"
+[19:48:04.292] [auto] BEGIN "backend sendinput"
+[19:48:04.292] [auto] default backend = sendinput
+[19:48:04.292] [auto] END   "backend sendinput"
+[19:48:04.292] [auto] BEGIN "typeroute sendinput"
+[19:48:04.292] [auto] type route -> sendinput-scancode. NOTHING is known about which route this game's console obeys; try one, look at the console, and say what landed.
+[19:48:04.292] [auto] END   "typeroute sendinput"
+[19:48:22.162] vkQueuePresentKHR frame 2000 (queue=0000023964B8A230)
+[19:48:39.197] vkQueuePresentKHR frame 3000 (queue=0000023964B8A230)
+[19:48:55.894] vkQueuePresentKHR frame 4000 (queue=0000023964B8A230)
+[19:49:12.572] vkQueuePresentKHR frame 5000 (queue=0000023964B8A230)
+[19:49:35.380] vkQueuePresentKHR frame 6000 (queue=0000023964B8A230)
+[19:49:38.103] vkMapMemory #7 mem=0x239a135f5a0 offset=0 size=67108864 -> 00000239B8800000
+[19:50:04.045] vkQueuePresentKHR frame 7000 (queue=0000023964B8A230)
+[19:50:27.505] vkQueuePresentKHR frame 8000 (queue=0000023964B8A230)
+[19:50:44.175] vkQueuePresentKHR frame 9000 (queue=0000023964B8A230)
+[19:50:53.308] [auto] BEGIN "rvscan 3"
+[19:50:53.308] [rv] rvscan: no psearch candidates to test. Run `psearch <x> <y> <z>` at one position, move, then `pnarrow <x> <y> <z>` at a second -- rvscan tests whatever set those leave behind.
+[19:50:53.308] [auto] END   "rvscan 3"
+[19:51:00.841] vkQueuePresentKHR frame 10000 (queue=0000023964B8A230)
+[19:51:17.510] vkQueuePresentKHR frame 11000 (queue=0000023964B8A230)
+[19:51:34.243] vkQueuePresentKHR frame 12000 (queue=0000023964B8A230)
+[19:51:50.912] vkQueuePresentKHR frame 13000 (queue=0000023964B8A230)
+[19:51:52.312] [auto] BEGIN "rvcheck 0x7FF7C33AF6B0"
+[19:51:52.313] [rv] 00007FF7C33AF6B0: LOOKS LIKE a renderView_t (confidence 100/100)
+[19:51:52.313] [rv]   vieworg = (1728.00, 5440.00, 6372.16)
+[19:51:52.313] [rv]   fov_x = 90.000   fov_y = 58.716
+[19:51:52.313] [rv]   useExplicitProjectionMatrix = 0   forceIdentityViewMatrix = 0
+[19:51:52.313] [rv]   struct base would be 00007FF7C33AF650, explicitProjectionMatrix at 00007FF7C33AF66C
+[19:51:52.313] [rv]   ⚠️ a shape match is NOT proof - a buffer of plausible floats passes too. Confirm by changing something and watching the picture.
+[19:51:52.315] [auto] END   "rvcheck 0x7FF7C33AF6B0"
+[19:51:52.315] [auto] BEGIN "rvhold 0x7FF7C33AF6B0"
+[19:51:52.316] [rv] rvhold ARMED on 00007FF7C33AF6B0 for 3600 frames, convention: inverse (the analytic inverse of standard)
+[19:51:52.316] [rv]   holding the projection the engine's OWN fov (90.00, 58.72) implies.
+[19:51:52.316] [rv]   ⭐ SUCCESS IS THE PICTURE NOT CHANGING. An unchanged view means this convention is the engine's, and the next step is a per-eye off-axis shift - the actual VR goal. A view that still changes means the convention is still wrong, and WHICH WAY it changes says which term to fix.
+[19:51:52.316] [rv]   was: useExplicit=0, matrix ALL ZERO at rest
+[19:51:52.316] [rv]   LOOK AT THE PICTURE NOW, then `rvholdoff` and read the counters.
+[19:51:52.316] [rv]   ⚠️ CHECK THE ARMING WINDOW BEFORE BELIEVING A NULL: on 2026-09-08 a 600-frame hold expired before its capture and read as 'nothing happened'. Compare this line's timestamp and the release line against when you looked.
+[19:51:52.316] [auto] END   "rvhold 0x7FF7C33AF6B0"
+[19:52:07.593] vkQueuePresentKHR frame 14000 (queue=0000023964B8A230)
+[19:52:24.259] vkQueuePresentKHR frame 15000 (queue=0000023964B8A230)
+[19:52:40.926] vkQueuePresentKHR frame 16000 (queue=0000023964B8A230)
+[19:52:52.328] [rv] rvhold released (frame budget expired). Restored the matrix and flag the engine had.
+[19:52:52.328] [rv]   at present writes=3599  HELD=3403  ZEROED=196  REWRITTEN=0  flag-cleared=196
+[19:52:52.328] [rv]   at submit  writes=7200  HELD=4436  ZEROED=2761  REWRITTEN=2  flag-cleared=2763
+[19:52:52.328] [rv]   READING IT: HELD dominant + picture UNCHANGED => the engine does not read explicitProjectionMatrix on this path, and section 6c is ANSWERED NO. ZEROED dominant => we are writing at the wrong point in the frame and 6c is still unanswered - nothing has been learned about the flag. Picture CHANGED at all (even wrongly) => 6c is ANSWERED YES.
+[19:52:57.596] vkQueuePresentKHR frame 17000 (queue=0000023964B8A230)
+[19:53:11.837] [auto] BEGIN "rvholdoff"
+[19:53:11.837] [auto] END   "rvholdoff"
+[19:53:11.837] [auto] BEGIN "rvhold 0x7FF7C33AF6B0 0 0 tan"
+[19:53:11.839] [rv] rvhold ARMED on 00007FF7C33AF6B0 for 3600 frames, convention: tangent (tan focal, same depth row)
+[19:53:11.839] [rv]   holding the projection the engine's OWN fov (90.00, 58.72) implies.
+[19:53:11.839] [rv]   ⭐ SUCCESS IS THE PICTURE NOT CHANGING. An unchanged view means this convention is the engine's, and the next step is a per-eye off-axis shift - the actual VR goal. A view that still changes means the convention is still wrong, and WHICH WAY it changes says which term to fix.
+[19:53:11.839] [rv]   was: useExplicit=0, matrix ALL ZERO at rest
+[19:53:11.839] [rv]   LOOK AT THE PICTURE NOW, then `rvholdoff` and read the counters.
+[19:53:11.839] [rv]   ⚠️ CHECK THE ARMING WINDOW BEFORE BELIEVING A NULL: on 2026-09-08 a 600-frame hold expired before its capture and read as 'nothing happened'. Compare this line's timestamp and the release line against when you looked.
+[19:53:11.840] [auto] END   "rvhold 0x7FF7C33AF6B0 0 0 tan"
+[19:53:14.361] vkQueuePresentKHR frame 18000 (queue=0000023964B8A230)
+[19:53:31.027] vkQueuePresentKHR frame 19000 (queue=0000023964B8A230)
+[19:53:47.694] vkQueuePresentKHR frame 20000 (queue=0000023964B8A230)
+[19:54:04.361] vkQueuePresentKHR frame 21000 (queue=0000023964B8A230)
+[19:54:11.862] [rv] rvhold released (frame budget expired). Restored the matrix and flag the engine had.
+[19:54:11.862] [rv]   at present writes=3599  HELD=3595  ZEROED=4  REWRITTEN=0  flag-cleared=4
+[19:54:11.862] [rv]   at submit  writes=7200  HELD=3663  ZEROED=3536  REWRITTEN=0  flag-cleared=3536
+[19:54:11.862] [rv]   READING IT: HELD dominant + picture UNCHANGED => the engine does not read explicitProjectionMatrix on this path, and section 6c is ANSWERED NO. ZEROED dominant => we are writing at the wrong point in the frame and 6c is still unanswered - nothing has been learned about the flag. Picture CHANGED at all (even wrongly) => 6c is ANSWERED YES.
+[19:54:21.028] vkQueuePresentKHR frame 22000 (queue=0000023964B8A230)
+[19:54:37.695] vkQueuePresentKHR frame 23000 (queue=0000023964B8A230)
+[19:54:54.429] vkQueuePresentKHR frame 24000 (queue=0000023964B8A230)
+[19:55:11.097] vkQueuePresentKHR frame 25000 (queue=0000023964B8A230)
+[19:55:12.080] [auto] BEGIN "rvholdoff"
+[19:55:12.080] [auto] END   "rvholdoff"
+[19:55:27.776] vkQueuePresentKHR frame 26000 (queue=0000023964B8A230)
+[19:55:44.443] vkQueuePresentKHR frame 27000 (queue=0000023964B8A230)
+[19:56:01.113] vkQueuePresentKHR frame 28000 (queue=0000023964B8A230)
+[19:56:17.819] vkQueuePresentKHR frame 29000 (queue=0000023964B8A230)
+[19:56:34.562] vkQueuePresentKHR frame 30000 (queue=0000023964B8A230)
+[19:56:51.228] vkQueuePresentKHR frame 31000 (queue=0000023964B8A230)
+[19:57:07.895] vkQueuePresentKHR frame 32000 (queue=0000023964B8A230)
+[19:57:24.564] vkQueuePresentKHR frame 33000 (queue=0000023964B8A230)
+---- detaching after 33814 frames ----
