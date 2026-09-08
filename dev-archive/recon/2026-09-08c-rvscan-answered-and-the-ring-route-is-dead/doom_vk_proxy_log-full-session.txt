@@ -1,0 +1,440 @@
+[15:43:51.180] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[15:43:51.197] real vulkan-1.dll loaded at 00007FFBA8340000; resolved 246/265 exports (19 missing)
+[15:44:05.619] vkCreateInstance -> 0 (instance=000002A16100E2C0)
+[15:44:10.190] vkCreateDevice -> 0 (physDev=000002A168D0A0E0 device=000002A168D3FB30)
+[15:44:10.190] [camhunt] memory types recorded: 6
+[15:44:10.793] vkMapMemory #1 mem=0x2a16916c6c0 offset=0 size=18446744073709551615 -> 000002A16E500000
+[15:44:10.815] vkMapMemory #2 mem=0x2a16916c4f0 offset=0 size=18446744073709551615 -> 000002A173500000
+[15:44:10.832] vkMapMemory #3 mem=0x2a16916c150 offset=0 size=67108864 -> 000002A179300000
+[15:44:14.522] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[15:44:14.522] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[15:44:18.271] vkMapMemory #4 mem=0x2a114c95e60 offset=0 size=76800 -> 000002A16BDBF000
+[15:44:18.271] vkMapMemory #5 mem=0x2a114c95720 offset=0 size=76800 -> 000002A16BDD2000
+[15:44:18.272] vkMapMemory #6 mem=0x2a114c95c90 offset=0 size=76800 -> 000002A16BDE5000
+[15:45:04.460] [autoinput] DirectInput8 object seen; CreateDevice instrumented
+[15:45:04.460] [autoinput] DirectInput8 CreateDevice(SysMouse) -> 0x00000000
+[15:45:04.460] [autoinput] SysMouse device hooked (GetDeviceState + GetDeviceData) -- this is the look path
+[15:45:04.474] [autoinput] NOTE: the mouse device uses BUFFERED GetDeviceData. Immediate-mode lX/lY injection will NOT be seen -- event fabrication is needed here.
+[15:45:04.480] [autoinput] DirectInput8 CreateDevice(SysKeyboard) -> 0x00000000
+[15:45:37.222] vkQueuePresentKHR frame 1 (queue=000002A168F89860)
+[15:45:44.821] vkQueuePresentKHR frame 10 (queue=000002A168F89860)
+[15:45:46.320] vkQueuePresentKHR frame 100 (queue=000002A168F89860)
+[15:45:46.654] [camhunt] ready. Commands: snapa/snapb/dump/tol. NUMPAD 1/2/3 still work as a manual fallback.
+[15:45:46.654] [autoinput] window=0000000000470914  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[15:45:46.654] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[15:45:46.655] [autoinput]   sendinput          available  
+[15:45:46.655] [autoinput]   postmessage        available  
+[15:45:46.655] [autoinput]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[15:45:46.655] [auto] automation ON (marker file). Append commands to: D:\Program Files (x86)\Steam\steamapps\common\DOOM\doom_automation_cmds.txt
+[15:45:46.655] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[15:46:01.320] vkQueuePresentKHR frame 1000 (queue=000002A168F89860)
+[15:46:19.276] vkQueuePresentKHR frame 2000 (queue=000002A168F89860)
+[15:46:35.947] vkQueuePresentKHR frame 3000 (queue=000002A168F89860)
+[15:46:57.035] vkQueuePresentKHR frame 4000 (queue=000002A168F89860)
+[15:47:13.840] vkQueuePresentKHR frame 5000 (queue=000002A168F89860)
+[15:47:30.506] vkQueuePresentKHR frame 6000 (queue=000002A168F89860)
+[15:47:47.279] vkQueuePresentKHR frame 7000 (queue=000002A168F89860)
+[15:48:03.953] vkQueuePresentKHR frame 8000 (queue=000002A168F89860)
+[15:48:10.436] [auto] BEGIN "status"
+[15:48:10.436] [auto] status: tol=0.00100  budget=96 MB  stride=16  snapshotA=-1 candidates  live mappings=6
+[15:48:10.437] [auto]   inproc-keystate    available    [default]  -- 3 key-state hook(s) + cursor
+[15:48:10.437] [auto]   sendinput          available  
+[15:48:10.437] [auto]   postmessage        available  
+[15:48:10.437] [auto]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[15:48:10.437] [auto] END   "status"
+[15:48:20.637] vkQueuePresentKHR frame 9000 (queue=000002A168F89860)
+[15:48:30.691] [auto] BEGIN "help"
+[15:48:30.691] [auto] commands:
+[15:48:30.691] [auto]   status | help | mappings
+[15:48:30.691] [auto]   snapa | snapb | dump          camhunt: snapshot A, compare, show current
+[15:48:30.691] [auto]   tol <float>                   retune orthonormality tolerance, no rebuild
+[15:48:30.691] [auto]   budget <MB> | stride <bytes>  narrow or coarsen the scan, live
+[15:48:30.692] [auto]   backend <inproc|sendinput|postmessage|vigem>
+[15:48:30.692] [auto]   move <fwd,back,left,right,jump> [frames]
+[15:48:30.692] [auto]   look <dx> <dy> [frames]       mouse delta per frame
+[15:48:30.692] [auto]   findvec <x> <y> <z> [tol]     find a value in the GPU buffers
+[15:48:30.692] [auto]   psearch <x> <y> <z> [tol]     find it in PROCESS memory (pass 1)
+[15:48:30.692] [auto]   pnarrow <x> <y> <z> [tol]     keep only what matches now (pass 2)
+[15:48:30.692] [auto]   pdump 0xADDR                  show floats around an address
+[15:48:30.693] [auto]   rvscan [n]                    shape-test EVERY psearch candidate, best n first
+[15:48:30.693] [auto]   rvcheck <hexaddr>             is this hit a renderView_t? (shape test)
+[15:48:30.693] [auto]   rvmat <hexaddr>               read explicitProjectionMatrix
+[15:48:30.693] [auto]   rvexplicit <hexaddr> on|off   THE 6c EXPERIMENT: honour the explicit matrix?
+[15:48:30.693] [auto]   rvsetmat <hexaddr> f1..f16    write the 4x4, row-major
+[15:48:30.693] [auto]   pwrite <hexaddr> <x> <y> <z>  write three floats once
+[15:48:30.693] [auto]   phold <hexaddr> <x> <y> <z>   hold them every frame | pholdoff
+[15:48:30.693] [auto]   pholdall <dx> <dy> <dz>       hold the WHOLE candidate set | pholdalloff
+[15:48:30.693] [auto]   phalve1 | phalve2 | pother    bisect the set; pother = the half just dropped
+[15:48:30.693] [auto]   pholdyaw <hexaddr> <deg>      ROTATE the basis about Z | pholdyawoff
+[15:48:30.693] [auto]   scan <hex>                    tap a PHYSICAL scancode (console = 0x29)
+[15:48:30.694] [auto]   framespy                      capture ONE frame's pass/draw/uniform structure
+[15:48:30.694] [auto]   ringlearn | ringstat | ringoff  per-frame ring camera locator
+[15:48:30.694] [auto]   ringyaw <deg> | ringeye <units> drive the ring copies (stereo eye offset)
+[15:48:30.694] [auto]   camwatch | camstat | camoff    track the camera at the flush path
+[15:48:30.694] [auto]   camseed <x> <y> <z>           lock on using getviewpos output
+[15:48:30.694] [auto]   camrescan                     re-learn where the copies live
+[15:48:30.694] [auto]   camyaw <deg>                  ROTATE the live camera (0 = watch only)
+[15:48:30.694] [auto]   key <tilde|enter|esc|0xNN>    tap one key
+[15:48:30.694] [auto]   type <text>                   type a string (via the current typeroute)
+[15:48:30.694] [auto]   typeroute <sendinput|postkey|postchar|keystate>  HOW taps are delivered
+[15:48:30.695] [auto]   console <text>                open console, run text, close
+[15:48:30.695] [auto]   ctest                         type a probe string down EACH route in turn
+[15:48:30.695] [auto]   probe                         measure which backends the game obeys
+[15:48:30.695] [auto]   stop                          release any held input
+[15:48:30.695] [auto] END   "help"
+[15:48:30.696] [auto] BEGIN "camoff"
+[15:48:30.696] [auto] camera intercept OFF
+[15:48:30.696] [auto] END   "camoff"
+[15:48:37.309] vkQueuePresentKHR frame 10000 (queue=000002A168F89860)
+[15:48:53.979] vkQueuePresentKHR frame 11000 (queue=000002A168F89860)
+[15:48:55.445] [auto] BEGIN "key 0x48"
+[15:48:55.446] [auto] key 0x48 queued
+[15:48:55.446] [auto] END   "key 0x48"
+[15:49:10.666] vkQueuePresentKHR frame 12000 (queue=000002A168F89860)
+[15:49:27.408] vkQueuePresentKHR frame 13000 (queue=000002A168F89860)
+[15:49:44.087] vkQueuePresentKHR frame 14000 (queue=000002A168F89860)
+[15:50:00.765] vkQueuePresentKHR frame 15000 (queue=000002A168F89860)
+[15:50:17.436] vkQueuePresentKHR frame 16000 (queue=000002A168F89860)
+[15:50:34.116] vkQueuePresentKHR frame 17000 (queue=000002A168F89860)
+[15:50:50.788] vkQueuePresentKHR frame 18000 (queue=000002A168F89860)
+[15:51:07.569] vkQueuePresentKHR frame 19000 (queue=000002A168F89860)
+[15:51:25.274] vkMapMemory #7 mem=0x2a129328de0 offset=0 size=67108864 -> 000002A1C48A0000
+[15:51:29.510] vkQueuePresentKHR frame 20000 (queue=000002A168F89860)
+[15:51:57.530] vkQueuePresentKHR frame 21000 (queue=000002A168F89860)
+[15:52:25.536] vkQueuePresentKHR frame 22000 (queue=000002A168F89860)
+[15:52:45.317] vkQueuePresentKHR frame 23000 (queue=000002A168F89860)
+[15:53:01.984] vkQueuePresentKHR frame 24000 (queue=000002A168F89860)
+[15:53:10.908] [auto] BEGIN "scan 0x29"
+[15:53:10.908] [auto] scancode 0x29 queued
+[15:53:10.908] [auto] END   "scan 0x29"
+[15:53:18.708] vkQueuePresentKHR frame 25000 (queue=000002A168F89860)
+[15:53:35.374] vkQueuePresentKHR frame 26000 (queue=000002A168F89860)
+[15:53:47.908] [auto] BEGIN "ctest"
+[15:53:47.908] [auto] ctest: queued "0" via sendinput-scancode, "1" via postmessage-key, "2" via postmessage-char, "3" via inproc-keystate.
+[15:53:47.908] [auto]   OPEN THE CONSOLE FIRST (`scan 0x29`). The digits that appear name the routes that work: "0123" all four, "2" only WM_CHAR, "" nothing landed at all. A REPEATED digit means auto-repeat, i.e. the frame rate is too low -- turn `camwatch` off and repeat.
+[15:53:47.908] [auto] END   "ctest"
+[15:53:52.040] vkQueuePresentKHR frame 27000 (queue=000002A168F89860)
+[15:54:08.749] vkQueuePresentKHR frame 28000 (queue=000002A168F89860)
+[15:54:25.416] vkQueuePresentKHR frame 29000 (queue=000002A168F89860)
+[15:54:42.083] vkQueuePresentKHR frame 30000 (queue=000002A168F89860)
+[15:54:58.751] vkQueuePresentKHR frame 31000 (queue=000002A168F89860)
+[15:55:15.418] vkQueuePresentKHR frame 32000 (queue=000002A168F89860)
+[15:55:30.967] [auto] BEGIN "typeroute sendinput"
+[15:55:30.967] [auto] type route -> sendinput-scancode. NOTHING is known about which route this game's console obeys; try one, look at the console, and say what landed.
+[15:55:30.967] [auto] END   "typeroute sendinput"
+[15:55:30.967] [auto] BEGIN "type getviewpos"
+[15:55:30.968] [auto] typing "getviewpos"
+[15:55:30.968] [auto] END   "type getviewpos"
+[15:55:32.084] vkQueuePresentKHR frame 33000 (queue=000002A168F89860)
+[15:55:48.807] vkQueuePresentKHR frame 34000 (queue=000002A168F89860)
+[15:56:05.491] vkQueuePresentKHR frame 35000 (queue=000002A168F89860)
+[15:56:20.509] [auto] BEGIN "scan 0x29"
+[15:56:20.509] [auto] scancode 0x29 queued
+[15:56:20.509] [auto] END   "scan 0x29"
+[15:56:20.509] [auto] BEGIN "camseed 1728 5440 6372.16"
+[15:56:20.510] [camhunt] camera seeded at (1728.00 5440.00 6372.16) -- tracking will follow from here
+[15:56:20.510] [auto] END   "camseed 1728 5440 6372.16"
+[15:56:20.511] [auto] BEGIN "camrescan"
+[15:56:20.511] [camhunt] scan started in the background -- the game keeps running; results follow in this log
+[15:56:20.511] [auto] camera offset discovery queued (one-off hitch expected)
+[15:56:20.511] [auto] END   "camrescan"
+[15:56:23.543] [autoinput] frame period is 769 ms (~1.3 fps). A tap cannot be held for less than one frame, so on the sendinput route it will sit down past the ~250 ms auto-repeat delay and may duplicate characters. Turn `camwatch` off before typing, or use `typeroute postchar`.
+[15:56:25.172] [camhunt] discovery done: 112 camera copies located
+[15:56:26.765] vkQueuePresentKHR frame 36000 (queue=000002A168F89860)
+[15:56:43.432] vkQueuePresentKHR frame 37000 (queue=000002A168F89860)
+[15:56:52.415] [auto] BEGIN "psearch 1728 5440 6372.16"
+[15:56:52.415] [camhunt] scan started in the background -- the game keeps running; results follow in this log
+[15:56:52.415] [auto] END   "psearch 1728 5440 6372.16"
+[15:56:52.451] [psearch]   hit 1 at 000000E5E2DE3DE0  [private RW]
+[15:56:52.451] [psearch]   hit 2 at 000000E5E2DE42B8  [private RW]
+[15:56:52.451] [psearch]   hit 3 at 000000E5E2DE6640  [private RW]
+[15:56:52.451] [psearch]   hit 4 at 000000E5E2DE6C18  [private RW]
+[15:56:52.451] [psearch]   hit 5 at 000000E5E2DEA600  [private RW]
+[15:56:52.451] [psearch]   hit 6 at 000000E5E2DEB7A0  [private RW]
+[15:56:52.455] [psearch]   hit 7 at 000000E5E31E69D8  [private RW]
+[15:56:52.455] [psearch]   hit 8 at 000000E5E31E69F0  [private RW]
+[15:56:52.456] [psearch]   hit 9 at 000000E5E31E7BFC  [private RW]
+[15:56:52.456] [psearch]   hit 10 at 000000E5E31E7D00  [private RW]
+[15:56:52.456] [psearch]   hit 11 at 000000E5E31E8F80  [private RW]
+[15:56:52.456] [psearch]   hit 12 at 000000E5E31E9480  [private RW]
+[15:57:00.186] vkQueuePresentKHR frame 38000 (queue=000002A168F89860)
+[15:57:16.980] vkQueuePresentKHR frame 39000 (queue=000002A168F89860)
+[15:57:32.938] [psearch] PASS 1 (1728.00 5440.00 6372.16) tol 0.50 -> 4402 candidate(s) across 4708 regions, 4500 MB scanned
+[15:57:32.938] [psearch]   by region: image=10  private(heap)=4392  mapped=0
+[15:57:32.938] [psearch]   now MOVE the player, read getviewpos again, and run `pnarrow <x> <y> <z>` -- one position finds coincidences, two find the camera
+[15:57:33.737] vkQueuePresentKHR frame 40000 (queue=000002A168F89860)
+[15:57:50.408] vkQueuePresentKHR frame 41000 (queue=000002A168F89860)
+[15:57:55.207] [auto] BEGIN "backend sendinput"
+[15:57:55.207] [auto] default backend = sendinput
+[15:57:55.207] [auto] END   "backend sendinput"
+[15:57:55.207] [auto] BEGIN "move fwd 90"
+[15:57:55.208] [auto] move keys=0x1 for 90 frames via sendinput
+[15:57:55.208] [auto] END   "move fwd 90"
+[15:57:56.708] [auto] input released
+[15:58:07.073] vkQueuePresentKHR frame 42000 (queue=000002A168F89860)
+[15:58:19.474] [auto] BEGIN "scan 0x29"
+[15:58:19.474] [auto] scancode 0x29 queued
+[15:58:19.475] [auto] END   "scan 0x29"
+[15:58:19.475] [auto] BEGIN "type getviewpos"
+[15:58:19.475] [auto] typing "getviewpos"
+[15:58:19.475] [auto] END   "type getviewpos"
+[15:58:23.740] vkQueuePresentKHR frame 43000 (queue=000002A168F89860)
+[15:58:40.437] vkQueuePresentKHR frame 44000 (queue=000002A168F89860)
+[15:58:57.173] vkQueuePresentKHR frame 45000 (queue=000002A168F89860)
+[15:59:08.290] [auto] BEGIN "scan 0x29"
+[15:59:08.290] [auto] scancode 0x29 queued
+[15:59:08.290] [auto] END   "scan 0x29"
+[15:59:08.290] [auto] BEGIN "pnarrow 2345.03 5795.69 6333.47"
+[15:59:08.290] [psearch]   SURVIVOR 1 at 000000E5E2DE3DE0  [private RW]   2345.033  5795.689  6333.466
+[15:59:08.291] [psearch]   SURVIVOR 2 at 000000E5E2DE42B8  [private RW]   2345.033  5795.689  6333.466
+[15:59:08.291] [psearch]   SURVIVOR 3 at 000000E5E2DE6640  [private RW]   2345.033  5795.689  6333.466
+[15:59:08.291] [psearch]   SURVIVOR 4 at 000000E5E2DE6C18  [private RW]   2345.033  5795.689  6333.466
+[15:59:08.291] [psearch]   SURVIVOR 5 at 000000E5E2DEA600  [private RW]   2345.033  5795.689  6333.466
+[15:59:08.291] [psearch]   SURVIVOR 6 at 000000E5E2DEB7A0  [private RW]   2345.033  5795.689  6333.466
+[15:59:08.291] [psearch]   SURVIVOR 7 at 000000E5E31E69F0  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.292] [psearch]   SURVIVOR 8 at 000000E5E31E7BFC  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.292] [psearch]   SURVIVOR 9 at 000000E5E31E7D00  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.292] [psearch]   SURVIVOR 10 at 000000E5E31E8F80  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.292] [psearch]   SURVIVOR 11 at 000000E5E33E6A50  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.292] [psearch]   SURVIVOR 12 at 000000E5E33E7C5C  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.292] [psearch]   SURVIVOR 13 at 000000E5E33E7D60  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.293] [psearch]   SURVIVOR 14 at 000000E5E33E8FE0  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.293] [psearch]   SURVIVOR 15 at 000000E5E35E6A70  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.293] [psearch]   SURVIVOR 16 at 000000E5E35E7C7C  [private RW]   2345.033  5795.688  6333.466
+[15:59:08.481] [psearch] PASS 2 (2345.03 5795.69 6333.47) -> 833 survivor(s) of the previous set
+[15:59:08.481] [auto] END   "pnarrow 2345.03 5795.69 6333.47"
+[15:59:14.029] vkQueuePresentKHR frame 46000 (queue=000002A168F89860)
+[15:59:30.698] vkQueuePresentKHR frame 47000 (queue=000002A168F89860)
+[15:59:47.365] vkQueuePresentKHR frame 48000 (queue=000002A168F89860)
+[16:00:01.548] [auto] BEGIN "rvscan"
+[16:00:01.624] [rv] rvscan: tested 833 candidate(s) in 78 ms -> 8 passed the shape test, 0 had an unreadable window
+[16:00:01.624] [rv]   rejected by: fov_x=822  fov_y=3  fov_pair=0  useExplicit=0  forceIdentity=0  vieworg=0
+[16:00:01.624] [rv]   best 8 of 8 survivor(s), strongest first:
+[16:00:01.624] [rv]    1. 000000E5E2DEB7A0  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.624] [rv]    2. 000002A1A30F9E80  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.625] [rv]    3. 000002A1A30FA760  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.625] [rv]    4. 000002A1A351B090  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.625] [rv]    5. 000002A1A351B970  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.625] [rv]    6. 000002A1EC3C0320  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.625] [rv]    7. 00007FF767CBF6B0  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.625] [rv]    8. 00007FF767CBFFF0  conf 100/100  vieworg=(2345.03 5795.69 6333.47)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[16:00:01.625] [rv]   NEXT, on the strongest one -- this is section 6c:
+[16:00:01.625] [rv]     rvmat 000000E5E2DEB7A0            read the matrix it already holds
+[16:00:01.625] [rv]     rvexplicit 000000E5E2DEB7A0 on    THE EXPERIMENT
+[16:00:01.626] [rv]   Reading: the projection VISIBLY CHANGES => the engine honours explicitProjectionMatrix, so per-eye projection is a supported input. UNCHANGED => this is not the live view, OR the flag is re-set every frame, OR the engine ignores it here -- three different findings, so say which you saw, and try the next-strongest before concluding.
+[16:00:01.626] [rv]   ⚠️ A shape match is NOT proof. 8 candidate(s) passed a filter; none of them has been shown to be the live view.
+[16:00:01.626] [auto] END   "rvscan"
+[16:00:04.097] vkQueuePresentKHR frame 49000 (queue=000002A168F89860)
+[16:00:20.763] vkQueuePresentKHR frame 50000 (queue=000002A168F89860)
+[16:00:37.479] vkQueuePresentKHR frame 51000 (queue=000002A168F89860)
+[16:00:54.146] vkQueuePresentKHR frame 52000 (queue=000002A168F89860)
+[16:01:10.812] vkQueuePresentKHR frame 53000 (queue=000002A168F89860)
+[16:01:27.478] vkQueuePresentKHR frame 54000 (queue=000002A168F89860)
+[16:01:44.146] vkQueuePresentKHR frame 55000 (queue=000002A168F89860)
+[16:02:00.813] vkQueuePresentKHR frame 56000 (queue=000002A168F89860)
+[16:02:17.548] vkQueuePresentKHR frame 57000 (queue=000002A168F89860)
+[16:02:23.548] [auto] BEGIN "rvmat 000000E5E2DEB7A0"
+[16:02:23.548] [rv] 0000000000000000: window not readable
+[16:02:23.548] [auto] END   "rvmat 000000E5E2DEB7A0"
+[16:02:23.549] [auto] BEGIN "rvexplicit 000000E5E2DEB7A0 on"
+[16:02:23.549] [rv] useExplicitProjectionMatrix at 000000E5E2DEB79C: 0 -> 1
+[16:02:23.549] [rv]   Watch the picture. UNCHANGED means either this is not the live view, or the flag is re-set every frame, or the engine ignores it here - three different findings, so say which you saw.
+[16:02:23.549] [auto] END   "rvexplicit 000000E5E2DEB7A0 on"
+[16:02:34.215] vkQueuePresentKHR frame 58000 (queue=000002A168F89860)
+[16:02:50.906] vkQueuePresentKHR frame 59000 (queue=000002A168F89860)
+[16:03:07.573] vkQueuePresentKHR frame 60000 (queue=000002A168F89860)
+[16:03:18.559] [auto] BEGIN "rvcheck 000000E5E2DEB7A0"
+[16:03:18.559] [rv] usage: rvcheck <hexaddr of a findvec/psearch hit>
+[16:03:18.560] [auto] END   "rvcheck 000000E5E2DEB7A0"
+[16:03:24.238] vkQueuePresentKHR frame 61000 (queue=000002A168F89860)
+[16:03:40.923] vkQueuePresentKHR frame 62000 (queue=000002A168F89860)
+[16:03:42.306] [auto] BEGIN "rvcheck 0xE5E2DEB7A0"
+[16:03:42.306] [rv] 000000E5E2DEB7A0: LOOKS LIKE a renderView_t (confidence 100/100)
+[16:03:42.307] [rv]   vieworg = (2345.03, 5795.69, 6333.47)
+[16:03:42.307] [rv]   fov_x = 90.000   fov_y = 58.716
+[16:03:42.307] [rv]   useExplicitProjectionMatrix = 0   forceIdentityViewMatrix = 0
+[16:03:42.307] [rv]   struct base would be 000000E5E2DEB740, explicitProjectionMatrix at 000000E5E2DEB75C
+[16:03:42.307] [rv]   ⚠️ a shape match is NOT proof - a buffer of plausible floats passes too. Confirm by changing something and watching the picture.
+[16:03:42.307] [auto] END   "rvcheck 0xE5E2DEB7A0"
+[16:03:42.307] [auto] BEGIN "rvmat 0xE5E2DEB7A0"
+[16:03:42.307] [rv] explicitProjectionMatrix at 000000E5E2DEB75C (useExplicit=0):
+[16:03:42.307] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:03:42.307] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:03:42.308] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:03:42.308] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:03:42.308] [auto] END   "rvmat 0xE5E2DEB7A0"
+[16:03:57.614] vkQueuePresentKHR frame 63000 (queue=000002A168F89860)
+[16:04:14.280] vkQueuePresentKHR frame 64000 (queue=000002A168F89860)
+[16:04:18.830] [auto] BEGIN "rvcheck 0x7FF767CBF6B0"
+[16:04:18.830] [rv] 00007FF767CBF6B0: LOOKS LIKE a renderView_t (confidence 100/100)
+[16:04:18.830] [rv]   vieworg = (2345.03, 5795.69, 6333.47)
+[16:04:18.830] [rv]   fov_x = 90.000   fov_y = 58.716
+[16:04:18.830] [rv]   useExplicitProjectionMatrix = 0   forceIdentityViewMatrix = 0
+[16:04:18.830] [rv]   struct base would be 00007FF767CBF650, explicitProjectionMatrix at 00007FF767CBF66C
+[16:04:18.830] [rv]   ⚠️ a shape match is NOT proof - a buffer of plausible floats passes too. Confirm by changing something and watching the picture.
+[16:04:18.830] [auto] END   "rvcheck 0x7FF767CBF6B0"
+[16:04:18.830] [auto] BEGIN "rvmat 0x7FF767CBF6B0"
+[16:04:18.831] [rv] explicitProjectionMatrix at 00007FF767CBF66C (useExplicit=0):
+[16:04:18.831] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:04:18.831] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:04:18.832] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:04:18.832] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:04:18.832] [auto] END   "rvmat 0x7FF767CBF6B0"
+[16:04:18.832] [auto] BEGIN "rvcheck 0x7FF767CBFFF0"
+[16:04:18.832] [rv] 00007FF767CBFFF0: LOOKS LIKE a renderView_t (confidence 100/100)
+[16:04:18.832] [rv]   vieworg = (2345.03, 5795.69, 6333.47)
+[16:04:18.832] [rv]   fov_x = 90.000   fov_y = 58.716
+[16:04:18.833] [rv]   useExplicitProjectionMatrix = 0   forceIdentityViewMatrix = 0
+[16:04:18.833] [rv]   struct base would be 00007FF767CBFF90, explicitProjectionMatrix at 00007FF767CBFFAC
+[16:04:18.833] [rv]   ⚠️ a shape match is NOT proof - a buffer of plausible floats passes too. Confirm by changing something and watching the picture.
+[16:04:18.833] [auto] END   "rvcheck 0x7FF767CBFFF0"
+[16:04:30.950] vkQueuePresentKHR frame 65000 (queue=000002A168F89860)
+[16:04:47.616] vkQueuePresentKHR frame 66000 (queue=000002A168F89860)
+[16:05:04.283] vkQueuePresentKHR frame 67000 (queue=000002A168F89860)
+[16:05:12.359] [auto] BEGIN "rvsetmat 0x7FF767CBF6B0 2.747 0 0 0 0 4.884 0 0 0 0 0 -1 0 0 0.1 0"
+[16:05:12.359] [rv] wrote 16 floats to explicitProjectionMatrix at 00007FF767CBF66C
+[16:05:12.359] [rv]   NOTE this does nothing on its own - set the flag too: rvexplicit <addr> on
+[16:05:12.360] [auto] END   "rvsetmat 0x7FF767CBF6B0 2.747 0 0 0 0 4.884 0 0 0 0 0 -1 0 0 0.1 0"
+[16:05:12.360] [auto] BEGIN "rvexplicit 0x7FF767CBF6B0 on"
+[16:05:12.360] [rv] useExplicitProjectionMatrix at 00007FF767CBF6AC: 0 -> 1
+[16:05:12.360] [rv]   Watch the picture. UNCHANGED means either this is not the live view, or the flag is re-set every frame, or the engine ignores it here - three different findings, so say which you saw.
+[16:05:12.360] [auto] END   "rvexplicit 0x7FF767CBF6B0 on"
+[16:05:21.052] vkQueuePresentKHR frame 68000 (queue=000002A168F89860)
+[16:05:37.719] vkQueuePresentKHR frame 69000 (queue=000002A168F89860)
+[16:05:54.389] vkQueuePresentKHR frame 70000 (queue=000002A168F89860)
+[16:05:59.856] [auto] BEGIN "rvcheck 0x7FF767CBF6B0"
+[16:05:59.857] [rv] 00007FF767CBF6B0: LOOKS LIKE a renderView_t (confidence 100/100)
+[16:05:59.857] [rv]   vieworg = (2345.03, 5795.69, 6333.47)
+[16:05:59.857] [rv]   fov_x = 90.000   fov_y = 58.716
+[16:05:59.857] [rv]   useExplicitProjectionMatrix = 0   forceIdentityViewMatrix = 0
+[16:05:59.857] [rv]   struct base would be 00007FF767CBF650, explicitProjectionMatrix at 00007FF767CBF66C
+[16:05:59.858] [rv]   ⚠️ a shape match is NOT proof - a buffer of plausible floats passes too. Confirm by changing something and watching the picture.
+[16:05:59.858] [auto] END   "rvcheck 0x7FF767CBF6B0"
+[16:05:59.858] [auto] BEGIN "rvmat 0x7FF767CBF6B0"
+[16:05:59.858] [rv] explicitProjectionMatrix at 00007FF767CBF66C (useExplicit=0):
+[16:05:59.858] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:05:59.859] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:05:59.859] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:05:59.859] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:05:59.859] [auto] END   "rvmat 0x7FF767CBF6B0"
+[16:06:11.081] vkQueuePresentKHR frame 71000 (queue=000002A168F89860)
+[16:06:27.747] vkQueuePresentKHR frame 72000 (queue=000002A168F89860)
+[16:06:32.598] [auto] BEGIN "rvsetmat 0x7FF767CBF6B0 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7"
+[16:06:32.598] [rv] wrote 16 floats to explicitProjectionMatrix at 00007FF767CBF66C
+[16:06:32.598] [rv]   NOTE this does nothing on its own - set the flag too: rvexplicit <addr> on
+[16:06:32.598] [auto] END   "rvsetmat 0x7FF767CBF6B0 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7"
+[16:06:32.599] [auto] BEGIN "rvmat 0x7FF767CBF6B0"
+[16:06:32.599] [rv] explicitProjectionMatrix at 00007FF767CBF66C (useExplicit=0):
+[16:06:32.599] [rv]   [ 7.00000  7.00000  7.00000  7.00000]
+[16:06:32.599] [rv]   [ 7.00000  7.00000  7.00000  7.00000]
+[16:06:32.599] [rv]   [ 7.00000  7.00000  7.00000  7.00000]
+[16:06:32.599] [rv]   [ 7.00000  7.00000  7.00000  7.00000]
+[16:06:32.599] [auto] END   "rvmat 0x7FF767CBF6B0"
+[16:06:44.414] vkQueuePresentKHR frame 73000 (queue=000002A168F89860)
+[16:06:51.113] [auto] BEGIN "rvmat 0x7FF767CBF6B0"
+[16:06:51.114] [rv] explicitProjectionMatrix at 00007FF767CBF66C (useExplicit=0):
+[16:06:51.114] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:06:51.114] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:06:51.114] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:06:51.114] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[16:06:51.114] [auto] END   "rvmat 0x7FF767CBF6B0"
+[16:07:01.148] vkQueuePresentKHR frame 74000 (queue=000002A168F89860)
+[16:07:14.115] [auto] BEGIN "ringlearn"
+[16:07:14.115] [ringcam] mode=LEARN param=0.00  (learned=0, deltas=0)
+[16:07:14.115] [auto] END   "ringlearn"
+[16:07:14.132] [ringcam] scanning region 2 (65536 KB) - value-located, not the biggest mapping
+[16:07:14.337] [ringcam] LEARN window from camhunt discovery -- where the copies actually are: [62945872..67061392) = 4019 KB of a 4019 KB span (discovery: 112 copies at 62949968..67057232)
+[16:07:14.337] [ringcam]   252 camera hit(s): 0 with a usable delta, 252 too far from any bound offset, 0 with no bound offset below them -> 0 distinct delta(s)
+[16:07:14.338] [ringcam]   >> FOUND THE CAMERA (252 copies) BUT NOT VIA A DYNAMIC OFFSET: the nearest bound offset is 60673 KB below the nearest copy. The copies are in this region but NOT in the per-draw block range the game binds, so offset+delta probing cannot reach them however the window is set. That is a finding about the STRATEGY, not a tuning problem: a per-frame patch needs a different anchor than vkCmdBindDescriptorSets offsets.
+[16:07:18.012] vkQueuePresentKHR frame 75000 (queue=000002A168F89860)
+[16:07:34.679] vkQueuePresentKHR frame 76000 (queue=000002A168F89860)
+[16:07:51.346] vkQueuePresentKHR frame 77000 (queue=000002A168F89860)
+[16:08:08.012] vkQueuePresentKHR frame 78000 (queue=000002A168F89860)
+[16:08:09.412] [auto] BEGIN "framespy"
+[16:08:09.412] [framespy] armed -- capturing the structure of ONE frame, then disarming
+[16:08:09.412] [auto] END   "framespy"
+[16:08:09.428] [framespy] ---- one frame, 43 render pass(es) ----
+[16:08:09.428] [framespy] pass  0 fb=000002A1A153AED0  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.429] [framespy] pass  1 fb=000002A1A1535A70  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.429] [framespy] pass  2 fb=000002A1A1536250  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.429] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3701248..3701504]  distinct(sampled)=2
+[16:08:09.429] [framespy] pass  3 fb=000002A1A1536370  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.429] [framespy] pass  4 fb=000002A1A15355F0  draws=1 (+0 indirect)  vp=1280x720 @0,0
+[16:08:09.429] [framespy]          descSetBinds=2  ofWhichDynamic=2  dynOffset range=[0..3702016]  distinct(sampled)=5
+[16:08:09.429] [framespy] pass  5 fb=000002A1EAF47D80  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.429] [framespy] pass  6 fb=000002A1A153B590  draws=0 (+0 indirect)  vp=1280x720 @0,0
+[16:08:09.429] [framespy] pass  7 fb=000002A1A1540330  draws=6 (+0 indirect)  vp=(not set in pass)
+[16:08:09.429] [framespy]          descSetBinds=5  ofWhichDynamic=5  dynOffset range=[0..3703552]  distinct(sampled)=5
+[16:08:09.429] [framespy] pass  8 fb=000002A1A153BC50  draws=5 (+0 indirect)  vp=(not set in pass)
+[16:08:09.430] [framespy]          descSetBinds=4  ofWhichDynamic=4  dynOffset range=[0..3706880]  distinct(sampled)=8
+[16:08:09.430] [framespy] pass  9 fb=000002A1A15381D0  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.430] [framespy] pass 10 fb=000002A1A153AED0  draws=13 (+0 indirect)  vp=1280x720 @0,0
+[16:08:09.430] [framespy]          descSetBinds=14  ofWhichDynamic=11  dynOffset range=[0..3712000]  distinct(sampled)=21
+[16:08:09.430] [framespy] pass 11 fb=000002A1A1535B90  draws=204 (+3 indirect)  vp=(not set in pass)
+[16:08:09.430] [framespy]          descSetBinds=208  ofWhichDynamic=208  dynOffset range=[0..3768320]  distinct(sampled)=32+ (sample cap)
+[16:08:09.430] [framespy] pass 12 fb=000002A1A1535DD0  draws=23 (+0 indirect)  vp=512x512 @3584,2560
+[16:08:09.430] [framespy]          descSetBinds=23  ofWhichDynamic=22  dynOffset range=[0..3772928]  distinct(sampled)=19
+[16:08:09.430] [framespy] pass 13 fb=000002A1A15367F0  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.430] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3767552..3767808]  distinct(sampled)=2
+[16:08:09.431] [framespy] pass 14 fb=000002A1EAF47A20  draws=14 (+0 indirect)  vp=320x180 @0,0
+[16:08:09.431] [framespy]          descSetBinds=15  ofWhichDynamic=15  dynOffset range=[0..3774976]  distinct(sampled)=10
+[16:08:09.431] [framespy] pass 15 fb=000002A1A1539610  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.431] [framespy] pass 16 fb=000002A1A1535CB0  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.431] [framespy] pass 17 fb=000002A1A1540330  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.431] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3777024..3777280]  distinct(sampled)=2
+[16:08:09.431] [framespy] pass 18 fb=000002A1A153AED0  draws=5 (+0 indirect)  vp=(not set in pass)
+[16:08:09.431] [framespy]          descSetBinds=5  ofWhichDynamic=5  dynOffset range=[3779072..3780352]  distinct(sampled)=5
+[16:08:09.431] [framespy] pass 19 fb=000002A1A1538AD0  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.431] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3780864..3780864]  distinct(sampled)=1
+[16:08:09.431] [framespy] pass 20 fb=000002A1A1539850  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.432] [framespy] pass 21 fb=000002A1A153AED0  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.432] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3781120..3781376]  distinct(sampled)=2
+[16:08:09.432] [framespy] pass 22 fb=000002A1A1535DD0  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.432] [framespy]          descSetBinds=2  ofWhichDynamic=2  dynOffset range=[3781632..3782144]  distinct(sampled)=3
+[16:08:09.432] [framespy] pass 23 fb=000002A1A1538650  draws=1 (+0 indirect)  vp=512x512 @2560,3584
+[16:08:09.432] [framespy] pass 24 fb=000002A1A1535DD0  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.432] [framespy] pass 25 fb=000002A1A1537F90  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.432] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3783168..3783168]  distinct(sampled)=1
+[16:08:09.432] [framespy] pass 26 fb=000002A1A1537E70  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.432] [framespy] pass 27 fb=000002A1A1538E30  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.432] [framespy] pass 28 fb=000002A1A1538410  draws=1 (+0 indirect)  vp=128x128 @0,0
+[16:08:09.433] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3783680..3784192]  distinct(sampled)=2
+[16:08:09.433] [framespy] pass 29 fb=000002A1A1539730  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.433] [framespy] pass 30 fb=000002A1A1539CD0  draws=1 (+0 indirect)  vp=64x64 @0,0
+[16:08:09.433] [framespy]          descSetBinds=2  ofWhichDynamic=2  dynOffset range=[3783680..3785472]  distinct(sampled)=6
+[16:08:09.433] [framespy] pass 31 fb=000002A1A153BB30  draws=2 (+0 indirect)  vp=32x32 @0,0
+[16:08:09.433] [framespy]          descSetBinds=2  ofWhichDynamic=2  dynOffset range=[3783680..3786240]  distinct(sampled)=6
+[16:08:09.433] [framespy] pass 32 fb=000002A1A153AC90  draws=2 (+0 indirect)  vp=16x16 @0,0
+[16:08:09.434] [framespy]          descSetBinds=3  ofWhichDynamic=3  dynOffset range=[3783680..3788032]  distinct(sampled)=8
+[16:08:09.434] [framespy] pass 33 fb=000002A1A153B470  draws=1 (+0 indirect)  vp=8x8 @0,0
+[16:08:09.434] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3783680..3788800]  distinct(sampled)=2
+[16:08:09.434] [framespy] pass 34 fb=000002A1A153A030  draws=1 (+0 indirect)  vp=4x4 @0,0
+[16:08:09.434] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3783680..3789056]  distinct(sampled)=2
+[16:08:09.434] [framespy] pass 35 fb=000002A1A153A150  draws=1 (+0 indirect)  vp=2x2 @0,0
+[16:08:09.434] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3783680..3789312]  distinct(sampled)=2
+[16:08:09.435] [framespy] pass 36 fb=000002A1A15394F0  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.435] [framespy] pass 37 fb=000002A1A1535DD0  draws=1 (+0 indirect)  vp=(not set in pass)
+[16:08:09.435] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3789568..3789568]  distinct(sampled)=1
+[16:08:09.435] [framespy] pass 38 fb=000002A1A1535DD0  draws=0 (+0 indirect)  vp=(not set in pass)
+[16:08:09.435] [framespy] pass 39 fb=000002A1A15389B0  draws=3 (+0 indirect)  vp=1280x720 @0,0
+[16:08:09.435] [framespy]          descSetBinds=3  ofWhichDynamic=3  dynOffset range=[3790080..3791872]  distinct(sampled)=6
+[16:08:09.435] [framespy] pass 40 fb=000002A1A1535DD0  draws=1 (+0 indirect)  vp=512x512 @3584,3584
+[16:08:09.435] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3793408..3793408]  distinct(sampled)=1
+[16:08:09.435] [framespy] pass 41 fb=000002A1A1535DD0  draws=1 (+0 indirect)  vp=512x512 @3072,3584
+[16:08:09.435] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3793664..3793664]  distinct(sampled)=1
+[16:08:09.435] [framespy] pass 42 fb=000002A1A153BD70  draws=1 (+0 indirect)  vp=1280x720 @0,0
+[16:08:09.436] [framespy]          descSetBinds=1  ofWhichDynamic=1  dynOffset range=[3793920..3794176]  distinct(sampled)=2
+[16:08:09.436] [framespy] total draws this frame: 298
+[16:08:09.436] [framespy] command buffers begun: 8  ONE_TIME_SUBMIT=0  SIMULTANEOUS_USE=0  RENDER_PASS_CONTINUE=0
+[16:08:09.436] [framespy]   -> NO one-time-submit: the game's own command buffers may be RESUBMITTED. Both eyes from one recorded frame, no mirroring needed.
+[16:08:09.436] [framespy] VERDICT INPUT: dynamic offsets ARE in use.
+[16:08:09.436] [framespy]   If they are, a replay can redirect recorded draws at a second copy
+[16:08:09.436] [framespy]   of the per-draw uniform region = single-frame stereo. If not, the
+[16:08:09.436] [framespy]   first target is AFR + present-time compositing instead.
+[16:08:24.678] vkQueuePresentKHR frame 79000 (queue=000002A168F89860)
+[16:08:41.391] vkQueuePresentKHR frame 80000 (queue=000002A168F89860)
+[16:08:58.058] vkQueuePresentKHR frame 81000 (queue=000002A168F89860)
+[16:09:14.724] vkQueuePresentKHR frame 82000 (queue=000002A168F89860)
+[16:09:31.390] vkQueuePresentKHR frame 83000 (queue=000002A168F89860)
+[16:09:48.056] vkQueuePresentKHR frame 84000 (queue=000002A168F89860)
+---- detaching after 84046 frames ----

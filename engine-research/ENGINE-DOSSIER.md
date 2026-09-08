@@ -1083,6 +1083,108 @@ proxy reports `resolved 246/265 exports (19 missing)`, and the off-game Vulkan s
 
 Both host suites (`rvtest`, `pacetest`) now run on **every** build, not on `--test` only.
 
+## ✅ 6i. BOTH STARRED QUESTIONS ANSWERED: `rvscan` PASSES, §6c IS NOT ASKABLE BY ONE-SHOT WRITES, AND THE RING ROUTE IS DEAD (2026-09-08c, `/lm`, one launch)
+
+Notes: `modding-notes/2026-09-08c-rvscan-is-answered-the-explicit-matrix-is-not-askable-this-way-and-the-ring-route-is-dead.md`.
+Evidence: `dev-archive/recon/2026-09-08c-rvscan-answered-and-the-ring-route-is-dead/`.
+
+### ⭐⭐ `rvscan`: 8 `renderView_t` survivors at confidence 100/100
+
+`getviewpos` → `camseed` → `camrescan` (**112 copies**) → `psearch` (**4402**) → move → `pnarrow`
+(**833**) → `rvscan` → **8 passed, 0 unreadable**; rejections `fov_x=822 fov_y=3`, everything else 0.
+All eight read `vieworg=(2345.03 5795.69 6333.47) fov=(90.00 58.72) useExplicit=0 forceIdentity=0`
+`[measured 2026-09-08]`.
+
+Two corroborations the shape test does not itself provide:
+- **The fov pair is self-consistent for 16:9**: `2·atan(tan(45°)/(16/9)) = 58.72°` = the reported
+  `fov_y`. The filter never checks that relation, so it is free evidence.
+- **⭐ Survivor 7 IS §6h's global, and the RVA survives a rebase.** `0x00007FF767CBF6B0` at module
+  base `0x00007FF7646B0000` → **RVA `0x360F6B0`**. §6h left *"still to confirm: that the RVA
+  `0x360F6B0` itself holds across the rebase"* open; this boot's base differs from the recorded
+  `0x7FF74D320000` and the offset still lands `[verified-live 2026-09-08]`. Survivor 8 is a second
+  static view at RVA `0x360FFF0`. The remaining six are transient (one thread stack, five heap).
+
+### ⭐⭐ §6c cannot be answered by poking memory — the struct is rebuilt under us
+
+`rvexplicit … on` on the strongest candidate AND on the static §6h one left the picture
+**unchanged** (mean luma delta 4.96–5.65, i.e. ambient; a 90°→40° FOV would be unmistakable).
+The reading table asks which of three explanations applies. **It is "the flag is re-set", and the
+erasure covers the whole struct:**
+
+- flag `0 -> 1` at `16:05:12`, read back **`0`** at `16:05:59`; the 16 matrix floats written with it
+  were **all zero** by the same read.
+- Tightened `[measured 2026-09-08, n=2 writes]`: values written read back **intact in the same
+  command tick**, and **all zero by the next round-trip** — 18.5 s, ~1 100 frames.
+- `vieworg` tracks the player exactly throughout, so this is the LIVE struct being rewritten, not
+  the wrong struct.
+
+⚠️ **And `explicitProjectionMatrix` is ALL ZEROS at rest.** So `rvexplicit <addr> on` *by itself* —
+the step the board specified — could only ever have pointed the engine at a degenerate projection.
+**Write the matrix first, then the flag.**
+
+**NOT established: that the engine ignores `explicitProjectionMatrix`.** That is still untested.
+What is established is that **a one-shot write cannot test it**. The test needs flag + matrix
+re-asserted from inside the frame loop (a `phold` equivalent for this struct, which does not exist).
+`[hypothesis]` that the rewrite is per-frame; the measurement only bounds it at ~1 100 frames.
+
+### ⭐⭐ The ring route is dead, and it was never a window-size problem
+
+```
+LEARN window from camhunt discovery: [62945872..67061392) = 4019 KB (112 copies)
+252 camera hit(s): 0 with a usable delta, 252 too far from any bound offset -> 0 distinct delta(s)
+>> the nearest bound offset is 60673 KB BELOW the nearest copy ... offset+delta probing cannot
+   reach them however the window is set.
+```
+
+This **supersedes the 2026-09-08 "the ring-learn window is 53 MB short" framing.** It is not a
+sizing problem: the copies sit ~59 MB above the highest offset the game ever binds, so no window
+over `vkCmdBindDescriptorSets` offsets can reach them. `ringyaw` was not run — 0 usable deltas
+leaves it nothing to drive.
+
+**Independently corroborated by `framespy` in the same session**: every pass's `dynOffset range`
+falls between **3 783 680 and 3 794 176** (~3.78 MB) while the camera copies are at 62.9–67.1 MB.
+Two different instruments, same gap.
+
+### ⭐ The constructive lead `framespy` hands back
+
+43 passes, **298 draws**, and:
+
+```
+command buffers begun: 8  ONE_TIME_SUBMIT=0
+  -> the game's own command buffers may be RESUBMITTED. Both eyes from one recorded frame.
+VERDICT INPUT: dynamic offsets ARE in use.
+```
+
+So the successor to the ring route is **resubmit the game's own command buffers and redirect the
+recorded draws at a second copy of the per-draw uniform region** — single-frame stereo, no
+mirroring. `[hypothesis]` — a design lead only; nothing built or run.
+
+### ⚠️ INPUT: the proxy's DEFAULT backend does not reach this game
+
+`ctest` printed **`]0122`** in the console `[verified-live 2026-09-08]`:
+
+| digit | route | result |
+| --- | --- | --- |
+| `0` | sendinput-scancode | ✅ |
+| `1` | postmessage-key | ✅ |
+| `2` | postmessage-char | ✅ but delivered **twice** |
+| `3` | **inproc-keystate** | ❌ never landed |
+
+`inproc-keystate` is what `status` reports as `[default]`, so a `key`/`move`/`type` issued without
+changing it silently does nothing. **Always `backend sendinput` + `typeroute sendinput` first.** The
+doubled `2` is not the low-FPS auto-repeat the help warns about — the game held ~60 FPS with
+`camoff` set throughout, so `postmessage-char` appears to double on its own `[measured, n=1]`.
+
+### ⚠️ Two harness defects
+
+- **`rvmat` / `rvcheck` reject the address format `rvscan` itself prints.** The padded
+  `000000E5E2DEB7A0` gives `usage:` from `rvcheck` and, worse, a **silently wrong**
+  `0000000000000000: window not readable` from `rvmat`. Both need `0x`-prefixed unpadded addresses.
+  `rvexplicit` accepts the padded form, so the three commands disagree.
+- **The window title is `DOOMx64vk` / `DOOMx64`, not `DOOM`** as the control profile recorded.
+- Steam briefly shows `DOOMx64.exe` in the task list at launch; it is a bootstrap and
+  `DOOMx64vk.exe` is what runs. Do not read it as "the OpenGL exe started, the proxy will not load".
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
@@ -1255,6 +1357,23 @@ a free zero-code lever is gated off by production mode. See §4a.
   explicitly excluded from Steam Cloud sync and so cannot leak to the home PC.
 
 ## 11. Dead ends & false leads (save future time)
+
+- **⛔ THE RING / DYNAMIC-OFFSET ROUTE IS A DEAD END (2026-09-08c, `/lm`).** `ringlearn` located
+  **252 camera copies** and got **0 usable deltas**: the nearest bound descriptor offset is
+  **60 673 KB below** the nearest copy, so `offset+delta` probing over `vkCmdBindDescriptorSets`
+  cannot reach them **however the window is set**. This **supersedes the 2026-09-08 framing that
+  "the ring-learn window is 53 MB short"** — it was never a sizing problem. Corroborated the same
+  session by `framespy`: bound `dynOffset` ranges are all ~3.78 MB while the copies are at
+  62.9–67.1 MB. Do not re-tune the window; see §6i for the successor lead.
+- **⚠️ Poking `useExplicitProjectionMatrix` / `explicitProjectionMatrix` ONE-SHOT proves nothing
+  (2026-09-08c).** The whole `renderView_t` is rewritten under you — flag and all 16 matrix floats
+  read back intact in the same command tick and are zero by the next round-trip. And the matrix is
+  **all zeros at rest**, so setting the flag alone points the engine at a degenerate projection.
+  §6c needs a per-frame re-assert, not a write. This does NOT show the engine ignores the flag —
+  that is still untested.
+- **⚠️ `backend`/`typeroute` default to `inproc-keystate`, which this game does not obey**
+  (`ctest` → `]0122`, the `3` never lands). A `key`/`move`/`type` issued without switching to
+  `sendinput` silently does nothing and reads as "the game ignores that input".
 
 - **🚨 `postmessage` IS UNTESTED, NOT DISPROVED `[disproved 2026-08-31, audit]`.** The earlier
   "no effect" result was taken **while the player was jammed against a cave wall**: the `sendinput`
