@@ -1185,6 +1185,45 @@ doubled `2` is not the low-FPS auto-repeat the help warns about — the game hel
 - Steam briefly shows `DOOMx64.exe` in the task list at launch; it is a bootstrap and
   `DOOMx64vk.exe` is what runs. Do not read it as "the OpenGL exe started, the proxy will not load".
 
+## 6l. THE INVERSION IS A RECIPROCAL, THREE CONVENTIONS ARE BUILT, AND SUCCESS IS NOW "NOTHING HAPPENS" (2026-09-08i, `/pd`, no launch)
+
+Write-up: `modding-notes/2026-09-08i-the-inversion-is-a-reciprocal-and-success-is-now-nothing-happening.md`.
+Deployed `vulkan-1.dll` md5 `6c061c13...`, 204,288 B, dated backup kept. **Not run.**
+
+§6j answered §6c YES - the engine honours `explicitProjectionMatrix` - but inverted: fov 40 rendered
+WIDE and hazy, fov 140 rendered ZOOMED IN. **That is a reciprocal swap in the focal term, and one
+cause covers both probes**:
+
+```
+sent fov  40 -> m[0] = 1/tan(20) = 2.7475 -> 2*atan(2.7475) = 140.0 deg   (WIDE, as seen)
+sent fov 140 -> m[0] = 1/tan(70) = 0.3640 -> 2*atan(0.3640) =  40.0 deg   (ZOOMED, as seen)
+```
+
+Both within a degree of what was observed, and it is **host test 16**, so the diagnosis is a check
+that could fail rather than a story `[verified-numerically 2026-09-08]`.
+
+- **⚠️ A TRANSPOSE CANNOT EXPLAIN IT** - `m[0]` and `m[5]` are on the diagonal and a row/column-major
+  swap leaves them in place. One of the three candidate causes the board listed is eliminated.
+- **Three conventions now build**: `std` (1/tan focal - the form that rendered inverted), `tan`
+  (reciprocal focal, depth row unchanged - explains the FOV only), `inv` (the analytic inverse of
+  std - explains the FOV **and** the "hazy" half of fov 40). **`inv` is the default**, because one
+  hypothesis covers both symptoms. `[hypothesis]` - neither fix has run.
+- **The inverse is not asserted from the algebra**: host test 18 multiplies `M * M^-1` out and
+  requires the identity to 2e-4. A wrong closed form would have sent the engine a matrix that is not
+  any projection at all and wasted the launch.
+- **⭐ `rvhold`'s DEFAULT CHANGED, and the change IS the experiment.** It used to hold HALF the live
+  fov (a deliberate 2x zoom) because the question was "does anything change". That is answered. The
+  default is now the engine's **own** fov, so **SUCCESS IS AN UNCHANGED PICTURE**. Pass a fov to get
+  a deliberate change back.
+- **⚠️ fov 90 is a USELESS test value**, and a test asserts why: `tan(45) = 1`, so `std` and `tan`
+  are identical there. A convention test passing only at 90 would prove nothing.
+- Host suite **88 checks, 0 failures** (was 64). Reproducible build; deployed byte-identical; the
+  pre-session deployed DLL was **exactly** the 09-08e build `/lm` ran, so the live result and this
+  fix share one code lineage.
+- **⚠️ STILL NOT ESTABLISHED: which write point the render consumes.** §6j measured a near-perfect
+  hold at *present* (3598/3599) and roughly half zeroed at *submit*. If a correct-looking matrix
+  still gives a wrong picture, isolate that before touching the maths again.
+
 ## 6k. ⭐⭐ THE RING ROUTE WAS SEARCHING THE WRONG REGION FOR THE WRONG OBJECT - `uniscan` IS BUILT AND DEPLOYED (2026-09-08e, `/pd`, no launch)
 
 Write-up: `modding-notes/2026-09-08e-the-ring-route-was-searching-the-wrong-region-for-the-wrong-object.md`.
