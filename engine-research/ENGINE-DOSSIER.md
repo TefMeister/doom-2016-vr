@@ -1185,6 +1185,54 @@ doubled `2` is not the low-FPS auto-repeat the help warns about — the game hel
 - Steam briefly shows `DOOMx64.exe` in the task list at launch; it is a bootstrap and
   `DOOMx64vk.exe` is what runs. Do not read it as "the OpenGL exe started, the proxy will not load".
 
+## 6j. `rvhold` IS BUILT AND DEPLOYED - THE ONLY FORM OF THE 6c EXPERIMENT THAT CAN PRODUCE A MEANINGFUL NEGATIVE (2026-09-08d, `/pd`, no launch)
+
+Write-up: `modding-notes/2026-09-08d-rvhold-and-the-parser-that-was-eating-addresses.md`.
+Deployed `vulkan-1.dll` md5 `74944db5...`, 195,584 B, dated backup kept. **Not run.**
+
+- **Why the one-shot `rvexplicit` could never have answered 6c.** The whole `renderView_t` is
+  rebuilt under us (written values intact in the same tick, all zero ~1100 frames later, while
+  `vieworg` tracked the player) `[measured 2026-09-08]`, **and `explicitProjectionMatrix` is all
+  zeros at rest** - so setting the flag alone could only ever point the engine at a degenerate
+  projection. An unchanged picture is the expected outcome of that *even on an engine that honours
+  the field perfectly.* `rvhold` writes **matrix and flag, every frame.**
+- **⭐⭐ What makes a NEGATIVE readable, which is the actual contribution.** Before each write it
+  reads back and classifies: **`HELD`** (our value survived a whole frame -> an unchanged picture
+  means the engine does not read the field, and 6c is ANSWERED NO), **`ZEROED`** (the engine clears
+  the struct between our writes -> we are writing at the wrong point and **nothing** about 6c has
+  been learned), **`REWRITTEN`** (something else owns the field). Without this, "unchanged" is
+  uninterpretable - which is the state 09-08c left the project in. `[compile-verified 2026-09-08]`
+- **It writes at TWO hook points and counts each separately** - `vkQueuePresentKHR` (frame boundary)
+  and `vkQueueSubmit` (documented as landing after the game writes the camera and before the GPU
+  reads it). We do not know where the engine builds its projection, so guessing one point and
+  reporting silence would repeat the 09-08c mistake; held-at-one-and-zeroed-at-the-other is what
+  localises the rebuild.
+- **The held matrix is self-calibrating**: built from the struct's own live `fov_x`/`fov_y`,
+  defaulting to half the live `fov_x` (a 2x zoom). Taking BOTH angles recovers the aspect ratio
+  rather than assuming 16:9 - assuming an aspect is how a test produces a stretched image and gets
+  read as "the engine honoured it".
+- **⚠️ The projection convention is a guess and deliberately not load-bearing.** ANY visible change,
+  including a wrong-looking one, answers 6c yes. Only the follow-up per-eye work needs the
+  convention right.
+- Restores the original matrix and flag on release; bounded to 3,600 frames by default, hard cap
+  36,000.
+
+### ⛔️ AND THE REASON NOBODY COULD HAVE USED IT: the command parser was reading addresses as OCTAL
+
+`rvcheck`/`rvmat` parsed with `strtoull(s, NULL, 0)`. **Base 0 infers OCTAL from a leading zero**, and
+every address this proxy prints comes from `"%p"` - zero-padded to 16 digits. So
+`00007FF767CBF6B0` parsed to **7**. `[verified-numerically 2026-09-08]`
+
+**One defect, both reported symptoms:** `rvcheck` printed its usage line (address parsed to 0 ->
+NULL), and `rvmat` said `window not readable` (address parsed to a small integer). Neither command
+was rejecting the address - **the address never reached the command**, and the `rvmat` form reported
+a fact about memory when the truth was a fact about parsing.
+
+Fixed by `src/hexaddr.c`: always hex, never inferred; accepts the padded, `0x`-prefixed and bare
+forms; **refuses** empty input, non-hex, a bare `0x`, and 64-bit overflow (a wrapped value is a
+plausible-looking pointer to the wrong place, and these commands write). Pure and in its own file so
+`test/rvtest.c` exercises the shipped parser. Host suite is now **52 checks, 0 failures** (was 38).
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
@@ -1357,6 +1405,13 @@ a free zero-code lever is gated off by production mode. See §4a.
   explicitly excluded from Steam Cloud sync and so cannot leak to the home PC.
 
 ## 11. Dead ends & false leads (save future time)
+- **⛔️ `strtoull(s, NULL, 0)` on anything this proxy PRINTS is a trap (2026-09-08).** `"%p"` on
+  win64 zero-pads to 16 digits, base 0 infers octal from a leading zero, and the parse stops at the
+  first non-octal digit: `00007FF767CBF6B0` -> **7**. It cost two commands that looked like they were
+  rejecting valid addresses for an unknown reason, one of them **silently** (`rvmat` reported
+  `window not readable`, a statement about memory, when the truth was about parsing). Anywhere a
+  command takes an address, use `hexaddr_parse` - always hex, never inferred.
+  `[verified-numerically 2026-09-08]`
 
 - **⛔ THE RING / DYNAMIC-OFFSET ROUTE IS A DEAD END (2026-09-08c, `/lm`).** `ringlearn` located
   **252 camera copies** and got **0 usable deltas**: the nearest bound descriptor offset is
