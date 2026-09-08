@@ -1185,6 +1185,61 @@ doubled `2` is not the low-FPS auto-repeat the help warns about — the game hel
 - Steam briefly shows `DOOMx64.exe` in the task list at launch; it is a bootstrap and
   `DOOMx64vk.exe` is what runs. Do not read it as "the OpenGL exe started, the proxy will not load".
 
+## 6k. ⭐⭐ THE RING ROUTE WAS SEARCHING THE WRONG REGION FOR THE WRONG OBJECT - `uniscan` IS BUILT AND DEPLOYED (2026-09-08e, `/pd`, no launch)
+
+Write-up: `modding-notes/2026-09-08e-the-ring-route-was-searching-the-wrong-region-for-the-wrong-object.md`.
+Deployed `vulkan-1.dll` md5 `0b666197...`, 202,752 B, dated backup kept. **Not run.**
+
+The 09-08c measurement stands: the camera copies sit ~59 MB above the highest bound dynamic offset,
+so offset+delta probing cannot reach them however the window is set. **Two things follow that were
+not stated, and both are claims about OUR OWN CODE rather than new speculation:**
+
+- **⭐⭐ The bound window itself was NEVER SEARCHED.** `ringcam` used it only as an anchor to probe
+  *outward* from, toward copies found elsewhere by value-matching. A dynamic descriptor offset is
+  where a shader's uniform slice begins, so **the bound range is by definition the memory the GPU
+  reads**, and nobody has looked inside it. `[verified-numerically 2026-09-08]`
+- **⭐⭐ `ringcam` could not have found a projection even if one were there.** Its `matches()`
+  accepts a block only when `m[3]/m[7]/m[11]` equal the camera ORIGIN - a camera-to-world matrix.
+  **A perspective projection contains no camera position at all**, so it is rejected by
+  construction. "252 hits, 0 usable deltas" is therefore **silent** about whether a projection is in
+  the bound window - and the projection is what per-eye stereo needs.
+
+**So the route is not dead; the search was aimed wrongly on both axes.** `uniscan` fixes both:
+one-shot, read-only, byte-capped, it walks the frame's own bound offset window (plus slack) across
+every tracked mapping and tests each 64-byte block by SHAPE, reporting each hit with **the nearest
+bound offset below it and the delta** - the delta a replay would reuse.
+
+- **The shape test** (`src/projshape.c`, pure and host-tested): a perspective matrix moves z into w
+  and has no constant w term, so **ROW** = `m[11]=+-1, m[15]=0, m[14]!=0` and **COL** =
+  `m[14]=+-1, m[15]=0, m[11]!=0`. `m[0]`/`m[5]` give `1/tan(fov/2)`, so every hit is reported as an
+  ANGLE a human can check against the game's own FOV. It rejects, with a test each: the all-zero
+  block (an untouched uniform slice - this alone would produce thousands of hits), identity, a
+  camera-to-world matrix (so it cannot rediscover what `ringcam` already finds), a both-conventions
+  block (ambiguous => coincidence), absurd scales and NaN. **False-positive rate measured at 0 of
+  200,000 random 64-byte blocks** `[verified-numerically 2026-09-08]`.
+- **Bounded because `camrescan` nearly froze the game** (64 MB of write-combined memory at ~42 ms/MB
+  = ~2.7 s, user-observed twice): `uniscan` scans the frame's ~3.78 MB bound span plus slack, caps
+  total bytes at 8 MB and says so if the cap bites, is one-shot, and never writes.
+- `ringcam` now also collects dynamic offsets while `uniscan` is armed; otherwise an unrelated
+  `ringlearn` would have been a prerequisite and an empty result would have read as "the game binds
+  nothing" rather than "nobody was recording".
+- New `camhunt_mappingAt()` beside the existing `camhunt_mappingCount()`, same lock as every other
+  `g_maps` reader: `uniscan` needs EVERY mapping, because a bound offset is just a number and which
+  mapping it lands in is part of what is being measured.
+
+⚠️ **NOT established:** that a projection is in the bound window (that is what this is for); that
+the projection is a plain 4x4 at all - it may be premultiplied into a view-projection, stored 3x4,
+or split across bindings; that resubmission works (`ONE_TIME_SUBMIT=0` says it is *legal*, nothing
+has submitted twice). A shape match is a filter result, not proof.
+
+### ⚠️ A 2026-09-08d framing of mine, withdrawn
+
+I called the resubmission row "the fallback path" that "risks being wasted work" if 6c comes back
+yes. **Wrong.** 6c asks *how a different projection gets into a pass*; resubmission asks *how a
+second pass exists at all*. Stereo needs both - if 6c is yes the cheapest stereo is frame-sequential
+alternation, at half framerate with a temporal mismatch between the eyes, whereas resubmission gets
+both eyes from ONE recorded frame. It is the other half, not a fallback. `[disproved 2026-09-08]`
+
 ## 6j. `rvhold` IS BUILT AND DEPLOYED - THE ONLY FORM OF THE 6c EXPERIMENT THAT CAN PRODUCE A MEANINGFUL NEGATIVE (2026-09-08d, `/pd`, no launch)
 
 Write-up: `modding-notes/2026-09-08d-rvhold-and-the-parser-that-was-eating-addresses.md`.
