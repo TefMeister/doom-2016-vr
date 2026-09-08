@@ -1288,6 +1288,87 @@ forms; **refuses** empty input, non-hex, a bare `0x`, and 64-bit overflow (a wra
 plausible-looking pointer to the wrong place, and these commands write). Pure and in its own file so
 `test/rvtest.c` exercises the shipped parser. Host suite is now **52 checks, 0 failures** (was 38).
 
+## ⭐⭐ 6j. §6c IS ANSWERED **YES** — THE ENGINE HONOURS `explicitProjectionMatrix` (2026-09-08h, `/lm`, one launch)
+
+Notes: `modding-notes/2026-09-08h-6c-is-answered-yes-the-engine-honours-explicitprojectionmatrix.md`.
+Evidence: `dev-archive/recon/2026-09-08h-6c-is-answered-yes-the-engine-honours-explicitprojectionmatrix/`.
+
+**DOOM reads `renderView_t::explicitProjectionMatrix` and renders with it. Per-eye projection is a
+supported input to this engine.** This is the question §6c has carried since it was written, and the
+outcome the board called "the categorically easier project".
+
+### The measurements
+
+Mean absolute luma delta, full frames, stationary viewpoint, via `rvhold` (matrix **and** flag
+written every frame) on `base + 0x360F6B0`:
+
+| comparison | delta |
+| --- | --- |
+| **scene-animation floor** (baseline vs baseline a minute later) | **7.24** |
+| fov 40 held vs baseline | **24.24** |
+| fov 40 released → baseline again | 7.24 |
+| fov 140 held vs baseline | **25.83** |
+| fov 140 released → baseline again | **4.39** |
+| **fov 40 held vs fov 140 held** | **26.42** |
+
+`[verified-live 2026-09-08, n=2 arms, each with its own release control]`
+
+Every changed reading is ~3.5× the animation floor and **each reverted on release** — the picture
+changes only while the hold is armed. And the two fov values give pictures as different from each
+other as from baseline, so the engine reads **our matrix**, not merely a boolean.
+
+### ⚠️ The mapping is INVERTED — a tuning detail, not a blocker
+
+`fov 40` (narrow, should zoom **in**) rendered **wide and hazy**; `fov 140` (wide, should show
+**more**) rendered **zoomed in**. That is the signature of a reciprocal/convention mismatch in the
+focal term — `tan(fov/2)` where `1/tan(fov/2)` is wanted, or a row/column-major or reverse-Z
+difference. The field is honoured; our matrix is not yet the right one, and fixing it is arithmetic
+**against a working feedback loop**.
+
+### The counters, and their one silence
+
+```
+arm 1 (fov 40):  present writes=3599 HELD=3555 ZEROED=44   REWRITTEN=0
+                 submit  writes=7200 HELD=3756 ZEROED=3443 REWRITTEN=0
+arm 2 (fov 140): present writes=3599 HELD=3598 ZEROED=1    REWRITTEN=0
+                 submit  writes=7200 HELD=3620 ZEROED=3579 REWRITTEN=0
+```
+
+`REWRITTEN=0` throughout: the engine never substitutes a different matrix, it **zeroes** the field.
+At **present** the hold is near-perfect; at **submit** roughly half is zeroed. ⚠️ **NOT established:
+which write point the render actually consumes** — the picture changed, so at least one is early
+enough, but nothing here says which.
+
+### `uniscan`: a clean negative, and its priority just dropped
+
+| slack | window | scanned | result |
+| --- | --- | --- | --- |
+| 64 KB | 996 KB | 2217 KB | **0** — COMPLETE |
+| 1024 KB | 4138 KB | 8192 KB | 0 — ⚠️ **BYTE CAP REACHED, incomplete, proves nothing** |
+| 256 KB | 3370 KB | 6965 KB | **0** — COMPLETE |
+
+**No 4×4 in the bound uniform window has the strict perspective shape** (`m[15]=0`, ±1 at `m[11]`
+or `m[14]`) across 3.37 MB `[measured 2026-09-08, n=2 complete scans]`. Only the two COMPLETE runs
+carry that; the 1024 KB attempt is not evidence.
+
+This neither revives nor refutes the §6i ring finding (that was about camera *copies*, elsewhere).
+The projection may still be there premultiplied into a view-projection, as 3×4, or split across
+bindings — the next probe is a `[PD]` change dropping the `m[15]=0` requirement. **But that probe now
+matters much less**, because the explicit-matrix route needs no memory hunt at all.
+
+### §6h's RVA holds across a THIRD module base
+
+`base + 0x360F6B0` was **derived, not re-hunted** — no `psearch`/`pnarrow` chain — and `rvcheck`
+confirmed a `renderView_t` at confidence 100/100 with the correct `vieworg`. Bases seen:
+`0x7FF7BFDA0000` (this run), `0x7FF7646B0000` (earlier today), `0x7FF74D320000` (2026-08-25)
+`[verified-live 2026-09-08, n=3 distinct bases]`. **This is now the recommended way to reach the
+struct** — two commands instead of a four-minute chain.
+
+⚠️ **Arming windows: check the timestamps before believing a null.** A 600-frame (≈10 s) `rvhold`
+expired before its capture, which read as "fov 140 does nothing" and nearly became a finding. The
+log's `ARMED`/`released (frame budget expired)` lines against the capture time is what caught it;
+re-run at 3600 frames and the effect reproduced.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
