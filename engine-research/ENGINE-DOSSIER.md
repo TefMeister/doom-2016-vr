@@ -956,6 +956,133 @@ status board and the control profile as the much broader claim *"retail gates th
 §9 already contradicted, and then acted on as settled for a week. Both are corrected. The lesson
 is about the copy, not the hedge: **the board row is the artefact a session actually acts on.**
 
+### ✅ 6d-quater. `rvscan` — §6c IS NOW ASKABLE IN ONE COMMAND (2026-09-08b, `/pd`, no launch)
+
+`[compile-verified 2026-09-08]`
+
+§6d-ter established that §6c was blocked by a **print cap**, not by the offsets. That is now fixed.
+`psearch.c` exposes its candidate array (`psearch_hit()`); `renderview_cmd.c` runs
+`renderview_check()` over **every** entry and ranks the survivors.
+
+```
+rvscan [n]      shape-test every psearch candidate, best n first (default 24)
+```
+
+It prints a **verdict histogram even when nothing passes**, because the zeroes differ:
+
+| histogram | reading |
+| --- | --- |
+| nearly all `fov_x`/`fov_y` | these addresses are not `renderView_t`s at all — question the candidate set (`pnarrow` at a third position) |
+| spread across several tests | the set is mixed; question the **layout** next |
+| survivors listed | go straight to `rvexplicit <strongest> on` — the printed lines carry the address |
+
+**How leaky is the filter?** `test/rvtest.c` fires 20,000 random windows at the shape test and
+**0 pass** `[verified-numerically 2026-09-08, n=20000]`. A survivor is therefore not noise. It is
+still **not** proof of being the live view — only changing something and watching the picture is.
+
+Guard worth knowing: `rvscan` refuses while a background `psearch` sweep is running, so the count it
+prints is reproducible.
+
+### ✅ 6h-8. The ring's LEARN window now comes from discovery — and the fix exposes a deeper question (2026-09-08b, `/pd`, no launch)
+
+`[compile-verified 2026-09-08]`
+
+§6h-6 measured the window 53.38 MB short. `camhunt_cameraOffsetSpan()` now reports the min/max offset
+of the copies **discovery already recorded** for a region, and `ringcam`'s `learn()` takes its window
+from there — as it already takes the *region* from the same discovery. The dynamic-offset window
+survives only as a fallback, and says so.
+
+⚠️ **The fix exposes a problem the wrong window hid, and it is the more important half.** `PROBE`
+works by learning a **delta** from a bound dynamic offset to a copy, then reading `offset + delta`
+each frame. If the copies are at 56 MB and the highest bound offset is 2.7 MB, every "delta" is
+~53 MB — not a block offset but the arithmetic of a missing anchor. `learn()` now **rejects** a delta
+above `DELTA_SANE` (256 KB) instead of recording one, and reports three distinguishable outcomes:
+
+| LEARN says | meaning |
+| --- | --- |
+| hits with usable deltas | as designed; `ringyaw`/`ringeye` can drive |
+| **hits, all deltas too far** | the copies are in the region but **not in the per-draw block range the game binds** — `offset+delta` probing cannot reach them *however the window is set*. A verdict on the STRATEGY, not a tuning problem `[hypothesis]` |
+| 0 hits in a window that covers the copies | the untested branch: **column 3 is not where these copies keep the translation** |
+
+That middle row is what the 53 MB gap implies if the dynamic offsets stay where they were on
+2026-09-08. It is written into the log so the next run distinguishes it rather than producing a
+fourth ambiguous zero.
+
+⚠️ **Third distinct cause of the same zero** (cap → wrong region → wrong window). The first two are
+fixed and confirmed. Do not collapse them: the second hid behind the first for four days, because a
+fix that removes a symptom reads as an explanation.
+
+### ✅ 9a-2. Console typing: two real defects, four routes, and a one-line measurement (2026-09-08b, `/pd`, no launch)
+
+`[compile-verified 2026-09-08]` — and this **corrects §9a's premise**.
+
+**§9a says `type` "burst-sent". It does not.** `autoinput_pumpKeys()` has always played one tap per
+frame with a hold and a gap. The correction matters because it points at different fixes.
+
+**(a) The pacing was in FRAMES, and frames are not a unit of time.** `HOLD_FRAMES` was the constant
+`3`: a 50 ms hold at 60 fps, safely under the ~250 ms auto-repeat delay. But §7 of the same day's
+notes measured `camwatch` costing ~60× the framerate (60 → 1.1 → 60 fps), and `type getviewpos` was
+issued *inside* that slow window. Three frames at 1.1 fps is a **2.7-second hold**, and ten
+characters take ~45 s to play out — which fits "one character arrived" better than burst-sending
+does. `[hypothesis]`: nobody re-read the console 45 s later. It is a hypothesis that predicts the
+observation, and the old constant cannot produce a correct hold at that frame rate at any value.
+
+The hold is now derived from the **measured** frame period (`autoinput_paceFrames()`, pure and
+host-tested by `test/pacetest.c`, 16 checks). At 60 fps: 3–4 frames, 50–67 ms, i.e. what the constant
+gave. At 1.1 fps: 1 frame, 0.9 s instead of 2.7 s.
+`[verified-numerically 2026-09-08]`
+
+⚠️ **A limit no pacing can fix:** the pump runs once per present, so a tap can never be held for less
+than one frame, and below ~4 fps even one frame exceeds auto-repeat. **Turn `camwatch` off before
+typing** — the same conclusion §7 reached by another road.
+
+**(b) There was only ever ONE route, and it follows focus.** Every tap went out as a `SendInput`
+scancode, which is delivered to the **foreground** window — being inside the game's process does not
+change that. The external typer's 7/10 → 3/3 → 1/1 → nothing is what losing focus looks like, and the
+in-process typer inherited the identical dependency.
+
+Four routes now exist, carried **per tap**:
+
+| `typeroute` | assumes | why it might win |
+| --- | --- | --- |
+| `sendinput` | OS input stack, foreground window | what was always used; DirectInput sees scancodes |
+| `postkey` | `WM_KEYDOWN`/`WM_KEYUP` posted at the window | focus-independent; DOOM runs a real message pump (§13a) |
+| `postchar` | the above **plus `WM_CHAR`** — the default | console text entry is normally `WM_CHAR`-driven `[hypothesis]` |
+| `keystate` | fabricate the game's own `GetAsyncKeyState`/`GetKeyState`/`GetKeyboardState` answers | immune to focus **and** auto-repeat; useless if the console reads characters |
+
+**`ctest` measures all four in one console line** — digit `0` down `sendinput`, `1` down `postkey`,
+`2` down `postchar`, `3` down `keystate`:
+
+```
+0123    all four work; use postchar for text
+2       only WM_CHAR lands -- the console reads characters, not key state
+01      the OS stack works and WM_CHAR does not
+(none)  nothing landed: console not open, not focused, or wrong HWND -- check `status`
+00123   a REPEATED digit is auto-repeat: frame rate too low. camoff, then repeat
+```
+
+Selecting `keystate` while the key-state IAT hooks did not land now warns — an inert route and an
+ignored route look identical in a log and are opposite findings.
+
+**None of the four has been observed working.** That is a table to read, not a result.
+
+### 🔧 Build hygiene: the export table is a UNION now (2026-09-08b, `/pd`)
+
+`[verified-numerically 2026-09-08]`
+
+`gen/generate.sh` **overwrote** the checked-in export table with the local system `vulkan-1.dll`'s
+exports, so the two machines fought over it: the home PC's newer loader added 19 Vulkan 1.4 entry
+points on 2026-09-08, and regenerating on the dev PC deleted all 19 again. Four generated files were
+dirtied on every build, and any commit sweeping them up would have silently reverted the refresh.
+
+It unions now and never shrinks. Safe because a name the local loader lacks resolves to `NULL`,
+which `proxy.c` already counts (`g_missingResolves`) and reports; every hooked function is fail-safe
+against a null real pointer; and DOOM imports 96 names, all present on both machines. Verified:
+regenerating on the dev PC leaves all four generated files **byte-identical to `origin/main`**, the
+proxy reports `resolved 246/265 exports (19 missing)`, and the off-game Vulkan smoke test passes.
+
+Both host suites (`rvtest`, `pacetest`) now run on **every** build, not on `--test` only.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
