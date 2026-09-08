@@ -1185,6 +1185,33 @@ doubled `2` is not the low-FPS auto-repeat the help warns about — the game hel
 - Steam briefly shows `DOOMx64.exe` in the task list at launch; it is a bootstrap and
   `DOOMx64vk.exe` is what runs. Do not read it as "the OpenGL exe started, the proxy will not load".
 
+## 6m. `uniscan` NOW CATCHES A PREMULTIPLIED VIEW-PROJECTION (2026-09-08j, `/pd`, no launch)
+
+Write-up: `modding-notes/2026-09-08j-uniscan-now-catches-a-premultiplied-view-projection.md`.
+Deployed `vulkan-1.dll` md5 `fd5b745c...`, 205,312 B. **Not run.** ⚠️ This row was marked ⬇️ by
+`/lm` and that judgement stands - the explicit-matrix route (§6l) is the live path; this is a
+better fallback, not a reason to prefer it.
+
+- **The hole was real and is now measured.** `proj_classify` required `m[15] == 0`, right for a BARE
+  projection and wrong for a combined one: `(V*P)[3][3] = -tz`. Built by actually multiplying a view
+  by a projection, the test matrix comes out with **`m[15] = -900.0000`** against `tz = 900` -
+  exactly `-tz` `[verified-numerically 2026-09-08]`. Every premultiplied VP was rejected by
+  construction, and many engines upload only the combined matrix.
+- **The discriminator changes shape.** Premultiplying ROTATES the w column, so the +-1 is spread
+  across it and what survives is the norm: `|(m[3],m[7],m[11])| ~ 1` for a rigid view, and
+  `|(m[0],m[4],m[8])| = p00`. `PROJ_VIEWPROJ` tests those two norms; on the test matrix it recovers
+  fov **(90.00, 60.00)** from the values it was built with.
+- **It is a WEAKER filter, so its false-positive rate is measured separately** rather than assumed
+  to match the bare forms' 0-of-200,000: **1 of 200,000 (0.0005%)**, low enough that a 3.4 MB live
+  scan stays readable `[verified-numerically 2026-09-08]`.
+- **Loosening a rule is where a filter starts accepting everything**, so the old rejections are
+  re-asserted: all-zero, identity (w column is `(0,0,0)`, not unit) and camera-to-world (w column is
+  huge) are all still rejected.
+- `uniscan`'s "nothing found" advice no longer names "drop the m[15] rule" as the next probe - that
+  is spent. It now points at the one thing still uncovered: **a 3x4 (48-byte) layout, which has no
+  `m[15]` at all and is matched by no branch.**
+- Host suite **98 checks, 0 failures** (was 88). Reproducible build; deployed byte-identical.
+
 ## 6l. THE INVERSION IS A RECIPROCAL, THREE CONVENTIONS ARE BUILT, AND SUCCESS IS NOW "NOTHING HAPPENS" (2026-09-08i, `/pd`, no launch)
 
 Write-up: `modding-notes/2026-09-08i-the-inversion-is-a-reciprocal-and-success-is-now-nothing-happening.md`.
