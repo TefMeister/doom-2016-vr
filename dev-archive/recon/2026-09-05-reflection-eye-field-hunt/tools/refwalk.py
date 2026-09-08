@@ -17,7 +17,7 @@ import sys, os, struct, re, json
 
 import pefile
 
-EXE = os.environ.get("DOOM_EXE", r"C:\Steam\steamapps\common\DOOM\DOOMx64vk.exe")
+EXE = os.environ.get("DOOM_EXE", r"D:\SteamLibrary\steamapps\common\DOOM\DOOMx64vk.exe")
 
 pe = pefile.PE(EXE, fast_load=True)
 IB = pe.OPTIONAL_HEADER.ImageBase
