@@ -850,6 +850,112 @@ proven not to contain the camera is exactly what made two launches look like a s
 ⇒ **`camseed` + `camrescan` are now a prerequisite for `ringlearn`.**
 `[compile-verified 2026-09-04]`, deployed, **not run**. Write-up: `modding-notes/2026-09-04c-ringcam-scans-the-value-located-region-and-the-flush-contradiction-is-settled.md`.
 
+### 6h-6. ❌ `ringcam`'s LEARN WINDOW IS 53 MB SHORT OF THE COPIES — the THIRD distinct cause of the ring zero (2026-09-08, `/lm`)
+
+`[verified-numerically 2026-09-08]`
+
+The 2026-09-04c region fix **works, and was confirmed live**: LEARN printed
+`scanning region 2 (65536 KB) - value-located, not the biggest mapping`. It then matched **0**.
+
+Three causes have now been claimed for this same zero. **They must not be collapsed:**
+
+| date | claimed cause | status |
+| --- | --- | --- |
+| 2026-09-04 | `LEARN_CAP` too small (512 KB) | **`[disproved 2026-09-04b]`** |
+| 2026-09-04b | scanning the *biggest* mapping, not the one holding the copies | **fixed; confirmed working 2026-09-08** |
+| **2026-09-08** | **right region, but the LEARN *window* excludes the copies entirely** | **new, measured** |
+
+The log line is `LEARN scanned [0..2832128) = 2765 KB of a 2765 KB offset span` — note **"of a
+2765 KB span": LEARN was NOT capped.** It scanned the whole window it was handed; the window is
+wrong. Against region 2's base `0x00000282637E0000` (from `mappings`), the 64 copies `findvec`
+located in that same region in the same session sit at:
+
+```
+offset range    : 0x3813950 .. 0x3C19F40   (56.08 MB .. 60.10 MB)
+LEARN window    : 0x0 .. 0x2B3700          (2.70 MB)
+inside window   : 0 of 64
+nearest hit is 53.38 MB PAST the end of the scanned window
+```
+
+**This retrospectively explains why the `LEARN_CAP` widening was a red herring in a way the
+2026-09-04b entry did not reach.** The window's end is `g_offMax` — the largest *dynamic
+descriptor offset seen this frame*, from `ringcam_onDynOffsets` — **not** the cap. Widening a
+ceiling from 512 KB to 8 MB cannot extend a window that ends at 2.7 MB, and the copies are at
+56 MB. No value of `LEARN_CAP` would ever have worked.
+
+**Fix `[PD]`:** take the offset span from camhunt's discovery, which already knows where the
+copies are (`camstat` reported `cached offsets=122`), exactly as the *region* is already taken
+from there.
+
+⚠️ **The other branch the log offers — "column 3 is not where the ring copies keep the
+translation" — is UNTESTED and stays open.** A predicate cannot match in bytes it never reads, so
+the window result makes it moot for now. Re-check it *after* the window is fixed, or the next
+session collapses two causes again.
+
+⚠️ **`camwatch` costs ~60× the framerate** `[measured 2026-09-08, n=1]` — ~60 FPS → ~1.1 FPS
+→ ~60 FPS across `camwatch`/`camoff`, boundaries matching to the second. Take the reading, then
+turn it off; never leave it on across a test judged by eye.
+
+### 6d-ter. ⚠️ §6c IS BLOCKED BY A PRINT CAP, NOT BY THE OFFSETS — correcting §6d-bis' reading table (2026-09-08, `/lm`)
+
+`[verified-live 2026-09-08]`
+
+§6d-bis said: *"`rvcheck` rejects every hit ⇒ the offsets are wrong, or `findvec` is not finding
+`vieworg` — back to `[PD]`."* **92 shape tests were run and 0 accepted, and neither of those is
+the reason.**
+
+**(a) `findvec` could never have worked for this.** It searches **GPU host-visible mappings**;
+`renderView_t` is a **CPU-side engine struct** and is not in a Vulkan staging buffer. All 64
+`findvec` hits were rejected, 63 on "fov_x not a plausible angle" — which is what reading uniform
+data through a struct layout looks like. §6d-bis' instruction to `rvcheck` the `findvec` hits was
+never going to succeed.
+
+**(b) `psearch` is the right search, it works, and its results are unreachable.**
+`psearch 1728 5440 6372` → **4465** candidates (image=8, private/heap=4457);
+`pnarrow 1762.941 5461.524 6367.585` → **654** survivors. A 6.8× narrowing on two positions,
+exactly as designed. But `psearch.c` **prints only the first 12 hits (`reported < 12`, line 115)
+and the first 16 survivors (`reported < 16`, line 170)**; the full set lives in `g_hits[]` inside
+the proxy and is never exposed, and `rvcheck` takes one address at a time read out of the log by
+hand.
+
+**So the shape test reached 16 of 654 — 2.4% — and those 16 are not a sample, they are the lowest
+addresses.** All sixteen were in `000000BF3F…`, thread-stack territory, where a heap-allocated
+`renderView_t` would not be.
+
+**Fix `[PD]`, and it is small:** one command that runs `renderview_check()` over every entry of
+`g_hits[]` and reports the survivors. Both halves are already compiled into the same DLL —
+`g_hits[]` in `psearch.c`, `renderview_check()` in `renderview.c`. **The 2026-09-07 verifier is
+sound; it simply has no way to be pointed at the candidates.**
+
+### 6h-7. ⭐ The camera global is cross-validated by an independent instrument (2026-09-08, `/lm`)
+
+`[verified-live 2026-09-08, n=1, two independent routes]`
+
+`pdump` at `DOOMx64vk.exe + 0x360F6B0` (the §6h global) returned
+`1762.941  5461.524  6367.585`; the console's `getviewpos` returned
+`1762.94 5461.52 6367.59`. **A raw read at a statically-derived offset and the engine's own
+command agree to printed precision.**
+
+**Practical consequence: `pdump` needs neither the console nor typing** — and typing into the
+console is currently unreliable (§9a). It is the position read to *automate*.
+
+### 9a. ⚠️ Typing into the console is not yet reliable automation (2026-09-08)
+
+The console itself is fine (§9, `verified live 2026-08-26`, re-confirmed 2026-09-08, n=2).
+*Entering text* is the problem. The proxy's `type` burst-sent "getviewpos" and **one character**
+arrived. A paced external typer (45 ms key-down, 50–70 ms gap) got 7/10, then 3/3, then 1/1 —
+four attempts for one command — and two later attempts landed nothing at all, most likely because
+external `SendInput` follows focus and `SetForegroundWindow` is refused to a background process.
+**Build the in-process route: the proxy's own `type`, one character per command, so each lands on
+its own frame.** `[PD]`
+
+⚠️ **A correction to how §11's `+com_allowconsole 1` note travelled.** That note is a narrow,
+correctly-hedged *untested candidate* for the cvars present in the binary but never **registered**
+(the `stereoRender_*` family, `noclip`, `rp`, `renameRenderProg`). It was copied outward into the
+status board and the control profile as the much broader claim *"retail gates the console"*, which
+§9 already contradicted, and then acted on as settled for a week. Both are corrected. The lesson
+is about the copy, not the hedge: **the board row is the artefact a session actually acts on.**
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
