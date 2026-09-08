@@ -220,7 +220,7 @@ Neither is about DOOM, both were found because this session used the tools:
 | 1 | menu → gameplay | ✅ **proven again**, keyboard/scancode, 5 keypresses, every hazard screen captured and the highlight verified before committing (`SELECT CAMPAIGN` carries `[R] DELETE GAME SLOT`) |
 | 2 | console / exec commands | ✅ **file command channel proven**; ⭐ **the in-game console is proven open and executing on retail** — but *typing into it* is not yet reliable (see §1) |
 | 3 | character + camera | ✅ both routes moved the player — `hold w 2.0` and the ViGEm pad. ⚠️ **the waypoint counter is a bad odometer**: it moved 272.0 → 271.2 over ~41 world units, because the waypoint is not along the walk direction. Judge movement by `getviewpos`, not the HUD |
-| 4 | self-close | not exercised this session — the game was left running deliberately |
+| 4 | self-close | ✅ **exercised, clean, no taskkill.** Quit through the game's own pause menu — `EXIT TO DESKTOP` → the confirm that defaults to No → `Yes` — with the highlight captured and verified at all three steps (`RESTART MISSION` sits three rows above the exit row). Process gone in under 8 s. **All four capabilities proven in one session.** The install stays a DEV BUILD: proxy deployed, `r_renderAPI 1`, nothing reverted |
 
 ---
 
