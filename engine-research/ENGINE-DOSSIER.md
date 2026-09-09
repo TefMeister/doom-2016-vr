@@ -132,6 +132,71 @@ the one remaining cheap probe before writing code.
 
 ## 6. Camera & projection delivery (the crucial section)
 
+### ⭐⭐ 6n. THE PROJECTION CAN BE READ, NOT GUESSED — `rvproj` READS `idRenderView::projectionMatrix` (2026-09-09, `/pd`, no launch)
+
+Write-up: `modding-notes/2026-09-09-read-the-engines-own-projection-instead-of-guessing-it.md`.
+Deployed `vulkan-1.dll` sha256 `fef97dd4…`, 213,504 B, backup `…bak-2026-09-09`; two builds of
+identical source hash identically. **Not run.**
+
+**The board's critical path was already answerable statically, and nobody had used the answer.**
+§6d's reflection walk enumerated `idRenderView` with byte offsets on 2026-09-05
+`[verified-numerically 2026-09-05]` — including **`projectionMatrix` +4400**,
+`inverseProjectionMatrix` +4528, `viewMatrix` +4592, `worldSpaceMVPMatrix` +4720. Since then the
+projection convention has been attacked by **guessing** (four conventions, four launches, all
+failed) and by **shape-searching GPU memory** (`uniscan`). The engine's own, already-built
+projection has been at a computable address the whole time.
+
+**From an `rvscan` survivor `A` (a `vieworg` hit, +96 inside a `renderView_t`):**
+
+| if the hit is | `idRenderView` base | `projectionMatrix` at |
+| --- | --- | --- |
+| `idRenderView::g` (+0) | `A − 96` | **`A + 4304`** |
+| `idRenderView::r` (+2272) | `A − 2368` | **`A + 2032`** |
+
+**Both are read, and the struct decides between them rather than we do:** it also carries
+`inverseProjectionMatrix`, so `projectionMatrix × inverseProjectionMatrix` must be the identity.
+**0 of 200,000 random matrix pairs pass that test**, while a real pair passes at every plausible
+near/far — including reverse-Z with an infinite far plane, the case the remaining guess-space is
+full of. `[verified-numerically 2026-09-09]` That is what turns "plausible floats at a computed
+address" into an identification.
+
+⚠️ **What the consistency test does NOT settle: major order.** It was written expecting to reject a
+transposed inverse and **it does not**, for a structural reason rather than a loose tolerance. For
+`P = [[a,0,0,0],[0,b,0,0],[0,0,c,−1],[0,0,d,0]]` the inverse's lower-right block is
+`[[0, 1/d],[−1, c/d]]`, and the standard mapping gives **`d = zn·c`** — so when the near plane is
+near 1, `1/d` is near −1 and that block is very nearly **symmetric**. Measured both ways:
+indistinguishable at `zn = 1` (error 1e-4), clearly separated at `zn = 0.05` (error 19), exactly as
+`d = zn·c` predicts. `[verified-numerically 2026-09-09]`
+**So a CONSISTENT verdict means the right two fields were found; the row/column-major question is
+answered by reading which element carries the −1 in the printed matrix.** The command prints every
+matrix raw for that reason, and says so in its own output.
+
+**⚠️ Not established:** that any given `rvscan` survivor is inside an `idRenderView`. The offsets
+are verified; the identification of a hit is exactly what the inverse-pair test exists to settle
+per-hit. A survivor that fails both placements is more likely the wrong survivor than a wrong
+offset — try another before doubting +4400.
+
+**`rvproj <hexaddr>` reads only.** It never writes, never sets `useExplicitProjectionMatrix`, and
+draws no conclusion about what to *send*.
+
+### ⛔️ 6n-2. THE DEPTH CONVENTION IS NOT IN ANY PUBLIC GRAPHICS STUDY (2026-09-09, via `/gr`)
+
+Folded from `engine-research/inbox/2026-09-09-gr-the-depth-convention-cannot-be-looked-up.md`.
+Full write-up: `external-research/topics/2026-09-09-the-depth-convention-is-not-in-any-public-graphics-study.md`.
+
+**Courrèges' *DOOM (2016) — Graphics Study*, Coenen's *DOOM Eternal* study and the idTech 666
+SIGGRAPH talk were each read against this exact question, and none documents reverse-Z, the depth
+format, near/far handling or the matrix layout.** `[reported 2026-09-09]` Recorded as a **searched
+negative on named sources** so a later `/gr` does not re-spend a pass on it.
+
+⚠️ Honest scope: three named sources do not answer it. That is not proof no public statement exists.
+
+**Consequence, and it confirms §6n from the outside:** reading the engine's real projection is not
+merely cheaper than guessing, it is the only route left. Also worth reading in the struct, both
+already in the reflection dump: **`cramZNear`** and **`flipProjection`** — the engine has explicit
+near-plane and projection-flip concepts of its own, which is exactly what a convention guess gets
+wrong. Credit: **Adrian Courrèges**, **Simon Coenen**, **Tiago Sousa & Jean Geffroy**.
+
 **This section went from empty to substantially answered in one static pass, because the binary
 ships its own names.**
 
