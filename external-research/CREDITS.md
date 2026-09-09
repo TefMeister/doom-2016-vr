@@ -23,6 +23,7 @@ project's repositories** — only code, notes, and tools we wrote ourselves.
 | Vk3DVision (Vulkan stereoscopic 3D driver) | Helifax (Octavian Vasilov) | [github.com/helifax/Vk3DVision-Public](https://github.com/helifax/Vk3DVision-Public) |
 | Depth3D (ReShade stereoscopic/depth shader) | BlueSkyDefender | [github.com/BlueSkyDefender/Depth3D](https://github.com/BlueSkyDefender/Depth3D) |
 | DOOM (2016) — Graphics Study | Adrian Courrèges | [adriancourreges.com](https://www.adriancourreges.com/blog/2016/09/09/doom-2016-graphics-study/) |
+| DOOM Eternal — Graphics Study (id Tech 7, read as the closest sibling reference) | Simon Coenen | [simoncoenen.com](https://simoncoenen.com/blog/programming/graphics/DoomEternalStudy) |
 | vorpX community forum discussion (G3D status for DOOM 2016) | vorpX forum community | [vorpx.com/forums/topic/doom-2016](https://www.vorpx.com/forums/topic/doom-2016/) |
 | DOOM (2016) Cheat Engine table | "DET" (FearlessRevolution community) | [fearlessrevolution.com/viewtopic.php?t=1199](https://fearlessrevolution.com/viewtopic.php?t=1199) |
 | Viewmodel FOV Mod - 2016 Edition | Nexus Mods contributor | [nexusmods.com/doom/mods/35](https://www.nexusmods.com/doom/mods/35) |
