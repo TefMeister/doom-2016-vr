@@ -1,0 +1,7 @@
+decoy window 0x1F0816 titled 'DOOMx64vk', owned by python.exe
+  [PASS] the owning process is read correctly (python.exe)
+  [PASS] title-only matching FINDS the impostor (the 2026-09-09 bug, reproduced)
+  [PASS] process-checked matching REFUSES it
+  [PASS] and the refusal names the impostor and its process
+
+ALL CHECKS PASSED (0 failures)

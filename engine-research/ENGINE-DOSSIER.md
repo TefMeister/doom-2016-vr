@@ -179,6 +179,41 @@ offset — try another before doubting +4400.
 **`rvproj <hexaddr>` reads only.** It never writes, never sets `useExplicitProjectionMatrix`, and
 draws no conclusion about what to *send*.
 
+#### ⭐ `projconv` — the raw numbers, NAMED (2026-09-09, `/pd` tandem seat; drained here 2026-09-09)
+
+`rvproj` prints raw, deliberately, so the convention is read off the numbers. That reading is a
+judgement made live from sixteen floats, and it decides how the per-eye matrix is built.
+`staging/doom-2016-vr/proxy-vulkan/src/projconv.{c,h}` makes it a printed answer, and
+`test/projconvtest.c` doubles as a CLI: **paste the sixteen numbers in and the convention is named,
+no rebuild and no relaunch.**
+
+```
+$ ./build/projconvtest.exe 1.0 0 0 0  0 1.778 0 0  0 0 -0.00000763 1  0 0 0.0625 0
+REVERSED [0,1], row-major | a=-0.00000763 b=0.062500 | near=0.06250 far=8191.35 | fov 90.00x58.71 deg
+```
+
+It answers what `projshape.c` never needed to — that file is a **search filter** (row vs column, and
+the FOVs, for rejecting millions of non-projections); this is a **describer** for the one matrix
+already known to be real: **is depth reversed** (as idTech 6 is expected to be), **is the far plane
+infinite**, **what are near and far**, and **is the frustum already off-axis** — which matters
+directly, because a per-eye matrix is built by writing exactly those slots.
+
+**26 checks, 0 failures** `[verified-numerically 2026-09-09]`, each convention built from a known
+near/far/fov and required to be named and recovered.
+
+⚠️ **Two things it will not claim**, and it says so in its own output: a `[0,1]` standard and a GL
+`[-1,1]` projection **cannot be separated from one matrix** — read as `[0,1]`, a `[-1,1]` matrix
+gives the **correct far** and **exactly twice** the true near, and the test pins that factor; and a
+premultiplied view-projection (`m[15] != 0`) is reported as such rather than mis-read.
+
+⚠️ **NOT wired into the DLL** — `build.sh` is untouched, because it was written from the tandem seat
+while an `/lm` could have been about to build and deploy. `[compile-verified 2026-09-09]` for the
+proxy target, so wiring it in is a one-line addition plus a call in `rvproj`'s printer.
+
+⚠️ **Nothing in it has seen a real DOOM matrix.** Every check is against synthetic matrices. That
+the describer inverts the standard formulae correctly is verified; which convention idTech 6 uses is
+exactly what the live `rvproj` run decides.
+
 ### ⛔️ 6n-2. THE DEPTH CONVENTION IS NOT IN ANY PUBLIC GRAPHICS STUDY (2026-09-09, via `/gr`)
 
 Folded from `engine-research/inbox/2026-09-09-gr-the-depth-convention-cannot-be-looked-up.md`.
@@ -1570,6 +1605,52 @@ a free zero-code lever is gated off by production mode. See §4a.
 - **`noclip` is NOT registered**, despite appearing in the binary — presumably cheat-gated.
 
 ## 10. Autonomous harness recipe (this game)
+
+### ⚠️ MATCH THE GAME WINDOW BY PROCESS, NOT BY TITLE (2026-09-09, `/pd`, no launch)
+
+Fix: `dev-archive/tools/doomdrive.py`. Decoy test: `dev-archive/tools/test_find_window_decoy.py`.
+
+**A title is USER DATA.** A browser tab, an editor, a chat window or a terminal can each contain a
+game's name. On 2026-09-09 `alice_harness.py` matched the **user's Chrome tab** because the tab
+title contained "ALICE"; the next call would have typed menu keys into their browser.
+
+`doomdrive.py` now checks **both**. The title prefix narrows — DOOM makes more than one window and
+the title is what separates the render window from its splash — and the owning process **verifies**:
+`GetWindowThreadProcessId` → `OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION)` →
+`QueryFullProcessImageNameW`, requiring `doomx64*.exe`. Neither test alone is enough.
+
+- ⚠️ **`QueryFullProcessImageNameW`, not `GetModuleFileNameEx`** — it needs only
+  `PROCESS_QUERY_LIMITED_INFORMATION`, which a normal user holds for a normal process; the
+  module-based calls need `PROCESS_VM_READ` and fail.
+- ⚠️ **The refusal is LOUD**: a window that matches the title but fails the process check is named
+  in the error with its owning process. A silent "not found" reads identically to "the game is not
+  running", and the point is that an impostor is visible.
+- ⚠️ **Verified with a DECOY, not by inspection** `[verified-numerically 2026-09-09]`. The test
+  makes a real visible window titled `DOOMx64vk` owned by `python.exe` and requires three things:
+  **title-only matching FINDS it** (the bug reproduced — without this the other two could pass for
+  the wrong reason), process-checked matching **REFUSES** it, and the refusal **names** it. No game
+  needed.
+- Drops filed to `alice-madness-returns-vr` and `enslaved-vr`, whose harnesses have the same shape.
+
+### ✅ TYPING A WORD INTO THE CONSOLE IS ALREADY BUILT (checked 2026-09-09, `/pd`)
+
+A `[PD]` row read *"TEACH THE HARNESS TO POST `WM_CHAR`… no game harness can currently type a word
+into a console."* **That capability already ships** `[verified-numerically 2026-09-09]`:
+
+| piece | where |
+| --- | --- |
+| `AT_POSTCHAR` posts `WM_CHAR` | `autoinput.c`, the `PostMessageW(w, WM_CHAR, …)` case |
+| and it is the **default** type route | `static int g_typeRoute = AT_POSTCHAR;` |
+| arbitrary text, not a fixed key table | `autoinput_queueText()` maps each character with `VkKeyScanA`, so `g`/`t`/`p`/`o` are fine |
+| a console command to drive it | `type <text>` |
+| and a way to compare all four routes | `ctest` |
+
+⚠️ **The `g_keys[]` table having no `g`/`t`/`p`/`o` is true and irrelevant** — that table is for the
+*held movement* keys, not for typing. The row's premise was the misreading.
+
+**What is genuinely open is a MEASUREMENT, not code:** which route DOOM's console actually obeys has
+never been observed. That is `ctest`, and it needs a launch.
+
 
 - **⚠️ DRIVING THE CONSOLE: the toggle key is layout-dependent AND it is a dead key
   `[measured 2026-09-01]`.** Two separate traps, either of which makes a working input backend look
