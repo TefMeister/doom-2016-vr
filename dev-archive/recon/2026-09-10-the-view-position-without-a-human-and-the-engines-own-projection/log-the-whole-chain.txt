@@ -1,0 +1,536 @@
+[20:00:41.541] ---- doom-2016-vr vulkan-1 proxy (M0) attached ----
+[20:00:41.561] real vulkan-1.dll loaded at 00007FFD22680000; resolved 246/265 exports (19 missing)
+[20:00:50.472] vkCreateInstance -> 0 (instance=000001A5E3E30F00)
+[20:00:51.626] vkCreateDevice -> 0 (physDev=000001A5E422C5A0 device=000001A5E4297A50)
+[20:00:51.627] [camhunt] memory types recorded: 6
+[20:00:51.632] vkMapMemory #1 mem=0x1a5e469faf0 offset=0 size=18446744073709551615 -> 000001A5EB7F0000
+[20:00:51.644] vkMapMemory #2 mem=0x1a5e46a0230 offset=0 size=18446744073709551615 -> 000001A5F07F0000
+[20:00:51.655] vkMapMemory #3 mem=0x1a5e469f580 offset=0 size=67108864 -> 000001A5F65F0000
+[20:00:52.658] vkCreateSwapchainKHR -> 0  1280x720 format=44 minImageCount=2
+[20:00:52.659] vkGetSwapchainImagesKHR -> 0  imageCount=2
+[20:00:52.782] vkMapMemory #4 mem=0x1a5915a5bc0 offset=0 size=76800 -> 000001A5E8F2F000
+[20:00:52.782] vkMapMemory #5 mem=0x1a5916b0ef0 offset=0 size=76800 -> 000001A5E8F42000
+[20:00:52.782] vkMapMemory #6 mem=0x1a5916b0240 offset=0 size=76800 -> 000001A5E8F55000
+[20:01:20.920] [autoinput] DirectInput8 object seen; CreateDevice instrumented
+[20:01:20.920] [autoinput] DirectInput8 CreateDevice(SysMouse) -> 0x00000000
+[20:01:20.921] [autoinput] SysMouse device hooked (GetDeviceState + GetDeviceData) -- this is the look path
+[20:01:20.931] [autoinput] NOTE: the mouse device uses BUFFERED GetDeviceData. Immediate-mode lX/lY injection will NOT be seen -- event fabrication is needed here.
+[20:01:20.932] [autoinput] DirectInput8 CreateDevice(SysKeyboard) -> 0x00000000
+[20:01:40.717] vkQueuePresentKHR frame 1 (queue=000001A5E44CE280)
+[20:01:42.472] vkQueuePresentKHR frame 10 (queue=000001A5E44CE280)
+[20:01:44.436] vkQueuePresentKHR frame 100 (queue=000001A5E44CE280)
+[20:01:44.769] [camhunt] ready. Commands: snapa/snapb/dump/tol. NUMPAD 1/2/3 still work as a manual fallback.
+[20:01:44.770] [autoinput] window=0000000000590606  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[20:01:44.770] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[20:01:44.770] [autoinput]   sendinput          unavailable  -- game is not the foreground window
+[20:01:44.770] [autoinput]   postmessage        available  
+[20:01:44.771] [autoinput]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[20:01:44.771] [auto] automation ON (marker file). Append commands to: D:\Program Files (x86)\Steam\steamapps\common\DOOM\doom_automation_cmds.txt
+[20:01:44.771] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[20:01:59.726] vkQueuePresentKHR frame 1000 (queue=000001A5E44CE280)
+[20:02:13.559] [auto] BEGIN "help"
+[20:02:13.559] [auto] commands:
+[20:02:13.559] [auto]   status | help | mappings
+[20:02:13.559] [auto]   snapa | snapb | dump          camhunt: snapshot A, compare, show current
+[20:02:13.559] [auto]   tol <float>                   retune orthonormality tolerance, no rebuild
+[20:02:13.560] [auto]   budget <MB> | stride <bytes>  narrow or coarsen the scan, live
+[20:02:13.560] [auto]   backend <inproc|sendinput|postmessage|vigem>
+[20:02:13.560] [auto]   move <fwd,back,left,right,jump> [frames]
+[20:02:13.560] [auto]   look <dx> <dy> [frames]       mouse delta per frame
+[20:02:13.560] [auto]   findvec <x> <y> <z> [tol]     find a value in the GPU buffers
+[20:02:13.560] [auto]   psearch <x> <y> <z> [tol]     find it in PROCESS memory (pass 1)
+[20:02:13.560] [auto]   pnarrow <x> <y> <z> [tol]     keep only what matches now (pass 2)
+[20:02:13.560] [auto]   pdump 0xADDR                  show floats around an address
+[20:02:13.561] [auto]   rvscan [n]                    shape-test EVERY psearch candidate, best n first
+[20:02:13.561] [auto]   rvcheck <hexaddr>             is this hit a renderView_t? (shape test)
+[20:02:13.561] [auto]   rvmat <hexaddr>               read explicitProjectionMatrix
+[20:02:13.561] [auto]   rvproj <hexaddr>              read the ENGINE'S OWN projection matrix
+[20:02:13.561] [auto]   rvexplicit <hexaddr> on|off   flag only - CANNOT answer 6c alone, see rvhold
+[20:02:13.561] [auto]   rvhold <addr> [fov] [frames] [std|tan|inv]  hold a projection every frame
+[20:02:13.561] [auto]     no fov = the engine's OWN fov, and SUCCESS IS AN UNCHANGED PICTURE
+[20:02:13.561] [auto]   rvholdoff                     release it and print the HELD/ZEROED counters
+[20:02:13.561] [auto]   uniscan [slackKB]             search the BOUND uniform window for a projection
+[20:02:13.562] [auto]   rvsetmat <hexaddr> f1..f16    write the 4x4, row-major
+[20:02:13.562] [auto]   pwrite <hexaddr> <x> <y> <z>  write three floats once
+[20:02:13.562] [auto]   phold <hexaddr> <x> <y> <z>   hold them every frame | pholdoff
+[20:02:13.562] [auto]   pholdall <dx> <dy> <dz>       hold the WHOLE candidate set | pholdalloff
+[20:02:13.562] [auto]   phalve1 | phalve2 | pother    bisect the set; pother = the half just dropped
+[20:02:13.562] [auto]   pholdyaw <hexaddr> <deg>      ROTATE the basis about Z | pholdyawoff
+[20:02:13.562] [auto]   scan <hex>                    tap a PHYSICAL scancode (console = 0x29)
+[20:02:13.563] [auto]   framespy                      capture ONE frame's pass/draw/uniform structure
+[20:02:13.563] [auto]   ringlearn | ringstat | ringoff  per-frame ring camera locator
+[20:02:13.563] [auto]   ringyaw <deg> | ringeye <units> drive the ring copies (stereo eye offset)
+[20:02:13.563] [auto]   camwatch | camstat | camoff    track the camera at the flush path
+[20:02:13.563] [auto]   camseed <x> <y> <z>           lock on using getviewpos output
+[20:02:13.563] [auto]   camrescan                     re-learn where the copies live
+[20:02:13.563] [auto]   camyaw <deg>                  ROTATE the live camera (0 = watch only)
+[20:02:13.564] [auto]   key <tilde|enter|esc|0xNN>    tap one key
+[20:02:13.564] [auto]   type <text>                   type a string (via the current typeroute)
+[20:02:13.564] [auto]   typeroute <sendinput|postkey|postchar|keystate>  HOW taps are delivered
+[20:02:13.564] [auto]   console <text>                open console, run text, close
+[20:02:13.564] [auto]   ctest                         type a probe string down EACH route in turn
+[20:02:13.564] [auto]   probe                         measure which backends the game obeys
+[20:02:13.564] [auto]   stop                          release any held input
+[20:02:13.564] [auto] END   "help"
+[20:02:25.258] vkQueuePresentKHR frame 2000 (queue=000001A5E44CE280)
+[20:02:42.709] vkQueuePresentKHR frame 3000 (queue=000001A5E44CE280)
+[20:02:59.452] vkQueuePresentKHR frame 4000 (queue=000001A5E44CE280)
+[20:03:16.135] vkQueuePresentKHR frame 5000 (queue=000001A5E44CE280)
+[20:03:32.808] vkQueuePresentKHR frame 6000 (queue=000001A5E44CE280)
+[20:03:49.483] vkQueuePresentKHR frame 7000 (queue=000001A5E44CE280)
+[20:04:06.148] vkQueuePresentKHR frame 8000 (queue=000001A5E44CE280)
+[20:04:22.818] vkQueuePresentKHR frame 9000 (queue=000001A5E44CE280)
+[20:04:39.485] vkQueuePresentKHR frame 10000 (queue=000001A5E44CE280)
+[20:04:56.153] vkQueuePresentKHR frame 11000 (queue=000001A5E44CE280)
+[20:05:12.844] vkQueuePresentKHR frame 12000 (queue=000001A5E44CE280)
+[20:05:29.556] vkQueuePresentKHR frame 13000 (queue=000001A5E44CE280)
+[20:05:40.840] vkMapMemory #7 mem=0x1a5b9986030 offset=0 size=67108864 -> 000001A641120000
+[20:05:54.865] vkQueuePresentKHR frame 14000 (queue=000001A5E44CE280)
+[20:06:22.884] vkQueuePresentKHR frame 15000 (queue=000001A5E44CE280)
+[20:06:50.896] vkQueuePresentKHR frame 16000 (queue=000001A5E44CE280)
+[20:07:18.983] vkQueuePresentKHR frame 17000 (queue=000001A5E44CE280)
+[20:07:36.016] vkQueuePresentKHR frame 18000 (queue=000001A5E44CE280)
+[20:07:52.681] vkQueuePresentKHR frame 19000 (queue=000001A5E44CE280)
+[20:08:09.352] vkQueuePresentKHR frame 20000 (queue=000001A5E44CE280)
+[20:08:26.060] vkQueuePresentKHR frame 21000 (queue=000001A5E44CE280)
+[20:08:42.727] vkQueuePresentKHR frame 22000 (queue=000001A5E44CE280)
+[20:08:58.180] [auto] BEGIN "status"
+[20:08:58.180] [auto] status: tol=0.00100  budget=96 MB  stride=16  snapshotA=-1 candidates  live mappings=7
+[20:08:58.180] [auto]   inproc-keystate    available    [default]  -- 3 key-state hook(s) + cursor
+[20:08:58.181] [auto]   sendinput          available  
+[20:08:58.181] [auto]   postmessage        available  
+[20:08:58.181] [auto]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[20:08:58.181] [auto] END   "status"
+[20:08:59.397] vkQueuePresentKHR frame 23000 (queue=000001A5E44CE280)
+[20:09:01.180] [auto] BEGIN "scan 0x29"
+[20:09:01.181] [auto] scancode 0x29 queued
+[20:09:01.181] [auto] END   "scan 0x29"
+[20:09:04.930] [auto] BEGIN "key 0x39"
+[20:09:04.932] [auto] key 0x39 queued
+[20:09:04.932] [auto] END   "key 0x39"
+[20:09:06.930] [auto] BEGIN "key 0x0E"
+[20:09:06.930] [auto] key 0x0E queued
+[20:09:06.930] [auto] END   "key 0x0E"
+[20:09:08.931] [auto] BEGIN "ctest"
+[20:09:08.931] [auto] ctest: queued "0" via sendinput-scancode, "1" via postmessage-key, "2" via postmessage-char, "3" via inproc-keystate.
+[20:09:08.931] [auto]   OPEN THE CONSOLE FIRST (`scan 0x29`). The digits that appear name the routes that work: "0123" all four, "2" only WM_CHAR, "" nothing landed at all. A REPEATED digit means auto-repeat, i.e. the frame rate is too low -- turn `camwatch` off and repeat.
+[20:09:08.931] [auto] END   "ctest"
+[20:09:16.063] vkQueuePresentKHR frame 24000 (queue=000001A5E44CE280)
+[20:09:32.731] vkQueuePresentKHR frame 25000 (queue=000001A5E44CE280)
+[20:09:49.397] vkQueuePresentKHR frame 26000 (queue=000001A5E44CE280)
+[20:10:06.064] vkQueuePresentKHR frame 27000 (queue=000001A5E44CE280)
+[20:10:16.430] [auto] BEGIN "typeroute sendinput"
+[20:10:16.430] [auto] type route -> sendinput-scancode. NOTHING is known about which route this game's console obeys; try one, look at the console, and say what landed.
+[20:10:16.430] [auto] END   "typeroute sendinput"
+[20:10:18.680] [auto] BEGIN "scan 0x0E"
+[20:10:18.680] [auto] scancode 0x0E queued
+[20:10:18.680] [auto] END   "scan 0x0E"
+[20:10:19.180] [auto] BEGIN "scan 0x0E"
+[20:10:19.180] [auto] scancode 0x0E queued
+[20:10:19.180] [auto] END   "scan 0x0E"
+[20:10:19.930] [auto] BEGIN "scan 0x0E"
+[20:10:19.930] [auto] scancode 0x0E queued
+[20:10:19.930] [auto] END   "scan 0x0E"
+[20:10:20.439] [auto] BEGIN "scan 0x0E"
+[20:10:20.439] [auto] scancode 0x0E queued
+[20:10:20.439] [auto] END   "scan 0x0E"
+[20:10:20.938] [auto] BEGIN "scan 0x0E"
+[20:10:20.938] [auto] scancode 0x0E queued
+[20:10:20.938] [auto] END   "scan 0x0E"
+[20:10:21.688] [auto] BEGIN "scan 0x0E"
+[20:10:21.688] [auto] scancode 0x0E queued
+[20:10:21.688] [auto] END   "scan 0x0E"
+[20:10:22.738] vkQueuePresentKHR frame 28000 (queue=000001A5E44CE280)
+[20:10:24.945] [auto] BEGIN "type getviewpos"
+[20:10:24.946] [auto] typing "getviewpos"
+[20:10:24.946] [auto] END   "type getviewpos"
+[20:10:39.405] vkQueuePresentKHR frame 29000 (queue=000001A5E44CE280)
+[20:10:53.715] [auto] BEGIN "key enter"
+[20:10:53.715] [auto] key 0x0D queued
+[20:10:53.715] [auto] END   "key enter"
+[20:10:56.081] vkQueuePresentKHR frame 30000 (queue=000001A5E44CE280)
+[20:11:12.748] vkQueuePresentKHR frame 31000 (queue=000001A5E44CE280)
+[20:11:29.413] vkQueuePresentKHR frame 32000 (queue=000001A5E44CE280)
+[20:11:35.713] [auto] BEGIN "type conDump viewpos.txt"
+[20:11:35.713] [auto] typing "conDump viewpos.txt"
+[20:11:35.713] [auto] END   "type conDump viewpos.txt"
+[20:11:39.713] [auto] BEGIN "key enter"
+[20:11:39.713] [auto] key 0x0D queued
+[20:11:39.713] [auto] END   "key enter"
+[20:11:46.079] vkQueuePresentKHR frame 33000 (queue=000001A5E44CE280)
+[20:11:59.462] [auto] BEGIN "psearch 1728 5440 6372.16"
+[20:11:59.462] [camhunt] scan started in the background -- the game keeps running; results follow in this log
+[20:11:59.462] [auto] END   "psearch 1728 5440 6372.16"
+[20:11:59.496] [psearch]   hit 1 at 00000086483E3EA0  [private RW]
+[20:11:59.496] [psearch]   hit 2 at 00000086483E4378  [private RW]
+[20:11:59.496] [psearch]   hit 3 at 00000086483E6700  [private RW]
+[20:11:59.496] [psearch]   hit 4 at 00000086483E6CD8  [private RW]
+[20:11:59.496] [psearch]   hit 5 at 00000086483EA6C0  [private RW]
+[20:11:59.497] [psearch]   hit 6 at 00000086483EB860  [private RW]
+[20:11:59.499] [psearch]   hit 7 at 00000086487E6AD0  [private RW]
+[20:11:59.499] [psearch]   hit 8 at 00000086487E7CDC  [private RW]
+[20:11:59.499] [psearch]   hit 9 at 00000086487E7DE0  [private RW]
+[20:11:59.499] [psearch]   hit 10 at 00000086487E9060  [private RW]
+[20:11:59.499] [psearch]   hit 11 at 00000086487E9560  [private RW]
+[20:11:59.501] [psearch]   hit 12 at 00000086489E65D8  [private RW]
+[20:12:02.745] vkQueuePresentKHR frame 34000 (queue=000001A5E44CE280)
+[20:12:19.412] vkQueuePresentKHR frame 35000 (queue=000001A5E44CE280)
+[20:12:36.077] vkQueuePresentKHR frame 36000 (queue=000001A5E44CE280)
+[20:12:38.142] [psearch] PASS 1 (1728.00 5440.00 6372.16) tol 0.50 -> 2214 candidate(s) across 4617 regions, 4430 MB scanned
+[20:12:38.142] [psearch]   by region: image=9  private(heap)=2205  mapped=0
+[20:12:38.142] [psearch]   now MOVE the player, read getviewpos again, and run `pnarrow <x> <y> <z>` -- one position finds coincidences, two find the camera
+[20:12:52.744] vkQueuePresentKHR frame 37000 (queue=000001A5E44CE280)
+[20:13:09.410] vkQueuePresentKHR frame 38000 (queue=000001A5E44CE280)
+[20:13:21.460] [auto] BEGIN "scan 0x29"
+[20:13:21.460] [auto] scancode 0x29 queued
+[20:13:21.460] [auto] END   "scan 0x29"
+[20:13:24.710] [auto] BEGIN "move w 150"
+[20:13:24.710] [auto] no recognised keys in "w"
+[20:13:24.710] [auto] END   "move w 150"
+[20:13:26.076] vkQueuePresentKHR frame 39000 (queue=000001A5E44CE280)
+[20:13:33.459] [auto] BEGIN "scan 0x29"
+[20:13:33.459] [auto] scancode 0x29 queued
+[20:13:33.460] [auto] END   "scan 0x29"
+[20:13:36.460] [auto] BEGIN "scan 0x39"
+[20:13:36.460] [auto] scancode 0x39 queued
+[20:13:36.460] [auto] END   "scan 0x39"
+[20:13:37.459] [auto] BEGIN "scan 0x0E"
+[20:13:37.459] [auto] scancode 0x0E queued
+[20:13:37.459] [auto] END   "scan 0x0E"
+[20:13:38.459] [auto] BEGIN "type getviewpos"
+[20:13:38.459] [auto] typing "getviewpos"
+[20:13:38.459] [auto] END   "type getviewpos"
+[20:13:41.459] [auto] BEGIN "key enter"
+[20:13:41.459] [auto] key 0x0D queued
+[20:13:41.459] [auto] END   "key enter"
+[20:13:42.741] vkQueuePresentKHR frame 40000 (queue=000001A5E44CE280)
+[20:13:59.408] vkQueuePresentKHR frame 41000 (queue=000001A5E44CE280)
+[20:14:16.075] vkQueuePresentKHR frame 42000 (queue=000001A5E44CE280)
+[20:14:25.458] [auto] BEGIN "scan 0x29"
+[20:14:25.458] [auto] scancode 0x29 queued
+[20:14:25.458] [auto] END   "scan 0x29"
+[20:14:28.457] [auto] BEGIN "backend sendinput"
+[20:14:28.458] [auto] default backend = sendinput
+[20:14:28.458] [auto] END   "backend sendinput"
+[20:14:30.482] [auto] BEGIN "move w 200"
+[20:14:30.483] [auto] no recognised keys in "w"
+[20:14:30.483] [auto] END   "move w 200"
+[20:14:32.749] vkQueuePresentKHR frame 43000 (queue=000001A5E44CE280)
+[20:14:39.482] [auto] BEGIN "scan 0x29"
+[20:14:39.482] [auto] scancode 0x29 queued
+[20:14:39.482] [auto] END   "scan 0x29"
+[20:14:42.482] [auto] BEGIN "scan 0x39"
+[20:14:42.482] [auto] scancode 0x39 queued
+[20:14:42.482] [auto] END   "scan 0x39"
+[20:14:43.482] [auto] BEGIN "scan 0x0E"
+[20:14:43.482] [auto] scancode 0x0E queued
+[20:14:43.482] [auto] END   "scan 0x0E"
+[20:14:44.482] [auto] BEGIN "type getviewpos"
+[20:14:44.482] [auto] typing "getviewpos"
+[20:14:44.482] [auto] END   "type getviewpos"
+[20:14:47.481] [auto] BEGIN "key enter"
+[20:14:47.481] [auto] key 0x0D queued
+[20:14:47.481] [auto] END   "key enter"
+[20:14:49.414] vkQueuePresentKHR frame 44000 (queue=000001A5E44CE280)
+[20:15:06.082] vkQueuePresentKHR frame 45000 (queue=000001A5E44CE280)
+[20:15:22.820] vkQueuePresentKHR frame 46000 (queue=000001A5E44CE280)
+[20:15:39.487] vkQueuePresentKHR frame 47000 (queue=000001A5E44CE280)
+[20:15:49.753] [auto] BEGIN "scan 0x29"
+[20:15:49.753] [auto] scancode 0x29 queued
+[20:15:49.753] [auto] END   "scan 0x29"
+[20:15:56.153] vkQueuePresentKHR frame 48000 (queue=000001A5E44CE280)
+[20:16:12.824] vkQueuePresentKHR frame 49000 (queue=000001A5E44CE280)
+[20:16:29.489] vkQueuePresentKHR frame 50000 (queue=000001A5E44CE280)
+[20:16:43.006] [auto] BEGIN "move w 250"
+[20:16:43.006] [auto] no recognised keys in "w"
+[20:16:43.006] [auto] END   "move w 250"
+[20:16:46.155] vkQueuePresentKHR frame 51000 (queue=000001A5E44CE280)
+[20:16:53.005] [auto] BEGIN "move ws 200"
+[20:16:53.006] [auto] no recognised keys in "ws"
+[20:16:53.006] [auto] END   "move ws 200"
+[20:17:01.755] [auto] BEGIN "scan 0x29"
+[20:17:01.756] [auto] scancode 0x29 queued
+[20:17:01.756] [auto] END   "scan 0x29"
+[20:17:02.822] vkQueuePresentKHR frame 52000 (queue=000001A5E44CE280)
+[20:17:04.756] [auto] BEGIN "scan 0x39"
+[20:17:04.756] [auto] scancode 0x39 queued
+[20:17:04.756] [auto] END   "scan 0x39"
+[20:17:05.756] [auto] BEGIN "scan 0x0E"
+[20:17:05.756] [auto] scancode 0x0E queued
+[20:17:05.756] [auto] END   "scan 0x0E"
+[20:17:06.755] [auto] BEGIN "type getviewpos"
+[20:17:06.756] [auto] typing "getviewpos"
+[20:17:06.756] [auto] END   "type getviewpos"
+[20:17:09.755] [auto] BEGIN "key enter"
+[20:17:09.755] [auto] key 0x0D queued
+[20:17:09.755] [auto] END   "key enter"
+[20:17:19.488] vkQueuePresentKHR frame 53000 (queue=000001A5E44CE280)
+[20:17:36.155] vkQueuePresentKHR frame 54000 (queue=000001A5E44CE280)
+[20:17:52.821] vkQueuePresentKHR frame 55000 (queue=000001A5E44CE280)
+[20:18:07.005] [auto] BEGIN "scan 0x29"
+[20:18:07.005] [auto] scancode 0x29 queued
+[20:18:07.005] [auto] END   "scan 0x29"
+[20:18:09.487] vkQueuePresentKHR frame 56000 (queue=000001A5E44CE280)
+[20:18:21.521] [auto] BEGIN "scan 0x29"
+[20:18:21.521] [auto] scancode 0x29 queued
+[20:18:21.521] [auto] END   "scan 0x29"
+[20:18:24.771] [auto] BEGIN "scan 0x39"
+[20:18:24.771] [auto] scancode 0x39 queued
+[20:18:24.771] [auto] END   "scan 0x39"
+[20:18:25.770] [auto] BEGIN "scan 0x0E"
+[20:18:25.770] [auto] scancode 0x0E queued
+[20:18:25.771] [auto] END   "scan 0x0E"
+[20:18:26.153] vkQueuePresentKHR frame 57000 (queue=000001A5E44CE280)
+[20:18:26.770] [auto] BEGIN "type getviewpos"
+[20:18:26.770] [auto] typing "getviewpos"
+[20:18:26.770] [auto] END   "type getviewpos"
+[20:18:29.770] [auto] BEGIN "key enter"
+[20:18:29.770] [auto] key 0x0D queued
+[20:18:29.770] [auto] END   "key enter"
+[20:18:42.824] vkQueuePresentKHR frame 58000 (queue=000001A5E44CE280)
+[20:18:57.774] [auto] BEGIN "pnarrow 3436.69 6489.1 6601.38"
+[20:18:57.775] [psearch]   SURVIVOR 1 at 00000086483E3EA0  [private RW]   3436.687  6489.096  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 2 at 00000086483E4378  [private RW]   3436.687  6489.096  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 3 at 00000086483E6700  [private RW]   3436.687  6489.096  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 4 at 00000086483E6CD8  [private RW]   3436.687  6489.096  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 5 at 00000086483EA6C0  [private RW]   3436.687  6489.096  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 6 at 00000086483EB860  [private RW]   3436.687  6489.096  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 7 at 00000086487E6AD0  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 8 at 00000086487E7CDC  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.775] [psearch]   SURVIVOR 9 at 00000086487E7DE0  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.776] [psearch]   SURVIVOR 10 at 00000086487E9060  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.776] [psearch]   SURVIVOR 11 at 00000086489E65D8  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.776] [psearch]   SURVIVOR 12 at 00000086489E65F0  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.776] [psearch]   SURVIVOR 13 at 00000086489E77FC  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.776] [psearch]   SURVIVOR 14 at 00000086489E7900  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.776] [psearch]   SURVIVOR 15 at 00000086489E8B80  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.776] [psearch]   SURVIVOR 16 at 0000008648BE6638  [private RW]   3436.687  6489.095  6601.378
+[20:18:57.926] [psearch] PASS 2 (3436.69 6489.10 6601.38) -> 790 survivor(s) of the previous set
+[20:18:57.926] [auto] END   "pnarrow 3436.69 6489.1 6601.38"
+[20:18:59.630] vkQueuePresentKHR frame 59000 (queue=000001A5E44CE280)
+[20:19:16.296] vkQueuePresentKHR frame 60000 (queue=000001A5E44CE280)
+[20:19:32.962] vkQueuePresentKHR frame 61000 (queue=000001A5E44CE280)
+[20:19:49.629] vkQueuePresentKHR frame 62000 (queue=000001A5E44CE280)
+[20:19:59.279] [auto] BEGIN "rvscan 12"
+[20:19:59.350] [rv] rvscan: tested 790 candidate(s) in 78 ms -> 8 passed the shape test, 0 had an unreadable window
+[20:19:59.350] [rv]   rejected by: fov_x=779  fov_y=3  fov_pair=0  useExplicit=0  forceIdentity=0  vieworg=0
+[20:19:59.350] [rv]   best 8 of 8 survivor(s), strongest first:
+[20:19:59.350] [rv]    1. 00000086483EB860  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.350] [rv]    2. 000001A5BF09C120  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.350] [rv]    3. 000001A5BF09CA00  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.350] [rv]    4. 000001A6213B60E0  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.351] [rv]    5. 000001A6213B69C0  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.351] [rv]    6. 000001A66C50FB40  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.351] [rv]    7. 00007FF787B1F6B0  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.351] [rv]    8. 00007FF787B1FFF0  conf 100/100  vieworg=(3436.69 6489.10 6601.38)  fov=(90.00 58.72)  useExplicit=0 forceIdentity=0
+[20:19:59.351] [rv]   NEXT, on the strongest one -- this is section 6c:
+[20:19:59.351] [rv]     rvmat 00000086483EB860            read the matrix it already holds
+[20:19:59.351] [rv]     rvexplicit 00000086483EB860 on    THE EXPERIMENT
+[20:19:59.352] [rv]   Reading: the projection VISIBLY CHANGES => the engine honours explicitProjectionMatrix, so per-eye projection is a supported input. UNCHANGED => this is not the live view, OR the flag is re-set every frame, OR the engine ignores it here -- three different findings, so say which you saw, and try the next-strongest before concluding.
+[20:19:59.352] [rv]   ⚠️ A shape match is NOT proof. 8 candidate(s) passed a filter; none of them has been shown to be the live view.
+[20:19:59.352] [auto] END   "rvscan 12"
+[20:20:06.356] vkQueuePresentKHR frame 63000 (queue=000001A5E44CE280)
+[20:20:23.066] vkQueuePresentKHR frame 64000 (queue=000001A5E44CE280)
+[20:20:39.741] vkQueuePresentKHR frame 65000 (queue=000001A5E44CE280)
+[20:20:56.429] vkQueuePresentKHR frame 66000 (queue=000001A5E44CE280)
+[20:21:05.029] [auto] BEGIN "rvproj 00000086483EB860"
+[20:21:05.030] [rv] rvproj 00000086483EB860: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[20:21:05.030] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[20:21:05.030] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[20:21:05.030] [rv]     projectionMatrix           (A+4304)
+[20:21:05.030] [rv]        [    0.000000  286959452866508289242716591620096.000000     0.000000     0.000000]
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.030] [rv]     projectionMatrixNoJitter   (A+4368)
+[20:21:05.030] [rv]        [   90.000000    90.000000    -0.000000     0.000000]
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.030] [rv]     inverseProjectionMatrix    (A+4432)
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.030] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:05.031] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:05.031] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:05.031] [rv]     viewMatrix                 (A+4496)
+[20:21:05.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.031] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:05.031] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:05.031] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:05.031] [rv]     worldSpaceMVPMatrix        (A+4624)
+[20:21:05.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.032] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[20:21:05.032] [rv]     inconsistent: proj * invproj misses the identity by 2.86959e+32 (tolerance 0.05) - so this placement is not confirmed.
+[20:21:05.032] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[20:21:05.032] [rv]     projectionMatrix           (A+2032)
+[20:21:05.032] [rv]        [ 945078940075357074737856512.000000     0.000000  1012347870032214453395652608.000000     0.000000]
+[20:21:05.032] [rv]        [ 966537373373516742588891136.000000     0.000000     0.000000     1.000000]
+[20:21:05.032] [rv]        [  120.000000   240.000000     3.000000     0.000000]
+[20:21:05.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.032] [rv]     projectionMatrixNoJitter   (A+2096)
+[20:21:05.032] [rv]        [    0.000000     0.000000         -nan     0.000000]
+[20:21:05.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.033] [rv]        [   90.000000    90.000000     0.000000     0.000000]
+[20:21:05.033] [rv]     inverseProjectionMatrix    (A+2160)
+[20:21:05.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.033] [rv]     viewMatrix                 (A+2224)
+[20:21:05.033] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:05.034] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:05.034] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:05.034] [rv]        [ 195420.000000     0.000000     0.000000     0.000000]
+[20:21:05.034] [rv]     worldSpaceMVPMatrix        (A+2352)
+[20:21:05.034] [rv]        [ 195335.000000     0.000000     0.000000     0.000000]
+[20:21:05.034] [rv]        [    0.000000     0.000000  195339.000000     0.000000]
+[20:21:05.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:05.034] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[20:21:05.035] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[20:21:05.035] [rv]   RESULT: neither placement is confirmed. Either this survivor is not inside an idRenderView, or the +4400/+4528 offsets do not hold for this build. Try another rvscan survivor before doubting the offsets - the offsets are verified, the identification of any one hit is not.
+[20:21:05.035] [auto] END   "rvproj 00000086483EB860"
+[20:21:10.029] [auto] BEGIN "rvproj 00007FF787B1F6B0"
+[20:21:10.030] [rv] rvproj 00007FF787B1F6B0: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[20:21:10.030] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[20:21:10.030] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[20:21:10.031] [rv]     projectionMatrix           (A+4304)
+[20:21:10.031] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:10.031] [rv]        [   -1.000000     0.000000     0.000000     0.000000]
+[20:21:10.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.031] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:10.031] [rv]     projectionMatrixNoJitter   (A+4368)
+[20:21:10.031] [rv]        [    0.000000     1.000000     0.000000     0.000000]
+[20:21:10.031] [rv]        [    0.576171     0.817329     0.000000     0.000000]
+[20:21:10.031] [rv]        [   -0.000000     0.000000     0.000000     0.000000]
+[20:21:10.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.031] [rv]     inverseProjectionMatrix    (A+4432)
+[20:21:10.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.031] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.032] [rv]     viewMatrix                 (A+4496)
+[20:21:10.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.032] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.032] [rv]     worldSpaceMVPMatrix        (A+4624)
+[20:21:10.032] [rv]        [   90.000000    90.000000     0.000000     0.000000]
+[20:21:10.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.034] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[20:21:10.034] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[20:21:10.034] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[20:21:10.035] [rv]     projectionMatrix           (A+2032)
+[20:21:10.035] [rv]        [   -0.000000     0.000000     0.000000     0.000000]
+[20:21:10.035] [rv]        [    0.000000     0.000000  945078940075357074737856512.000000     0.000000]
+[20:21:10.035] [rv]        [ 3911895359845080127197931372544.000000     0.000000  1012347870032214453395652608.000000     0.000000]
+[20:21:10.035] [rv]        [ 966537373373516742588891136.000000     0.000000  27118699543459087561332359168.000000     0.000000]
+[20:21:10.035] [rv]     projectionMatrixNoJitter   (A+2096)
+[20:21:10.035] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.035] [rv]        [   -1.691412     0.000000  22246124027502324672679116800.000000     0.000000]
+[20:21:10.036] [rv]        [ 22394897461178649975491395584.000000     0.000000    -0.000000     0.000000]
+[20:21:10.036] [rv]        [   -3.684593     0.000000     0.000000     0.000000]
+[20:21:10.036] [rv]     inverseProjectionMatrix    (A+2160)
+[20:21:10.036] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.036] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.036] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.036] [rv]        [   -0.000000     0.000000     0.000000     0.000000]
+[20:21:10.037] [rv]     viewMatrix                 (A+2224)
+[20:21:10.037] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.037] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.037] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.037] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.037] [rv]     worldSpaceMVPMatrix        (A+2352)
+[20:21:10.037] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:10.037] [rv]        [ 3436.687012  6489.095703  6601.378418     0.866025]
+[20:21:10.038] [rv]        [    0.500000     0.000000    -0.500000     0.866025]
+[20:21:10.038] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:10.038] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[20:21:10.038] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[20:21:10.038] [rv]   RESULT: neither placement is confirmed. Either this survivor is not inside an idRenderView, or the +4400/+4528 offsets do not hold for this build. Try another rvscan survivor before doubting the offsets - the offsets are verified, the identification of any one hit is not.
+[20:21:10.038] [auto] END   "rvproj 00007FF787B1F6B0"
+[20:21:13.095] vkQueuePresentKHR frame 67000 (queue=000001A5E44CE280)
+[20:21:15.029] [auto] BEGIN "rvproj 000001A5BF09C120"
+[20:21:15.029] [rv] rvproj 000001A5BF09C120: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[20:21:15.029] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[20:21:15.029] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[20:21:15.029] [rv]     projectionMatrix           (A+4304)
+[20:21:15.029] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:15.029] [rv]        [    0.000000     1.777778     0.000000     0.000000]
+[20:21:15.030] [rv]        [    0.000000     0.000000    -1.000021    -3.000064]
+[20:21:15.030] [rv]        [    0.000000     0.000000    -1.000000     0.000000]
+[20:21:15.030] [rv]     projectionMatrixNoJitter   (A+4368)
+[20:21:15.030] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:15.030] [rv]        [    0.000000     1.777778     0.000000     0.000000]
+[20:21:15.030] [rv]        [    0.000000     0.000000    -1.000021    -3.000064]
+[20:21:15.030] [rv]        [    0.000000     0.000000    -1.000000     0.000000]
+[20:21:15.030] [rv]     inverseProjectionMatrix    (A+4432)
+[20:21:15.031] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:15.031] [rv]        [    0.000000     0.562500     0.000000     0.000000]
+[20:21:15.031] [rv]        [    0.000000     0.000000     0.000000    -1.000000]
+[20:21:15.031] [rv]        [    0.000000     0.000000    -0.333326     0.333333]
+[20:21:15.031] [rv]     viewMatrix                 (A+4496)
+[20:21:15.031] [rv]        [    0.500000    -0.866025    -0.000000  3901.377930]
+[20:21:15.031] [rv]        [    0.000000     0.000000     1.000000 -6601.378418]
+[20:21:15.031] [rv]        [   -0.866025    -0.500000    -0.000000  6220.805664]
+[20:21:15.031] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[20:21:15.031] [rv]     worldSpaceMVPMatrix        (A+4624)
+[20:21:15.031] [rv]        [    0.500000    -0.866025     0.000000  3901.377930]
+[20:21:15.032] [rv]        [    0.000000     0.000000     1.777778 -11735.784180]
+[20:21:15.032] [rv]        [    0.866044     0.500011     0.000000 -6223.938965]
+[20:21:15.032] [rv]        [    0.866025     0.500000     0.000000 -6220.805664]
+[20:21:15.033] [rv]     shape: column-vector (m[14] carries it), implied fov=(90.00, 58.72)
+[20:21:15.033] [rv]     ** CONSISTENT: proj * invproj == I to 2.9803e-08 (tolerance 0.05). These two fields really are an inverse pair, so the placement is IDENTIFIED and the matrix above is the engine's own projection. **
+[20:21:15.033] [rv]     ...but this does NOT settle MAJOR ORDER: a projection's inverse is very nearly symmetric when the near plane is near 1, so the transpose passes too (measured, rvtest.c). Read row/column-major off the numbers above - which element carries the -1 - not off this line.
+[20:21:15.033] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[20:21:15.033] [rv]     projectionMatrix           (A+2032)
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.033] [rv]     projectionMatrixNoJitter   (A+2096)
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.033] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.034] [rv]     inverseProjectionMatrix    (A+2160)
+[20:21:15.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.034] [rv]        [   90.000000    58.715508     0.000000     0.000000]
+[20:21:15.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.034] [rv]     viewMatrix                 (A+2224)
+[20:21:15.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.034] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.034] [rv]        [ 3436.687012  6489.095703  6601.378418     0.866025]
+[20:21:15.035] [rv]     worldSpaceMVPMatrix        (A+2352)
+[20:21:15.035] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:15.035] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[20:21:15.035] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[20:21:15.035] [rv]        [   -0.538249     0.000000     0.000000     0.000000]
+[20:21:15.035] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[20:21:15.035] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[20:21:15.035] [rv]   RESULT: the hit is idRenderView::g. The projection printed under 'g' is the engine's own - read the convention off it, then send exactly that shape back through rvhold.
+[20:21:15.035] [auto] END   "rvproj 000001A5BF09C120"
+[20:21:29.761] vkQueuePresentKHR frame 68000 (queue=000001A5E44CE280)
+[20:21:46.445] vkQueuePresentKHR frame 69000 (queue=000001A5E44CE280)
+[20:22:03.111] vkQueuePresentKHR frame 70000 (queue=000001A5E44CE280)
+[20:22:19.777] vkQueuePresentKHR frame 71000 (queue=000001A5E44CE280)
+[20:22:36.444] vkQueuePresentKHR frame 72000 (queue=000001A5E44CE280)
+[20:22:52.777] [auto] BEGIN "scan 0x29"
+[20:22:52.777] [auto] scancode 0x29 queued
+[20:22:52.777] [auto] END   "scan 0x29"
+[20:22:53.110] vkQueuePresentKHR frame 73000 (queue=000001A5E44CE280)
+[20:23:09.777] vkQueuePresentKHR frame 74000 (queue=000001A5E44CE280)
+[20:23:26.445] vkQueuePresentKHR frame 75000 (queue=000001A5E44CE280)
+[20:23:43.110] vkQueuePresentKHR frame 76000 (queue=000001A5E44CE280)
+[20:23:59.779] vkQueuePresentKHR frame 77000 (queue=000001A5E44CE280)
+[20:24:16.445] vkQueuePresentKHR frame 78000 (queue=000001A5E44CE280)
+[20:24:33.111] vkQueuePresentKHR frame 79000 (queue=000001A5E44CE280)
+---- detaching after 79969 frames ----
