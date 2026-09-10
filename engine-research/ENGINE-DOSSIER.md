@@ -1535,6 +1535,223 @@ expired before its capture, which read as "fov 140 does nothing" and nearly beca
 log's `ARMED`/`released (frame budget expired)` lines against the capture time is what caught it;
 re-run at 3600 frames and the effect reproduced.
 
+## 6n. ⭐⭐ THE VIEW POSITION IS OBTAINABLE UNATTENDED, AND THE ENGINE'S OWN PROJECTION HAS BEEN READ (2026-09-10, `/lm`, one launch)
+
+Both ⭐⭐ rows fell in one launch. Note:
+`modding-notes/2026-09-10-the-view-position-without-a-human-and-the-engines-own-projection.md`.
+
+### The console CAN be typed into — three of four routes reach it
+
+`ctest`, run correctly, gives `0122` `[verified-live 2026-09-10, n=1 launch]`:
+
+| digit | route | verdict |
+| --- | --- | --- |
+| `0` | `sendinput-scancode` (the real OS input stack) | ✅ |
+| `1` | `postmessage-key` | ✅ |
+| `2` | `postmessage-char` | ✅ **doubled** |
+| `3` | `inproc-keystate` | ⛔ |
+
+- The doubled `2` is **`TranslateMessage`**, not auto-repeat — route 2 posts `WM_KEYDOWN`/`UP` *plus*
+  `WM_CHAR`, and DOOM's own pump turns the posted key-down into a second `WM_CHAR`. `0` was single in
+  the same run, which rules out frame rate.
+- The `3` is a **real negative**: `status` was run first and reported all three key-state hooks
+  installed. Without that, a missing `3` cannot be told from a hook that never landed, and `ctest`
+  bypasses the warning that would say so.
+
+### ⚠️⚠️ `ctest` RUN COLD PRODUCES A FALSE FINDING — flush the dead key first
+
+The console key is a dead key (§10b): it leaves a pending accent and the first character typed
+afterwards composes with it. **`ctest` sends its route-0 digit first, and route 0 is the only one
+that goes through `ToUnicode`** — so the accent eats exactly the digit that proves the plain OS input
+path works. Cold, the probe reads **"WM_CHAR only"**, which is a claim about the engine, and it is
+wrong.
+
+**Always send `scan 0x39` then `scan 0x0E` (space, backspace) after opening the console and before
+any probe or typing.** ⚠️ And note `key 0x39` is NOT that — `key` takes a **virtual-key**, `scan`
+takes a **scancode**. `key 0x39` types a literal `9`.
+
+### The unattended capture loop
+
+```
+scan 0x29                 open console
+scan 0x39 / scan 0x0E     flush the dead key
+typeroute sendinput       ⚠️ REQUIRED - the default route is inproc-keystate, the one route the console ignores
+type getviewpos
+key enter                 -> 1728 5440 6372.16 30.0 -0.0
+type conDump viewpos.txt  -> Saved Games\id Software\DOOM\base\viewpos.txt
+```
+
+`[verified-live 2026-09-10, n=1]`. The number comes off disk; nobody reads the screen.
+
+### ⭐ The game writes its own answers to disk — grep them before planning a launch
+
+`%USERPROFILE%\Saved Games\id Software\DOOM\base\` already held, from earlier human sessions:
+`doomcmds.txt` (a full `listCmds`), `doomcvars.txt` / `doomcvars2.txt` (full `listCvars`),
+`doomview.txt` (a `conDump` containing four real `getviewpos` captures) and `consoleHistory.txt`.
+Those confirmed `getviewpos`, `conDump` and `bind` exist, and that `conDump` captures `getviewpos`
+output, **in seconds and with no launch** `[verified-numerically 2026-09-10]`. They also disprove
+`com_allowconsole`, which appears in neither dump nor in the binary.
+
+### The chain, first time ever reached
+
+```
+psearch 1728 5440 6372.16       -> 2214 candidates (4430 MB scanned)
+  (move the player)
+pnarrow 3436.69 6489.1 6601.38  ->  790 survivors
+rvscan 12                       ->    8 pass, all conf 100/100
+```
+
+All eight read `vieworg=(3436.69 6489.10 6601.38)` and **`fov=(90.00 58.72)`**.
+
+⭐ **`fov_x` passed for the first time**, confirming the 2026-09-09b reading that the failures were a
+wrong candidate set and never the offsets. Two of the eight are in the **exe's own image**
+(`00007FF787B1…`), so they are static rather than heap.
+
+### ⭐⭐ The engine's own projection matrix, read live and PROVED
+
+`rvproj 000001A5BF09C120`, `A+4304`, the `g` placement ("set by the game"):
+
+```
+[ 1.000000   0.000000   0.000000   0.000000]
+[ 0.000000   1.777778   0.000000   0.000000]
+[ 0.000000   0.000000  -1.000021  -3.000064]
+[ 0.000000   0.000000  -1.000000   0.000000]
+```
+
+**Identified, not assumed:** the inverse-pair test reports `proj * invproj == I to 2.9803e-08`
+(tolerance 0.05) `[verified-numerically 2026-09-10]`. The `r` placement (`A+2032`) reads all zeros
+on this candidate, which is what a `g` hit should look like. `viewMatrix` (A+4496),
+`inverseProjectionMatrix` (A+4432) and `worldSpaceMVPMatrix` (A+4624) are all populated and
+consistent.
+
+It cross-checks against the FOV pair from a *different* field: `1/tan(45°) = 1.000`,
+`1/tan(29.36°) = 1.7778`.
+
+⚠️ The proxy's own caveat stands and is worth repeating: the inverse-pair test does **not** settle
+major order, because a projection's inverse is nearly symmetric when the near plane is near 1 and the
+transpose passes too. Read row/column-major off which element carries the `-1`.
+
+### ⭐ The depth convention, by measurement rather than by search
+
+Solving the third row for a standard perspective gives **near ≈ 1.50 units, far ≈ 143,000 units**,
+right-handed, `-1` in the `w` row — a **conventional projection, not reverse-Z**. `[inferred-static]`
+for the near/far arithmetic (it assumes the standard form); the matrix itself is
+`[verified-numerically 2026-09-10]`.
+
+This addresses `external-research/topics/2026-09-09-the-depth-convention-is-not-in-any-public-graphics-study.md`
+directly: it was never going to be found in a paper, and it did not need to be.
+
+### ⚠️ RETRACTED SAME SESSION: "the proxy cannot move the player"
+
+A live session spent four probes and three hypotheses on this. **`move` takes `fwd` / `back` /
+`left` / `right` / `jump`, not `w` / `a` / `s` / `d`** (`parseKeys()` in `autocmd.c`), and every
+attempt was refused with the reason printed at the moment it was issued:
+
+```
+[auto] BEGIN "move w 150"
+[auto] no recognised keys in "w"
+```
+
+**`move` is UNTESTED on this game, not broken** `[disproved 2026-09-10]`.
+
+⚠️ **The rule this earns: after issuing a command to your own tooling, read the TOOL's answer before
+you read the GAME's.** A game that did not change is ambiguous between a dozen causes; a tool that
+said "no recognised keys" is not ambiguous at all.
+
+### ⚠️ `SysKeyboard` IS never hooked — true, verified in source, and NOT the cause above
+
+`Hook_CreateDevice` computes `isMouse` and calls `hookMouseDevice` only when true; there is no
+keyboard equivalent `[verified-numerically 2026-09-10]`. So `inproc-keystate` cannot reach DOOM's
+gameplay keyboard, which goes through DirectInput. ⚠️ `status` reporting "3 key-state hooks
+installed" is true but reads as readiness — it refers to the Win32 key-state APIs, not to DI8.
+
+**🚨 A latent CORRUPTION bug falls out of it.** DirectInput devices of the same class share a vtable,
+so the mouse patch very likely lands on the keyboard too. `Hook_GetDeviceState` guards on
+`cb >= 12` — and a keyboard `GetDeviceState` passes **`cb = 256`**. With `inproc` active and a look
+delta pending, it would add mouse deltas into the first 8 bytes of the **key-state array** (DIK slots
+ESCAPE and 1-7): phantom keypresses, not movement. `[inferred-static 2026-09-10]`. Fix: compare
+`self` against the recorded device pointer, and test `cb == 12 || cb == 16` with equality.
+
+## 6o. 🚨 THE CONSOLE CAN BE DRIVEN WITH NO KEYBOARD AT ALL, AND `getviewpos` CACHES ITS ANSWER (2026-09-10, static)
+
+All `[inferred-static 2026-09-10]` — read out of the binary, nothing run. It supersedes the entire
+typing route above in cost and reliability if it holds live.
+
+**⭐ `idCmdSystem` sits at RVA `0x2F451C0`, and vtable slot `+0x50` is
+`BufferCommandText(this, const char *text)`** — two arguments, plain ASCII. Identified by census
+rather than by guess: of 466 xrefs to that global, the **151** sites calling `+0x50` carry literal
+command strings (`reload`, `quit`, `disconnect`, `resourceExec default.cfg -s`), the **200** calling
+`+0x20` carry name+description pairs (`AddCommand`), and the **19** calling `+0x60` take no arguments
+(`ExecuteCommandBuffer`). `reload` and `quit` call `+0x50` and never `+0x60`, so the engine drains its
+own buffer next frame — **call `+0x50` only**.
+
+**⭐ And `getviewpos` caches its answer in static memory: RVA `0x5B5CB90` (x, y, z) and `0x5B5CBA0`
+(pitch, yaw).** A census of every function touching those addresses returns exactly three:
+`getviewpos` itself (the sole writer) and two readers that both first compare an argument to
+`"last"`. So the whole loop becomes **buffer `getviewpos`, then read six floats** — no console, no
+typing, no `conDump`, no text parsing, no dead key.
+
+⚠️ **Risks before anyone builds this:** it is inferred, not run. The real hazard is **thread safety**
+— issue it once behind a flag, never per frame — and the instance and vtable pointers must be
+validated as inside the module before being dereferenced.
+
+### Config files: the exec order is settled, and there is a different silent gate
+
+One function at RVA `0x156BA40` reads `.cfg`, reads `.local`, then buffers-and-executes `.cfg`, then
+buffers-and-executes `.local`. **`.local` runs SECOND**, so `.cfg`'s per-bindset `unbindall` cannot
+reach a bind placed in `.local` `[inferred-static 2026-09-10]`. A worry raised earlier the same day
+is therefore **disproved**.
+
+🚨 **But a different silent gate exists:** before either file executes, the lexer requires the first
+token to be `configVersion` followed by the integer **7** (the constant at RVA `0x2828CE8` reads 7).
+A wrong or missing header means the file is **discarded with no message** — which would read exactly
+like "the engine ignores `bind` here". Both current files satisfy it. Binds also serialise into the
+**player profile** (`numBindSets`, `keyBinding_%d`), a third overwrite opportunity.
+
+### ⚠️ `conDump` NEVER overwrites — it appends `_<n>` until the name is free
+
+It requires exactly one argument, forces `.txt`, then **loops while the file exists**, appending
+`_1`, `_2`, … So `conDump viewpos.txt` writes a **new file every call**
+`[inferred-static 2026-09-10]`. **An unattended loop polling a fixed path would read the first
+capture for ever and report a frozen camera.** Scan by modification time instead. It is also capped
+at the last **4095** console lines. `getviewpos` prints through the common Printf (RVA `0x282E70`),
+the same one all startup logging uses, so the buffer is fed whether or not the console is visible.
+
+### Bind key names, for when a bind is wanted
+
+`KP_1`=0x4F, `KP_2`=0x50, `KP_3`=0x51, `KP_0`=0x52, `KP_DOT`=0x53, `KP_4`–`KP_6`=0x4B–0x4D,
+`KP_7`–`KP_9`=0x47–0x49. **The numpad is completely free across all 11 bindsets.** `GRAVE`=0x29
+corroborates the console key from a second, independent source.
+
+- ⚠️ **Avoid `KP_ENTER` and `KP_SLASH`** — extended scancodes, and `rawKey()` omits
+  `KEYEVENTF_EXTENDEDKEY`.
+- ⚠️ **A second alias table exists** (`KP_END`, `KP_DOWNARROW`, `KP_PGDN`, `KP_INS`, `KP_DEL` — the
+  NumLock-off names). Which one `bind` parses is not settled, so **bind both spellings**; it costs
+  nothing and collides with nothing.
+- `bind <key> [command]` takes **no bindset argument** — the bindset is a cvar. `key_debugBinds`
+  exists in the binary but is **not registered in retail**.
+- `setviewpos` is registered in the binary beside `getviewpos` (*"sets the current view position"*)
+  but is **not** in the live 40-command list — production-gated, like `noclip`. Not a lead.
+
+### ⚠️ `postchar` is the DEFAULT type route, and it is the doubling one
+
+`type getviewpos` on the default route can arrive as `ggeettvviieewwppooss`. The clean word this
+session came from `typeroute sendinput`. **Prefer `typeroute postkey` or `sendinput` for typed
+words.** ⚠️ Doubling alone cannot explain the historical "only one character of `getviewpos`
+landed", so at least one other failure mode was also in play — hold both.
+
+### Hazards learned this session
+
+- **Esc on the MAIN MENU opens a quit prompt**, not a back action. It defaults to `No`, so it is
+  recoverable — but it is not a safe "cancel". `[verified-live 2026-09-10]`
+- **The quit confirm defaults to `No`.** Exiting needs Up, then a verified highlight, then Enter.
+- **Resuming this save lands in `game/sp/intro/intro` with the player initially immobile** — a
+  scripted opening, not an input failure. That cost several probes before a working input route
+  separated the two.
+- The level-load screen prints *"Press [F2] and [F1] to cycle your active equipment item"*,
+  confirming DOOM binds F1/F2 by default — one more reason the account's **numpad-only, never F-keys**
+  rule applies here.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
@@ -1753,6 +1970,61 @@ never been observed. That is `ctest`, and it needs a launch.
   explicitly excluded from Steam Cloud sync and so cannot leak to the home PC.
 
 ## 11. Dead ends & false leads (save future time)
+
+### 📥 Drained from `/gr`, 2026-09-10 — and one half of it is already answered here
+
+Drop: `inbox/2026-09-10-gr-a-launch-arg-bind-skips-two-of-the-three-view-position-checks.md`.
+Topic: `external-research/topics/2026-09-10-the-bind-persistence-question-can-be-sidestepped-with-a-launch-argument.md`.
+
+**1. `+bind "F9" "getviewpos"` as a LAUNCH ARGUMENT, to sidestep the config-persistence question**
+`[hypothesis]`. §11 already carries `+com_allowconsole 1` as a launch option and marks it UNTESTED,
+so the `+<command> <args>` mechanism is assumed, not established. Kept as a lead, but **demoted
+2026-09-10**: the typing route (`type getviewpos`) needs no bind at all, and is already built.
+⚠️ Two further reasons not to reach for it first: `com_allowconsole` does **not** appear in this
+build's own `listCmds` dump, so it is at best a cvar `[verified-numerically 2026-09-10]`; and the
+proposed bind uses **F9/F10**, against the standing account rule of **numpad keys only, never
+F1-F12** — F-keys are claimed twice over across this estate and the collisions are silent. DOOM's
+own default bindings for F9/F10 are unknown (no `listBinds` output exists on disk), so binding them
+would be overriding something invisible.
+
+**2. ⚠️ The drop's Steam Cloud warning does NOT apply to the file we edit — this dossier already
+said so.** The drop names Cloud sync as a second revert path that would make a rejected bind and a
+Cloud-reverted bind indistinguishable. True in general, and a good catch for `DOOMConfig.cfg` — but
+§10 records that **`DOOMConfig.local` is explicitly excluded from Steam Cloud sync**, which is
+precisely why it was chosen for machine-local test settings in the first place. So for the prepared
+bind the confound is absent. Recorded rather than silently dropped, because the general point is
+right and applies the moment anyone edits `DOOMConfig.cfg`.
+
+### ✅ `conDump` DOES capture `getviewpos` output — evidence was already on disk (2026-09-10)
+
+Check #3 of the ⭐⭐ view-position row asked whether `conDump` captures `getviewpos` output. **An
+earlier human-driven session already produced the answer and nobody had looked**:
+`%USERPROFILE%\Saved Games\id Software\DOOMase\doomview.txt`, lines 1623-1630
+`[verified-numerically 2026-09-10]`:
+
+```
+]getviewpos
+1728 5440 6372.16 357.1 352.7
+]getviewpos
+2135 5721.26 6331.63 357.2 352.8
+]getviewpos
+2135 5721.26 6331.63 354.6 299.2
+```
+
+So the output format is **five numbers — `x y z` then two angles** — and `conDump` writes them to a
+file verbatim, prefixed by the echoed command.
+
+⚠️ **What this does NOT settle**, and the distinction is the whole row: that dump was taken with the
+console **open**, by a human typing. Whether `conDump` captures the same output when the console was
+opened and driven synthetically, or hidden, is still the open question.
+
+⭐ **The wider lesson: this game writes its own answers to disk and we had four such files unread.**
+`doomcmds.txt` (full `listCmds`), `doomcvars.txt` / `doomcvars2.txt` (full `listCvars`),
+`doomview.txt` (a `conDump`) and `consoleHistory.txt` all sit in the Saved Games folder from earlier
+sessions. **Grep those before planning a launch, and before trying to read a packed Denuvo binary
+for a command list.** `getviewpos`, `conDump` and `bind` were all confirmed to exist this way in
+seconds.
+
 - **⛔️ `strtoull(s, NULL, 0)` on anything this proxy PRINTS is a trap (2026-09-08).** `"%p"` on
   win64 zero-pads to 16 digits, base 0 infers octal from a leading zero, and the parse stops at the
   first non-octal digit: `00007FF767CBF6B0` -> **7**. It cost two commands that looked like they were

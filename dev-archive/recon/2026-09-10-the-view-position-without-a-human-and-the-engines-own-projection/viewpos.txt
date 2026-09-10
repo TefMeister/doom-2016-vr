@@ -1,0 +1,1688 @@
+Configured log listener print-redirect tags
+Added structured log listener print-redirect
+Added structured log listener mp-cloud-gobbler
+2026-09-10T20:00:41.958+03:00 LOG: Process started
+Winsock Initialized
+------ Initializing File System ------
+Current search path:
+    - C:/Users/Tefa/Saved Games/id Software/DOOM/base/
+    - D:/Program Files (x86)/Steam/steamapps/common/DOOM/base/
+------ File System initialized.
+------ Command Line ------
+ "D:\Program Files (x86)\Steam\steamapps\common\DOOM\DOOMx64vk.exe" 
+2026-09-10T20:00:42.028+03:00 LOG: Command Line: "D:\Program Files (x86)\Steam\steamapps\common\DOOM\DOOMx64vk.exe" 
+------ CPU Information ------
+    1 CPU package, 4 physical cores, 8 logical cores
+    3094 MHz    Intel CPU with MMX & SSE & SSE2 & SSE3 & SSSE3 & SSE41 & SSE42 & AVX & HTT
+    32768 kB 1st level cache, 262144 kB 2nd level cache, 8388608 kB 3rd level cache
+    16256 MB System Memory
+initializing resource container gameresources.resources
+initializing resource container gameresources.patch
+idLib::SetProduction( PROD_PRODUCTION )
+------- Initializing renderSystem --------
+PreliminaryRenderSetup
+...registered window class
+-------------------------
+Application Info
+-------------------------
+App    : DOOM - 1.0.2
+Engine : idTech - 6.1.1
+-------------------------
+Instance Extensions
+-------------------------
+ + VK_KHR_surface
+ + VK_KHR_win32_surface
+-------------------------
+Device Extensions
+-------------------------
+ + VK_KHR_swapchain
+ + VK_NV_dedicated_allocation
+
+-------------------------
+Vulkan Device Info:
+-------------------------
+Vendor : NVIDIA
+GPU    : NVIDIA GeForce GTX 1660 SUPER
+VRAM   : 6180MB
+Driver : 560.94.0.0
+VK API : 1.3.280
+
+
+RENDER THREAD STACK SIZE: 4194304
+Initializing Vulkan subsystem
+ShowGameWindow: (8, 31) 1280 x 720, windowed
+ShowGameWindow: (8, 31) 1280 x 720, windowed
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq1.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq2.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq3.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq4.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq5.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq6.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq7.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq8.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq9.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq10.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq11.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq12.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq13.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq14.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq15.mega2
+Using mega2 chunk file D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_sq16.mega2
+Read vmtrs from D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr.vmtr
+Read vmtrs from D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_dlc1.vmtr
+Read vmtrs from D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_dlc2.vmtr
+Read vmtrs from D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_dlc3.vmtr
+Read vmtrs from D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_dlc4.vmtr
+Could not open D:\Program Files (x86)\Steam\steamapps\common\DOOM/virtualtextures/_vmtr_dlc5.vmtr, all vmtrs will be re-created
+Read a total of 6801 vmtrs
+Executing default.cfg for device #0...
+Executing default.cfg for device #1...
+Executing default.cfg for device #2...
+Executing default.cfg for device #3...
+Unknown command 'build_packageParent'
+Unknown command 'build_packageBranch'
+Unknown command 'build_candidateURL'
+Unknown command 'build_candidateRecipeDescription'
+Unknown command 'build_binaryBranch'
+Unknown command 'build_binaryChange'
+------ Build Information ------
+    Cheat Mode: OFF
+    Host Name: DESKTOP-V8GTSIR
+    Binary Build:
+        Version: 6.1.1
+        Target: shippingretail
+        Name: 20240321-104810-ginger-fuchsia
+        Requestor: user:3irhHviNLf2yEBK92TUJ7x:jwt-ids
+        URL: https://build.id.software/builds/binaries/20240321-104810-ginger-fuchsia
+        Relevant CLs: 1650910
+    Package:
+        Name: 20180309-000107-lacewood-tiller
+        Map Set: MP Orbis Zion Build, MP Heatwave - IDST, mp_cross_studio_playtest, SP Campaign back up, SP Campaign, Demo, sp_min_unified, DLC Focused Playtest, MP PAX East, BCS MP Min, BCS MP DLC1 Maps Playtest, SP Playtest, mp_min_unified, MP DLC1 Full, Unified IHV SP, Unified IHV MP, First 3, E3 2016, BCS MP All DLC Playtest, QuakeCon 2016, BCS id playtest, BCS DLC2 modes playtest, BCS MP DLC2 Playtest, Arcade Mode, Zion Phoenix SP MP
+        Requestor: user:pipeline:forge
+        URL: http://www.eden.idsoftware.com/builds/packages/20180309-000107-lacewood-tiller
+        Relevant CLs: 596652
+    Disc Layout:
+        Name: 20240321-110110-rutherfordium-mousse
+    Candidate:
+        Name: 20240321-110145-gentle-wolf
+        Disc Number: 0
+2026-09-10T20:01:17.693+03:00 LOG: Retrieved build information
+----- PreInitializing Sound System ------
+reading 7649 sound events
+reading 59 sound busses
+reading 57 sound states
+reading 6 sound switches
+done reading 6 sound events longest is 64
+----- Initializing Decls -----
+351 types, 0 declSource in 0 ms
+------------------------------
+Failed to read remaplist.md6remap
+Reading strings/english.lang as UTF-8
+28657 strings read
+Initializing class hierarchy
+Found DLL methods!
+
+------- Input Initialization -------
+Initializing DirectInput...
+mouse: DirectInput initialized.
+keyboard: DirectInput initialized.
+------------------------------------
+EnumerateDownloadableContent: D:\Program Files (x86)\Steam\steamapps\common\DOOM\dlc
+NetGetVersionChecksum - checksum  : 1416738302
+DownloadPlatformTitleStorage: Loaded
+NetGetVersionChecksum - no change
+idMPServerCloudInstance is disabled
+  0: 2470W (NVIDIA High Definition Audio)
+     2 channels, 48000 Hz
+     Default Console Device, Multimedia Device, Communications Device, and Game Device
+  1: Speakers (Steam Streaming Speakers)
+     2 channels, 48000 Hz
+  2: Headphones (Oculus Virtual Audio Device)
+     2 channels, 48000 Hz
+  3: Speakers (Steam Streaming Microphone)
+     2 channels, 48000 Hz
+Using audio device for voice 0
+----- Initializing Sound System ------
+initial.pck stream package loaded
+audio bank 'doom_snapmaps.bnk' excluded based on game mode SP_MP
+streamed_sfx.pck stream package loaded
+async load success id -2103502525 : doom_initial.bnk
+streamed_sfx_dlc1.pck stream package loaded
+streamed_sfx_dlc2.pck stream package loaded
+streamed_sfx_dlc3.pck stream package loaded
+English(US)/streamed_vo.pck stream package loaded
+English(US)/streamed_vo_dlc1.pck stream package loaded
+English(US)/streamed_vo_dlc2.pck stream package loaded
+async load success id -1012987315 : doom_ambience.bnk
+English(US)/streamed_vo_dlc3.pck stream package loaded
+  sound system initialized.
+--------------------------------------
+---------- ResetPersistHeap ----------
+Global heap: Can't HeapWalk() in this configuration
+Map heap   : GlobalMemoryStatus: 15.87GB dwTotalPhys
+GlobalMemoryStatus: 5.55GB dwAvailPhys
+GlobalMemoryStatus: 10.32GB used phys
+GlobalMemoryStatus: 6.18GB used virtual
+0.0 seconds to start load screen video
+0.0 seconds to init the hdc
+0.0 seconds to prep vts
+0.0 seconds to figure out container
+0.3 seconds to read 14962k table header
+Resources skipped by layer tests: 0
+0.1 seconds to determine and prepare  1264 resources need loaded
+0.0 seconds was durango PLM Events
+0.0 seconds to allocate and defer load  1323 resources
+Load 1264 resources using 1323 of 91542 total resource files, 1 streamed
+0.0 seconds to start the BGL
+--------- EndBackgroundLoads() ----------
+IO: 9 seeks, 15 reads,  63MB,  16.8MB/s
+Buffers recalled:          0
+Read       sleep msec:     0
+Decompress sleep msec:     0
+Foreground sleep msec:  2400
+Total            msec:  3758
+ 0.0 seconds spent updating the progress bar
+ 0.0 seconds spent loading resources
+ 0.1 seconds spent skipping and waiting
+ 4.2 seconds to preload resources
+     0 : preload model count
+------- Initializing renderSystem parm states --------
+Start time of bink video video\Boot_Sequence.bik in ms: 56243
+LOAD VIDEO
+2.7 seconds to start load screen video
+0.0 seconds to init the hdc
+0.0 seconds to prep vts
+0.0 seconds to figure out container
+0.0 seconds to read 14962k table header
+Resources skipped by layer tests: 0
+0.1 seconds to determine and prepare 28047 resources need loaded
+0.0 seconds was durango PLM Events
+0.1 seconds to allocate and defer load 38749 resources
+Load 28047 resources using 38749 of 91542 total resource files, 0 streamed
+0.0 seconds to start the BGL
+Attempted to get unknown string ID '#dlc_str_ammo_hellRazerGun' while loading edit.displayName from ammo:ammo/player/mp/loadout/hell_razer_gun
+Alias 'bodyReactions/blast/blastlargemidair_fwd' is defined more than once in decl 'player/tp_body.md6' while loading md6Def:player/tp_body.md6
+Alias 'interactions/zombie_hell/death/death_front_grab' is defined more than once in decl 'player/tp_body.md6' while loading md6Def:player/tp_body.md6
+Alias 'cineractive/lazarus_labs/checkpoint_intro_player' is defined more than once in decl 'player/tp_body.md6' while loading md6Def:player/tp_body.md6
+<idDeclMD6.Parse() : 3 alias load errors> while loading md6Def:player/tp_body.md6
+Anim event 'ae_attachCamera' requires joint caching but references an invalid animation 'md6/cineractive/maps/resource_ops/satellite_room_b/scan_techbody_player.md6anim' while loading md6Def:player/tp_body.md6
+Anim event 'ae_attachCamera' specifies an invalid joint name 'camera' in MD6 decl 'zion/characters/humans/mp_male/mp_uac_striker.md6' while loading md6Def:zion/characters/humans/mp_male/mp_uac_striker.md6
+Anim event 'ae_attachCamera' specifies an invalid joint name 'camera' in MD6 decl 'zion/characters/humans/mp_male/mp_uac_striker.md6' while loading md6Def:zion/characters/humans/mp_male/mp_uac_striker.md6
+Anim event 'ae_attachCamera' specifies an invalid joint name 'camera' in MD6 decl 'zion/characters/humans/mp_male/mp_uac_striker.md6' while loading md6Def:zion/characters/humans/mp_male/mp_uac_striker.md6
+Anim event 'ae_attachCamera' specifies an invalid joint name 'camera' in MD6 decl 'zion/characters/humans/mp_male/mp_uac_striker.md6' while loading md6Def:zion/characters/humans/mp_male/mp_uac_striker.md6
+Anim event 'ae_attachCamera' specifies an invalid joint name 'camera' in MD6 decl 'zion/characters/humans/mp_male/mp_uac_striker.md6' while loading md6Def:zion/characters/humans/mp_male/mp_uac_striker.md6
+Anim event 'ae_attachCamera' specifies an invalid joint name 'camera' in MD6 decl 'zion/characters/humans/mp_male/mp_uac_striker.md6' while loading md6Def:zion/characters/humans/mp_male/mp_uac_striker.md6
+<idDeclMD6.Parse() : Gore player_heart specifies an unknown mesh player_heart> while loading md6Def:zion/characters/humans/male/base/uac_elite_guard.md6
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\material\models\characters\eyes\eyelip.decl(5): warning : 'eyeLip' is an unknown renderProg. while loading material:models/characters/eyes/eyelip
+idMaterial::Parse: Material models/characters/eyes/eyelip had parmblock parse warning, ill-formed material may result!! while loading material:models/characters/eyes/eyelip
+parse error while loading material:models/characters/eyes/eyelip
+Attempted to get unknown string ID '#str_audio_log_generic' while loading edit.discoveredDisplayString from codex:codex/logs/base
+Attempted to get unknown string ID '#str_audio_log_generic_desc' while loading edit.undiscoveredDisplayString from codex:codex/logs/base
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\base.decl(8): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/base
+Attempted to get unknown string ID '#str_audio_log_1' while loading edit.discoveredDisplayString from codex:codex/logs/campaign/log1
+Attempted to get unknown string ID '#str_audio_log_1_desc' while loading edit.descriptionString from codex:codex/logs/campaign/log1
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\dev_story\part1.decl(6): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/dev_story/part1
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\dev_story\part2.decl(6): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/dev_story/part2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\dev_story\part3.decl(6): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/dev_story/part3
+Attempted to get unknown string ID '#str_challenge_glory_kills_desc_2' while loading edit.description from perks:perk/zion/player/sp/enviroment_suit/modify_glory_kill_distance_2
+Attempted to get unknown string ID '#str_challenge_glory_kills_desc_3' while loading edit.description from perks:perk/zion/player/sp/enviroment_suit/modify_glory_kill_distance_3
+Attempted to get unknown string ID '#str_vegasim_01_sub' while loading edit.challengeSubheading from dynamicChallenge:dynamicchallenge/ch01
+Parsed performance hint env: mp/modes/ball_vision
+Wrong Version while loading font:zero threes
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\arms_race.decl(24): warning : reading unknown value CHALLENGE_MODE_ARMS_RACE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/arms_race
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\artifact.decl(18): warning : reading unknown value CHALLENGE_MODE_ARTIFACT for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/artifact
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\artifact_variant.decl(24): warning : reading unknown value CHALLENGE_MODE_ARTIFACT_VARIANT for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/artifact_variant
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\attackdefend.decl(16): warning : reading unknown value CHALLENGE_MODE_ATTACKDEFEND for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/attackdefend
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\colossus.decl(18): warning : reading unknown value CHALLENGE_MODE_COLOSSUS for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/colossus
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\ctf.decl(16): warning : reading unknown value CHALLENGE_MODE_CTF for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/ctf
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\escort.decl(24): warning : reading unknown value CHALLENGE_MODE_ESCORT for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/escort
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\head_case.decl(18): warning : reading unknown value CHALLENGE_MODE_HEADCASE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/head_case
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\hellescape.decl(18): warning : reading unknown value CHALLENGE_MODE_HELLESCAPE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/hellescape
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\hellgate.decl(18): warning : reading unknown value CHALLENGE_MODE_HELLGATE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/hellgate
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\hunted.decl(18): warning : reading unknown value CHALLENGE_MODE_HUNTED for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/hunted
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\mission_command.decl(24): warning : reading unknown value CHALLENGE_MODE_MISSION_COMMAND for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/mission_command
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\soul_collector.decl(18): warning : reading unknown value CHALLENGE_MODE_SOULCOLLECTOR for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/soul_collector
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\struggle.decl(18): warning : reading unknown value CHALLENGE_MODE_STRUGGLE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/struggle
+Anim event 'ae_animSyncDeltaCorrectionEndPos' specifies an invalid joint name 'attach00' in MD6 decl 'zion/player/human/base/tp_body_praetor.md6' while loading md6Def:zion/player/human/base/tp_body_praetor.md6
+Anim event 'ae_animSyncStartDeltaCorrection' specifies an invalid joint name 'attach00' in MD6 decl 'zion/player/human/base/tp_body_praetor.md6' while loading md6Def:zion/player/human/base/tp_body_praetor.md6
+Attempted to get unknown string ID '#str_obj_test_leave_hangar' while loading edit.displayText from objective:objective/test/minidoom_hangar
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\pvpMap\online\pvp\mp_commandeer.decl(60): warning : array element 11 out of range while loading edit.modes from pvpMap:online/pvp/mp_commandeer
+Attempted to get unknown string ID '#str_online_mp_derelict_clone' while loading edit.displayName from pvpMap:online/pvp/mp_derelict_clone
+Attempted to get unknown string ID '#str_online_mp_derelict_clone_desc' while loading edit.description from pvpMap:online/pvp/mp_derelict_clone
+Attempted to get unknown string ID '#dlc_weapon_boomerang' while loading edit.displayName from unlockInventory:pvp/boomerang
+Attempted to get unknown string ID '#dlc_weapon_boomerang_desc' while loading edit.description from unlockInventory:pvp/boomerang
+Attempted to get unknown string ID '#str_challenge_kill_n_zombies_with_one_barrel_desc' while loading edit.description from unlockable:challenges/kill_n_zombies_with_one_barrel
+Attempted to get unknown string ID '#str_challenge_kill_n_zombies_with_one_barrel_desc' while loading edit.rules.item.description from unlockable:challenges/kill_n_zombies_with_one_barrel
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\mapspecific\electro_tower_challenge_2.decl(14): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/mapspecific/electro_tower_challenge_2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_1.decl(14): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_1
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_2.decl(16): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_3.decl(14): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_3
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_4.decl(16): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_4
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_5.decl(16): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_5
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\researchprojects\powerup_kills_2.decl(21): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:researchprojects/powerup_kills_2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\researchprojects\powerup_kills_3.decl(21): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:researchprojects/powerup_kills_3
+--------- EndBackgroundLoads() ----------
+IO: 2 seeks, 100 reads, 419MB,  27.8MB/s
+Buffers recalled:          1
+Read       sleep msec:     0
+Decompress sleep msec:     0
+Foreground sleep msec:  3980
+Total            msec: 24564
+ 0.0 seconds spent updating the progress bar
+ 0.0 seconds spent loading resources
+ 0.7 seconds spent skipping and waiting
+27.4 seconds to preload resources
+     0 : preload model count
+------- Initializing renderSystem parm states --------
+409 pages locked in D:\Program Files (x86)\Steam\steamapps\common\DOOM\virtualtextures\_vmtr.pages
+ 0.0 seconds to load and lock 409 pages
+------- Starting background pipeline compilation --------
+Could not find render prog 'ca_artifact_progress'
+Could not find render prog 'outsidefastmap'
+Could not find render prog 'snap_sledge'
+Could not find render prog 'ca_demontraversal'
+Could not find render prog 'waterunlit'
+Could not find render prog 'waterdistort'
+------- Initializing renderSystem media --------
+renderSystem initialized.
+--------------------------------------
+------------- Warnings ---------------
+during DOOM initialization...
+Failed to read remaplist.md6remap
+Found DLL methods!
+Attempted to get unknown string ID '#dlc_str_ammo_hellRazerGun' while loading edit.displayName from ammo:ammo/player/mp/loadout/hell_razer_gun
+Alias 'bodyReactions/blast/blastlargemidair_fwd' is defined more than once in decl 'player/tp_body.md6' while loading md6Def:player/tp_body.md6
+Alias 'interactions/zombie_hell/death/death_front_grab' is defined more than once in decl 'player/tp_body.md6' while loading md6Def:player/tp_body.md6
+Alias 'cineractive/lazarus_labs/checkpoint_intro_player' is defined more than once in decl 'player/tp_body.md6' while loading md6Def:player/tp_body.md6
+<idDeclMD6.Parse() : 3 alias load errors> while loading md6Def:player/tp_body.md6
+Anim event 'ae_attachCamera' requires joint caching but references an invalid animation 'md6/cineractive/maps/resource_ops/satellite_room_b/scan_techbody_player.md6anim' while loading md6Def:player/tp_body.md6
+Anim event 'ae_attachCamera' specifies an invalid joint name 'camera' in MD6 decl 'zion/characters/humans/mp_male/mp_uac_striker.md6' while loading md6Def:zion/characters/humans/mp_male/mp_uac_striker.md6
+<idDeclMD6.Parse() : Gore player_heart specifies an unknown mesh player_heart> while loading md6Def:zion/characters/humans/male/base/uac_elite_guard.md6
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\material\models\characters\eyes\eyelip.decl(5): warning : 'eyeLip' is an unknown renderProg. while loading material:models/characters/eyes/eyelip
+idMaterial::Parse: Material models/characters/eyes/eyelip had parmblock parse warning, ill-formed material may result!! while loading material:models/characters/eyes/eyelip
+parse error while loading material:models/characters/eyes/eyelip
+Attempted to get unknown string ID '#str_audio_log_generic' while loading edit.discoveredDisplayString from codex:codex/logs/base
+Attempted to get unknown string ID '#str_audio_log_generic_desc' while loading edit.undiscoveredDisplayString from codex:codex/logs/base
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\base.decl(8): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/base
+Attempted to get unknown string ID '#str_audio_log_1' while loading edit.discoveredDisplayString from codex:codex/logs/campaign/log1
+Attempted to get unknown string ID '#str_audio_log_1_desc' while loading edit.descriptionString from codex:codex/logs/campaign/log1
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\dev_story\part1.decl(6): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/dev_story/part1
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\dev_story\part2.decl(6): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/dev_story/part2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\codex\codex\logs\dev_story\part3.decl(6): warning : reading unknown value CODEX_CATAGORY_LOGS for enum codexEntryCatagory_t while loading edit.catagory from codex:codex/logs/dev_story/part3
+Attempted to get unknown string ID '#str_challenge_glory_kills_desc_2' while loading edit.description from perks:perk/zion/player/sp/enviroment_suit/modify_glory_kill_distance_2
+Attempted to get unknown string ID '#str_challenge_glory_kills_desc_3' while loading edit.description from perks:perk/zion/player/sp/enviroment_suit/modify_glory_kill_distance_3
+Attempted to get unknown string ID '#str_vegasim_01_sub' while loading edit.challengeSubheading from dynamicChallenge:dynamicchallenge/ch01
+Wrong Version while loading font:zero threes
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\arms_race.decl(24): warning : reading unknown value CHALLENGE_MODE_ARMS_RACE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/arms_race
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\artifact.decl(18): warning : reading unknown value CHALLENGE_MODE_ARTIFACT for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/artifact
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\artifact_variant.decl(24): warning : reading unknown value CHALLENGE_MODE_ARTIFACT_VARIANT for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/artifact_variant
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\attackdefend.decl(16): warning : reading unknown value CHALLENGE_MODE_ATTACKDEFEND for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/attackdefend
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\colossus.decl(18): warning : reading unknown value CHALLENGE_MODE_COLOSSUS for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/colossus
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\ctf.decl(16): warning : reading unknown value CHALLENGE_MODE_CTF for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/ctf
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\escort.decl(24): warning : reading unknown value CHALLENGE_MODE_ESCORT for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/escort
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\head_case.decl(18): warning : reading unknown value CHALLENGE_MODE_HEADCASE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/head_case
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\hellescape.decl(18): warning : reading unknown value CHALLENGE_MODE_HELLESCAPE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/hellescape
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\hellgate.decl(18): warning : reading unknown value CHALLENGE_MODE_HELLGATE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/hellgate
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\hunted.decl(18): warning : reading unknown value CHALLENGE_MODE_HUNTED for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/hunted
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\mission_command.decl(24): warning : reading unknown value CHALLENGE_MODE_MISSION_COMMAND for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/mission_command
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\soul_collector.decl(18): warning : reading unknown value CHALLENGE_MODE_SOULCOLLECTOR for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/soul_collector
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\gameMode\online\pvp\struggle.decl(18): warning : reading unknown value CHALLENGE_MODE_STRUGGLE for enum challengeGameMode_t while loading edit.challengeMode from gameMode:online/pvp/struggle
+Anim event 'ae_animSyncDeltaCorrectionEndPos' specifies an invalid joint name 'attach00' in MD6 decl 'zion/player/human/base/tp_body_praetor.md6' while loading md6Def:zion/player/human/base/tp_body_praetor.md6
+Anim event 'ae_animSyncStartDeltaCorrection' specifies an invalid joint name 'attach00' in MD6 decl 'zion/player/human/base/tp_body_praetor.md6' while loading md6Def:zion/player/human/base/tp_body_praetor.md6
+Attempted to get unknown string ID '#str_obj_test_leave_hangar' while loading edit.displayText from objective:objective/test/minidoom_hangar
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\pvpMap\online\pvp\mp_commandeer.decl(60): warning : array element 11 out of range while loading edit.modes from pvpMap:online/pvp/mp_commandeer
+Attempted to get unknown string ID '#str_online_mp_derelict_clone' while loading edit.displayName from pvpMap:online/pvp/mp_derelict_clone
+Attempted to get unknown string ID '#str_online_mp_derelict_clone_desc' while loading edit.description from pvpMap:online/pvp/mp_derelict_clone
+Attempted to get unknown string ID '#dlc_weapon_boomerang' while loading edit.displayName from unlockInventory:pvp/boomerang
+Attempted to get unknown string ID '#dlc_weapon_boomerang_desc' while loading edit.description from unlockInventory:pvp/boomerang
+Attempted to get unknown string ID '#str_challenge_kill_n_zombies_with_one_barrel_desc' while loading edit.description from unlockable:challenges/kill_n_zombies_with_one_barrel
+Attempted to get unknown string ID '#str_challenge_kill_n_zombies_with_one_barrel_desc' while loading edit.rules.item.description from unlockable:challenges/kill_n_zombies_with_one_barrel
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\mapspecific\electro_tower_challenge_2.decl(14): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/mapspecific/electro_tower_challenge_2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_1.decl(14): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_1
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_2.decl(16): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_3.decl(14): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_3
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_4.decl(16): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_4
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\challenges\powerup_kills_5.decl(16): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:challenges/powerup_kills_5
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\researchprojects\powerup_kills_2.decl(21): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:researchprojects/powerup_kills_2
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\unlockable\researchprojects\powerup_kills_3.decl(21): warning : reading unknown value STAT_POWERUP_KILL for enum gameStat_t while loading edit.rules.item.stat from unlockable:researchprojects/powerup_kills_3
+Could not find render prog 'ca_artifact_progress'
+Could not find render prog 'outsidefastmap'
+Could not find render prog 'snap_sledge'
+Could not find render prog 'ca_demontraversal'
+Could not find render prog 'waterunlit'
+Could not find render prog 'waterdistort'
+63 warnings
+--------------------------------------
+idDeclGameMode [ online/pvp/arms_race ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/artifact ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/artifact_variant ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/attackdefend ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/colossus ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/ctf ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/elimination_v2 ] failed to load. Challenge mode 14 already exists. Last seen in online/pvp/elimination.
+idDeclGameMode [ online/pvp/elimination_v3 ] failed to load. Challenge mode 14 already exists. Last seen in online/pvp/elimination.
+idDeclGameMode [ online/pvp/escort ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/head_case ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/hellescape ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/hellgate ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/hunted ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/mission_command ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/soul_collector ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/soul_harvest ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/struggle ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idDeclGameMode [ online/pvp/demonslayer ] failed to load. Challenge mode 0 already exists. Last seen in online/campaign.
+idMenuShellLocal::InitializeManager: SHELL
+    0ms : LoadBinaryMaterialsForVmtrs
+Waiting for video and render thread had no work?!
+Waiting for video and render thread had no work?!
+Waiting for video and render thread had no work?!
+Resource deleted with staticResource set: _binky0_video/boot_sequence.bik
+Resource deleted with staticResource set: _binka0_video/boot_sequence.bik
+Resource deleted with staticResource set: _binkcr0_video/boot_sequence.bik
+Resource deleted with staticResource set: _binkcb0_video/boot_sequence.bik
+Resource deleted with staticResource set: _binky1_video/boot_sequence.bik
+Resource deleted with staticResource set: _binka1_video/boot_sequence.bik
+Resource deleted with staticResource set: _binkcr1_video/boot_sequence.bik
+Resource deleted with staticResource set: _binkcb1_video/boot_sequence.bik
+async load success id 1182951009 : doom_dlc1_sfx.bnk
+---------- ResetMapHeap ----------
+Global heap: Can't HeapWalk() in this configuration
+Map heap   : GlobalMemoryStatus: 15.87GB dwTotalPhys
+GlobalMemoryStatus: 4.81GB dwAvailPhys
+GlobalMemoryStatus: 11.06GB used phys
+GlobalMemoryStatus: 7.06GB used virtual
+---------- ResetPersistHeap ----------
+Global heap: Can't HeapWalk() in this configuration
+Map heap   : Can't HeapWalk() in this configuration
+GlobalMemoryStatus: 15.87GB dwTotalPhys
+GlobalMemoryStatus: 4.81GB dwAvailPhys
+GlobalMemoryStatus: 11.06GB used phys
+GlobalMemoryStatus: 7.06GB used virtual
+  0: 2470W (NVIDIA High Definition Audio)
+     2 channels, 48000 Hz
+     Default Console Device, Multimedia Device, Communications Device, and Game Device
+  1: Speakers (Steam Streaming Speakers)
+     2 channels, 48000 Hz
+  2: Headphones (Oculus Virtual Audio Device)
+     2 channels, 48000 Hz
+  3: Speakers (Steam Streaming Microphone)
+     2 channels, 48000 Hz
+Using audio device for voice 0
+---------- ResetMapHeap ----------
+Global heap: Can't HeapWalk() in this configuration
+Map heap   : Can't HeapWalk() in this configuration
+GlobalMemoryStatus: 15.87GB dwTotalPhys
+GlobalMemoryStatus: 4.81GB dwAvailPhys
+GlobalMemoryStatus: 11.06GB used phys
+GlobalMemoryStatus: 7.06GB used virtual
+---------- ResetPersistHeap ----------
+Global heap: Can't HeapWalk() in this configuration
+Map heap   : Can't HeapWalk() in this configuration
+GlobalMemoryStatus: 15.87GB dwTotalPhys
+GlobalMemoryStatus: 4.81GB dwAvailPhys
+GlobalMemoryStatus: 11.06GB used phys
+GlobalMemoryStatus: 7.06GB used virtual
+  0: 2470W (NVIDIA High Definition Audio)
+     2 channels, 48000 Hz
+     Default Console Device, Multimedia Device, Communications Device, and Game Device
+  1: Speakers (Steam Streaming Speakers)
+     2 channels, 48000 Hz
+  2: Headphones (Oculus Virtual Audio Device)
+     2 channels, 48000 Hz
+  3: Speakers (Steam Streaming Microphone)
+     2 channels, 48000 Hz
+Using audio device for voice 0
+idSessionLocal::Pump was not called for 12 seconds
+idLoadScreen::LaunchLoadScreen( "game/shell_map" )
+0.0 seconds to start load screen video
+0.0 seconds to init the hdc
+0.0 seconds to prep vts
+0.0 seconds to figure out container
+0.3 seconds to read 14962k table header
+Resources skipped by layer tests: 0
+0.0 seconds to determine and prepare   107 resources need loaded
+0.0 seconds was durango PLM Events
+0.0 seconds to allocate and defer load    95 resources
+Load 107 resources using 95 of 91542 total resource files, 9 streamed
+0.0 seconds to start the BGL
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+file 'generated/maps/game/shell_map/shell_map.baas_botplayer' not found while loading aas:maps/game/shell_map/shell_map.aas_botplayer
+[Load AAS]
+file not found while loading aas:maps/game/shell_map/shell_map.aas_botplayer
+file 'generated/maps/game/shell_map/shell_map.baas_monster128' not found while loading aas:maps/game/shell_map/shell_map.aas_monster128
+[Load AAS]
+file not found while loading aas:maps/game/shell_map/shell_map.aas_monster128
+file 'generated/maps/game/shell_map/shell_map.baas_monster24' not found while loading aas:maps/game/shell_map/shell_map.aas_monster24
+[Load AAS]
+file not found while loading aas:maps/game/shell_map/shell_map.aas_monster24
+file 'generated/maps/game/shell_map/shell_map.baas_monster256' not found while loading aas:maps/game/shell_map/shell_map.aas_monster256
+[Load AAS]
+file not found while loading aas:maps/game/shell_map/shell_map.aas_monster256
+file 'generated/maps/game/shell_map/shell_map.baas_monster48' not found while loading aas:maps/game/shell_map/shell_map.aas_monster48
+[Load AAS]
+file not found while loading aas:maps/game/shell_map/shell_map.aas_monster48
+file 'generated/maps/game/shell_map/shell_map.baas_monster96' not found while loading aas:maps/game/shell_map/shell_map.aas_monster96
+[Load AAS]
+file not found while loading aas:maps/game/shell_map/shell_map.aas_monster96
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+Parsed performance hint env: performance_hint/default
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+--------- EndBackgroundLoads() ----------
+IO: 12 seeks, 20 reads,  84MB,  18.9MB/s
+Buffers recalled:          0
+Read       sleep msec:     0
+Decompress sleep msec:     0
+Foreground sleep msec:  3340
+Total            msec:  4466
+ 0.0 seconds spent updating the progress bar
+ 0.0 seconds spent loading resources
+ 0.0 seconds spent skipping and waiting
+OpenCachedPagesFile: D:\Program Files (x86)\Steam\steamapps\common\DOOM\virtualtextures\maps\game\shell_map.pages
+ 7.1 seconds to preload resources
+     0 : preload model count
+LoadNamedResourceBlock took 7063 msec
+couldn't open file maps/game/shell_map/shell_map.bfoliage for read
+Couldn't load while loading foliageModel:maps/game/shell_map/shell_map.bfoliage
+(idStaticShadowGeometrySource::CreateRenderGeometry):
+    idVec3            10661,    124kB
+    idDrawVert             ,       kB
+    triIndex_t        51522,    100kB
+    shadowDesc_t         18,      2kB
+    idTriangles          11,      3kB
+    idRnMdSurface        11,      1kB
+    Total                       231kB
+--------- Initializing Game ----------
+mapName: game/shell_map
+gameFlags: 284
+initialMap: 0
+Active layers For Spawn: 
+numPlayers: 1
+gamedate: Mar 21 2024
+async load success id -468562510 : doom_dlc2_sfx.bnk
+game initialized.
+idGameLocal:Constructor 000001A5A5C58040
+--------------------------------------
+----------- LoadMap(game/shell_map) ------------
+idSessionLocal::Pump was not called for 3 seconds
+RestartRenderThread called and renderer is not synced
+idSessionLocal::Pump was not called for 4 seconds
+map bounds are (4519.4, 7271.4, 24302.5)
+max clip sector is (564.9, 454.5, 759.5)
+failed to open maps/game/shell_map/shell_map.pvs
+Spawning world
+async load success id 754387463 : doom_dlc3_sfx.bnk
+Worldspawn:  Adding environment, default
+async load success id -270827267 : doom_effects.bnk
+Found 130 map entities
+idSessionLocal::Pump was not called for 3 seconds
+Skipped 31 non-production entities
+Registered 86 map entities
+
+Entities Spawned in Layers:
+
+Active Layers in map:
+Initializing 86 entities
+Spawning 86 entities
+RestartRenderThread called and renderer is not synced
+SetupPlayer: 0
+Health decl not set for idEnvironmentSuit, health functionality might not work!
+duplicate singular item 'weapon/zion/player/sp/fists' in give item to player_0
+player_0 is missing a threat sensor visual entity, will not have an x-ray skeleton.
+idHands::Reset - hands webAnimator decl null
+idUpgradeComponent::GetModifiedDecl - Invalid Op Type!
+idUpgradeComponent::GetModifiedDecl - Invalid Op Type!
+idHands::Init - animweb player/fp_hands has no state throwcookinto in subweb pistol_9mm
+==== Processing events ====
+---------- idRenderWorldLocal::SpecificationComplete ----------
+--------------------------------------
+Unknown command 'sys_dumpMemory'
+Map loaded in 11.07 seconds.
+AllocGame took 12.1270 seconds.
+idMenuShellLocal::InitializeManager: SHELL
+async load success id -832717006 : doom_footsteps.bnk
+14.1 seconds for game initialization
+21.2 total seconds for map load
+ 0.0 seconds for PRELOAD_MATERIAL_LIST
+idLoadScreen::LevelLoadCompleted()
+SnapTypeInfoCache Time: 98
+Menumanager_Shell Activate Took 61.1035 MS
+Executing xb_default.cfg for device #0...
+idSessionLocal::OnLocalUserSignin - User 'TefMeister' signed in
+idSignInManager::PromoteMasterLocalUser - User 'TefMeister' promoted - 1812616908
+----- Multiplayer decl overrides -----
+0 overrides
+--------------------------------------
+requiredSizeSavesBytes: 5242880
+requiredSizeProfileBytes: 1048576
+requiredSizeBytes: 6291456
+Common::Init() took 118.98 seconds.
+2026-09-10T20:02:40.798+03:00 LOG: Common::Init() took 118.98 seconds
+Took 118.9980 seconds to reach main game loop.
+idLobbyPortSecure::InitPort: 27016
+Opening IP socket: localhost:27016
+Setting up single-player defaults...
+Parse result, -1, 16, 8, 4, 2
+Parse result, 0, 1, 1, 2, 2
+Parse result, 0, 0, 1, 2
+----------- Initing Savegame List -----------
+Latest savegame found:
+     Folder: AUTOSAVE0
+     Map: game/sp/intro/intro
+     Date: 11/29/2021  1:46:01pm
+     Difficulty: 2 (Ultra-Violence)
+     Playtime: 0:25:38
+idPlayerProfile::Serialize - START
+idPlayerProfileShell::InternalSerialize - START
+Executing xb_default.cfg for device #0...
+idSnapUnlockableManager::Serialize - START
+idSnapUnlockableManager::Serialize - END
+idPlayerProfileShell::InternalSerialize - END
+idPlayerProfile::Serialize - END
+idPlayerProfile::Serialize - START
+idPlayerProfileShell::InternalSerialize - START
+idPlayFabTelemetryManager::DeserializeFromProfile - Profile already loaded! Clearing previous values
+idPlayerProfileShell::InternalSerialize - END
+idPlayerProfile::Serialize - END
+idLocalUser: Hydra call completed successfully.
+UpdateTitleStorage: Successfully loaded from hydra
+NetGetVersionChecksum - old value : 1416738302
+NetGetVersionChecksum - checksum  : 2986797219
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/20170718-all-compmp-motd-top.png
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/20170718-all-compmp-motd-bottom.png
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/20161020-pc-snap-motd1.png
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/20161020-pc-snap-motd2.png
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/20161020-pc-snap-motd3.png
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/20161020-pc-snap-motd4.png
+idLocalUserWin::SetPresenceInfo - Presence String: In the main menu
+idMenuWidget_LiveTileList::OnHydraGetLiveTileMessages - Hydra Calling back, we have data!
+idMenuWidget_LiveTileList::OnHydraGetLiveTileMessages - Successfully loaded from hydra
+Requesting Remote Binary File: https://zionstatic.game.idtech.services/DOOM-TheDarkAges_Standard_LiveTile_820x750-01.png
+Requesting Remote Binary File: https://zionstatic.game.idtech.services/DOOM-TheDarkAges_Premium_LiveTile_820x750-02.png
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/Doom-25thanniv_livetile_820x750.png
+Requesting Remote Binary File: https://dprgzy9nea5ev.cloudfront.net/YoD_LiveTiles_820x750px.DECEMBER.png
+idREST_WorkerThread::Run: Isolated request to GET https://dfw-stm.zionprod.systems/mpcloud/status timed out after 2000 ms
+idREST_WorkerThread::Run: Isolated request to GET https://fra-stm.zionprod.systems/mpcloud/status timed out after 2000 ms
+async load success id -178982497 : doom_items.bnk
+async load success id -223338032 : doom_monsters.bnk
+async load success id -886520749 : doom_movers.bnk
+async load success id -1565578366 : doom_mp.bnk
+async load success id -1574762030 : doom_music.bnk
+async load success id -1245747298 : doom_npc.bnk
+async load success id -1510435650 : doom_player.bnk
+async load success id -1410522120 : doom_projectile.bnk
+async load success id -1612706447 : doom_scripted_events.bnk
+async load success id -1311146075 : doom_test.bnk
+async load success id -1162915373 : doom_ui.bnk
+async load success id 332520835 : doom_weapon_mp.bnk
+async load success id 835849565 : doom_weapon_sp.bnk
+async load success id -1286705911 : doom_dlc1_vo.bnk
+async load success id 836159848 : doom_dlc2_vo.bnk
+async load success id -1950278829 : doom_dlc3_vo.bnk
+async load success id -1179692984 : doom_vo.bnk
+2026-09-10T20:03:53.046+03:00 LOG: Sending remoteAvailability report with 5 entries
+Setting up single-player defaults...
+2026-09-10T20:05:04.918+03:00 LOG: idMenuScreen_Shell_Campaign::ShowScreen - entering campaign
+idLocalUserWin::SetPresenceInfo - Presence String: Started playing the DOOM Campaign
+WIDGET_ACTION_CONTINUE_GAME_SLOT reached
+Slot is 0
+Slot name is AUTOSAVE0
+Current SaveGameSlot set
+Getting map name
+map name is game/sp/intro/intro
+map name after file extension strip is game/sp/intro/intro
+pageFilePath is virtualtextures/maps/game/sp/intro/intro.pages
+Getting chunkID for page file
+installer is NULL, returning 0 
+Chunk ID is 0
+checking if chunk is installed
+sys_installToHDD is false
+Chunk installed, appending command text
+installer is NULL, returning 0 
+sys_installToHDD is false
+Modified CVars:
+Cvar 'r_lightDistanceFadeMultiplier' was modified to '0.8' 
+Cvar 'r_decalFilteringQuality' was modified to '1' 
+Cvar 'r_decalLifetimeMultiplier' was modified to '1.3' 
+Cvar 'r_decalDistanceFadeMultiplier' was modified to '1' 
+Cvar 'r_decalFadeCulling' was modified to '0' 
+Cvar 'r_shadowLogBase' was modified to '3' 
+Cvar 'rs_forceFractionY' was modified to '1' 
+Cvar 'rs_forceFractionX' was modified to '1' 
+Cvar 'r_SSDOQuality' was modified to '0' 
+Cvar 'r_SSDO' was modified to '0' 
+Cvar 'r_SSRQuality' was modified to '0' 
+Cvar 'r_SSR' was modified to '0' 
+Cvar 'r_motionBlurQuality' was modified to '0' 
+Cvar 'r_lensDirtRatio' was modified to '0' 
+Cvar 'r_chromaticAberration' was modified to '0' 
+Cvar 'r_filmGrainRatio' was modified to '1' 
+Cvar 'r_sharpening' was modified to '2' 
+Cvar 'r_dofTAA' was modified to '0' 
+Cvar 'r_dof' was modified to '0' 
+Cvar 'r_hdrShutterSpeed' was modified to '10000' 
+Cvar 'r_hdrBloom' was modified to '0' 
+Cvar 's_volume_sfx' was modified to '-0.000004' 
+Cvar 's_volume_vo' was modified to '-0.000004' 
+Cvar 'r_particlesLightAtlasQuality' was modified to '0' 
+Cvar 'r_skipFlares' was modified to '1' 
+Cvar 'pm_bboxwidth' was modified to '32' 
+Cvar 'r_particleFadeQualityMultiplier' was modified to '0.8' 
+Cvar 'bindset' was modified to '0' 
+Cvar 'net_versionChecksum' was modified to '2986797219' 
+Cvar 'si_spawnspot' was modified to '' 
+Cvar 'g_setting_subtitles' was modified to '1' 
+Cvar 'g_gameDifficulty' was modified to '2' 
+Cvar 'r_gamma' was modified to '1' 
+Cvar 'r_zfar' was modified to '8192' 
+idGameLocal:Destructor 000001A5A5C58040
+--------- Game Map Shutdown ----------
+------------ Game Shutdown -----------
+--------------------------------------
+LoadLocalUserUnlockCustomizationToSessionLobby
+Sending customization for player 'TefMeister'
+[LOBBY_TYPE_GAME] SendLocalDirtyLobbyUserMutableDataToPeers user 0 dirty
+[LOBBY_TYPE_GAME] SendLocalDirtyLobbyUserGameMutableDataToPeers user 0 dirty
+2026-09-10T20:05:34.910+03:00 LOG: Start Loading game/sp/intro/intro
+Checking to see if the chunk is installed now
+---------- ResetMapHeap ----------
+Global heap: Can't HeapWalk() in this configuration
+Map heap   : Can't HeapWalk() in this configuration
+GlobalMemoryStatus: 15.87GB dwTotalPhys
+GlobalMemoryStatus: 4.41GB dwAvailPhys
+GlobalMemoryStatus: 11.47GB used phys
+GlobalMemoryStatus: 7.70GB used virtual
+---------- ResetPersistHeap ----------
+Global heap: Can't HeapWalk() in this configuration
+Map heap   : Can't HeapWalk() in this configuration
+GlobalMemoryStatus: 15.87GB dwTotalPhys
+GlobalMemoryStatus: 4.41GB dwAvailPhys
+GlobalMemoryStatus: 11.47GB used phys
+GlobalMemoryStatus: 7.70GB used virtual
+  0: 2470W (NVIDIA High Definition Audio)
+     2 channels, 48000 Hz
+     Default Console Device, Multimedia Device, Communications Device, and Game Device
+  1: Speakers (Steam Streaming Speakers)
+     2 channels, 48000 Hz
+  2: Headphones (Oculus Virtual Audio Device)
+     2 channels, 48000 Hz
+  3: Speakers (Steam Streaming Microphone)
+     2 channels, 48000 Hz
+Using audio device for voice 0
+idLoadScreen::LaunchLoadScreen( "game/sp/intro/intro" )
+0.0 seconds to start load screen video
+0.0 seconds to init the hdc
+0.0 seconds to prep vts
+0.0 seconds to figure out container
+0.2 seconds to read 14962k table header
+Resources skipped by layer tests: 0
+LOAD VIDEO
+0.1 seconds to determine and prepare  9282 resources need loaded
+0.0 seconds was durango PLM Events
+0.1 seconds to allocate and defer load  9091 resources
+Load 9282 resources using 9091 of 91542 total resource files, 93 streamed
+0.0 seconds to start the BGL
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+BOOM: maps/game/sp/intro/intro/_combo/world.bcm
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+file 'generated/maps/game/sp/intro/intro/intro.baas_botplayer' not found while loading aas:maps/game/sp/intro/intro/intro.aas_botplayer
+[Load AAS]
+file not found while loading aas:maps/game/sp/intro/intro/intro.aas_botplayer
+file 'generated/maps/game/sp/intro/intro/intro.baas_monster128' not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster128
+[Load AAS]
+file not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster128
+file 'generated/maps/game/sp/intro/intro/intro.baas_monster24' not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster24
+[Load AAS]
+file not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster24
+file 'generated/maps/game/sp/intro/intro/intro.baas_monster256' not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster256
+[Load AAS]
+file not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster256
+file 'generated/maps/game/sp/intro/intro/intro.baas_monster96' not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster96
+[Load AAS]
+file not found while loading aas:maps/game/sp/intro/intro/intro.aas_monster96
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+Anim event 'ae_animSyncDeltaCorrectionEndPos' requires joint caching but references an invalid animation 'md6/cineractive/maps/argent_tower/mancubus_intro/mancubus_intro_sync11.md6anim' while loading md6Def:zion/objects/syncentities/syncentity11.md6
+Anim event 'ae_animSyncStartDeltaCorrection' requires joint caching but references an invalid animation 'md6/cineractive/maps/argent_tower/mancubus_intro/mancubus_intro_sync11.md6anim' while loading md6Def:zion/objects/syncentities/syncentity11.md6
+Anim event 'ae_animSyncDeltaCorrectionEndPos' requires joint caching but references an invalid animation 'md6/cineractive/maps/resource_ops_foundry/revenant_qcon/revenant_outro_part1/revenant_outro_part1_sync11.md6anim' while loading md6Def:zion/objects/syncentities/syncentity11.md6
+Anim event 'ae_animSyncStartDeltaCorrection' requires joint caching but references an invalid animation 'md6/cineractive/maps/resource_ops_foundry/revenant_qcon/revenant_outro_part1/revenant_outro_part1_sync11.md6anim' while loading md6Def:zion/objects/syncentities/syncentity11.md6
+RestartRenderThread called and renderer is not synced
+<idDeclMD6.Parse() : Door door specifies an unknown mesh door_Left> while loading md6Def:zion/objects/props_set/doors/wc_glassdoor_double02.md6
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+Unknown joint 'align' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'aim_reference' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'aim_align' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'info_1' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'info_2' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'look_reference' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'look_align' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'hips' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'spine' in '*origin align aim_reference aim_align info_1 info_2 look_reference look_align Hips Spine' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'spine1' in 'Spine1 Spine2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'spine2' in 'Spine1 Spine2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'spine3' in 'Spine3 LeftShoulder Neck RightShoulder' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftshoulder' in 'Spine3 LeftShoulder Neck RightShoulder' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'neck' in 'Spine3 LeftShoulder Neck RightShoulder' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightshoulder' in 'Spine3 LeftShoulder Neck RightShoulder' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftarm' in 'LeftArm LeftArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftarmroll' in 'LeftArm LeftArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftforearm' in 'LeftForeArm LeftForeArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftforearmroll' in 'LeftForeArm LeftForeArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthand' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandindex1' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandindex2' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandindex3' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandmiddle1' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandmiddle2' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandmiddle3' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandpinky1' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandpinky2' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandpinky3' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandthumb1' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandthumb2' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefthandthumb3' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftweapon' in '*LeftHand *LeftHandIndex1 *LeftHandIndex2 *LeftHandIndex3 *LeftHandMiddle1 *LeftHandMiddle2 *LeftHandMiddle3 *LeftHandPinky1 *LeftHandPinky2 *LeftHandPinky3 *LeftHandThumb1 *LeftHandThumb2 *LeftHandThumb3 *LeftWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'head' in 'Head' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'jaw' in '*Jaw *Tongue1 *Tongue2 *Tongue3 *Tongue4 *Tongue5 *Tongue6' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tongue1' in '*Jaw *Tongue1 *Tongue2 *Tongue3 *Tongue4 *Tongue5 *Tongue6' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tongue2' in '*Jaw *Tongue1 *Tongue2 *Tongue3 *Tongue4 *Tongue5 *Tongue6' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tongue3' in '*Jaw *Tongue1 *Tongue2 *Tongue3 *Tongue4 *Tongue5 *Tongue6' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tongue4' in '*Jaw *Tongue1 *Tongue2 *Tongue3 *Tongue4 *Tongue5 *Tongue6' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tongue5' in '*Jaw *Tongue1 *Tongue2 *Tongue3 *Tongue4 *Tongue5 *Tongue6' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tongue6' in '*Jaw *Tongue1 *Tongue2 *Tongue3 *Tongue4 *Tongue5 *Tongue6' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightarm' in 'RightArm RightArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightarmroll' in 'RightArm RightArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightforearm' in 'RightForeArm RightForeArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightforearmroll' in 'RightForeArm RightForeArmRoll' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthand' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandindex1' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandindex2' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandindex3' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandmiddle1' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandmiddle2' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandmiddle3' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandpinky1' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandpinky2' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandpinky3' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandthumb1' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandthumb2' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righthandthumb3' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightweapon' in '*RightHand *RightHandIndex1 *RightHandIndex2 *RightHandIndex3 *RightHandMiddle1 *RightHandMiddle2 *RightHandMiddle3 *RightHandPinky1 *RightHandPinky2 *RightHandPinky3 *RightHandThumb1 *RightHandThumb2 *RightHandThumb3 *RightWeapon' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tail1' in 'Tail1 Tail2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tail2' in 'Tail1 Tail2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tail3' in '*Tail3 *Tail4 *Tail5 *Tail6 *Tail7' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tail4' in '*Tail3 *Tail4 *Tail5 *Tail6 *Tail7' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tail5' in '*Tail3 *Tail4 *Tail5 *Tail6 *Tail7' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tail6' in '*Tail3 *Tail4 *Tail5 *Tail6 *Tail7' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'tail7' in '*Tail3 *Tail4 *Tail5 *Tail6 *Tail7' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftupleg' in 'LeftUpLeg' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftleg' in 'LeftLeg' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftfoot' in 'LeftFoot' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'lefttoebase' in '*LeftToeBase *LeftFootToe1 *LeftFootToe2 *LeftFootMiddle1 *LeftFootMiddle2 *LeftFootPinky1 *LeftFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftfoottoe1' in '*LeftToeBase *LeftFootToe1 *LeftFootToe2 *LeftFootMiddle1 *LeftFootMiddle2 *LeftFootPinky1 *LeftFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftfoottoe2' in '*LeftToeBase *LeftFootToe1 *LeftFootToe2 *LeftFootMiddle1 *LeftFootMiddle2 *LeftFootPinky1 *LeftFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftfootmiddle1' in '*LeftToeBase *LeftFootToe1 *LeftFootToe2 *LeftFootMiddle1 *LeftFootMiddle2 *LeftFootPinky1 *LeftFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftfootmiddle2' in '*LeftToeBase *LeftFootToe1 *LeftFootToe2 *LeftFootMiddle1 *LeftFootMiddle2 *LeftFootPinky1 *LeftFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftfootpinky1' in '*LeftToeBase *LeftFootToe1 *LeftFootToe2 *LeftFootMiddle1 *LeftFootMiddle2 *LeftFootPinky1 *LeftFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'leftfootpinky2' in '*LeftToeBase *LeftFootToe1 *LeftFootToe2 *LeftFootMiddle1 *LeftFootMiddle2 *LeftFootPinky1 *LeftFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightupleg' in 'RightUpLeg' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightleg' in 'RightLeg' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightfoot' in 'RightFoot' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'righttoebase' in '*RightToeBase *RightFootToe1 *RightFootToe2 *RightFootMiddle1 *RightFootMiddle2 *RightFootPinky1 *RightFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightfoottoe1' in '*RightToeBase *RightFootToe1 *RightFootToe2 *RightFootMiddle1 *RightFootMiddle2 *RightFootPinky1 *RightFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightfoottoe2' in '*RightToeBase *RightFootToe1 *RightFootToe2 *RightFootMiddle1 *RightFootMiddle2 *RightFootPinky1 *RightFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightfootmiddle1' in '*RightToeBase *RightFootToe1 *RightFootToe2 *RightFootMiddle1 *RightFootMiddle2 *RightFootPinky1 *RightFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightfootmiddle2' in '*RightToeBase *RightFootToe1 *RightFootToe2 *RightFootMiddle1 *RightFootMiddle2 *RightFootPinky1 *RightFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightfootpinky1' in '*RightToeBase *RightFootToe1 *RightFootToe2 *RightFootMiddle1 *RightFootMiddle2 *RightFootPinky1 *RightFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'rightfootpinky2' in '*RightToeBase *RightFootToe1 *RightFootToe2 *RightFootMiddle1 *RightFootMiddle2 *RightFootPinky1 *RightFootPinky2' for model 'md6/default.md6mesh' while loading articulatedFigure:zion/characters/monsters/pinky_auto
+Unknown joint 'bodyuppergore_1' in '*origin bodyuppergore_1' for model 'md6/characters/monsters/cacodemon/gore/death/assets/mesh/death1_bodyuppergore3.md6mesh' while loading articulatedFigure:zion/gore/cacodemon/death1_bodyuppergore3
+Unknown joint 'bodyupperlower' in '*bodyupperlower' for model 'md6/characters/monsters/cacodemon/gore/death/assets/mesh/death1_upperbody.md6mesh' while loading articulatedFigure:zion/gore/cacodemon/death1_upperbody
+Unknown joint 'arm_right_2_forearmroll' in '+arm_right_2_rightforearm  +arm_right_2_forearmroll' for model 'md6/characters/monsters/hellknight/gore/death/assets/mesh/death2_armright.md6mesh' while loading articulatedFigure:zion/gore/hellknight/death2_armright
+Unknown joint 'chest_chunk_3' in 'chest_chunk_3' for model 'md6/characters/monsters/hellknight/gore/death/assets/mesh/death2_chest.md6mesh' while loading articulatedFigure:zion/gore/hellknight/death2_chest
+Unknown joint 'backchunk2' in 'backchunk2' for model 'md6/characters/monsters/zombie/gore/death/assets/mesh/death3_uac_security_gibs.md6mesh' while loading articulatedFigure:zion/gore/zombie/death3_uac_security_gibs
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+Parsed performance hint env: performance_hint/detail_geo_6k
+D:\Program Files (x86)\Steam\steamapps\common\DOOM\base\generated\decls\material\textures\decals\impacts\cyberdemon_stomp.decl(3): warning : 'decalBlend' is an unknown renderProg. while loading material:textures/decals/impacts/cyberdemon_stomp
+idMaterial::Parse: Material textures/decals/impacts/cyberdemon_stomp had parmblock parse warning, ill-formed material may result!! while loading material:textures/decals/impacts/cyberdemon_stomp
+parse error while loading material:textures/decals/impacts/cyberdemon_stomp
+BOOM: maps/game/sp/intro/intro/_combo/_world.bmodel
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+--------- EndBackgroundLoads() ----------
+IO: 33 seeks, 179 reads, 751MB,  72.0MB/s
+Buffers recalled:          2
+Read       sleep msec:     0
+Decompress sleep msec:     0
+Foreground sleep msec:  4850
+Total            msec: 12253
+ 0.0 seconds spent updating the progress bar
+ 0.0 seconds spent loading resources
+ 0.1 seconds spent skipping and waiting
+OpenCachedPagesFile: D:\Program Files (x86)\Steam\steamapps\common\DOOM\virtualtextures\maps\game\sp\intro\intro.pages
+12.7 seconds to preload resources
+     0 : preload model count
+LoadNamedResourceBlock took 12718 msec
+couldn't open file maps/game/sp/intro/intro/intro.bfoliage for read
+Couldn't load while loading foliageModel:maps/game/sp/intro/intro/intro.bfoliage
+(idStaticShadowGeometrySource::CreateRenderGeometry):
+    idVec3          1209442,  14173kB
+    idDrawVert        10874,    509kB
+    triIndex_t      6761841,  13206kB
+    shadowDesc_t        891,    107kB
+    idTriangles         920,    258kB
+    idRnMdSurface       920,     86kB
+    Total                     28342kB
+--------- Initializing Game ----------
+mapName: game/sp/intro/intro
+gameFlags: 284
+initialMap: 0
+Active layers For Spawn: layer/game/sp/intro/chainsaw_post layer/game/sp/intro/modbot_1_post layer/game/sp/intro/blue_keycard_post layer/game/sp/intro/pistol_post layer/game/sp/intro/opening_pre layer/game/sp/intro/game_start_post layer/game/sp/intro/gk_intro_post layer/game/sp/intro/bunker_post 
+numPlayers: 1
+gamedate: Mar 21 2024
+game initialized.
+idGameLocal:Constructor 000001A5B9F14040
+--------------------------------------
+----------- LoadMap(game/sp/intro/intro) ------------
+map bounds are (37270.7, 47115.5, 13109.1)
+max clip sector is (2329.4, 1472.4, 1638.6)
+Spawning world
+Worldspawn:  Adding environment, vista/mars_intro_crash
+Found 11107 map entities
+RestartRenderThread called and renderer is not synced
+Skipped 6726 non-production entities
+Registered 4267 map entities
+
+Entities Spawned in Layers:
+  layer/game/sp/intro/chainsaw_post
+  layer/game/sp/intro/modbot_1_post
+  layer/game/sp/intro/blue_keycard_post
+  layer/game/sp/intro/game_start_post
+  layer/game/sp/intro/gk_intro_post
+  layer/game/sp/intro/bunker_post
+  layer/game/sp/intro/pistol_post
+
+Active Layers in map:
+  layer/game/sp/intro/chainsaw_post
+  layer/game/sp/intro/modbot_1_post
+  layer/game/sp/intro/blue_keycard_post
+  layer/game/sp/intro/pistol_post
+  layer/game/sp/intro/opening_pre
+  layer/game/sp/intro/game_start_post
+  layer/game/sp/intro/gk_intro_post
+  layer/game/sp/intro/bunker_post
+Initializing 4267 entities
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+Spawning 4267 entities
+Spawner 'crash_gameplay_target_spawn_42' had to search for name in resourcelist 'crash_gameplay_ai_demon_imp_teleport_1'!
+RestartRenderThread called and renderer is not synced
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_demon_imp_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_zombie_uac_security_super_unaware_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_zombie_scientist_super_unaware_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_zombie_uac_security_unaware_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_zombie_scientist_unaware_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_zombie_uac_security_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_zombie_scientist_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_demon_imp_unaware_1'!
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_hellified_marine_rifle_1'!
+'weapon/zion/ai/hellified_soldier/plasma' has no weaponEntityDef assigned! Using default weapons/weaponent.
+Spawner 'crash_gameplay_target_spawn_39' had to search for name in resourcelist 'crash_gameplay_ai_hellified_marine_rifle_unaware_1'!
+'weapon/zion/ai/hellified_soldier/plasma' has no weaponEntityDef assigned! Using default weapons/weaponent.
+RestartRenderThread called and renderer is not synced
+Spawner 'crash_gameplay_target_spawn_1875' had to search for name in resourcelist 'crash_gameplay_ai_demon_imp_pit_1'!
+Spawner 'crash_gameplay_target_spawners_spawn_manager_6' had to search for name in resourcelist 'crash_gameplay_ai_hellified_marine_rifle_2'!
+'weapon/zion/ai/hellified_soldier/plasma' has no weaponEntityDef assigned! Using default weapons/weaponent.
+Spawner 'crash_gameplay_target_spawners_spawn_manager_6' had to search for name in resourcelist 'crash_gameplay_ai_zombie_scientist_2'!
+Spawner 'crash_gameplay_target_spawn_pre_imp_1' had to search for name in resourcelist 'crash_gameplay_ai_demon_imp_pit_2'!
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+invalid clip model size '0 0 0' on entity 'geo_arena_func_static_644'
+Spawner 'classic_target_spawn_8' had to search for name in resourcelist 'classic_ai_hellified_marine_rifle_1'!
+'weapon/zion/ai/hellified_soldier/plasma' has no weaponEntityDef assigned! Using default weapons/weaponent.
+WARNING: idTraceModel::SetupCylinder: too many sides
+WARNING: idTraceModel::SetupCylinder: too many sides
+Spawner 'opening_gameplay_target_spawn_6' had to search for name in resourcelist 'opening_gameplay_ai_zombie_scientist_1'!
+Spawner 'opening_gameplay_target_spawn_6' had to search for name in resourcelist 'opening_gameplay_ai_zombie_uac_security_1'!
+Spawner 'opening_gameplay_target_spawn_16' had to search for name in resourcelist 'opening_gameplay_ai_demon_imp_intro_1'!
+Spawner 'opening_gameplay_target_spawners_spawn_manager_1' had to search for name in resourcelist 'opening_gameplay_ai_demon_imp_teleport_1'!
+Spawner 'opening_gameplay_target_spawn_51' had to search for name in resourcelist 'opening_gameplay_ai_zombie_intro_uac_easy_stagger_1'!
+Spawner 'opening_gameplay_target_spawn_53' had to search for name in resourcelist 'opening_gameplay_ai_zombie_intro_uac_easy_stagger_2'!
+Spawner 'opening_gameplay_target_spawn_54' had to search for name in resourcelist 'opening_gameplay_ai_zombie_intro_scientist_easy_stagger_1'!
+Spawner 'opening_gameplay_target_spawn_52' had to search for name in resourcelist 'opening_gameplay_ai_zombie_intro_scientist_easy_stagger_2'!
+RestartRenderThread called and renderer is not synced
+idInfoPath 'opening_gameplay_info_path_path48_9' is outside of aas aas_monster48'
+Spawner 'opening_gameplay_target_spawn_59' had to search for name in resourcelist 'opening_gameplay_ai_zombie_intro_uac_security_nostagger_1'!
+Show more than allowed max AI, ignoring Show()
+Spawner 'opening_gameplay_target_spawn_60' had to search for name in resourcelist 'opening_gameplay_ai_zombie_intro_scientist_nostagger_1'!
+Show more than allowed max AI, ignoring Show()
+[1] playerSpawnDef changed from player/sp/intro to player
+[2] playerSpawnDef changed from player/sp/intro to player
+RestartRenderThread called and renderer is not synced
+SetupPlayer: 0
+Health decl not set for idEnvironmentSuit, health functionality might not work!
+duplicate singular item 'weapon/zion/player/sp/fists' in give item to player/sp/intro_0
+player/sp/intro_0 is missing a threat sensor visual entity, will not have an x-ray skeleton.
+idHands::Reset - hands webAnimator decl null
+idHands::Init - animweb player/fp_hands has no state throwcookinto in subweb pistol_9mm
+AUTOMAP FOG OF WAR: New checkpoint version detected! Yay!
+Health decl not set for idEnvironmentSuit, health functionality might not work!
+'weapon/zion/player/sp/shotgun' has no weaponEntityDef assigned! Using default weapons/weaponent.
+enabling ABILITY_MOD_ENV_DAMAGE_MOD
+==== Processing events ====
+!!!! Spawn - 'opening_gameplay_interact_panels_echo_panel_intro_1' has an invalid initial node ''
+SWF swf/hud_bottom.swf: Unrecognized font 'uniwars rg' used in textInstance  while loading swf:hud_bottom
+SWF swf/hud_bottom.swf: Unrecognized font 'uniwars rg' used in textInstance  while loading swf:hud_bottom
+SWF swf/hud_bottom.swf: Unrecognized font 'uniwars rg' used in textInstance  while loading swf:hud_bottom
+SWF swf/scopes/arc_cannon.swf: File not found while loading swf:scopes/arc_cannon
+!!!! Spawn - 'interact/use_panel_4576' has an invalid initial node ''
+!!!! Spawn - 'interact/use_panel_4732' has an invalid initial node ''
+!!!! Spawn - 'interact/use_panel_4733' has an invalid initial node ''
+RestartRenderThread called and renderer is not synced
+idWeaponEntity being deleted from idWeapon destructor: [weapons/weaponent_4442]
+idWeaponEntity being deleted from idWeapon destructor: [weapons/weaponent_4407]
+idWeaponEntity being deleted from idWeapon destructor: [weapons/weaponent_4379]
+idWeaponEntity being deleted from idWeapon destructor: [weapons/weaponent_4365]
+idHands::Init - animweb player/fp_hands has no state throwcookinto in subweb shotgun
+idLocalUserWin::SetPresenceInfo - Presence String: Playing The UAC
+idTarget_EquipItems: error, ammo type not on weapon type
+player1 sending interaction IA_SCRIPT_DOOR_ALWAYS_OPEN to opening_gameplay_interact_doors_emt_door_01_3!
+idGameLocal::ResizePoolAndReturnEntity Resizing for def breakable/test_gibs
+idGameLocal::ResizePoolAndReturnEntity Resizing for def breakable/test_gibs
+idGameLocal::ResizePoolAndReturnEntity Resizing for def breakable/gibs/unwilling_uac_security/right_arm
+idGameLocal::ResizePoolAndReturnEntity Resizing for def breakable/test_gibs
+idGameLocal::ResizePoolAndReturnEntity Resizing for def breakable/gibs/unwilling_uac_security/right_arm
+RestartRenderThread called and renderer is not synced
+---------- idRenderWorldLocal::SpecificationComplete ----------
+409 pages locked in D:\Program Files (x86)\Steam\steamapps\common\DOOM\virtualtextures\maps\game\sp\intro\intro.pages
+ 0.6 seconds to load and lock 409 pages
+(idRenderWorldLocal::SpecificationComplete) Built shadow occlusion buffers for 33 lights. (9.09ms)
+--------------------------------------
+Unknown command 'sys_dumpMemory'
+Map loaded in 4.84 seconds.
+AllocGame took 4.9870 seconds.
+idMenuShellLocal::InitializeManager: GAME
+Executing xb_default.cfg for device #0...
+ 6.7 seconds for game initialization
+19.4 total seconds for map load
+ 0.0 seconds for PRELOAD_MATERIAL_LIST
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+RestartRenderThread called and renderer is not synced
+idDeclOverrideManager::OverrideLoadedDecls() 0 milliseconds to override 0 decls.
+105.0 seconds to load game/sp/intro/intro
+idLoadScreen::LevelLoadCompleted()
+SWF swf/hud_bottom.swf: Unrecognized font 'uniwars rg' used in textInstance 
+SWF swf/hud_bottom.swf: Unrecognized font 'uniwars rg' used in textInstance 
+SWF swf/hud_bottom.swf: Unrecognized font 'uniwars rg' used in textInstance 
+player1 sending interaction IA_SCRIPT_DOOR_UNLOCK to opening_gameplay_interact_doors_intro_tram_door_2!
+player1 sending interaction IA_SCRIPT_CUSTOM2 to opening_gameplay_interact_doors_intro_tram_door_2!
+]getviewpos
+1728 5440 6372.16 30.0 -0.0
+]conDump viewpos.txt
+
