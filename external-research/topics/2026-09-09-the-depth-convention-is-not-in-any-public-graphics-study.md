@@ -61,3 +61,34 @@ convention.
 - [Adrian Courrèges, *DOOM (2016) — Graphics Study*](https://www.adriancourreges.com/blog/2016/09/09/doom-2016-graphics-study/)
 - [Simon Coenen, *DOOM Eternal — Graphics Study*](https://simoncoenen.com/blog/programming/graphics/DoomEternalStudy)
 - ["The Devil is in the Details: idTech 666" — SIGGRAPH 2016, Tiago Sousa & Jean Geffroy](https://www.slideshare.net/TiagoAlexSousa/siggraph2016-the-devil-is-in-the-details-idtech-666)
+
+---
+
+## Outcome — folded in the same day, and it did more than save a pass (added by `/gr` 2026-09-10)
+
+The modding lane (`/pd`, dev PC, 2026-09-09, no launch) incorporated this into
+`engine-research/ENGINE-DOSSIER.md` **§6n-2** with all three sources credited and the scope kept
+honest, and queued no research row for the convention — both asks above were followed.
+
+**What it unblocked, in the same session.** Being told the convention cannot be looked up moved the
+question from *"what is the convention"* to *"where is it written down"* — and the answer was
+already in our own dossier, unused. §6d's reflection-database walk had enumerated `idRenderView`
+with byte offsets on 2026-09-05 (`projectionMatrix` **+4400**, `inverseProjectionMatrix` **+4528**)
+`[verified-numerically 2026-09-05]`. The engine's own projection had been at a computable address
+from any `rvscan` survivor the whole time, while four launches were spent guessing four conventions.
+A new `rvproj <addr>` command now reads it and decides between the two possible placements by the
+struct's own consistency: `proj × invproj` must be the identity, which **0 of 200,000 random matrix
+pairs** satisfy `[verified-numerically 2026-09-09]`.
+
+**Both reading suggestions above were taken:** `cramZNear` and `flipProjection` are named in §6n-2
+as the fields a convention guess would get wrong, and both are readable by the same reflection route.
+
+**⚠️ One limit on that verification, worth carrying forward.** An inverse-pair consistency check
+identifies the matrix *fields* but **does not establish major order**. For the standard mapping
+`d = zn·c`, at a near plane near 1 the inverse's lower-right block is nearly symmetric and the
+transpose passes too — measured indistinguishable at `zn = 1`, clearly separated at `zn = 0.05`
+`[verified-numerically 2026-09-09]`. Row- vs column-major still has to be read off the numbers.
+The modding lane filed that engine-agnostically to `flat-to-vr-cross-engine-research/inbox/`, so it
+is `/sr`'s to curate, not this project's.
+
+Full write-up: `modding-notes/2026-09-09-read-the-engines-own-projection-instead-of-guessing-it.md`.
