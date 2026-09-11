@@ -1752,6 +1752,68 @@ landed", so at least one other failure mode was also in play — hold both.
   confirming DOOM binds F1/F2 by default — one more reason the account's **numpad-only, never F-keys**
   rule applies here.
 
+## 6o-2. ⭐ 6o IS NOW CODE, AND IT REFUSES BY DEFAULT — plus the ambiguity 6o did not settle (2026-09-11, `/pd`, static)
+
+`cmdroute` (`staging/doom-2016-vr/proxy-vulkan/src/cmdroute.{h,c}`) implements §6o and is wired into
+`autocmd` as three operator commands: **`cmdroute`** (report what resolved), **`cmd <text>`** (run any
+console command with no console), **`viewpos`** (buffer `getviewpos`, read the six cached floats).
+`[compile-verified 2026-09-11]` — it has never run against DOOM, and §6o's RVAs remain
+`[inferred-static 2026-09-10]`.
+
+### ⚠️ The ambiguity §6o leaves open: POINTER vs OBJECT
+
+§6o says *"`idCmdSystem` sits at RVA `0x2F451C0`"* and counts xrefs to *"that global"*. **That is
+consistent with two layouts, and they dereference differently:**
+
+| layout | reading |
+| --- | --- |
+| **POINTER** | `object = *(void **)(base + RVA)`, then `vtable = *(void **)object` — the idTech idiom (`idCmdSystem *cmdSystem;` called as `cmdSystem->BufferCommandText(...)`, compiling to `mov rax,[cmdSystem]; call [rax+0x50]`) |
+| **OBJECT** | the global **is** the object, so `vtable = *(void **)(base + RVA)` directly |
+
+The xref census cannot separate them — both produce xrefs to the same global. **So both are
+validated and the one that passes is used and named in the log; POINTER is tried first as the more
+likely idiom, but nothing is assumed.** If **both** validate and disagree the call is **REFUSED**,
+because two readings that both look valid means the evidence does not identify the layout. If both
+validate and name the same target that is agreement, not ambiguity, and it proceeds.
+
+**Consequence worth noting: the first live `cmdroute` settles this as a side effect**, with nothing
+dereferenced if the RVA is wrong on this build.
+
+### The guards, and what is actually proved about them
+
+Every pointer is checked before dereference: **inside the module's image range**, **committed and
+readable** (`VirtualQuery`, `MEM_COMMIT`, not `PAGE_NOACCESS`/`PAGE_GUARD`, whole span inside one
+region), and — for the call target — **inside an EXECUTABLE page**. That last one is not redundant:
+a vtable slot can hold a pointer that is in the module and readable and still not be code.
+
+`test/cmdroutetest.c` (**30 checks**, unconditional on every build) includes the shipped `cmdroute.c`
+directly and proves the guards **discriminate**, against pointers whose nature is certain in the
+test's own process `[compile-verified 2026-09-11]`: module base inside / one-past-end outside; heap,
+stack and NULL outside; committed heap readable but NULL, a low bogus address, **reserved-but-uncommitted**
+memory and `PAGE_NOACCESS` all rejected; a real function executable but heap, stack and **the module's
+own PE-header page** not. And the headline: **`resolve()` refuses cleanly in a process that is not
+DOOM**, returning no function pointer.
+
+⚠️ **This proves the failure mode, not the RVAs.** A stale RVA on a different build produces a
+logged refusal instead of an access violation. Whether `0x2F451C0` is right on THIS build is still
+`[inferred-static]` and needs one launch.
+
+### Thread safety, handled by construction rather than by discipline
+
+§6o names `BufferCommandText`'s thread safety as the real hazard. There is therefore **no polling
+variant of `viewpos`** in the proxy, and no present-hook path that can reach `cmdroute_buffer`. All
+three commands are operator-typed one-shots. `cmdroute_readViewPos` is a plain read of static memory
+and touches no engine code, so it is free to call — but it returns the **previous** `getviewpos`'s
+answer, since the engine drains its buffer next frame, and the log says so rather than letting a
+stale read look fresh.
+
+### Plausibility screen on the cached floats
+
+Uninitialised static memory reads as garbage that is indistinguishable from a position. The read
+rejects any NaN and any magnitude above `1.0e7`, and says *"has getviewpos run yet?"* rather than
+reporting a camera at 10^38 units. ⚠️ **A pass is not proof the RVA is right** — five plausible
+floats can sit anywhere; it only removes the obviously-wrong case.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
