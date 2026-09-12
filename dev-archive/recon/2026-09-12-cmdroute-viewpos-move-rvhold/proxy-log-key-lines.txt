@@ -1,0 +1,565 @@
+[17:37:19.497] [autoinput] DirectInput8 object seen; CreateDevice instrumented
+[17:37:19.498] [autoinput] DirectInput8 CreateDevice(SysMouse) -> 0x00000000
+[17:37:19.498] [autoinput] SysMouse device hooked (GetDeviceState + GetDeviceData) -- this is the look path
+[17:37:19.501] [autoinput] NOTE: the mouse device uses BUFFERED GetDeviceData. Immediate-mode lX/lY injection will NOT be seen -- event fabrication is needed here.
+[17:37:19.510] [autoinput] DirectInput8 CreateDevice(SysKeyboard) -> 0x00000000
+[17:37:21.144] [autoinput] window=00000000000A0460  keystate hooks: async=yes state=yes board=yes  cursor=get+set  dinput8=instrumented
+[17:37:21.144] [autoinput]   inproc-keystate    available    -- 3 key-state hook(s) + cursor
+[17:37:21.144] [autoinput]   sendinput          available  
+[17:37:21.144] [autoinput]   postmessage        available  
+[17:37:21.144] [autoinput]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[17:37:21.144] [auto] automation ON (marker file). Append commands to: D:\SteamLibrary\steamapps\common\DOOM\doom_automation_cmds.txt
+[17:37:21.144] [auto] `help` lists them; `probe` measures which input backend this game obeys.
+[17:38:56.412] [auto] BEGIN "cmdroute"
+[17:38:56.412] [cmdroute] module=00007FF6E7960000 size=0x14161000
+[17:38:56.412] [cmdroute] idCmdSystem: POINTER (global holds idCmdSystem*)
+[17:38:56.412] [cmdroute] viewpos cache reads: pos 0.000 0.000 0.000  pitch 0.000 yaw 0.000 (stale until getviewpos runs at least once)
+[17:38:56.412] [auto] END   "cmdroute"
+[17:38:56.412] [auto] BEGIN "viewpos"
+[17:38:56.412] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:38:56.412] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:38:56.412] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 0.000 0.000 0.000  pitch 0.000 yaw 0.000  -- run viewpos again for this frame's value
+[17:38:56.412] [auto] END   "viewpos"
+[17:38:56.412] [auto] BEGIN "viewpos"
+[17:38:56.413] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:38:56.413] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:38:56.413] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 0.000 0.000 0.000  pitch 0.000 yaw 0.000  -- run viewpos again for this frame's value
+[17:38:56.413] [auto] END   "viewpos"
+[17:39:33.414] [auto] BEGIN "status"
+[17:39:33.414] [auto] status: tol=0.00100  budget=96 MB  stride=16  snapshotA=-1 candidates  live mappings=6
+[17:39:33.414] [auto]   inproc-keystate    available    [default]  -- 3 key-state hook(s) + cursor
+[17:39:33.414] [auto]   sendinput          available  
+[17:39:33.414] [auto]   postmessage        available  
+[17:39:33.415] [auto]   vigem-pad          unavailable  -- driver present -- our report path is the next thing to build
+[17:39:33.415] [auto] END   "status"
+[17:40:27.665] [auto] BEGIN "help"
+[17:40:27.665] [auto]   cmdroute        -- report whether idCmdSystem resolved (dossier 6o)
+[17:40:27.665] [auto]   cmd <text>      -- run a console command with NO console
+[17:40:27.665] [auto]   viewpos         -- buffer getviewpos and read its cached answer
+[17:40:27.665] [auto] commands:
+[17:40:27.665] [auto]   status | help | mappings
+[17:40:27.665] [auto]   snapa | snapb | dump          camhunt: snapshot A, compare, show current
+[17:40:27.665] [auto]   tol <float>                   retune orthonormality tolerance, no rebuild
+[17:40:27.665] [auto]   budget <MB> | stride <bytes>  narrow or coarsen the scan, live
+[17:40:27.665] [auto]   backend <inproc|sendinput|postmessage|vigem>
+[17:40:27.665] [auto]   move <fwd,back,left,right,jump> [frames]
+[17:40:27.665] [auto]   look <dx> <dy> [frames]       mouse delta per frame
+[17:40:27.665] [auto]   findvec <x> <y> <z> [tol]     find a value in the GPU buffers
+[17:40:27.665] [auto]   psearch <x> <y> <z> [tol]     find it in PROCESS memory (pass 1)
+[17:40:27.665] [auto]   pnarrow <x> <y> <z> [tol]     keep only what matches now (pass 2)
+[17:40:27.665] [auto]   pdump 0xADDR                  show floats around an address
+[17:40:27.665] [auto]   rvscan [n]                    shape-test EVERY psearch candidate, best n first
+[17:40:27.665] [auto]   rvcheck <hexaddr>             is this hit a renderView_t? (shape test)
+[17:40:27.665] [auto]   rvmat <hexaddr>               read explicitProjectionMatrix
+[17:40:27.665] [auto]   rvproj <hexaddr>              read the ENGINE'S OWN projection matrix
+[17:40:27.665] [auto]   rvexplicit <hexaddr> on|off   flag only - CANNOT answer 6c alone, see rvhold
+[17:40:27.665] [auto]   rvhold <addr> [fov] [frames] [std|tan|inv]  hold a projection every frame
+[17:40:27.665] [auto]     no fov = the engine's OWN fov, and SUCCESS IS AN UNCHANGED PICTURE
+[17:40:27.665] [auto]   rvholdoff                     release it and print the HELD/ZEROED counters
+[17:40:27.665] [auto]   uniscan [slackKB]             search the BOUND uniform window for a projection
+[17:40:27.666] [auto]   rvsetmat <hexaddr> f1..f16    write the 4x4, row-major
+[17:40:27.666] [auto]   pwrite <hexaddr> <x> <y> <z>  write three floats once
+[17:40:27.666] [auto]   phold <hexaddr> <x> <y> <z>   hold them every frame | pholdoff
+[17:40:27.666] [auto]   pholdall <dx> <dy> <dz>       hold the WHOLE candidate set | pholdalloff
+[17:40:27.666] [auto]   phalve1 | phalve2 | pother    bisect the set; pother = the half just dropped
+[17:40:27.666] [auto]   pholdyaw <hexaddr> <deg>      ROTATE the basis about Z | pholdyawoff
+[17:40:27.666] [auto]   scan <hex>                    tap a PHYSICAL scancode (console = 0x29)
+[17:40:27.666] [auto]   framespy                      capture ONE frame's pass/draw/uniform structure
+[17:40:27.666] [auto]   ringlearn | ringstat | ringoff  per-frame ring camera locator
+[17:40:27.666] [auto]   ringyaw <deg> | ringeye <units> drive the ring copies (stereo eye offset)
+[17:40:27.666] [auto]   camwatch | camstat | camoff    track the camera at the flush path
+[17:40:27.666] [auto]   camseed <x> <y> <z>           lock on using getviewpos output
+[17:40:27.666] [auto]   camrescan                     re-learn where the copies live
+[17:40:27.666] [auto]   camyaw <deg>                  ROTATE the live camera (0 = watch only)
+[17:40:27.666] [auto]   key <tilde|enter|esc|0xNN>    tap one key
+[17:40:27.666] [auto]   type <text>                   type a string (via the current typeroute)
+[17:40:27.666] [auto]   typeroute <sendinput|postkey|postchar|keystate>  HOW taps are delivered
+[17:40:27.666] [auto]   console <text>                open console, run text, close
+[17:40:27.666] [auto]   ctest                         type a probe string down EACH route in turn
+[17:40:27.666] [auto]   probe                         measure which backends the game obeys
+[17:40:27.666] [auto]   stop                          release any held input
+[17:40:27.666] [auto] END   "help"
+[17:40:48.165] [auto] BEGIN "typeroute sendinput"
+[17:40:48.165] [auto] type route -> sendinput-scancode. NOTHING is known about which route this game's console obeys; try one, look at the console, and say what landed.
+[17:40:48.165] [auto] END   "typeroute sendinput"
+[17:40:48.165] [auto] BEGIN "key 0x26"
+[17:40:48.165] [auto] key 0x26 queued
+[17:40:48.165] [auto] END   "key 0x26"
+[17:41:15.915] [auto] BEGIN "key esc"
+[17:41:15.915] [auto] key 0x1B queued
+[17:41:15.915] [auto] END   "key esc"
+[17:41:38.416] [auto] BEGIN "key enter"
+[17:41:38.416] [auto] key 0x0D queued
+[17:41:38.416] [auto] END   "key enter"
+[17:41:44.665] [auto] BEGIN "key 0x26"
+[17:41:44.665] [auto] key 0x26 queued
+[17:41:44.665] [auto] END   "key 0x26"
+[17:42:04.915] [auto] BEGIN "key enter"
+[17:42:04.915] [auto] key 0x0D queued
+[17:42:04.915] [auto] END   "key enter"
+[17:42:26.665] [auto] BEGIN "key enter"
+[17:42:26.665] [auto] key 0x0D queued
+[17:42:26.665] [auto] END   "key enter"
+[17:42:45.420] [auto] BEGIN "key enter"
+[17:42:45.420] [auto] key 0x0D queued
+[17:42:45.420] [auto] END   "key enter"
+[17:43:46.878] [auto] BEGIN "key 0x20"
+[17:43:46.878] [auto] key 0x20 queued
+[17:43:46.878] [auto] END   "key 0x20"
+[17:44:18.645] [auto] BEGIN "viewpos"
+[17:44:18.645] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:44:18.645] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:44:18.646] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 0.000 0.000 0.000  pitch 0.000 yaw 0.000  -- run viewpos again for this frame's value
+[17:44:18.646] [auto] END   "viewpos"
+[17:44:25.645] [auto] BEGIN "viewpos"
+[17:44:25.645] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:44:25.645] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:44:25.645] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 1728.000 5440.000 6372.160  pitch -0.000 yaw 30.000  -- run viewpos again for this frame's value
+[17:44:25.645] [auto] END   "viewpos"
+[17:44:46.395] [auto] BEGIN "move fwd 150"
+[17:44:46.395] [auto] move keys=0x1 for 150 frames via inproc-keystate
+[17:44:46.395] [auto] END   "move fwd 150"
+[17:44:47.146] [auto] input released
+[17:44:56.395] [auto] BEGIN "viewpos"
+[17:44:56.396] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:44:56.396] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:44:56.396] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 1728.000 5440.000 6372.160  pitch -0.000 yaw 30.000  -- run viewpos again for this frame's value
+[17:44:56.396] [auto] END   "viewpos"
+[17:45:02.396] [auto] BEGIN "viewpos"
+[17:45:02.396] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:45:02.396] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:45:02.396] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 1728.000 5440.000 6372.160  pitch -0.000 yaw 30.000  -- run viewpos again for this frame's value
+[17:45:02.396] [auto] END   "viewpos"
+[17:45:20.896] [auto] BEGIN "backend sendinput"
+[17:45:20.896] [auto] default backend = sendinput
+[17:45:20.896] [auto] END   "backend sendinput"
+[17:45:20.896] [auto] BEGIN "move fwd 150"
+[17:45:20.896] [auto] move keys=0x1 for 150 frames via sendinput
+[17:45:20.896] [auto] END   "move fwd 150"
+[17:45:21.646] [auto] input released
+[17:45:33.895] [auto] BEGIN "viewpos"
+[17:45:33.896] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:45:33.896] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:45:33.896] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 1728.000 5440.000 6372.160  pitch -0.000 yaw 30.000  -- run viewpos again for this frame's value
+[17:45:33.896] [auto] END   "viewpos"
+[17:45:39.896] [auto] BEGIN "viewpos"
+[17:45:39.896] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:45:39.896] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:45:39.896] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 2038.518 5619.566 6340.739  pitch -0.000 yaw 30.000  -- run viewpos again for this frame's value
+[17:45:39.896] [auto] END   "viewpos"
+[17:46:11.395] [auto] BEGIN "psearch 2038.518 5619.566 6340.739"
+[17:46:11.395] [auto] END   "psearch 2038.518 5619.566 6340.739"
+[17:46:11.400] [psearch]   hit 1 at 000000818C3E41C0  [private RW]
+[17:46:11.400] [psearch]   hit 2 at 000000818C3E4698  [private RW]
+[17:46:11.400] [psearch]   hit 3 at 000000818C3E6A20  [private RW]
+[17:46:11.400] [psearch]   hit 4 at 000000818C3E6FF8  [private RW]
+[17:46:11.400] [psearch]   hit 5 at 000000818C3E8E70  [private RW]
+[17:46:11.400] [psearch]   hit 6 at 000000818C3E8E88  [private RW]
+[17:46:11.400] [psearch]   hit 7 at 000000818C3E90E0  [private RW]
+[17:46:11.400] [psearch]   hit 8 at 000000818C3E9200  [private RW]
+[17:46:11.400] [psearch]   hit 9 at 000000818C3EA9E0  [private RW]
+[17:46:11.400] [psearch]   hit 10 at 000000818C3EBB80  [private RW]
+[17:46:11.401] [psearch]   hit 11 at 000000818C7E6870  [private RW]
+[17:46:11.401] [psearch]   hit 12 at 000000818C7E7A7C  [private RW]
+[17:46:53.143] [auto] BEGIN "rvscan 6"
+[17:46:53.143] [rv] rvscan: a psearch sweep is still running -- wait for its PASS 1 line and run rvscan again. Testing a half-built candidate set would report a count that cannot be reproduced.
+[17:46:53.143] [auto] END   "rvscan 6"
+[17:46:55.656] [psearch] PASS 1 (2038.52 5619.57 6340.74) tol 0.50 -> 1525 candidate(s) across 5575 regions, 4931 MB scanned
+[17:46:55.657] [psearch]   by region: image=9  private(heap)=1516  mapped=0
+[17:46:55.657] [psearch]   now MOVE the player, read getviewpos again, and run `pnarrow <x> <y> <z>` -- one position finds coincidences, two find the camera
+[17:47:36.207] [auto] BEGIN "move fwd 120"
+[17:47:36.208] [auto] move keys=0x1 for 120 frames via sendinput
+[17:47:36.208] [auto] END   "move fwd 120"
+[17:47:36.807] [auto] input released
+[17:47:46.207] [auto] BEGIN "viewpos"
+[17:47:46.214] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:47:46.214] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:47:46.217] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 2038.518 5619.566 6340.739  pitch -0.000 yaw 30.000  -- run viewpos again for this frame's value
+[17:47:46.217] [auto] END   "viewpos"
+[17:47:52.207] [auto] BEGIN "viewpos"
+[17:47:52.215] [cmdroute] issuing 'getviewpos' via POINTER (global holds idCmdSystem*)  self=00007FF6ED17B950 fn=00007FF6E7BF74D0 (module+0x2974D0)
+[17:47:52.215] [cmdroute] 'getviewpos' returned -- the engine drains its own buffer next frame (6o: reload/quit call +0x50 and never +0x60)
+[17:47:52.217] [auto] viewpos (cache, from a PREVIOUS getviewpos): pos 2289.016 5763.499 6334.187  pitch -0.000 yaw 30.000  -- run viewpos again for this frame's value
+[17:47:52.217] [auto] END   "viewpos"
+[17:48:00.709] [auto] BEGIN "pnarrow 2289.016 5763.499 6334.187"
+[17:48:00.709] [psearch]   SURVIVOR 1 at 000000818C3E41C0  [private RW]   2289.016  5763.499  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 2 at 000000818C3E4698  [private RW]   2289.016  5763.499  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 3 at 000000818C3E6A20  [private RW]   2289.016  5763.499  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 4 at 000000818C3E6FF8  [private RW]   2289.016  5763.499  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 5 at 000000818C3E8E70  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 6 at 000000818C3E8E88  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 7 at 000000818C3E90E0  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 8 at 000000818C3E9200  [private RW]   2289.016  5763.499  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 9 at 000000818C3EA9E0  [private RW]   2289.016  5763.499  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 10 at 000000818C3EBB80  [private RW]   2289.016  5763.499  6334.187
+[17:48:00.709] [psearch]   SURVIVOR 11 at 000000818C7E6870  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.710] [psearch]   SURVIVOR 12 at 000000818C7E7A7C  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.710] [psearch]   SURVIVOR 13 at 000000818C7E7B80  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.710] [psearch]   SURVIVOR 14 at 000000818C7E8E00  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.710] [psearch]   SURVIVOR 15 at 000000818C9E6700  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.710] [psearch]   SURVIVOR 16 at 000000818C9E790C  [private RW]   2289.015  5763.498  6334.187
+[17:48:00.737] [psearch] PASS 2 (2289.02 5763.50 6334.19) -> 460 survivor(s) of the previous set
+[17:48:00.737] [auto] END   "pnarrow 2289.016 5763.499 6334.187"
+[17:48:48.457] [auto] BEGIN "rvscan 8"
+[17:48:48.467] [rv] rvscan: tested 460 candidate(s) in 0 ms -> 9 passed the shape test, 0 had an unreadable window
+[17:48:48.467] [rv]   rejected by: fov_x=449  fov_y=2  fov_pair=0  useExplicit=0  forceIdentity=0  vieworg=0
+[17:48:48.467] [rv]   best 8 of 9 survivor(s), strongest first:
+[17:48:48.467] [rv]    1. 000000818C3E9200  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]    2. 000000818C3EBB80  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]    3. 00000237324DA0D0  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]    4. 00000237324DA9B0  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]    5. 00000237C323F450  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]    6. 00000237C323FD30  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]    7. 000002383900A660  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]    8. 00007FF6EAF6F6B0  conf 100/100  vieworg=(2289.02 5763.50 6334.19)  fov=(89.47 58.72)  useExplicit=0 forceIdentity=0
+[17:48:48.467] [rv]   NEXT, on the strongest one -- this is section 6c:
+[17:48:48.467] [rv]     rvmat 000000818C3E9200            read the matrix it already holds
+[17:48:48.467] [rv]     rvexplicit 000000818C3E9200 on    THE EXPERIMENT
+[17:48:48.467] [rv]   Reading: the projection VISIBLY CHANGES => the engine honours explicitProjectionMatrix, so per-eye projection is a supported input. UNCHANGED => this is not the live view, OR the flag is re-set every frame, OR the engine ignores it here -- three different findings, so say which you saw, and try the next-strongest before concluding.
+[17:48:48.467] [rv]   ⚠️ A shape match is NOT proof. 9 candidate(s) passed a filter; none of them has been shown to be the live view.
+[17:48:48.467] [auto] END   "rvscan 8"
+[17:49:48.211] [auto] BEGIN "rvmat 00007FF6EAF6F6B0"
+[17:49:48.212] [rv] explicitProjectionMatrix at 00007FF6EAF6F66C (useExplicit=0):
+[17:49:48.212] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[17:49:48.212] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[17:49:48.212] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[17:49:48.212] [rv]   [ 0.00000  0.00000  0.00000  0.00000]
+[17:49:48.212] [auto] END   "rvmat 00007FF6EAF6F6B0"
+[17:49:48.212] [auto] BEGIN "rvproj 00007FF6EAF6F6B0"
+[17:49:48.212] [rv] rvproj 00007FF6EAF6F6B0: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[17:49:48.212] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[17:49:48.212] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[17:49:48.212] [rv]     projectionMatrix           (A+4304)
+[17:49:48.212] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[17:49:48.212] [rv]        [   -1.000000     0.000000     0.000000     0.000000]
+[17:49:48.212] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.212] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[17:49:48.212] [rv]     projectionMatrixNoJitter   (A+4368)
+[17:49:48.212] [rv]        [    0.000000     1.000000     0.000000     0.000000]
+[17:49:48.212] [rv]        [    0.576171     0.817329     0.000000     0.000000]
+[17:49:48.212] [rv]        [-149321154401361886818861056.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]     inverseProjectionMatrix    (A+4432)
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]     viewMatrix                 (A+4496)
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]     worldSpaceMVPMatrix        (A+4624)
+[17:49:48.213] [rv]        [   90.000000    90.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:49:48.213] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[17:49:48.213] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[17:49:48.213] [rv]     projectionMatrix           (A+2032)
+[17:49:48.213] [rv]        [-149299313456378614709747712.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000112     0.000000]
+[17:49:48.213] [rv]        [    0.003426     0.000000     0.000123     0.000000]
+[17:49:48.213] [rv]        [    0.000123     0.000000     0.002942     0.000000]
+[17:49:48.213] [rv]     projectionMatrixNoJitter   (A+2096)
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [   -3.990246     0.000000     0.002648     0.000000]
+[17:49:48.213] [rv]        [    0.002781     0.000000    -0.000000     0.000000]
+[17:49:48.213] [rv]        [-1675.201172     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]     inverseProjectionMatrix    (A+2160)
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.213] [rv]        [-149301010556833395988496384.000000     0.000000     0.000000     0.000000]
+[17:49:48.214] [rv]     viewMatrix                 (A+2224)
+[17:49:48.214] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.214] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.214] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.214] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.214] [rv]     worldSpaceMVPMatrix        (A+2352)
+[17:49:48.214] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:49:48.214] [rv]        [ 2289.015869  5763.499023  6334.187012     0.866025]
+[17:49:48.214] [rv]        [    0.500000     0.000000    -0.500000     0.866025]
+[17:49:48.214] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[17:49:48.214] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:49:48.214] [rv]     inconsistent: proj * invproj misses the identity by 1e+09 (tolerance 0.05) - so this placement is not confirmed.
+[17:49:48.214] [rv]   RESULT: neither placement is confirmed. Either this survivor is not inside an idRenderView, or the +4400/+4528 offsets do not hold for this build. Try another rvscan survivor before doubting the offsets - the offsets are verified, the identification of any one hit is not.
+[17:49:48.214] [auto] END   "rvproj 00007FF6EAF6F6B0"
+[17:50:11.461] [auto] BEGIN "rvproj 000000818C3E9200"
+[17:50:11.461] [rv] rvproj 000000818C3E9200: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[17:50:11.461] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[17:50:11.461] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[17:50:11.461] [rv]     projectionMatrix           (A+4304)
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]     projectionMatrixNoJitter   (A+4368)
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]     inverseProjectionMatrix    (A+4432)
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]     viewMatrix                 (A+4496)
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.461] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]     worldSpaceMVPMatrix        (A+4624)
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:50:11.462] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[17:50:11.462] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[17:50:11.462] [rv]     projectionMatrix           (A+2032)
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [        -nan         -nan     0.000400     0.000000]
+[17:50:11.462] [rv]        [    0.000400     0.000000 -9198888019322192502194176.000000     0.000000]
+[17:50:11.462] [rv]     projectionMatrixNoJitter   (A+2096)
+[17:50:11.462] [rv]        [   -2.695713     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [-1675.201172     0.000000 -1886020334253977831997440.000000     0.000000]
+[17:50:11.462] [rv]        [ 127717238024075971469392948196473307136.000000     0.000000    -0.000000     0.000000]
+[17:50:11.462] [rv]        [-2981229960635607023406284800.000000     0.000000 -1886310438127574529867776.000000     0.000000]
+[17:50:11.462] [rv]     inverseProjectionMatrix    (A+2160)
+[17:50:11.462] [rv]        [    0.000000     0.000000 -22742086878016894419337216.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000 -1886077115638079719211008.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000    -0.000000     0.000000]
+[17:50:11.462] [rv]        [-2981229960635607023406284800.000000     0.000000 -2981229960635607023406284800.000000     0.000000]
+[17:50:11.462] [rv]     viewMatrix                 (A+2224)
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000 -1886293432535381578874880.000000     0.000000]
+[17:50:11.462] [rv]        [-2981229960635607023406284800.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]     worldSpaceMVPMatrix        (A+2352)
+[17:50:11.462] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [   -0.000000     0.000000     0.000000     0.000000]
+[17:50:11.462] [rv]        [        -nan         -nan    -0.000000     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000 -9587724631808906927013888.000000     0.000000]
+[17:50:11.462] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:50:11.462] [rv]     inconsistent: proj * invproj misses the identity by 1e+09 (tolerance 0.05) - so this placement is not confirmed.
+[17:50:11.462] [rv]   RESULT: neither placement is confirmed. Either this survivor is not inside an idRenderView, or the +4400/+4528 offsets do not hold for this build. Try another rvscan survivor before doubting the offsets - the offsets are verified, the identification of any one hit is not.
+[17:50:11.462] [auto] END   "rvproj 000000818C3E9200"
+[17:50:11.462] [auto] BEGIN "rvproj 00000237324DA0D0"
+[17:50:11.462] [rv] rvproj 00000237324DA0D0: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[17:50:11.462] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[17:50:11.462] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[17:50:11.462] [rv]     projectionMatrix           (A+4304)
+[17:50:11.462] [rv]        [    1.009337     0.000000    -0.000409     0.000000]
+[17:50:11.462] [rv]        [    0.000000     1.777778     0.000463     0.000000]
+[17:50:11.462] [rv]        [    0.000000     0.000000    -1.000021    -3.000064]
+[17:50:11.462] [rv]        [    0.000000     0.000000    -1.000000     0.000000]
+[17:50:11.463] [rv]     projectionMatrixNoJitter   (A+4368)
+[17:50:11.463] [rv]        [    1.009337     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     1.777778     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000    -1.000021    -3.000064]
+[17:50:11.463] [rv]        [    0.000000     0.000000    -1.000000     0.000000]
+[17:50:11.463] [rv]     inverseProjectionMatrix    (A+4432)
+[17:50:11.463] [rv]        [    0.990749     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.562500     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000    -1.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000    -0.333326     0.333333]
+[17:50:11.463] [rv]     viewMatrix                 (A+4496)
+[17:50:11.463] [rv]        [    0.500000    -0.866025    -0.000000  3846.828125]
+[17:50:11.463] [rv]        [    0.000000     0.000000     1.000000 -6334.187012]
+[17:50:11.463] [rv]        [   -0.866025    -0.500000    -0.000000  4864.094727]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[17:50:11.463] [rv]     worldSpaceMVPMatrix        (A+4624)
+[17:50:11.463] [rv]        [    0.505022    -0.873907     0.000000  3880.759277]
+[17:50:11.463] [rv]        [   -0.000401    -0.000231     1.777778 -11258.527344]
+[17:50:11.463] [rv]        [    0.866044     0.500011     0.000000 -4867.199219]
+[17:50:11.463] [rv]        [    0.866025     0.500000     0.000000 -4864.094727]
+[17:50:11.463] [rv]     shape: column-vector (m[14] carries it), implied fov=(89.47, 58.72)
+[17:50:11.463] [rv]     ** CONSISTENT: proj * invproj == I to 0.000462567 (tolerance 0.05). These two fields really are an inverse pair, so the placement is IDENTIFIED and the matrix above is the engine's own projection. **
+[17:50:11.463] [rv]     ...but this does NOT settle MAJOR ORDER: a projection's inverse is very nearly symmetric when the near plane is near 1, so the transpose passes too (measured, rvtest.c). Read row/column-major off the numbers above - which element carries the -1 - not off this line.
+[17:50:11.463] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[17:50:11.463] [rv]     projectionMatrix           (A+2032)
+[17:50:11.463] [rv]        [    0.000000     0.000001 -1862.742188     0.000000]
+[17:50:11.463] [rv]        [-1862.677734     0.000000    -1.825000     1.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000  -735.275391     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000   159.405945]
+[17:50:11.463] [rv]     projectionMatrixNoJitter   (A+2096)
+[17:50:11.463] [rv]        [   -1.659124     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.754709  -734.915039     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000     0.000122]
+[17:50:11.463] [rv]        [   -1.658506     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]     inverseProjectionMatrix    (A+2160)
+[17:50:11.463] [rv]        [    0.000000    -0.694658    -0.000002   -84.260002]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [   89.467514    58.715508     0.000003     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]     viewMatrix                 (A+2224)
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000  -238.917969]
+[17:50:11.463] [rv]        [ 2289.015869  5763.499023  6334.187012     0.866025]
+[17:50:11.463] [rv]     worldSpaceMVPMatrix        (A+2352)
+[17:50:11.463] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000    -9.100000]
+[17:50:11.463] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.463] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:50:11.464] [rv]     inconsistent: proj * invproj misses the identity by 166763 (tolerance 0.05) - so this placement is not confirmed.
+[17:50:11.464] [rv]   RESULT: the hit is idRenderView::g. The projection printed under 'g' is the engine's own - read the convention off it, then send exactly that shape back through rvhold.
+[17:50:11.464] [auto] END   "rvproj 00000237324DA0D0"
+[17:50:11.464] [auto] BEGIN "rvproj 00000237C323F450"
+[17:50:11.464] [rv] rvproj 00000237C323F450: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[17:50:11.464] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[17:50:11.464] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[17:50:11.464] [rv]     projectionMatrix           (A+4304)
+[17:50:11.464] [rv]        [    1.009337     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     1.777778     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000    -1.000021    -3.000064]
+[17:50:11.464] [rv]        [    0.000000     0.000000    -1.000000     0.000000]
+[17:50:11.464] [rv]     projectionMatrixNoJitter   (A+4368)
+[17:50:11.464] [rv]        [    1.009337     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     1.777778     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000    -1.000021    -3.000064]
+[17:50:11.464] [rv]        [    0.000000     0.000000    -1.000000     0.000000]
+[17:50:11.464] [rv]     inverseProjectionMatrix    (A+4432)
+[17:50:11.464] [rv]        [    0.990749     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.562500     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000    -1.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000    -0.333326     0.333333]
+[17:50:11.464] [rv]     viewMatrix                 (A+4496)
+[17:50:11.464] [rv]        [    0.500000    -0.866025    -0.000000  3846.828125]
+[17:50:11.464] [rv]        [    0.000000     0.000000     1.000000 -6334.187012]
+[17:50:11.464] [rv]        [   -0.866025    -0.500000    -0.000000  4864.094727]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     1.000000]
+[17:50:11.464] [rv]     worldSpaceMVPMatrix        (A+4624)
+[17:50:11.464] [rv]        [    0.504668    -0.874111     0.000000  3882.746338]
+[17:50:11.464] [rv]        [    0.000000     0.000000     1.777778 -11260.777344]
+[17:50:11.464] [rv]        [    0.866044     0.500011     0.000000 -4867.199219]
+[17:50:11.464] [rv]        [    0.866025     0.500000     0.000000 -4864.094727]
+[17:50:11.464] [rv]     shape: column-vector (m[14] carries it), implied fov=(89.47, 58.72)
+[17:50:11.464] [rv]     ** CONSISTENT: proj * invproj == I to 2.9803e-08 (tolerance 0.05). These two fields really are an inverse pair, so the placement is IDENTIFIED and the matrix above is the engine's own projection. **
+[17:50:11.464] [rv]     ...but this does NOT settle MAJOR ORDER: a projection's inverse is very nearly symmetric when the near plane is near 1, so the transpose passes too (measured, rvtest.c). Read row/column-major off the numbers above - which element carries the -1 - not off this line.
+[17:50:11.464] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[17:50:11.464] [rv]     projectionMatrix           (A+2032)
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]     projectionMatrixNoJitter   (A+2096)
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.464] [rv]     inverseProjectionMatrix    (A+2160)
+[17:50:11.464] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [   89.467514    58.715508     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]     viewMatrix                 (A+2224)
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [ 2289.015869  5763.499023  6334.187012     0.866025]
+[17:50:11.465] [rv]     worldSpaceMVPMatrix        (A+2352)
+[17:50:11.465] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    1.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [ -163.991699     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:50:11.465] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[17:50:11.465] [rv]   RESULT: the hit is idRenderView::g. The projection printed under 'g' is the engine's own - read the convention off it, then send exactly that shape back through rvhold.
+[17:50:11.465] [auto] END   "rvproj 00000237C323F450"
+[17:50:11.465] [auto] BEGIN "rvproj 000002383900A660"
+[17:50:11.465] [rv] rvproj 000002383900A660: reading the engine's OWN projection from idRenderView, at the offsets the reflection database gives. Nothing is written.
+[17:50:11.465] [rv]   An rvscan hit is a renderView_t, and idRenderView holds two of them, so both placements are read and the inverse-pair test decides between them.
+[17:50:11.465] [rv]   --- if the hit is g (idRenderView+0, "set by the game") ---
+[17:50:11.465] [rv]     projectionMatrix           (A+4304)
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [        -nan     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]     projectionMatrixNoJitter   (A+4368)
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [ 20000.000000  20000.000000         -nan  20000.000000]
+[17:50:11.465] [rv]     inverseProjectionMatrix    (A+4432)
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000  10000.000000  10000.000000]
+[17:50:11.465] [rv]     viewMatrix                 (A+4496)
+[17:50:11.465] [rv]        [        -nan  10000.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]     worldSpaceMVPMatrix        (A+4624)
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.465] [rv]        [    1.000000     1.000000     1.000000     1.000000]
+[17:50:11.465] [rv]        [    0.000000     0.000000     1.000000     0.000000]
+[17:50:11.465] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:50:11.465] [rv]     inconsistent: proj * invproj misses the identity by 1e+09 (tolerance 0.05) - so this placement is not confirmed.
+[17:50:11.465] [rv]   --- if the hit is r (idRenderView+2272, "latched at EndFrame") ---
+[17:50:11.465] [rv]     projectionMatrix           (A+2032)
+[17:50:11.466] [rv]        [   -0.000000     0.000000    -0.352369     0.000000]
+[17:50:11.466] [rv]        [   -0.352396     0.000000    -0.351968     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]     projectionMatrixNoJitter   (A+2096)
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]     inverseProjectionMatrix    (A+2160)
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]     viewMatrix                 (A+2224)
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]     worldSpaceMVPMatrix        (A+2352)
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]        [    0.000000     0.000000     0.000000     0.000000]
+[17:50:11.466] [rv]     shape: does NOT match uniscan's projection filter. That does not make it wrong - read the numbers above; the filter is what would be wrong if this is the real field.
+[17:50:11.466] [rv]     inconsistent: proj * invproj misses the identity by 1 (tolerance 0.05) - so this placement is not confirmed.
+[17:50:11.466] [rv]   RESULT: neither placement is confirmed. Either this survivor is not inside an idRenderView, or the +4400/+4528 offsets do not hold for this build. Try another rvscan survivor before doubting the offsets - the offsets are verified, the identification of any one hit is not.
+[17:50:11.466] [auto] END   "rvproj 000002383900A660"
+[17:50:46.709] [auto] BEGIN "rvhold 00000237324DA0D0 55 900"
+[17:50:46.710] [rv] rvhold ARMED on 00000237324DA0D0 for 900 frames, convention: inverse (the analytic inverse of standard)
+[17:50:46.710] [rv]   live fov (89.47, 58.72); holding a projection built for (55.00, 36.10) - a deliberate 1.63x change.
+[17:50:46.710] [rv]   was: useExplicit=0, matrix ALL ZERO at rest
+[17:50:46.710] [rv]   LOOK AT THE PICTURE NOW, then `rvholdoff` and read the counters.
+[17:50:46.710] [rv]   ⚠️ CHECK THE ARMING WINDOW BEFORE BELIEVING A NULL: on 2026-09-08 a 600-frame hold expired before its capture and read as 'nothing happened'. Compare this line's timestamp and the release line against when you looked.
+[17:50:46.710] [auto] END   "rvhold 00000237324DA0D0 55 900"
+[17:50:51.253] [rv] rvhold released (frame budget expired). Restored the matrix and flag the engine had.
+[17:50:51.253] [rv]   at present writes=899  HELD=899  ZEROED=0  REWRITTEN=0  flag-cleared=0
+[17:50:51.253] [rv]   at submit  writes=1800  HELD=900  ZEROED=899  REWRITTEN=0  flag-cleared=899
+[17:50:51.253] [rv]   READING IT: HELD dominant + picture UNCHANGED => the engine does not read explicitProjectionMatrix on this path, and section 6c is ANSWERED NO. ZEROED dominant => we are writing at the wrong point in the frame and 6c is still unanswered - nothing has been learned about the flag. Picture CHANGED at all (even wrongly) => 6c is ANSWERED YES.
+[17:51:29.961] [auto] BEGIN "rvholdoff"
+[17:51:29.961] [auto] END   "rvholdoff"
+[17:51:29.961] [auto] BEGIN "key esc"
+[17:51:29.961] [auto] key 0x1B queued
+[17:51:29.961] [auto] END   "key esc"
+[17:51:52.459] [auto] BEGIN "key 0x28"
+[17:51:52.459] [auto] key 0x28 queued
+[17:51:52.459] [auto] END   "key 0x28"
+[17:51:52.459] [auto] BEGIN "key 0x28"
+[17:51:52.460] [auto] key 0x28 queued
+[17:51:52.460] [auto] END   "key 0x28"
+[17:51:52.460] [auto] BEGIN "key 0x28"
+[17:51:52.460] [auto] key 0x28 queued
+[17:51:52.460] [auto] END   "key 0x28"
+[17:51:52.460] [auto] BEGIN "key 0x28"
+[17:51:52.460] [auto] key 0x28 queued
+[17:51:52.460] [auto] END   "key 0x28"
+[17:51:52.460] [auto] BEGIN "key 0x28"
+[17:51:52.460] [auto] key 0x28 queued
+[17:51:52.460] [auto] END   "key 0x28"
