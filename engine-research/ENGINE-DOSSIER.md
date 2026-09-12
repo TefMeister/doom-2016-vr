@@ -1879,6 +1879,49 @@ Evidence: `dev-archive/recon/2026-09-12-cmdroute-viewpos-move-rvhold/`.
   destructive step). ⚠️ Capability 2 currently works only because every step is Enter on an
   already-correct default — it is **not** general navigation until the arrow-key defect is fixed.
 
+## 6q. 🚨 ⭐⭐ THE ARROW KEYS ARE FIXED, AND `MapVirtualKey` CANNOT TELL YOU WHICH KEYS ARE EXTENDED (2026-09-12, `/pd`, no launch)
+
+Notes: `modding-notes/2026-09-12b-the-arrow-keys-are-fixed-and-windows-cannot-tell-you-which-keys-are-extended.md`.
+Closes the row §6p opened.
+
+- **The defect:** `sendinputKey()` and `rawKey()` built `dwFlags` as
+  `KEYEVENTF_SCANCODE | (down ? 0 : KEYEVENTF_KEYUP)` and never set `KEYEVENTF_EXTENDEDKEY`. DOWN and
+  numpad-2 are both scancode `0x50`; UP and numpad-8 are both `0x48`. Every synthetic arrow arrived as
+  a **numpad** key. `seqPush()` makes it unavoidable rather than accidental: `MapVirtualKeyA(vk,
+  MAPVK_VK_TO_VSC)` returns `0x50` for `VK_DOWN` **and** for `VK_NUMPAD2`, so the scancode alone cannot
+  carry the distinction — only the flag can.
+- **The fix:** `vkIsExtended()` / `scanIsExtended()` in `autoinput.c`, OR-ed in at **all three**
+  delivery points so no route can disagree with another: `sendinputKey()`, `rawKey()` (the path `key`,
+  `scan` and `type` all take), and `postKeyMsg()` as **lParam bit 24** (`KF_EXTENDED`). Numpad Enter is
+  deliberately unreachable — it shares `VK_RETURN` with the main Enter and only the bit separates
+  them, so a caller gets the main one. `[compile-verified 2026-09-12]`
+- **⭐ ⚠️ `MapVirtualKey` REPORTS THE ARROW AND NAVIGATION CLUSTER AS *NOT* EXTENDED.** This is the
+  durable finding, and it came out of the test failing. `MAPVK_VK_TO_VSC_EX` returns `0xE000` in the
+  high word for genuinely-extended keys — right-Ctrl, right-Alt, numpad-divide, the media cluster
+  — but hands back a **bare `0x0050`** for `VK_DOWN`, `0x0048` for `VK_UP`, and bare codes for
+  PgUp/PgDn/Home/End/Insert/Delete/PrintScreen/NumLock `[verified-numerically 2026-09-12]`. **The OS
+  resolves the ambiguity towards the keypad**, which is the same ambiguity that caused the bug.
+  ⇒ **Never ask Windows whether an arrow key is extended.** The cluster must be listed by hand.
+  The OS is valid ground truth in ONE direction only: everything it calls extended must be in the
+  table.
+- **Our first table was also genuinely incomplete** — 19 keys Windows does vouch for (browser,
+  volume, media, launch, `VK_SLEEP`) were missing. Added. Nothing here sends a media key, but a table
+  that is wrong where it can be checked has no standing where it cannot.
+- **`test/extkeytest.c`, wired into `build.sh`:** **47 passed, 0 failed**
+  `[verified-numerically 2026-09-12]`, joining the existing 116 + 30. It checks the shared-scancode
+  fact itself, sweeps the OS one-directionally, pins the cluster the OS will not vouch for, and
+  asserts that Esc / Enter / Space / the console key `0x29` stay non-extended so the fix cannot trade
+  one silent breakage for another.
+- **Deployed, NOT run.** `vulkan-1.dll` md5 `54d06abe...`, backup
+  `vulkan-1.dll.pre-extkey-backup-2026-09-12` kept beside the exe, re-stamped.
+- **The check that closes it:** `backend sendinput` — `key esc` — `key 0x28`. Highlight moves
+  down a row ⇒ general menu navigation works for the first time. Highlight still stuck but
+  `key enter` works ⇒ the flag was not the whole story; A/B the message route with
+  `typeroute postkey`, which now sets bit 24. Nothing works at all ⇒ the change broke a working
+  path; the backup is beside the exe.
+- **⚠️ Worth a grep across the estate:** the `KEYEVENTF_SCANCODE`-without-`EXTENDEDKEY` shape is not
+  DOOM-specific. Not checked on any other project here.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
