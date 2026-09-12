@@ -1814,6 +1814,71 @@ rejects any NaN and any magnitude above `1.0e7`, and says *"has getviewpos run y
 reporting a camera at 10^38 units. ⚠️ **A pass is not proof the RVA is right** — five plausible
 floats can sit anywhere; it only removes the obviously-wrong case.
 
+## 6p. ⭐⭐ 6o RUNS: POINTER, `cmd` WITH NO CONSOLE, `viewpos` FREE, MOVEMENT ON `sendinput` — and two tool corrections (2026-09-12, `/lm`, one launch)
+
+Notes: `modding-notes/2026-09-12-three-rows-fall-in-one-launch-and-the-arrow-keys-were-never-arrows.md`.
+Evidence: `dev-archive/recon/2026-09-12-cmdroute-viewpos-move-rvhold/`.
+
+- **⭐⭐ §6o is settled. `cmdroute` → `idCmdSystem: POINTER`** (the global holds an
+  `idCmdSystem*`), self `00007FF6ED17B950`, fn module+`0x2974D0`. Not OBJECT, not unresolved, not
+  AMBIGUOUS — the one ambiguity §6o's xref census could not separate, resolved on the first
+  run. **§6o's RVAs move from `[inferred-static 2026-09-10]` to
+  `[verified-live 2026-09-12, n=1 launch]`.**
+- **⭐⭐ `cmd <text>` runs a console command with NO console.** `cmd r_fullscreen 0` was
+  issued and the engine acted on it. **The scancode / dead-key / typeroute dance of §6o is
+  retired.**
+  ⚠️ **HAZARD: that particular command WEDGES the game** — window minimised to
+  `-32000,-32000`, `Responding=False`, 59 swapchain recreations (six inside 100 ms), no further
+  presents; a force-kill was required. **Do not switch fullscreen live**; set it in
+  `DOOMConfig.local` with the game closed and relaunch. Whether the wedge is `r_fullscreen`-specific
+  or applies to any swapchain-rebuilding cvar is **not established** — only one command was
+  tried, deliberately.
+- **⭐⭐ `viewpos` reads the camera from static memory for free** (run it twice; the cache
+  holds the previous answer): `pos 1728.000 5440.000 6372.160 pitch -0.000 yaw 30.000` —
+  **identical to the worked example recorded 2026-09-10 on the OTHER machine, in a different
+  process** `[verified-live 2026-09-12, n=1 launch]`. Two sessions agreeing to printed precision is
+  what makes this one trustworthy.
+- **⭐ Movement works, and the backend is the whole story.** `move fwd 150` on `inproc-keystate`
+  (the default): position **unchanged**. On `sendinput`: `1728.000 5440.000 6372.160` →
+  `2038.518 5619.566 6340.739` `[verified-live 2026-09-12, n=1 each]`. The step is 358.7 units in XY
+  along **(0.866, 0.501)** against a view yaw of **30°** (cos 0.866, sin 0.500) — forward
+  along its own facing, to three decimals. **`inproc-keystate` is confirmed dead for gameplay.**
+  ⚠️ `status` printing `sendinput unavailable` is a **foreground check**, not a capability check.
+- **⚠️ A CORRECTION TO A TOOL, NOT TO §6c: `rvproj` must not be used to pick which candidate
+  to hold.** §6j's YES stands untouched. But on this launch `rvproj` **rejected**
+  module+`0x360F6B0` — the very address §6j held to produce a 24—26 luma delta — while
+  **confirming** two heap hits as `idRenderView::g`, one of which was held at fov 55 and changed
+  **nothing** `[verified-live 2026-09-12, n=1 launch]`. So the +4400/+4528 placement check yields a
+  false negative on the known-good address and false positives elsewhere. **Demote `rvproj` to a
+  structural hint; the live hold is the only identifier.** Its own output already said "the offsets
+  are verified, the identification of any one hit is not".
+- **⚠️ And ZEROED-at-submit counters are NOT a failure signature.** §6j's two *successful*
+  arms show submit ZEROED 3443 and 3579 of ~7200 and the picture changed anyway. A null with
+  ZEROED-at-submit means **wrong address**, not "we wrote at the wrong point in the frame".
+- **⭐ Candidate-set recipe, cheaper than before:** two-pass `psearch` → `pnarrow` →
+  `rvscan` gave 1525 → 460 → **9** shape-matches at conf 100/100, all reading the same
+  vieworg and fov. Rather than sorting them, **ask module+`0x360F6B0` first** — §6j already
+  proved it drives the frame, and it is the same global the control profile records from `pdump`.
+- **🚨 NEW DEFECT IN OUR OWN PROXY: `key <arrow>` does not set `KEYEVENTF_EXTENDEDKEY`.**
+  `key 0x28` ×5 at the pause menu never moved the highlight; an external `SendInput` with
+  scancode `0x50` + `EXTENDED` moved it first try, seconds later, on the same menu
+  `[verified-live 2026-09-12, n=1 each]`. `key esc` / `key enter` work, which is exactly what hides
+  it. ⚠️ **Every previous "the arrows did nothing" reading from this proxy is void** — they
+  were never delivered as arrows. Fix: set the flag for the extended set (arrows, Home/End,
+  PgUp/PgDn, Insert/Delete, right-Ctrl/Alt) in the proxy's `sendinput` path. Same family as the
+  control profile's own general warning, now found inside our code.
+- **Install traps, both live on this machine today.** (1) The proxy here was **two days stale while
+  `deployed.sh check` said `OK`** — the stamp predated the build; a rebuild-and-hash-compare
+  caught it in one command (the deployed DLL contained no `cmdroute` string at all). (2)
+  `r_renderAPI` was `0`, so the launch ran the **OpenGL** exe and the proxy never loaded — the
+  2026-09-05 failure recurring because the config had been rewritten since.
+- **All five automation capabilities exercised in one unattended run:** self-launch (Steam URL,
+  twice), menu→gameplay (main menu → CAMPAIGN → GAME SLOT 1 → CONTINUE → Space
+  → Mars surface), commands (with no console), character+camera (`move fwd`, confirmed by an
+  independent position read), self-close (through the pause menu, highlight verified at every
+  destructive step). ⚠️ Capability 2 currently works only because every step is Enter on an
+  already-correct default — it is **not** general navigation until the arrow-key defect is fixed.
+
 ## 7. Constant-buffer fill mechanism
 - TBD (Phase 2). Note the renderparm indirection: shaders consume *named renderparms*, so there is
   an engine-side table mapping renderparm → uniform/UBO/push-constant location. Finding that table
