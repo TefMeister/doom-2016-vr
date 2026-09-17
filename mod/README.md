@@ -1,5 +1,11 @@
 # DOOM (2016) VR
 
+> ### ⏸️ Paused (2026-09-17)
+>
+> **There is already a VR mod for DOOM (2016): [KHARVOX](https://github.com/CactusVRStudios/KHARVOX/releases)** by CactusVRStudios, out now, v0.9 beta (released 2026-09-13). Use that one.
+>
+> Work on this project is paused. If it resumes, it will build on top of KHARVOX (so KHARVOX would be required), rather than compete with it.
+
 A VR conversion mod for **DOOM** (2016) — the goal is stereo rendering and
 6DOF head tracking, built on the game's **id Tech 6** engine foundation.
 
