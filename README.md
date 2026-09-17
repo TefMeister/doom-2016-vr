@@ -1,5 +1,11 @@
 # doom-2016-vr
 
+> ### ⏸️ Paused (2026-09-17)
+>
+> **There is already a VR mod for DOOM (2016): [KHARVOX](https://github.com/CactusVRStudios/KHARVOX/releases)** by CactusVRStudios, out now, v0.9 beta (released 2026-09-13). Use that one.
+>
+> Work on this project is paused. If it resumes, it will build on top of KHARVOX (so KHARVOX would be required), rather than compete with it.
+
 **DOOM (2016)** — a flat-to-VR modding project.
 
 Consolidated on 2026-08-30: each folder below used to be one of this project's
