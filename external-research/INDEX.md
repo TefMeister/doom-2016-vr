@@ -1,6 +1,8 @@
 # Research index
 
-**Last `/gr` pass: 2026-09-23 (estate sweep) — CHECK-IN.** Checked phunkaeg's *VR Modding Playbook*: its KHARVOX review (pair-cache identity, virtual-texture append) adds detail to the KHARVOX lead we already hold; nothing new filed.
+**Last `/gr` pass: 2026-09-29 (estate sweep) — CHECK-IN.** Inbox empty; project paused beside KHARVOX (already checked today, 1.11 filed separately). Nothing new.
+
+_Previous: **Last `/gr` pass: 2026-09-23 (estate sweep) — CHECK-IN.** Checked phunkaeg's *VR Modding Playbook*: its KHARVOX review (pair-cache identity, virtual-texture append) adds detail to the KHARVOX lead we already hold; nothing new filed.
 
 _Previous: **Last `/gr` pass: 2026-09-10 (estate sweep) — FULL** (board `OPEN` block, INDEX, inbox drained, two targeted public searches against the one ⭐⭐ `[FLAT]` row)**.** Inbox drained: the modding lane’s verdict on the depth-convention negative — folded in as an outcome section, row flipped to ✅, and it did more than save a pass (it redirected the work to reading the engine’s own matrix, which §6d already had the offsets for). **One new topic, and it changes what the next launch should do:** the view-position row’s `bind`-in-`DOOMConfig.local` plan has a **second revert path nobody listed — Steam Cloud** — and a route that sidesteps persistence entirely, `+bind "F9" "getviewpos"` on the command line, since the dossier already carries `+com_allowconsole 1` from the same `+<command>` mechanism._
 
