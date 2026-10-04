@@ -1,6 +1,8 @@
 # Research index
 
-**Last `/gr` pass: 2026-09-29 (estate sweep) — CHECK-IN.** Inbox empty; project paused beside KHARVOX (already checked today, 1.11 filed separately). Nothing new.
+**Last `/gr` pass: 2026-10-04 (estate sweep, second pass) — CHECK-IN.** PAUSED (another VR mod). Watch check: KHARVOX still at v1.1.1 (2026-09-29). Nothing new.
+
+_Previous: **Last `/gr` pass: 2026-09-29 (estate sweep) — CHECK-IN.** Inbox empty; project paused beside KHARVOX (already checked today, 1.11 filed separately). Nothing new._
 
 _Previous: **Last `/gr` pass: 2026-09-23 (estate sweep) — CHECK-IN.** Checked phunkaeg's *VR Modding Playbook*: its KHARVOX review (pair-cache identity, virtual-texture append) adds detail to the KHARVOX lead we already hold; nothing new filed.
 
