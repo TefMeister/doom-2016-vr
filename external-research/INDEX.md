@@ -1,6 +1,8 @@
 # Research index
 
-**Last `/gr` pass: 2026-10-07 (estate sweep) — CHECK-IN.** PAUSED (another VR mod). Watch check: KHARVOX unchanged at v1.1.1 (2026-09-29), MIT. Nothing new.
+**Last `/gr` pass: 2026-10-11 (estate sweep) — CHECK-IN.** Inbox empty. Re-checked the other VR mod on WATCHING.md: no change since the row was last updated. Nothing new.
+
+_Previous: **Last `/gr` pass: 2026-10-07 (estate sweep) — CHECK-IN.** PAUSED (another VR mod). Watch check: KHARVOX unchanged at v1.1.1 (2026-09-29), MIT. Nothing new._
 
 _Previous: **Last `/gr` pass: 2026-10-04 (estate sweep, second pass) — CHECK-IN.** PAUSED (another VR mod). Watch check: KHARVOX still at v1.1.1 (2026-09-29). Nothing new._
 
