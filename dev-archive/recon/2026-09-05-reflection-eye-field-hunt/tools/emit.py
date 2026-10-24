@@ -2,7 +2,7 @@
 """Emit the recon artefacts for 2026-09-05-reflection-eye-field-hunt."""
 import json, re, os, io
 
-OUT = r"~\github-backups-pd\doom-2016-vr\dev-archive\recon\2026-09-05-reflection-eye-field-hunt"
+OUT = os.path.expanduser(r"~\github-backups-pd\doom-2016-vr\dev-archive\recon\2026-09-05-reflection-eye-field-hunt")
 os.makedirs(OUT, exist_ok=True)
 
 db = json.load(open("db.json"))

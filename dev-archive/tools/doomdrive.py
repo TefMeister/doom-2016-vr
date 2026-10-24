@@ -24,7 +24,7 @@ import time
 
 TOOLKIT_CANDIDATES = [
     r"D:\claude video game stuff\github-backups\flat-to-vr-RE-toolkit\tools\game-harness.py",
-    r"~\github-backups\flat-to-vr-RE-toolkit\tools\game-harness.py",
+    os.path.expanduser(r"~\github-backups\flat-to-vr-RE-toolkit\tools\game-harness.py"),
 ]
 
 
