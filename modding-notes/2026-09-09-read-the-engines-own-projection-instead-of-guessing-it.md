@@ -13,8 +13,8 @@ was already in the shipped code before the row was written.**
 
 | time | lane | what |
 | --- | --- | --- |
-| 2026-09-08 19:38 | `/pd` | `acb7c66` — dropped the `m[15]==0` hard reject; `projshape.c` gained the premultiplied view-projection branch. Its own note says *"the last `[PD]` row is closed"* |
-| 2026-09-08 19:59 | `/lm` | `5c352ec` — wrote an `OPEN` block re-raising a `[PD]` row asking for exactly that |
+| 2026-09-08 19:38 | `/pd` | `2a2903f` — dropped the `m[15]==0` hard reject; `projshape.c` gained the premultiplied view-projection branch. Its own note says *"the last `[PD]` row is closed"* |
+| 2026-09-08 19:59 | `/lm` | `0965209` — wrote an `OPEN` block re-raising a `[PD]` row asking for exactly that |
 
 `projshape.c` today treats `m[15]` as *selecting which shape to look for*, not as a reject. Checked
 against the row's stated asks: premultiplied VP **covered**; reverse-Z and infinite-far **covered**
