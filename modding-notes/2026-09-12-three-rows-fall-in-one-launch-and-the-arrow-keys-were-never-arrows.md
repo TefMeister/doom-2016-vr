@@ -1,4 +1,4 @@
-# Three rows fall in one launch, `rvproj` is demoted, and the proxy's arrow keys were never arrows (2026-09-12, home PC `RTX`, `/lm`)
+# Three rows fall in one launch, `rvproj` is demoted, and the proxy's arrow keys were never arrows (2026-09-12, home PC, `/lm`)
 
 One launch, fully unattended: launched, menu-driven into gameplay, tested, and closed through
 the game's own menu. Evidence: `dev-archive/recon/2026-09-12-cmdroute-viewpos-move-rvhold/`.

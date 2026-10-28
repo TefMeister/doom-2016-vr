@@ -1,4 +1,4 @@
-# The arrow keys are fixed — and Windows cannot tell you which keys are extended (2026-09-12 evening, home PC `RTX`, `/pd`)
+# The arrow keys are fixed — and Windows cannot tell you which keys are extended (2026-09-12 evening, home PC, `/pd`)
 
 **The game was not launched and nothing here has been run.** One build was made, tested on the
 host, deployed and hash-stamped.
