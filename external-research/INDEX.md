@@ -1,8 +1,8 @@
 # Research index
 
-**Last `/gr` pass: 2026-10-27 (estate sweep) — CHECK-IN.** Inbox empty. Watch check: KHARVOX still at v1.4.0 (2026-10-19), last push 2026-10-21. Nothing new.
+**Last `/gr` pass: 2026-11-01 (estate sweep) — CHECK-IN.** Watch list: KHARVOX is at 1.4a (2026-10-27, "OFXR Bridge compatibility"); pointer sent to the dossier inbox. Pause stands.
 
-_Previous: Last `/gr` pass: 2026-10-23 (estate sweep) — CHECK-IN. Inbox empty. Re-checked the other VR mod on WATCHING.md: KHARVOX is now at v1.4.0 (2026-10-19), which adds the GOG version; pointer sent to the dossier inbox._
+_Previous: **Last `/gr` pass: 2026-10-27 (estate sweep) — CHECK-IN.** Inbox empty. Watch check: KHARVOX still at v1.4.0 (2026-10-19), last push 2026-10-21. Nothing new._
 
 _Previous: **Last `/gr` pass: 2026-10-11 (estate sweep) — CHECK-IN.** Inbox empty. Re-checked the other VR mod on WATCHING.md: no change since the row was last updated. Nothing new._
 
