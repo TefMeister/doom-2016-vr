@@ -9,9 +9,8 @@
 A VR conversion mod for **DOOM** (2016) — the goal is stereo rendering and
 6DOF head tracking, built on the game's **id Tech 6** engine foundation.
 
-> **Status: work in progress — nothing playable released yet, no code written
-> yet.** This folder holds releases only; watch it if you want to know
-> the moment there is something to try.
+> **Status: paused. A DOOM (2016) VR mod already exists: KHARVOX, by
+> CactusVRStudios. Nothing playable is released here.**
 
 ## What this will be
 
