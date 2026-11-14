@@ -1,6 +1,6 @@
 # Research index
 
-**Last `/gr` pass: 2026-11-01 (estate sweep) — CHECK-IN.** Watch list: KHARVOX is at 1.4a (2026-10-27, "OFXR Bridge compatibility"); pointer sent to the dossier inbox. Pause stands.
+**Last `/gr` pass: 2026-11-14 — CHECK-IN.** Watch list: KHARVOX still at v1.4a (2026-10-27), no push since; nothing new.
 
 _Previous: **Last `/gr` pass: 2026-10-27 (estate sweep) — CHECK-IN.** Inbox empty. Watch check: KHARVOX still at v1.4.0 (2026-10-19), last push 2026-10-21. Nothing new._
 
