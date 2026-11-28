@@ -1,6 +1,8 @@
 # Research index
 
-**Last `/gr` pass: 2026-11-14 — CHECK-IN.** Watch list: KHARVOX still at v1.4a (2026-10-27), no push since; nothing new.
+**Last `/gr` pass: 2026-11-28 — CHECK-IN.** Inbox empty; watch-list re-check only: KHARVOX moved on: v1; pointer in engine-research/inbox/.
+
+_Previous: **Last `/gr` pass: 2026-11-14 — CHECK-IN.** Watch list: KHARVOX still at v1.4a (2026-10-27), no push since; nothing new._
 
 _Previous: **Last `/gr` pass: 2026-10-27 (estate sweep) — CHECK-IN.** Inbox empty. Watch check: KHARVOX still at v1.4.0 (2026-10-19), last push 2026-10-21. Nothing new._
 
